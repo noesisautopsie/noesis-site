@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-tests Scientifiques — NOÉSIS</title>
-    <meta name="description" content="Grilles d'évaluation approfondies pour identifier votre situation avec rigueur scientifique. Tests TDAH, burn-out, trauma bonding, harcèlement moral, gaslighting, red flags et plus.">
-    
-    <!-- Fonts Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Auto-tests NOÉSIS — Évaluation clinique rigoureuse</title>
+    <meta name="description" content="Auto-tests scientifiquement fondés pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire NOÉSIS.">
     
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
         :root {
             --noir: #111111;
             --blanc-casse: #F9F9F6;
@@ -30,41 +27,54 @@
 
         body {
             font-family: 'Crimson Text', serif;
-            background-color: var(--blanc-casse);
+            font-size: 19px;
+            line-height: 1.8;
             color: var(--noir);
-            line-height: 1.7;
+            background-color: var(--blanc-casse);
         }
 
-        /* BANDEAU URGENCE */
-        .emergency-banner {
-            background-color: var(--bordeaux);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* HEADER */
+        .urgence-banner {
+            background: linear-gradient(90deg, var(--bordeaux), var(--bordeaux-leger));
             color: white;
+            padding: 11px 0;
             text-align: center;
-            padding: 12px 20px;
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
+        }
+
+        .urgence-banner a {
+            color: white;
+            text-decoration: none;
+            margin: 0 14px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .urgence-banner a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            background-color: white;
+            padding: 24px 0;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        /* NAVIGATION */
-        #navbar {
-            background-color: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 48px;
-            z-index: 999;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        #navbar .container {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,737 +82,405 @@
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             color: var(--noir);
             text-decoration: none;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
             font-variant: small-caps;
         }
 
-        #navbar ul {
+        nav ul {
             display: flex;
+            gap: 8px;
             list-style: none;
-            gap: 32px;
-            align-items: center;
         }
 
-        #navbar a {
+        nav a:not(.logo) {
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--gris-texte);
             text-decoration: none;
-            transition: color 0.3s ease;
+            padding: 10px 18px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
         }
 
-        #navbar a:hover {
-            color: var(--bordeaux);
+        nav a:not(.logo):hover {
+            background-color: var(--bordeaux);
+            color: white;
         }
 
-        /* HERO SECTION */
-        .hero-section {
-            padding: 80px 40px 60px;
-            background: linear-gradient(135deg, var(--gris-clair) 0%, var(--blanc-casse) 100%);
+        /* HERO */
+        .hero {
+            padding: 120px 40px 80px;
             text-align: center;
+            background: linear-gradient(135deg, #F9F9F6 0%, #F5F4F0 100%);
         }
 
-        .hero-title {
+        .hero-badge {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--bordeaux);
+            background-color: rgba(125, 60, 74, 0.08);
+            padding: 10px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+
+        h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
+            font-size: 72px;
             font-weight: 700;
             color: var(--noir);
-            margin-bottom: 24px;
+            line-height: 1.1;
+            margin-bottom: 32px;
         }
 
         .hero-subtitle {
             font-size: 22px;
             color: var(--gris-texte);
-            max-width: 900px;
-            margin: 0 auto 32px;
-            line-height: 1.8;
-        }
-
-        .hero-note {
-            background-color: rgba(125, 60, 74, 0.08);
-            border-left: 4px solid var(--bordeaux);
-            padding: 24px 32px;
             max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            font-size: 17px;
+            margin: 0 auto 48px;
             line-height: 1.7;
         }
 
-        .hero-note strong {
-            color: var(--bordeaux);
-        }
-
-        /* TESTS SECTION */
-        .tests-section {
-            padding: 80px 40px;
+        /* WARNING BOX */
+        .warning-box {
             background-color: white;
+            border: 2px solid var(--bordeaux);
+            border-radius: 8px;
+            padding: 32px;
+            margin: 64px auto;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(125, 60, 74, 0.1);
         }
 
-        .category-block {
+        .warning-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--bordeaux);
+            margin-bottom: 16px;
+        }
+
+        .warning-box p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--gris-texte);
+        }
+
+        /* CATEGORIES */
+        .categories-section {
+            padding: 80px 40px;
+        }
+
+        .category {
             margin-bottom: 80px;
         }
 
-        .category-header {
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--bordeaux);
-            padding-bottom: 16px;
-        }
-
-        .category-header h2 {
+        .category-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--noir);
-            margin-bottom: 8px;
+            color: var(--bordeaux);
+            margin-bottom: 16px;
         }
 
         .category-description {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--gris-texte);
-            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
 
         .tests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 32px;
         }
 
         .test-card {
-            background-color: var(--gris-clair);
-            padding: 40px;
-            border-left: 5px solid var(--bordeaux);
+            background-color: white;
+            border-left: 4px solid var(--bordeaux);
+            padding: 32px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
             text-decoration: none;
-            color: inherit;
             display: block;
         }
 
         .test-card:hover {
-            transform: translateX(6px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            background-color: #EDE9E3;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(125, 60, 74, 0.15);
         }
 
-        .test-number {
+        .test-badge {
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--bordeaux);
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
             font-size: 11px;
-            font-family: 'Source Sans Pro', sans-serif;
             font-weight: 700;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-        }
-
-        .status-available {
-            background-color: rgba(125, 60, 74, 0.15);
             color: var(--bordeaux);
-        }
-
-        .status-coming {
-            background-color: rgba(85, 85, 85, 0.12);
-            color: var(--gris-texte);
+            background-color: rgba(125, 60, 74, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 16px;
         }
 
         .test-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--noir);
-            margin-bottom: 16px;
-            line-height: 1.4;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
 
-        .test-description {
+        .test-card p {
             font-size: 17px;
             color: var(--gris-texte);
-            line-height: 1.7;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            margin-bottom: 16px;
         }
 
         .test-meta {
-            display: flex;
-            gap: 24px;
-            font-size: 14px;
-            color: var(--gris-texte);
             font-family: 'Source Sans Pro', sans-serif;
-        }
-
-        .test-meta span {
+            font-size: 13px;
+            color: var(--gris-texte);
             display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .test-meta svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--bordeaux);
+            gap: 16px;
         }
 
         /* FOOTER */
         footer {
             background-color: #2A2A2A;
             color: #E8E8E4;
-            padding: 60px 40px 20px;
+            padding: 64px 40px 32px;
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .footer-columns {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 48px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
-        .footer-section h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+        .footer-columns h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 14px;
             font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--bordeaux-leger);
             margin-bottom: 16px;
-            color: white;
         }
 
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 8px;
-        }
-
-        .footer-section a {
+        .footer-columns a {
             color: #E8E8E4;
             text-decoration: none;
             font-size: 15px;
+            display: block;
+            margin-bottom: 8px;
             transition: color 0.3s ease;
         }
 
-        .footer-section a:hover {
+        .footer-columns a:hover {
             color: var(--bordeaux-leger);
         }
 
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .copyright {
             text-align: center;
-            font-size: 14px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-family: 'Source Sans Pro', sans-serif;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .tests-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #navbar ul {
-                display: none;
-            }
+            font-size: 13px;
+            color: #999;
         }
     </style>
 </head>
 <body>
-    <!-- BANDEAU URGENCE -->
-    <div class="emergency-banner">
-        🚨 En danger ? 3919 | SMS : 114 | Urgences : 17
+    <!-- URGENCE BANNER -->
+    <div class="urgence-banner">
+        🚨 EN DANGER ? <a href="tel:3919">3919</a> | SMS : <a href="sms:114">114</a> | Urgences : <a href="tel:17">17</a>
     </div>
 
     <!-- NAVIGATION -->
-    <nav id="navbar">
+    <nav>
         <div class="container">
-            <a href="/" class="logo">Noésis</a>
+            <a href="../index.html" class="logo">Noésis</a>
             <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/#methode">La Méthode</a></li>
-                <li><a href="/#articles">Articles</a></li>
-                <li><a href="/auto-tests">Auto-tests</a></li>
-                <li><a href="/#livres">Livres</a></li>
-                <li><a href="/#accompagnement">Accompagnement</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="../index.html#accueil">Accueil</a></li>
+                <li><a href="../index.html#methode">La Méthode</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="./">Auto-tests</a></li>
+                <li><a href="../accompagnement.html">Accompagnement</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="hero-title">Auto-tests Scientifiques</h1>
-            <p class="hero-subtitle">
-                Grilles d'évaluation approfondies conçues pour identifier votre situation avec rigueur. Chaque test intègre neuropsychologie, psychologie cognitive, criminologie, anthropologie et sciences sociales.
-            </p>
-            <div class="hero-note">
-                <strong>Avertissement éthique :</strong> Ces tests ne remplacent pas un diagnostic professionnel. Ils constituent des outils d'orientation basés sur la littérature scientifique validée. Si vos résultats révèlent une situation préoccupante, consultez un professionnel qualifié.
-            </div>
-        </div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">Évaluation Clinique</div>
+        <h1>Auto-tests NOÉSIS</h1>
+        <p class="hero-subtitle">
+            Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire rigoureuse.
+        </p>
     </section>
 
-    <!-- TESTS SECTION -->
-    <section class="tests-section">
+    <!-- WARNING -->
+    <div class="warning-box">
+        <h3>⚠️ Avertissement Important</h3>
+        <p>
+            Ces auto-tests ne remplacent en aucun cas un diagnostic professionnel. Ils constituent des outils d'aide à la réflexion basés sur des critères cliniques reconnus. Pour toute situation complexe, consultez un professionnel de santé qualifié.
+        </p>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="categories-section">
         <div class="container">
 
-            <!-- Catégorie 1 : Neurodiversité & Vulnérabilités -->
-            <div class="category-block">
-                <div class="category-header">
-                    <h2>Neurodiversité & Vulnérabilités</h2>
-                    <p class="category-description">Identification des profils atypiques et des fragilités structurelles</p>
-                </div>
+            <!-- CATÉGORIE 1 : NEURODIVERSITÉ -->
+            <div class="category">
+                <h2 class="category-title">Neurodiversité & Vulnérabilités</h2>
+                <p class="category-description">
+                    Identification de patterns neurodéveloppementaux et de mécanismes psychologiques créant des vulnérabilités spécifiques à l'emprise.
+                </p>
                 <div class="tests-grid">
-                    <!-- Test 01 : TDAH -->
-                    <a href="test-tdah.html" class="test-card">
-                        <span class="test-number">Test 01</span>
-                        <span class="status-badge status-available">Disponible</span>
-                        <h3>TDAH au Féminin : Diagnostic Différentiel</h3>
-                        <p class="test-description">
-                            Outil de pré-diagnostic basé sur DSM-5 et ASRS. Analyse détaillée et recommandations personnalisées.
-                        </p>
+                    <a href="./test-tdah.html" class="test-card">
+                        <div class="test-badge">Neurodiversité</div>
+                        <h3>TDAH au Féminin</h3>
+                        <p>Diagnostic différentiel des symptômes de TDAH chez les femmes, souvent sous-diagnostiqués ou confondus avec d'autres troubles.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                50 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 15 questions</span>
+                            <span>⏱️ 8 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 02 : Syndrome Imposteur -->
-                    <a href="syndrome-imposteur-environnement-toxique-noesis-tailwind.html" class="test-card">
-                        <span class="test-number">Test 02</span>
-                        <span class="status-badge status-available">Disponible</span>
+                    <a href="./syndrome-imposteur-environnement-toxique-noesis-tailwind.html" class="test-card">
+                        <div class="test-badge">Psychologie</div>
                         <h3>Syndrome de l'Imposteur vs Environnement Toxique</h3>
-                        <p class="test-description">
-                            Grille clinique pour distinguer syndrome de l'imposteur (interne) et invalidation environnementale (externe).
-                        </p>
+                        <p>Différenciation entre auto-dévalorisation interne et gaslighting systémique externe.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                60 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 12 questions</span>
+                            <span>⏱️ 7 min</span>
                         </div>
                     </a>
                 </div>
             </div>
 
-            <!-- Catégorie 2 : Contextes Professionnels -->
-            <div class="category-block">
-                <div class="category-header">
-                    <h2>Contextes Professionnels</h2>
-                    <p class="category-description">Évaluation des violences et dysfonctionnements en milieu de travail</p>
-                </div>
+            <!-- CATÉGORIE 2 : CONTEXTES PROFESSIONNELS -->
+            <div class="category">
+                <h2 class="category-title">Contextes Professionnels</h2>
+                <p class="category-description">
+                    Évaluation de situations d'emprise, de harcèlement et de manipulation en milieu professionnel selon grilles juridiques et cliniques.
+                </p>
                 <div class="tests-grid">
-                    <!-- Test 03 : Burn-out -->
-                    <a href="burn-out-stade-epuisement-noesis-tailwind.html" class="test-card">
-                        <span class="test-number">Test 03</span>
-                        <span class="status-badge status-available">Disponible</span>
+                    <a href="./burn-out-stade-epuisement-noesis-tailwind.html" class="test-card">
+                        <div class="test-badge">Burn-out</div>
                         <h3>Burn-out : Stade d'Épuisement</h3>
-                        <p class="test-description">
-                            Évaluation clinique basée sur le modèle MBI : épuisement émotionnel, dépersonnalisation/cynisme et accomplissement personnel.
-                        </p>
+                        <p>Identification du niveau d'épuisement professionnel selon critères de Maslach et ICD-11.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                45 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 18 questions</span>
+                            <span>⏱️ 10 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 04 : Harcèlement Moral -->
-                    <a href="harcelement-moral-grille-juridique-noesis.html" class="test-card">
-                        <span class="test-number">Test 04</span>
-                        <span class="status-badge status-available">Disponible</span>
-                        <h3>Harcèlement Moral : Éléments Caractérisant Juridiquement</h3>
-                        <p class="test-description">
-                            Grille juridique basée sur l'article L1152-1 du Code du travail et la jurisprudence française.
-                        </p>
+                    <a href="./harcelement-moral-grille-juridique-noesis.html" class="test-card">
+                        <div class="test-badge">Juridique</div>
+                        <h3>Harcèlement Moral : Éléments Juridiques</h3>
+                        <p>Grille d'évaluation basée sur la jurisprudence française et les critères caractérisant le harcèlement moral au travail.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                10 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                8-12 min
-                            </span>
+                            <span>📋 20 questions</span>
+                            <span>⏱️ 12 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 05 : Gaslighting Professionnel -->
-                    <a href="gaslighting-professionnel-clinique-noesis-tailwind.html" class="test-card">
-                        <span class="test-number">Test 05</span>
-                        <span class="status-badge status-available">Disponible</span>
+                    <a href="./gaslighting-professionnel-clinique-noesis-tailwind.html" class="test-card">
+                        <div class="test-badge">Manipulation</div>
                         <h3>Gaslighting Professionnel</h3>
-                        <p class="test-description">
-                            Grille clinique du gaslighting professionnel basée sur la recherche en psychologie du travail, criminologie et neurosciences.
-                        </p>
+                        <p>Identification des techniques de manipulation cognitive et de distorsion de la réalité en contexte professionnel.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                60 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 15 questions</span>
+                            <span>⏱️ 9 min</span>
                         </div>
                     </a>
                 </div>
             </div>
 
-            <!-- Catégorie 3 : Relations Personnelles -->
-            <div class="category-block">
-                <div class="category-header">
-                    <h2>Relations Personnelles</h2>
-                    <p class="category-description">Identification des dynamiques relationnelles toxiques et des patterns familiaux</p>
-                </div>
+            <!-- CATÉGORIE 3 : RELATIONS PERSONNELLES -->
+            <div class="category">
+                <h2 class="category-title">Relations Personnelles</h2>
+                <p class="category-description">
+                    Analyse de dynamiques relationnelles toxiques, patterns d'emprise affective et mécanismes de contrôle coercitif.
+                </p>
                 <div class="tests-grid">
-                    <!-- Test 06 : Red Flags -->
-                    <a href="red-flags-evaluation-par-phase-noesis-final.html" class="test-card">
-                        <span class="test-number">Test 06</span>
-                        <span class="status-badge status-available">Disponible</span>
-                        <h3>Red Flags : Grille d'Évaluation par Phase</h3>
-                        <p class="test-description">
-                            Évaluation clinique des signaux d'alerte relationnels phase par phase. Identification précoce des dynamiques toxiques.
-                        </p>
+                    <a href="./red-flags-evaluation-par-phase-noesis-final.html" class="test-card">
+                        <div class="test-badge">Red Flags</div>
+                        <h3>Red Flags : Grille par Phase</h3>
+                        <p>Évaluation des signaux d'alerte selon les phases relationnelles (séduction, installation, contrôle, emprise).</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                50 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 25 questions</span>
+                            <span>⏱️ 15 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 07 : Trauma Bonding -->
-                    <a href="trauma-bonding-amour-sain-attachement-anxieux-noesis-tailwind.html" class="test-card">
-                        <span class="test-number">Test 07</span>
-                        <span class="status-badge status-available">Disponible</span>
+                    <a href="./trauma-bonding-amour-sain-attachement-anxieux-noesis-tailwind.html" class="test-card">
+                        <div class="test-badge">Attachement</div>
                         <h3>Trauma Bonding vs Amour Sain vs Attachement Anxieux</h3>
-                        <p class="test-description">
-                            Grille clinique pour distinguer lien traumatique (trauma bonding), relation saine et attachement anxieux.
-                        </p>
+                        <p>Différenciation entre lien traumatique, relation saine et insécurité d'attachement.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                50 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 20 questions</span>
+                            <span>⏱️ 12 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 08 : Love Bombing (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 08</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Love Bombing vs Enthousiasme Authentique</h3>
-                        <p class="test-description">
-                            Distinction entre séduction intensive manipulatoire et élan relationnel authentique.
-                        </p>
+                    <a href="./test-entourage-cons-v2-tailwind-noesis.html" class="test-card">
+                        <div class="test-badge">Vampires Énergétiques</div>
+                        <h3>Vampires Énergétiques : Typologie</h3>
+                        <p>Identification de patterns de relations asymétriques chroniques et extraction d'énergie émotionnelle.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                15 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                8-12 min
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Test 09 : Es-tu entouré·e de cons ? (ICE) -->
-                    <a href="es-tu-entoure-cons-v2-ice-noesis-final.html" class="test-card">
-                        <span class="test-number">Test 09</span>
-                        <span class="status-badge status-available">Disponible</span>
-                        <h3>Es-tu entouré·e de cons ? — Indice de Connerie Environnementale (ICE)</h3>
-                        <p class="test-description">
-                            Auto-test psychosocial (42 questions) pour mesurer scientifiquement la toxicité de votre environnement social, professionnel et familial.
-                        </p>
-                        <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                42 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 18 questions</span>
+                            <span>⏱️ 10 min</span>
                         </div>
                     </a>
 
-                    <!-- Test 10 : Vampires Énergétiques (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 10</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Vampires Énergétiques : Typologie et Asymétrie</h3>
-                        <p class="test-description">
-                            Identification des profils relationnels épuisants et des dynamiques asymétriques.
-                        </p>
+                    <a href="./parentalite-toxique-reconstruction-noesis-tailwind.html" class="test-card">
+                        <div class="test-badge">Famille</div>
+                        <h3>Parents Toxiques : Patterns</h3>
+                        <p>Identification de dynamiques parentales dysfonctionnelles et impacts développementaux à long terme.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                45 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                14-17 min
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Test 11 : Parents Toxiques -->
-                    <a href="parentalite-toxique-reconstruction-noesis-tailwind.html" class="test-card">
-                        <span class="test-number">Test 11</span>
-                        <span class="status-badge status-available">Disponible</span>
-                        <h3>Parents Toxiques : Identification des Patterns</h3>
-                        <p class="test-description">
-                            Évaluation de l'empreinte de dynamiques parentales toxiques et du niveau de reconstruction personnelle.
-                        </p>
-                        <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                60 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-25 min
-                            </span>
+                            <span>📋 22 questions</span>
+                            <span>⏱️ 13 min</span>
                         </div>
                     </a>
-
-                    <!-- Test 12 : Attachement Anxieux (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 12</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Attachement Anxieux : Style Relationnel</h3>
-                        <p class="test-description">
-                            Évaluation du style d'attachement anxieux et de ses manifestations relationnelles.
-                        </p>
-                        <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                18 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                10-15 min
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Test 13 : Gaslighting (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 13</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Gaslighting : 15 Phases Typiques</h3>
-                        <p class="test-description">
-                            Identification des phases de manipulation psychologique et de distorsion de la réalité.
-                        </p>
-                        <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                20 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                12-15 min
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <!-- Catégorie 4 : Trauma & Symptômes -->
-            <div class="category-block">
-                <div class="category-header">
-                    <h2>Trauma & Symptômes</h2>
-                    <p class="category-description">Évaluation des impacts neuropsychologiques du trauma</p>
-                </div>
+            <!-- CATÉGORIE 4 : TRAUMA & SYMPTÔMES -->
+            <div class="category">
+                <h2 class="category-title">Trauma & Symptômes</h2>
+                <p class="category-description">
+                    Dépistage de symptomatologies post-traumatiques complexes et mécanismes neuropsychologiques associés.
+                </p>
                 <div class="tests-grid">
-                    <!-- Test 14 : Trauma Complexe (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 14</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Trauma Complexe (CPTSD) vs PTSD vs Dépression</h3>
-                        <p class="test-description">
-                            Distinction diagnostique entre trauma complexe, stress post-traumatique simple et trouble dépressif.
-                        </p>
+                    <!-- Les tests de cette catégorie seront ajoutés ultérieurement -->
+                    <div class="test-card" style="opacity: 0.6; pointer-events: none;">
+                        <div class="test-badge">À venir</div>
+                        <h3>Trauma Complexe (CPTSD)</h3>
+                        <p>Différenciation PTSD aigu / PTSD complexe / trouble développemental du trauma.</p>
                         <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                50 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                18-20 min
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Test 15 : Mémoire Traumatique (À venir) -->
-                    <div class="test-card" style="opacity: 0.6; cursor: not-allowed;">
-                        <span class="test-number">Test 15</span>
-                        <span class="status-badge status-coming">Bientôt</span>
-                        <h3>Mémoire Traumatique : Fragmentation Mémorielle</h3>
-                        <p class="test-description">
-                            Évaluation de la dissociation mnésique, des reviviscences et de l'amnésie traumatique.
-                        </p>
-                        <div class="test-meta">
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="18" y1="20" x2="18" y2="10"/>
-                                    <line x1="12" y1="20" x2="12" y2="4"/>
-                                    <line x1="6" y1="20" x2="6" y2="14"/>
-                                </svg>
-                                45 questions
-                            </span>
-                            <span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                15-18 min
-                            </span>
+                            <span>📋 25 questions</span>
+                            <span>⏱️ 15 min</span>
                         </div>
                     </div>
                 </div>
@@ -813,42 +491,38 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>NOÉSIS</h4>
-                <p style="font-size: 15px; line-height: 1.7; color: #E8E8E4;">
-                    Transformer la confusion en lucidité par l'analyse transdisciplinaire rigoureuse.
-                </p>
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4>NOÉSIS</h4>
+                    <p style="margin-bottom: 16px;">Transformer la confusion en lucidité</p>
+                    <p style="font-size: 14px; line-height: 1.6;">Maison d'édition intellectuelle ultra-premium spécialisée dans l'analyse transdisciplinaire de l'emprise psychologique.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <a href="../index.html#accueil">Accueil</a>
+                    <a href="../index.html#methode">La Méthode</a>
+                    <a href="../index.html#articles">Articles</a>
+                    <a href="./">Auto-tests</a>
+                    <a href="../accompagnement.html">Accompagnement</a>
+                </div>
+                <div>
+                    <h4>Ressources</h4>
+                    <a href="../documents/CGP-NOESIS.pdf">Charte Graphique</a>
+                    <a href="tel:3919">3919 - Violences Femmes Info</a>
+                    <a href="sms:114">114 - Urgence SMS</a>
+                    <a href="tel:17">17 - Police / Gendarmerie</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <a href="mailto:noesisexplique@gmail.com">noesisexplique@gmail.com</a>
+                    <a href="https://instagram.com/noesis_analyse" target="_blank">Instagram</a>
+                    <a href="https://linkedin.com/company/noesis-analyse" target="_blank">LinkedIn</a>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/#methode">La Méthode</a></li>
-                    <li><a href="/#articles">Articles</a></li>
-                    <li><a href="/auto-tests">Auto-tests</a></li>
-                    <li><a href="/#livres">Livres</a></li>
-                </ul>
+            <div class="copyright">
+                © 2025 NOÉSIS — Tous droits réservés
             </div>
-            <div class="footer-section">
-                <h4>Ressources</h4>
-                <ul>
-                    <li><a href="#">Plan de Sécurité (PDF)</a></li>
-                    <li><a href="#">3919 — Violences Femmes Info</a></li>
-                    <li><a href="#">114 — SMS Urgences</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:noesisexplique@gmail.com">noesisexplique@gmail.com</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2025 NOÉSIS — Tous droits réservés
         </div>
     </footer>
 </body>
