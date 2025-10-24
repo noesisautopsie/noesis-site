@@ -8,103 +8,898 @@
   <title>Burn-out : Stade d'Épuisement — Auto-test NOÉSIS</title>
   <meta name="description" content="Grille d'évaluation clinique (45 items) du burn-out professionnel basée sur le modèle MBI : épuisement émotionnel, dépersonnalisation/cynisme et accomplissement personnel.">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="Burn-out : Stade d'Épuisement — NOÉSIS">
-  <meta property="og:description" content="Test clinique 45 questions basé sur MBI. Évaluation épuisement professionnel.">
-  <meta property="og:type" content="website">
-  
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- React + ReactDOM via CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  
-  <!-- Babel Standalone pour JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Styles d'impression PDF optimisés A4 */
-    @media print {
-      .no-print { display: none !important; }
-      .print-only { display: block !important; }
-      
-      body { 
-        background: white !important;
-        margin: 0;
-        padding: 0;
+    :root {
+      --noir: #111111;
+      --blanc-casse: #F9F9F6;
+      --gris-clair: #F5F4F0;
+      --bordeaux: #7D3C4A;
+      --bordeaux-leger: #9D5C6A;
+      --gris-texte: #555555;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Crimson Text', serif;
+      font-size: 19px;
+      line-height: 1.8;
+      color: var(--noir);
+      background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+      min-height: 100vh;
+    }
+
+    /* Navigation NOÉSIS */
+    .urgence-banner {
+      background: linear-gradient(90deg, var(--bordeaux), var(--bordeaux-leger));
+      color: white;
+      padding: 11px 0;
+      text-align: center;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .urgence-banner a {
+      color: white;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .urgence-banner a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    nav {
+      background-color: white;
+      padding: 24px 0;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 43px;
+      z-index: 999;
+    }
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--noir);
+      text-decoration: none;
+      font-variant: small-caps;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a:not(.logo) {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gris-texte);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:not(.logo):hover {
+      background-color: var(--bordeaux);
+      color: white;
+    }
+
+    /* Container principal */
+    .main-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 64px 48px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 32px;
+      background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 17px;
+      color: var(--gris-texte);
+      margin-bottom: 48px;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: #fffbeb;
+      border-left: 5px solid #f59e0b;
+      padding: 24px 28px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 48px;
+      text-align: left;
+    }
+
+    .warning-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .warning-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #78350f;
+    }
+
+    /* Méthodologie Section */
+    .methodology-section {
+      margin-bottom: 48px;
+      text-align: left;
+    }
+
+    .methodology-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .dimension-badge {
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .dimension-badge.rose {
+      background: #ffe4e6;
+      color: #be123c;
+    }
+
+    .dimension-badge.purple {
+      background: #f3e8ff;
+      color: #7e22ce;
+    }
+
+    .dimension-badge.emerald {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .methodology-text {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--gris-texte);
+      margin-bottom: 16px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 48px 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #6366f1;
+    }
+
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;
+      color: var(--gris-texte);
+    }
+
+    /* CTA Button */
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      color: white;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 20px 48px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Questionnaire Styles */
+    .questionnaire-container {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      margin-bottom: 32px;
+    }
+
+    .dimension-header {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 12px;
+    }
+
+    .dimension-description {
+      font-size: 16px;
+      color: var(--gris-texte);
+      margin-bottom: 32px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+      transition: width 0.5s ease;
+      border-radius: 4px;
+    }
+
+    .question-block {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .question-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .question-text {
+      font-size: 17px;
+      color: var(--noir);
+      margin-bottom: 20px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .question-number {
+      color: #9ca3af;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .choice-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .choice-label:hover {
+      border-color: #c7d2fe;
+      background: #f5f3ff;
+    }
+
+    .choice-label input[type="radio"] {
+      display: none;
+    }
+
+    .choice-label input[type="radio"]:checked + .choice-content {
+      color: #4f46e5;
+    }
+
+    .choice-label input[type="radio"]:checked ~ * {
+      color: #4f46e5;
+    }
+
+    .choice-label:has(input[type="radio"]:checked) {
+      border-color: #6366f1;
+      background: #eef2ff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    .choice-content {
+      text-align: center;
+    }
+
+    .choice-main {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 4px;
+    }
+
+    .choice-anchor {
+      font-size: 12px;
+      color: var(--gris-texte);
+    }
+
+    /* Submit Section */
+    .submit-section {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .submit-info {
+      font-size: 15px;
+      color: var(--gris-texte);
+      margin-bottom: 24px;
+    }
+
+    /* Results Styles */
+    .results-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    .result-hero {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      border: 4px solid;
+    }
+
+    .result-hero.severe {
+      border-color: #ef4444;
+      background: linear-gradient(135deg, #fef2f2 0%, #fff 100%);
+    }
+
+    .result-hero.elevated {
+      border-color: #f97316;
+      background: linear-gradient(135deg, #fff7ed 0%, #fff 100%);
+    }
+
+    .result-hero.moderate {
+      border-color: #eab308;
+      background: linear-gradient(135deg, #fefce8 0%, #fff 100%);
+    }
+
+    .result-hero.fatigue {
+      border-color: #84cc16;
+      background: linear-gradient(135deg, #f7fee7 0%, #fff 100%);
+    }
+
+    .result-hero.satisfactory {
+      border-color: #10b981;
+      background: linear-gradient(135deg, #ecfdf5 0%, #fff 100%);
+    }
+
+    .result-badge {
+      display: inline-block;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 20px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--noir);
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 16px;
+    }
+
+    .result-score {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 24px;
+    }
+
+    .result-message {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--gris-texte);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .result-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .result-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: 28px;
+    }
+
+    .dimension-result {
+      margin-bottom: 28px;
+    }
+
+    .dimension-result:last-child {
+      margin-bottom: 0;
+    }
+
+    .dimension-result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .dimension-result-name {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--noir);
+    }
+
+    .dimension-result-value {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gris-texte);
+    }
+
+    .dimension-progress {
+      width: 100%;
+      height: 12px;
+      background: #f3f4f6;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .dimension-progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 1s ease;
+    }
+
+    .dimension-progress-fill.rose {
+      background: linear-gradient(90deg, #fb7185 0%, #f43f5e 100%);
+    }
+
+    .dimension-progress-fill.purple {
+      background: linear-gradient(90deg, #c084fc 0%, #a855f7 100%);
+    }
+
+    .dimension-progress-fill.emerald {
+      background: linear-gradient(90deg, #34d399 0%, #10b981 100%);
+    }
+
+    .recommendation-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .recommendation-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--gris-texte);
+    }
+
+    .recommendation-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .recommendation-number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .export-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .export-button {
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .export-button.primary {
+      background: var(--noir);
+      color: white;
+    }
+
+    .export-button.primary:hover {
+      background: #374151;
+      transform: translateY(-2px);
+    }
+
+    .export-button.secondary {
+      background: #4b5563;
+      color: white;
+    }
+
+    .export-button.secondary:hover {
+      background: #6b7280;
+      transform: translateY(-2px);
+    }
+
+    .email-section {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px solid #f3f4f6;
+    }
+
+    .email-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .email-input-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Source Sans Pro', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .email-input:focus {
+      outline: none;
+      border-color: #6366f1;
+    }
+
+    .email-button {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .email-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .email-button:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+    }
+
+    .reset-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: var(--gris-texte);
+      font-size: 15px;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .reset-link:hover {
+      color: var(--noir);
+    }
+
+    /* Footer NOÉSIS */
+    footer {
+      background-color: #2A2A2A;
+      color: #E8E8E4;
+      padding: 64px 40px 32px;
+      margin-top: 80px;
+    }
+
+    .footer-columns {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-columns h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bordeaux-leger);
+      margin-bottom: 16px;
+    }
+
+    .footer-columns p {
+      font-family: 'Crimson Text', serif;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .footer-columns a {
+      font-family: 'Crimson Text', serif;
+      color: #E8E8E4;
+      text-decoration: none;
+      font-size: 15px;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-columns a:hover {
+      color: var(--bordeaux-leger);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
       }
-      
-      @page {
-        size: A4;
-        margin: 12mm 15mm;
+
+      .dimensions-grid {
+        grid-template-columns: 1fr;
       }
-      
-      .print-container {
-        max-width: 100%;
-        padding: 0 !important;
-        margin: 0 !important;
+
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
-      
-      .print-section {
-        padding: 8px 0 !important;
-        margin-bottom: 12px !important;
+
+      .choices-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      
-      .print-header {
-        font-size: 18px !important;
-        margin-bottom: 8px !important;
-        padding-bottom: 4px !important;
-        border-bottom: 2px solid #334155;
+
+      .results-grid {
+        grid-template-columns: 1fr;
       }
-      
-      .print-subheader {
-        font-size: 14px !important;
-        margin: 8px 0 4px 0 !important;
-      }
-      
-      .print-text {
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-        margin: 2px 0 !important;
-      }
-      
-      .print-question {
-        font-size: 11px !important;
-        padding: 3px 0 !important;
-        page-break-inside: avoid;
-      }
-      
-      .print-axis-section {
-        page-break-inside: avoid;
-        margin-bottom: 10px !important;
-      }
-      
-      .print-score-box {
-        padding: 6px !important;
-        margin: 4px 0 !important;
-        border: 1px solid #e2e8f0;
-        border-radius: 4px;
-      }
-      
-      .print-reco {
-        font-size: 11px !important;
-        padding: 2px 0 2px 16px !important;
-        margin: 2px 0 !important;
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
       }
     }
-    
-    .print-only {
-      display: none;
+
+    /* Print Styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .result-hero {
+        page-break-inside: avoid;
+      }
     }
   </style>
 </head>
-<body class="m-0 p-0">
-  <div id="root"></div>
+<body>
+  <!-- URGENCE BANNER -->
+  <div class="urgence-banner no-print">
+    🚨 EN DANGER ? <a href="tel:3919">3919</a> | SMS : <a href="sms:114">114</a> | Urgences : <a href="tel:17">17</a>
+  </div>
 
-  <script type="text/babel">
-    const { useState, useMemo, useCallback } = React;
+  <!-- NAVIGATION -->
+  <nav class="no-print">
+    <div class="container">
+      <a href="../index.html" class="logo">Noésis</a>
+      <ul>
+        <li><a href="../index.html#accueil">Accueil</a></li>
+        <li><a href="../index.html#methode">La Méthode</a></li>
+        <li><a href="../index.html#articles">Articles</a></li>
+        <li><a href="./">Auto-tests</a></li>
+        <li><a href="../accompagnement.html">Accompagnement</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- CONTENU PRINCIPAL -->
+  <div id="app"></div>
+
+  <!-- FOOTER -->
+  <footer class="no-print">
+    <div class="footer-columns">
+      <div>
+        <h4>NOÉSIS</h4>
+        <p style="margin-bottom: 16px;">Transformer la confusion en lucidité</p>
+        <p style="font-size: 14px; line-height: 1.6;">Maison d'édition intellectuelle ultra-premium spécialisée dans l'analyse transdisciplinaire de l'emprise psychologique.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <a href="../index.html#accueil">Accueil</a>
+        <a href="../index.html#methode">La Méthode</a>
+        <a href="../index.html#articles">Articles</a>
+        <a href="./">Auto-tests</a>
+        <a href="../accompagnement.html">Accompagnement</a>
+      </div>
+      <div>
+        <h4>Ressources</h4>
+        <a href="../documents/CGP-NOESIS.pdf">Conditions Générales</a>
+        <a href="tel:3919">3919 - Violences Femmes Info</a>
+        <a href="sms:114">114 - Urgence SMS</a>
+        <a href="tel:17">17 - Police / Gendarmerie</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:noesisexplique@gmail.com">noesisexplique@gmail.com</a>
+        <a href="https://instagram.com/noesis_analyse" target="_blank">Instagram</a>
+        <a href="https://linkedin.com/company/noesis-analyse" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 NOÉSIS — Tous droits réservés
+    </div>
+  </footer>
+
+  <script>
     // ============================================================
     // CONFIGURATION
     // ============================================================
@@ -118,15 +913,15 @@
       },
       { 
         key: "dp", 
-        label: "Dépersonnalisation / Cynisme", 
-        color: "fuchsia",
+        label: "Dépersonnalisation", 
+        color: "purple",
         description: "Distance émotionnelle, froideur, désengagement"
       },
       { 
         key: "pa", 
-        label: "Accomplissement personnel", 
+        label: "Accomplissement", 
         color: "emerald",
-        description: "Sentiment d'efficacité, sens du travail, progression"
+        description: "Sentiment d'efficacité, sens du travail"
       }
     ];
 
@@ -172,745 +967,554 @@
       {id:"Q29", dim:"dp", text:"Je me sens indifférent·e aux réussites de l'équipe."},
       {id:"Q30", dim:"dp", text:"Je me surprends à déshumaniser certaines situations."},
       
-      // Accomplissement personnel (protecteur) (15)
+      // Accomplissement personnel (15)
       {id:"Q31", dim:"pa", text:"Je vois l'impact utile de mon travail pour autrui."},
       {id:"Q32", dim:"pa", text:"J'éprouve de la fierté pour des tâches bien réalisées."},
       {id:"Q33", dim:"pa", text:"Je me sens compétent·e sur mes missions clés."},
       {id:"Q34", dim:"pa", text:"Je peux apprendre/progresser régulièrement."},
       {id:"Q35", dim:"pa", text:"Je reçois des retours constructifs et exploitables."},
       {id:"Q36", dim:"pa", text:"Je peux organiser mon travail avec une certaine autonomie."},
-      {id:"Q37", dim:"pa", text:"Je collabore avec des personnes soutenantes."},
-      {id:"Q38", dim:"pa", text:"Je parviens à équilibrer exigences et récupération."},
-      {id:"Q39", dim:"pa", text:"Je sens que mes valeurs sont globalement respectées."},
-      {id:"Q40", dim:"pa", text:"Je parviens à dire non et à prioriser."},
-      {id:"Q41", dim:"pa", text:"Je retrouve du sens dans au moins une partie de mon activité."},
-      {id:"Q42", dim:"pa", text:"Je me sens soutenu·e par mon/ma manager quand c'est nécessaire."},
-      {id:"Q43", dim:"pa", text:"Je progresse malgré les difficultés récentes."},
-      {id:"Q44", dim:"pa", text:"J'arrive à terminer mes journées sans me sentir vidé·e."},
-      {id:"Q45", dim:"pa", text:"Je peux me projeter sereinement à court terme."}
+      {id:"Q37", dim:"pa", text:"Je me sens soutenu·e par mes collègues ou hiérarchie."},
+      {id:"Q38", dim:"pa", text:"Mes efforts sont reconnus (au moins parfois)."},
+      {id:"Q39", dim:"pa", text:"Je peux mobiliser mes compétences principales."},
+      {id:"Q40", dim:"pa", text:"Je trouve un sens à mon travail malgré les difficultés."},
+      {id:"Q41", dim:"pa", text:"J'ai des moments de satisfaction réelle dans ma journée."},
+      {id:"Q42", dim:"pa", text:"Je peux prendre des décisions sur des points importants."},
+      {id:"Q43", dim:"pa", text:"Mon travail me procure un sentiment d'utilité."},
+      {id:"Q44", dim:"pa", text:"Je vois que j'ai un impact positif sur d'autres personnes."},
+      {id:"Q45", dim:"pa", text:"Je garde une forme d'espoir ou d'engagement malgré tout."}
+    ];
+
+    const RESULT_BANDS = [
+      {
+        band: "Épuisement Sévère",
+        min: 91,
+        max: 135,
+        colorClass: "severe",
+        message: "Score indicateur d'un épuisement professionnel sévère. Les trois dimensions du burn-out (épuisement émotionnel, dépersonnalisation, baisse d'accomplissement) sont significativement altérées. Intervention urgente recommandée.",
+        recommendations: [
+          "Consulter immédiatement la médecine du travail pour évaluation et mise en place de mesures de protection",
+          "Prendre contact avec un psychologue du travail ou psychothérapeute spécialisé (TCC, EMDR, ACT)",
+          "Envisager un arrêt de travail thérapeutique si pas encore en place",
+          "Alerter la direction/RH formellement sur la situation (par écrit, médecin du travail)",
+          "Consulter un avocat spécialisé en droit du travail si facteurs organisationnels identifiés"
+        ]
+      },
+      {
+        band: "Épuisement Élevé",
+        min: 68,
+        max: 90,
+        colorClass: "elevated",
+        message: "Score révélateur d'un épuisement professionnel élevé. Au moins deux dimensions MBI sont fortement impactées. Risque élevé d'aggravation sans intervention structurelle.",
+        recommendations: [
+          "Prendre rendez-vous avec la médecine du travail pour bilan et préconisations",
+          "Initier un suivi psychologique spécialisé dans le burn-out",
+          "Documenter formellement les facteurs de risque organisationnels",
+          "Explorer les possibilités d'aménagement : télétravail, réduction temporaire",
+          "Mobiliser les dispositifs internes (référent harcèlement, CHSCT/CSE)"
+        ]
+      },
+      {
+        band: "Épuisement Modéré",
+        min: 46,
+        max: 67,
+        colorClass: "moderate",
+        message: "Score suggérant un épuisement professionnel modéré avec signes d'alerte installés. Une ou deux dimensions commencent à être affectées. Zone de vigilance nécessitant des ajustements.",
+        recommendations: [
+          "Signaler la situation à la médecine du travail en visite de prévention",
+          "Entamer un travail d'analyse des facteurs de stress avec un professionnel",
+          "Mettre en place des micro-régulations : pauses effectives, déconnexion",
+          "Évaluer la charge réelle vs moyens et solliciter redistribution si déséquilibre",
+          "Renforcer les ressources protectrices : soutien social, activités extra-professionnelles"
+        ]
+      },
+      {
+        band: "Fatigue Professionnelle",
+        min: 23,
+        max: 45,
+        colorClass: "fatigue",
+        message: "Score indiquant une fatigue professionnelle sans critères de burn-out constitué. Quelques signaux isolés présents, mais ressources encore mobilisables. Prévention primaire conseillée.",
+        recommendations: [
+          "Identifier les sources spécifiques de tension et ajuster",
+          "Maintenir une hygiène de vie protectrice : sommeil, activité physique",
+          "Préserver des espaces de récupération réguliers",
+          "Développer des stratégies de régulation émotionnelle",
+          "Rester attentif aux évolutions et ne pas hésiter à consulter"
+        ]
+      },
+      {
+        band: "Équilibre Satisfaisant",
+        min: 0,
+        max: 22,
+        colorClass: "satisfactory",
+        message: "Score ne révélant pas de signes significatifs d'épuisement professionnel. L'équilibre entre ressources et contraintes semble préservé. Les dimensions protectrices sont mobilisables.",
+        recommendations: [
+          "Maintenir les facteurs protecteurs actuels",
+          "Rester vigilant aux évolutions organisationnelles",
+          "Cultiver les ressources personnelles",
+          "Pratiquer une veille sur les signaux précoces",
+          "Partager les stratégies efficaces avec les collègues"
+        ]
+      }
     ];
 
     // ============================================================
-    // FONCTIONS DE SCORING
+    // STATE MANAGEMENT
     // ============================================================
 
-    function scoreBands(total) {
-      if (total <= 45) {
-        return {
-          band: "Risque faible",
-          color: "green",
-          severity: "none",
-          message: "Les scores révèlent une fatigue professionnelle gérable. Vous maintenez un équilibre global entre ressources et exigences. Les symptômes d'épuisement restent limités et la capacité de récupération est préservée.",
-          recommendations: [
-            "Poursuivre les pratiques actuelles de régulation (sommeil, pauses, limites).",
-            "Maintenir une vigilance sur la charge de travail et anticiper les pics d'activité.",
-            "Cultiver les espaces de récupération (activités hors travail, relations sociales stables).",
-            "Documenter factuellement les missions et objectifs pour éviter la dérive de charge."
-          ]
-        };
-      }
+    let state = {
+      view: 'intro', // 'intro' | 'questionnaire' | 'results'
+      answers: {},
+      email: ''
+    };
+
+    // ============================================================
+    // RENDERING FUNCTIONS
+    // ============================================================
+
+    function render() {
+      const app = document.getElementById('app');
       
-      if (total <= 75) {
-        return {
-          band: "Vigilance nécessaire",
-          color: "yellow",
-          severity: "low",
-          message: "Vos résultats témoignent de signes de surmenage émergents. L'équilibre effort-récupération commence à se fragiliser. Les symptômes d'épuisement sont présents mais réversibles avec des ajustements rapides.",
-          recommendations: [
-            "Ajuster la charge de travail : négocier priorités, délais et critères de réussite réalistes.",
-            "Restaurer le sommeil prioritairement (rituels, lumière, réduction écrans, activité physique douce).",
-            "Solliciter un soutien managérial pour clarifier les attentes et alléger temporairement.",
-            "Intégrer des micro-pauses régulières et des pratiques de régulation (respiration, mouvement, nature).",
-            "Consulter le médecin du travail pour évaluation et aménagements si nécessaire."
-          ]
-        };
+      if (state.view === 'intro') {
+        app.innerHTML = renderIntro();
+      } else if (state.view === 'questionnaire') {
+        app.innerHTML = renderQuestionnaire();
+      } else if (state.view === 'results') {
+        app.innerHTML = renderResults();
       }
-      
-      if (total <= 100) {
-        return {
-          band: "Épuisement modéré",
-          color: "orange",
-          severity: "moderate",
-          message: "Plusieurs symptômes d'épuisement professionnel convergent. La fatigue est chronique, la distance émotionnelle s'installe et le sens du travail s'érode. L'état actuel nécessite des actions correctives immédiates pour éviter l'aggravation.",
-          recommendations: [
-            "PRIORITÉ : Consulter le médecin du travail ou médecin traitant pour évaluation clinique et arrêt de travail si nécessaire.",
-            "Mettre en place un plan d'allégement : réduction temporaire de charge, délégation, report de projets non urgents.",
-            "Restaurer les fondamentaux physiologiques : sommeil, alimentation stable, activité physique douce quotidienne.",
-            "Intégrer un accompagnement psychologique spécialisé (TCC/ACT, gestion du stress, régulation émotionnelle).",
-            "Documenter factuellement la surcharge et les impacts (pour médecine du travail, CHSCT, inspection).",
-            "Activer les ressources de soutien : proches, collègues de confiance, médecin traitant."
-          ]
-        };
-      }
-      
-      if (total <= 120) {
-        return {
-          band: "Burn-out probable",
-          color: "red",
-          severity: "high",
-          message: "Vos scores témoignent d'un épuisement professionnel sévère compatible avec un burn-out constitué. L'épuisement émotionnel est majeur, la dépersonnalisation installée et le sentiment d'efficacité effondré. L'état actuel compromet votre santé et nécessite une prise en charge médicale urgente.",
-          recommendations: [
-            "URGENCE : Consulter immédiatement médecin traitant ou médecin du travail pour arrêt de travail et évaluation psychiatrique si nécessaire.",
-            "Arrêt de travail prolongé indispensable pour permettre la récupération physiologique et psychologique.",
-            "Accompagnement pluridisciplinaire : psychiatre (diagnostic, médication si pertinent), psychologue spécialisé burn-out, médecin traitant (suivi somatique).",
-            "Restauration prioritaire des rythmes biologiques : sommeil, alimentation, lumière naturelle, mouvement doux quotidien.",
-            "Protocole de régulation intensive : cohérence cardiaque, relaxation, mindfulness, thérapie cognitive.",
-            "Analyse ergonomique et organisationnelle du poste avec médecine du travail pour identifier les facteurs de risque.",
-            "Contact avec inspection du travail ou CHSCT si conditions de travail manifestement dégradées.",
-            "Soutien social stable : informer proches de confiance, éviter isolement."
-          ]
-        };
-      }
-      
-      return {
-        band: "Burn-out sévère",
-        color: "red",
-        severity: "critical",
-        message: "Vos résultats révèlent un épuisement professionnel critique. L'état d'effondrement atteint une intensité alarmante sur l'ensemble des dimensions : épuisement total des ressources, cynisme généralisé, perte complète du sens. Vous êtes en situation d'urgence médicale.",
-        recommendations: [
-          "URGENCE MÉDICALE : Consulter immédiatement médecin traitant, urgences psychiatriques ou appeler le 3114 (prévention du suicide).",
-          "Arrêt de travail prolongé obligatoire (plusieurs semaines à plusieurs mois selon évaluation médicale).",
-          "Prise en charge psychiatrique spécialisée : diagnostic différentiel (dépression sévère, PTSD, troubles anxieux), traitement médicamenteux si nécessaire.",
-          "Accompagnement psychothérapeutique intensif : TCC, thérapie d'acceptation et d'engagement, EMDR si trauma.",
-          "Hospitalisation de jour ou soins ambulatoires si décompensation sévère (idées suicidaires, dissociation, incapacité fonctionnelle majeure).",
-          "Restauration physiologique prioritaire sous supervision médicale : sommeil, nutrition, hydratation, activité physique adaptée.",
-          "Soutien social renforcé : informer famille/proches, éviter isolement absolu, groupe de parole burn-out.",
-          "Déclaration en maladie professionnelle (si critères remplis) avec médecine du travail et CPAM.",
-          "Protection juridique si harcèlement ou conditions de travail délétères avérées (inspection du travail, avocat droit du travail)."
-        ]
-      };
+
+      attachEventListeners();
     }
 
-    function getAxisAnalysis(dimScores) {
-      const sorted = Object.entries(dimScores)
-        .map(([key, score]) => ({ key, score, dim: DIMENSIONS.find(d => d.key === key) }))
-        .sort((a, b) => b.score - a.score);
-      
-      const dominant = sorted[0];
-      
-      const analyses = {
-        ee: "L'épuisement émotionnel est votre dimension dominante. Vous êtes probablement en déficit chronique d'énergie, avec des manifestations somatiques (troubles du sommeil, tensions physiques) et une irritabilité inhabituelle. La capacité de récupération est compromise.",
-        dp: "La dépersonnalisation/cynisme domine votre profil. Vous vous protégez par la distance émotionnelle et le détachement, ce qui peut créer une froideur relationnelle inhabituelle. Ce mécanisme de défense témoigne d'une surcharge émotionnelle chronique.",
-        pa: "Votre accomplissement personnel reste votre point fort. Malgré les difficultés, vous préservez un sentiment d'efficacité et de sens au travail. Cette dimension protectrice est essentielle pour maintenir votre résilience face aux exigences professionnelles."
-      };
-      
-      return {
-        dominant: dominant.key,
-        analysis: analyses[dominant.key]
-      };
-    }
+    function renderIntro() {
+      return `
+        <div class="main-container">
+          <div class="hero-card">
+            <div class="hero-icon">🧠</div>
+            <h1 class="hero-title">Burn-out : Stade d'Épuisement</h1>
+            <p class="hero-subtitle">Grille d'évaluation clinique — Modèle MBI</p>
 
-    // ============================================================
-    // COMPOSANT PRINCIPAL
-    // ============================================================
-
-    function BurnoutTest() {
-      const [page, setPage] = useState("intro");
-      const [currentQ, setCurrentQ] = useState(0);
-      const [answers, setAnswers] = useState({});
-      const [email, setEmail] = useState("");
-
-      // SUPPRESSION TOTALE localStorage — Test toujours vierge
-
-      const allAnswered = Object.keys(answers).length === QUESTIONS.length;
-
-      const handleAnswer = useCallback((qId, value) => {
-        setAnswers(prev => ({ ...prev, [qId]: value }));
-        
-        if (currentQ < QUESTIONS.length - 1) {
-          setTimeout(() => setCurrentQ(c => c + 1), 150);
-        }
-      }, [currentQ]);
-
-      const goToResults = useCallback(() => {
-        if (!allAnswered) {
-          alert(`Il reste ${QUESTIONS.length - Object.keys(answers).length} question(s) sans réponse.`);
-          return;
-        }
-        setPage("results");
-      }, [allAnswered, answers]);
-
-      const reset = useCallback(() => {
-        setAnswers({});
-        setCurrentQ(0);
-        setPage("intro");
-        setEmail("");
-      }, []);
-
-      const dimensionScores = useMemo(() => {
-        const scores = {};
-        DIMENSIONS.forEach(dim => {
-          const qs = QUESTIONS.filter(q => q.dim === dim.key);
-          const total = qs.reduce((sum, q) => sum + (answers[q.id] || 0), 0);
-          scores[dim.key] = total;
-        });
-        return scores;
-      }, [answers]);
-
-      const totalScore = useMemo(() => {
-        return Object.values(dimensionScores).reduce((a, b) => a + b, 0);
-      }, [dimensionScores]);
-
-      const resultBand = useMemo(() => scoreBands(totalScore), [totalScore]);
-      const profileAnalysis = useMemo(() => getAxisAnalysis(dimensionScores), [dimensionScores]);
-
-      const handlePDF = useCallback(() => {
-        window.print();
-      }, []);
-
-      const handleDownloadJSON = useCallback(() => {
-        const data = {
-          test: "Burn-out : Stade d'Épuisement",
-          date: new Date().toISOString(),
-          totalScore,
-          resultBand: resultBand.band,
-          dimensionScores,
-          answers: QUESTIONS.map(q => ({
-            id: q.id,
-            dimension: q.dim,
-            question: q.text,
-            answer: CHOICES.find(c => c.value === answers[q.id])?.label || "Non répondu"
-          }))
-        };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `noesis-burnout-${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-      }, [totalScore, resultBand, dimensionScores, answers]);
-
-      const handleEmail = useCallback(() => {
-        if (!email) return;
-        const subject = encodeURIComponent("Résultats Auto-test Burn-out");
-        const body = encodeURIComponent(
-          `Bonjour,\n\nVoici mes résultats au test Burn-out NOÉSIS :\n\n` +
-          `Score total : ${totalScore}/135\n` +
-          `Profil : ${resultBand.band}\n\n` +
-          `Scores par dimension :\n` +
-          DIMENSIONS.map(d => `- ${d.label} : ${dimensionScores[d.key]}`).join('\n') +
-          `\n\nPour consulter le détail complet, merci de télécharger le PDF ou JSON depuis le site.`
-        );
-        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-      }, [email, totalScore, resultBand, dimensionScores]);
-
-      const progress = useMemo(() => Math.round((currentQ / QUESTIONS.length) * 100), [currentQ]);
-
-      // ============================================================
-      // PAGE INTRO
-      // ============================================================
-      
-      if (page === "intro") {
-        return (
-          <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 p-4 md:p-8">
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-8">
-                <div className="inline-block p-4 bg-indigo-100 rounded-2xl mb-4">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-600">
-                    <path d="M9.5 2c-1.82 0-3.53.5-5 1.36C2.68 4.72 1.5 6.73 1.5 9c0 1.56.52 3 1.39 4.14.87 1.14 2.07 2 3.43 2.36"/>
-                    <path d="M14.5 2c1.82 0 3.53.5 5 1.36C21.32 4.72 22.5 6.73 22.5 9c0 1.56-.52 3-1.39 4.14-.87 1.14-2.07 2-3.43 2.36"/>
-                    <path d="M12 2v20"/>
-                    <path d="M9.5 15.5c0 1.38.62 2.5 1.5 2.5"/>
-                    <path d="M14.5 15.5c0 1.38-.62 2.5-1.5 2.5"/>
-                    <circle cx="9" cy="9" r="1" fill="currentColor"/>
-                    <circle cx="15" cy="9" r="1" fill="currentColor"/>
-                  </svg>
-                </div>
-                <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-3">
-                  Burn-out : Stade d'Épuisement
-                </h1>
-                <p className="text-lg text-slate-600 font-medium">
-                  Grille d'évaluation clinique — Modèle MBI
-                </p>
+            <div class="warning-box">
+              <div class="warning-title">
+                ⚠️ Avertissement méthodologique
               </div>
-
-              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-6">
-                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mb-6 rounded-r-lg">
-                  <div className="flex gap-3">
-                    <span className="text-2xl flex-shrink-0">⚠️</span>
-                    <div className="text-sm text-amber-900">
-                      <p className="font-bold mb-1">Avertissement méthodologique</p>
-                      <p className="leading-relaxed">
-                        Cet auto-test de 45 items <strong>ne remplace pas un diagnostic médical</strong>. 
-                        Il s'agit d'une grille d'évaluation basée sur le modèle MBI (Maslach Burnout Inventory) pour identifier les symptômes d'épuisement professionnel. 
-                        En cas de scores élevés, une consultation médicale est indispensable.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-8">
-                  <div className="flex items-center gap-2 mb-4">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-700">
-                      <circle cx="11" cy="11" r="8"/>
-                      <path d="m21 21-4.35-4.35"/>
-                      <circle cx="11" cy="11" r="3"/>
-                    </svg>
-                    <h2 className="text-xl font-bold text-slate-900">Méthodologie</h2>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-                    <div className="bg-rose-50 text-rose-700 px-3 py-2 rounded-lg text-center text-sm font-semibold">
-                      Épuisement émotionnel
-                    </div>
-                    <div className="bg-fuchsia-50 text-fuchsia-700 px-3 py-2 rounded-lg text-center text-sm font-semibold">
-                      Dépersonnalisation
-                    </div>
-                    <div className="bg-emerald-50 text-emerald-700 px-3 py-2 rounded-lg text-center text-sm font-semibold">
-                      Accomplissement
-                    </div>
-                  </div>
-
-                  <div className="prose prose-sm text-slate-700 space-y-3">
-                    <p className="leading-relaxed">
-                      Ce test évalue <strong>trois dimensions du burn-out professionnel</strong> selon le modèle MBI : 
-                      l'épuisement émotionnel (vidage des ressources), la dépersonnalisation/cynisme (distance émotionnelle) et l'accomplissement personnel (sentiment d'efficacité). 
-                      Évaluation sur les <strong>6 derniers mois</strong>.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-4 mb-8">
-                  <div className="bg-slate-50 p-4 rounded-xl text-center">
-                    <div className="flex justify-center mb-2">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-600">
-                        <circle cx="12" cy="13" r="9"/>
-                        <polyline points="12 7 12 13 15 15"/>
-                        <path d="M10 2h4"/>
-                      </svg>
-                    </div>
-                    <div className="text-2xl font-bold text-slate-900">14-18 min</div>
-                    <div className="text-sm text-slate-600">Durée estimée</div>
-                  </div>
-                  <div className="bg-slate-50 p-4 rounded-xl text-center">
-                    <div className="flex justify-center mb-2">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-600">
-                        <line x1="18" y1="20" x2="18" y2="10"/>
-                        <line x1="12" y1="20" x2="12" y2="4"/>
-                        <line x1="6" y1="20" x2="6" y2="14"/>
-                      </svg>
-                    </div>
-                    <div className="text-2xl font-bold text-slate-900">45 questions</div>
-                    <div className="text-sm text-slate-600">Questionnaire MBI</div>
-                  </div>
-                  <div className="bg-slate-50 p-4 rounded-xl text-center">
-                    <div className="flex justify-center mb-2">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-600">
-                        <path d="M3 3v18h18"/>
-                        <path d="M18 9l-5 5-4-4-4 4"/>
-                        <circle cx="18" cy="9" r="2" fill="currentColor"/>
-                        <circle cx="13" cy="14" r="2" fill="currentColor"/>
-                        <circle cx="9" cy="10" r="2" fill="currentColor"/>
-                        <circle cx="5" cy="14" r="2" fill="currentColor"/>
-                      </svg>
-                    </div>
-                    <div className="text-2xl font-bold text-slate-900">3 dimensions</div>
-                    <div className="text-sm text-slate-600">Analyse multi-axes</div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setPage("test")}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-lg font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl"
-                >
-                  Commencer le test →
-                </button>
-              </div>
-
-              <div className="text-center text-xs text-slate-500 space-y-1">
-                <p className="font-semibold">NOÉSIS — Burn-out Épuisement v1.0 • © 2025</p>
-                <p>Confidentialité : aucune donnée collectée sans action explicite (RGPD)</p>
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // ============================================================
-      // PAGE TEST
-      // ============================================================
-
-      if (page === "test") {
-        const q = QUESTIONS[currentQ];
-        const dimInfo = DIMENSIONS.find(d => d.key === q.dim);
-        const colorMap = {
-          rose: { bg: "bg-rose-50", border: "border-rose-300", text: "text-rose-700", badge: "bg-rose-100 text-rose-700" },
-          fuchsia: { bg: "bg-fuchsia-50", border: "border-fuchsia-300", text: "text-fuchsia-700", badge: "bg-fuchsia-100 text-fuchsia-700" },
-          emerald: { bg: "bg-emerald-50", border: "border-emerald-300", text: "text-emerald-700", badge: "bg-emerald-100 text-emerald-700" },
-        };
-        const colors = colorMap[dimInfo.color];
-
-        return (
-          <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 p-4 md:p-8">
-            <div className="max-w-3xl mx-auto">
-              
-              <div className="mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-slate-600">
-                    Question {currentQ + 1} / {QUESTIONS.length}
-                  </span>
-                  <span className="text-sm font-bold text-indigo-600">{progress}%</span>
-                </div>
-                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-12 h-12 rounded-full ${colors.bg} ${colors.border} border-2 flex items-center justify-center font-bold ${colors.text} text-lg`}>
-                    {currentQ + 1}
-                  </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${colors.badge}`}>
-                    {dimInfo.label}
-                  </span>
-                </div>
-
-                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-8 leading-relaxed">
-                  {q.text}
-                </h2>
-
-                <div className="space-y-3">
-                  {CHOICES.map(choice => {
-                    const isSelected = answers[q.id] === choice.value;
-                    return (
-                      <button
-                        key={choice.value}
-                        onClick={() => handleAnswer(q.id, choice.value)}
-                        className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
-                          isSelected
-                            ? 'bg-indigo-50 border-indigo-500 shadow-lg'
-                            : 'bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <div className={`font-semibold mb-1 ${isSelected ? 'text-indigo-700' : 'text-slate-900'}`}>
-                              {choice.label}
-                            </div>
-                            <div className="text-xs text-slate-500">{choice.anchor}</div>
-                          </div>
-                          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                            isSelected ? 'bg-indigo-500 border-indigo-500' : 'border-slate-300'
-                          }`}>
-                            {isSelected && <span className="text-white text-xs font-bold">✓</span>}
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setCurrentQ(c => Math.max(0, c - 1))}
-                  disabled={currentQ === 0}
-                  className="flex-1 bg-slate-200 hover:bg-slate-300 disabled:bg-slate-100 disabled:text-slate-400 text-slate-700 font-semibold py-3 px-6 rounded-xl transition"
-                >
-                  ← Précédent
-                </button>
-                
-                {currentQ === QUESTIONS.length - 1 ? (
-                  <button
-                    onClick={goToResults}
-                    disabled={!allAnswered}
-                    className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-slate-300 disabled:to-slate-300 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg"
-                  >
-                    Voir les résultats →
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setCurrentQ(c => Math.min(QUESTIONS.length - 1, c + 1))}
-                    className="flex-1 bg-slate-700 hover:bg-slate-800 text-white font-semibold py-3 px-6 rounded-xl transition"
-                  >
-                    Suivant →
-                  </button>
-                )}
-              </div>
-
-              <div className="mt-4 text-center">
-                <button
-                  onClick={goToResults}
-                  disabled={!allAnswered}
-                  className="text-sm text-slate-500 hover:text-slate-700 underline disabled:text-slate-300"
-                >
-                  {allAnswered ? "Aller directement aux résultats" : `${QUESTIONS.length - Object.keys(answers).length} question(s) restante(s)`}
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // ============================================================
-      // PAGE RÉSULTATS + SECTION IMPRIMABLE
-      // ============================================================
-
-      return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 p-4 md:p-8">
-          <div className="max-w-5xl mx-auto">
-            
-            {/* SECTION ÉCRAN */}
-            <div className="no-print">
-              <div className="text-center mb-8">
-                <div className="inline-block p-4 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl mb-4">
-                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-600">
-                    <path d="M3 3v18h18"/>
-                    <path d="M18 9l-5 5-4-4-4 4"/>
-                    <circle cx="18" cy="9" r="2"/>
-                    <circle cx="13" cy="14" r="2"/>
-                    <circle cx="9" cy="10" r="2"/>
-                    <circle cx="5" cy="14" r="2"/>
-                  </svg>
-                </div>
-                <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-3">
-                  Tes résultats
-                </h1>
-                <p className="text-lg text-slate-600 font-medium">
-                  Analyse détaillée de ton profil d'épuisement
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-6">
-                <div className="text-center mb-6">
-                  <div className="text-6xl font-black text-slate-900 mb-2">
-                    {totalScore}<span className="text-3xl text-slate-400">/135</span>
-                  </div>
-                  <div className={`inline-block px-6 py-2 rounded-full text-lg font-bold ${
-                    resultBand.color === 'green' ? 'bg-green-100 text-green-700' :
-                    resultBand.color === 'yellow' ? 'bg-yellow-100 text-yellow-700' :
-                    resultBand.color === 'orange' ? 'bg-orange-100 text-orange-700' :
-                    'bg-red-100 text-red-700'
-                  }`}>
-                    {resultBand.band}
-                  </div>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl mb-6">
-                  <h3 className="font-bold text-slate-900 mb-3">🔍 Interprétation clinique</h3>
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    {resultBand.message}
-                  </p>
-                </div>
-
-                <div className="space-y-4 mb-6">
-                  <h3 className="font-bold text-slate-900">Scores par dimension</h3>
-                  {DIMENSIONS.map(dim => {
-                    const score = dimensionScores[dim.key];
-                    const max = QUESTIONS.filter(q => q.dim === dim.key).length * 3;
-                    const percentage = Math.round((score / max) * 100);
-                    const colorMap = {
-                      rose: { bg: "bg-rose-50", bar: "bg-rose-500", text: "text-rose-700" },
-                      fuchsia: { bg: "bg-fuchsia-50", bar: "bg-fuchsia-500", text: "text-fuchsia-700" },
-                      emerald: { bg: "bg-emerald-50", bar: "bg-emerald-500", text: "text-emerald-700" },
-                    };
-                    const colors = colorMap[dim.color];
-                    
-                    return (
-                      <div key={dim.key} className={`p-4 rounded-xl ${colors.bg}`}>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className={`text-sm font-bold ${colors.text}`}>{dim.label}</span>
-                          <span className="text-sm font-bold text-slate-700">{score}/{max}</span>
-                        </div>
-                        <div className="w-full bg-white rounded-full h-3 overflow-hidden">
-                          <div 
-                            className={`h-full ${colors.bar} transition-all duration-500`}
-                            style={{ width: `${percentage}%` }}
-                          />
-                        </div>
-                        <div className="text-xs text-slate-600 mt-1">{percentage}%</div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl">
-                  <h3 className="font-bold text-slate-900 mb-3">📌 Ton profil dominant</h3>
-                  <p className="text-sm font-semibold text-indigo-600 mb-2">
-                    {DIMENSIONS.find(d => d.key === profileAnalysis.dominant)?.label}
-                  </p>
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    {profileAnalysis.analysis}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                
-                <div className="bg-white rounded-2xl shadow-xl p-6">
-                  <h2 className="text-xl font-bold text-slate-900 mb-4">Recommandations</h2>
-                  <ul className="space-y-3">
-                    {resultBand.recommendations.map((rec, idx) => (
-                      <li key={idx} className="flex gap-3 text-sm text-slate-700">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 font-bold text-xs flex items-center justify-center">
-                          {idx + 1}
-                        </span>
-                        <span>{rec}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 pt-6 border-t-2 border-slate-100">
-                    <h3 className="font-bold text-slate-900 mb-3">Ressources utiles</h3>
-                    <ul className="space-y-2 text-sm">
-                      <li>
-                        <span className="text-slate-900 font-medium">3114</span>
-                        <span className="text-slate-600"> — Numéro national prévention suicide</span>
-                      </li>
-                      <li>
-                        <span className="text-slate-900 font-medium">Médecine du travail</span>
-                        <span className="text-slate-600"> — Évaluation et protection</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-xl p-6">
-                  <h2 className="text-xl font-bold text-slate-900 mb-4">Exporter les résultats</h2>
-                  
-                  <div className="space-y-3">
-                    <button
-                      onClick={handlePDF}
-                      className="w-full bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-slate-800 transition"
-                    >
-                      📄 Télécharger en PDF
-                    </button>
-
-                    <button
-                      onClick={handleDownloadJSON}
-                      className="w-full bg-slate-700 text-white font-semibold py-3 px-4 rounded-xl hover:bg-slate-600 transition"
-                    >
-                      💾 Télécharger en JSON
-                    </button>
-
-                    <div className="pt-4 border-t-2 border-slate-100">
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        Envoyer par email
-                      </label>
-                      <div className="flex gap-2">
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="email@exemple.com"
-                          className="flex-1 rounded-lg border-2 border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
-                        />
-                        <button
-                          onClick={handleEmail}
-                          disabled={!email}
-                          className="bg-indigo-600 disabled:bg-slate-300 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
-                        >
-                          📧
-                        </button>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={reset}
-                      className="w-full mt-4 text-slate-600 hover:text-slate-900 font-medium underline text-sm"
-                    >
-                      Refaire le test
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center text-xs text-slate-500 space-y-2">
-                <p className="font-semibold">NOÉSIS — Burn-out Épuisement v1.0 • © 2025</p>
-                <p>Outil de pré-diagnostic d'orientation • Pas un diagnostic médical</p>
-                <p>Confidentialité : aucune donnée collectée sans action explicite (RGPD)</p>
+              <div class="warning-text">
+                Cet auto-test de 45 items <strong>ne remplace pas un diagnostic médical</strong>. Il s'agit d'une grille d'évaluation basée sur le modèle MBI (Maslach Burnout Inventory) pour identifier les symptômes d'épuisement professionnel. En cas de scores élevés, une consultation médicale est indispensable.
               </div>
             </div>
 
-            {/* SECTION IMPRIMABLE PDF (cachée à l'écran) */}
-            <div className="print-only print-container">
-              <div className="print-section">
-                <h1 className="print-header">Résultats — Burn-out : Stade d'Épuisement</h1>
-                <p className="print-text">Date : {new Date().toLocaleDateString('fr-FR')}</p>
-                <p className="print-text">Score total : <strong>{totalScore}/135</strong></p>
-                <p className="print-text">Profil : <strong>{resultBand.band}</strong></p>
+            <div class="methodology-section">
+              <div class="methodology-title">
+                🔍 Méthodologie
               </div>
 
-              <div className="print-section">
-                <h2 className="print-subheader">Interprétation clinique</h2>
-                <p className="print-text">{resultBand.message}</p>
+              <div class="dimensions-grid">
+                <div class="dimension-badge rose">Épuisement émotionnel</div>
+                <div class="dimension-badge purple">Dépersonnalisation</div>
+                <div class="dimension-badge emerald">Accomplissement</div>
               </div>
 
-              <div className="print-section">
-                <h2 className="print-subheader">Scores par dimension</h2>
-                {DIMENSIONS.map(dim => {
-                  const score = dimensionScores[dim.key];
-                  const max = QUESTIONS.filter(q => q.dim === dim.key).length * 3;
-                  const percentage = Math.round((score / max) * 100);
-                  return (
-                    <div key={dim.key} className="print-score-box">
-                      <p className="print-text"><strong>{dim.label}</strong> : {score}/{max} ({percentage}%)</p>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="print-section">
-                <h2 className="print-subheader">Profil dominant</h2>
-                <p className="print-text"><strong>{DIMENSIONS.find(d => d.key === profileAnalysis.dominant)?.label}</strong></p>
-                <p className="print-text">{profileAnalysis.analysis}</p>
-              </div>
-
-              <div className="print-section">
-                <h2 className="print-subheader">Recommandations</h2>
-                {resultBand.recommendations.map((rec, idx) => (
-                  <p key={idx} className="print-reco">{idx + 1}. {rec}</p>
-                ))}
-              </div>
-
-              {/* DÉTAIL COMPLET DES QUESTIONS PAR AXE */}
-              <div className="print-section" style={{pageBreakBefore: 'always'}}>
-                <h2 className="print-header">Détail des réponses par dimension</h2>
-                
-                {DIMENSIONS.map(dim => {
-                  const dimQuestions = QUESTIONS.filter(q => q.dim === dim.key);
-                  return (
-                    <div key={dim.key} className="print-axis-section">
-                      <h3 className="print-subheader">{dim.label}</h3>
-                      {dimQuestions.map(q => {
-                        const answer = CHOICES.find(c => c.value === answers[q.id]);
-                        return (
-                          <div key={q.id} className="print-question">
-                            <p className="print-text">
-                              <strong>{q.id}</strong> : {q.text}
-                            </p>
-                            <p className="print-text" style={{paddingLeft: '16px', color: '#4b5563'}}>
-                              → Réponse : <strong>{answer?.label || 'Non répondu'}</strong> ({answer?.anchor || ''})
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="print-section" style={{marginTop: '20px', paddingTop: '12px', borderTop: '1px solid #e2e8f0'}}>
-                <p className="print-text" style={{fontSize: '10px', color: '#64748b'}}>
-                  NOÉSIS — Burn-out Épuisement v1.0 • © 2025 • Outil de pré-diagnostic d'orientation, ne remplace pas un diagnostic médical
-                </p>
+              <div class="methodology-text">
+                Ce test évalue <strong>trois dimensions du burn-out professionnel</strong> selon le modèle MBI : l'épuisement émotionnel (vidage des ressources), la dépersonnalisation/cynisme (distance émotionnelle) et l'accomplissement personnel (sentiment d'efficacité). Évaluation sur les <strong>6 derniers mois</strong>.
               </div>
             </div>
+
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-value">14-18 min</div>
+                <div class="stat-label">Durée estimée</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value">45 questions</div>
+                <div class="stat-label">Questionnaire MBI</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value">3 dimensions</div>
+                <div class="stat-label">Analyse multi-axes</div>
+              </div>
+            </div>
+
+            <button class="cta-button" onclick="startTest()">
+              Commencer le test →
+            </button>
           </div>
         </div>
-      );
+      `;
+    }
+
+    function renderQuestionnaire() {
+      const allAnswered = QUESTIONS.every(q => state.answers[q.id] !== undefined);
+      const answeredCount = Object.keys(state.answers).length;
+
+      let html = '<div class="main-container">';
+
+      DIMENSIONS.forEach(dim => {
+        const dimQuestions = QUESTIONS.filter(q => q.dim === dim.key);
+        const dimAnswered = dimQuestions.filter(q => state.answers[q.id] !== undefined).length;
+        const progress = (dimAnswered / dimQuestions.length) * 100;
+
+        html += `
+          <div class="questionnaire-container">
+            <h2 class="dimension-header">${dim.label}</h2>
+            <p class="dimension-description">${dim.description}</p>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${progress}%"></div>
+            </div>
+        `;
+
+        dimQuestions.forEach(q => {
+          html += `
+            <div class="question-block">
+              <div class="question-text">
+                <span class="question-number">${q.id}</span>
+                ${q.text}
+              </div>
+              <div class="choices-grid">
+          `;
+
+          CHOICES.forEach(choice => {
+            const checked = state.answers[q.id] === choice.value ? 'checked' : '';
+            html += `
+              <label class="choice-label">
+                <input 
+                  type="radio" 
+                  name="${q.id}" 
+                  value="${choice.value}"
+                  ${checked}
+                  onchange="handleAnswer('${q.id}', ${choice.value})"
+                >
+                <div class="choice-content">
+                  <div class="choice-main">${choice.label}</div>
+                  <div class="choice-anchor">${choice.anchor}</div>
+                </div>
+              </label>
+            `;
+          });
+
+          html += `
+              </div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+      });
+
+      html += `
+        <div class="submit-section">
+          <div class="submit-info">
+            ${allAnswered 
+              ? 'Toutes les questions ont été répondues. Cliquez pour analyser vos résultats.' 
+              : `Complétez toutes les questions (${answeredCount}/${QUESTIONS.length})`
+            }
+          </div>
+          <button 
+            class="cta-button" 
+            ${!allAnswered ? 'style="opacity: 0.5; cursor: not-allowed;"' : ''}
+            onclick="submitTest()"
+            ${!allAnswered ? 'disabled' : ''}
+          >
+            ${allAnswered ? '✓ Analyser mes résultats' : 'Complétez toutes les questions'}
+          </button>
+        </div>
+      `;
+
+      html += '</div>';
+      return html;
+    }
+
+    function renderResults() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total);
+      const profile = analyzeProfile(scores.dimensions);
+
+      return `
+        <div class="results-container">
+          <div class="result-hero ${resultBand.colorClass}">
+            <div class="result-badge">Votre Résultat</div>
+            <h1 class="result-title">${resultBand.band}</h1>
+            <div class="result-score">${scores.total}/135 points</div>
+            <div class="result-message">${resultBand.message}</div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-card">
+              <h2 class="result-card-title">Scores par Dimension MBI</h2>
+              ${renderDimensionScores(scores.dimensions)}
+            </div>
+
+            <div class="result-card">
+              <h2 class="result-card-title">Recommandations</h2>
+              <ul class="recommendation-list">
+                ${resultBand.recommendations.map((rec, idx) => `
+                  <li class="recommendation-item">
+                    <div class="recommendation-number">${idx + 1}</div>
+                    <div>${rec}</div>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-card">
+              <h2 class="result-card-title">Analyse de Profil</h2>
+              <div style="padding: 20px; background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%); border-radius: 12px; border-left: 4px solid #6366f1;">
+                <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 16px; font-weight: 700; color: #4338ca; margin-bottom: 12px;">
+                  Dimension dominante : ${DIMENSIONS.find(d => d.key === profile.dominant).label}
+                </h3>
+                <p style="font-size: 16px; line-height: 1.7; color: var(--gris-texte);">
+                  ${profile.analysis}
+                </p>
+              </div>
+
+              <div style="margin-top: 24px; padding-top: 24px; border-top: 2px solid #f3f4f6;">
+                <h3 style="font-family: 'Source Sans Pro', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 16px;">Ressources utiles</h3>
+                <div style="font-size: 15px; line-height: 2; color: var(--gris-texte);">
+                  <div><strong style="color: var(--noir);">3114</strong> — Numéro national prévention suicide</div>
+                  <div><strong style="color: var(--noir);">Médecine du travail</strong> — Évaluation et protection</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-card">
+              <h2 class="result-card-title">Exporter les résultats</h2>
+              <div class="export-buttons">
+                <button class="export-button primary" onclick="handlePDF()">
+                  📄 Télécharger en PDF
+                </button>
+                <button class="export-button secondary" onclick="handleDownloadJSON()">
+                  💾 Télécharger en JSON
+                </button>
+              </div>
+
+              <div class="email-section">
+                <label class="email-label">Envoyer par email</label>
+                <div class="email-input-group">
+                  <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="email@exemple.com"
+                    value="${state.email}"
+                    onchange="state.email = this.value"
+                  >
+                  <button 
+                    class="email-button" 
+                    onclick="handleEmail()"
+                    ${!state.email ? 'disabled' : ''}
+                  >
+                    📧
+                  </button>
+                </div>
+              </div>
+
+              <a class="reset-link" onclick="resetTest()">
+                Refaire le test
+              </a>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 48px; font-size: 13px; color: var(--gris-texte); line-height: 1.8;">
+            <p style="font-weight: 600;">NOÉSIS — Burn-out Épuisement v1.0 • © 2025</p>
+            <p>Outil de pré-diagnostic d'orientation • Pas un diagnostic médical</p>
+            <p>Confidentialité : aucune donnée collectée sans action explicite (RGPD)</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDimensionScores(dimensionScores) {
+      let html = '';
+      
+      DIMENSIONS.forEach(dim => {
+        const score = dimensionScores[dim.key];
+        const max = QUESTIONS.filter(q => q.dim === dim.key).length * 3;
+        const percentage = Math.round((score / max) * 100);
+
+        html += `
+          <div class="dimension-result">
+            <div class="dimension-result-header">
+              <span class="dimension-result-name">${dim.label}</span>
+              <span class="dimension-result-value">${score}/${max} (${percentage}%)</span>
+            </div>
+            <div class="dimension-progress">
+              <div class="dimension-progress-fill ${dim.color}" style="width: ${percentage}%"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      return html;
     }
 
     // ============================================================
-    // RENDU DANS LE DOM
+    // CALCULATIONS
     // ============================================================
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<BurnoutTest />);
+    function calculateScores() {
+      const dimensions = { ee: 0, dp: 0, pa: 0 };
+      
+      QUESTIONS.forEach(q => {
+        if (state.answers[q.id] !== undefined) {
+          dimensions[q.dim] += state.answers[q.id];
+        }
+      });
+
+      const total = dimensions.ee + dimensions.dp + dimensions.pa;
+
+      return { dimensions, total };
+    }
+
+    function getResultBand(totalScore) {
+      return RESULT_BANDS.find(band => 
+        totalScore >= band.min && totalScore <= band.max
+      ) || RESULT_BANDS[RESULT_BANDS.length - 1];
+    }
+
+    function analyzeProfile(dimensionScores) {
+      const { ee, dp, pa } = dimensionScores;
+      const maxEE = QUESTIONS.filter(q => q.dim === 'ee').length * 3;
+      const maxDP = QUESTIONS.filter(q => q.dim === 'dp').length * 3;
+      const maxPA = QUESTIONS.filter(q => q.dim === 'pa').length * 3;
+
+      const percEE = (ee / maxEE) * 100;
+      const percDP = (dp / maxDP) * 100;
+      const percPA = (pa / maxPA) * 100;
+
+      let dominant = 'ee';
+      let maxPerc = percEE;
+      if (percDP > maxPerc) { dominant = 'dp'; maxPerc = percDP; }
+      if (percPA > maxPerc) { dominant = 'pa'; }
+
+      let analysis = "";
+
+      if (dominant === 'ee') {
+        analysis = "Profil à dominante d'épuisement émotionnel. Vous présentez des signes de vidage énergétique marqué, fatigue chronique et irritabilité. Priorité : restaurer les ressources physiologiques et psychologiques de base.";
+      } else if (dominant === 'dp') {
+        analysis = "Profil à dominante de dépersonnalisation/cynisme. Vous avez développé une distance émotionnelle protectrice face à l'environnement professionnel. Attention au risque de désengagement progressif et d'isolement relationnel.";
+      } else {
+        if (percPA > 50) {
+          analysis = "Profil protégé par un accomplissement personnel encore préservé. Malgré des difficultés, vous maintenez un sens et une efficacité perçue. Levier protecteur à consolider absolument.";
+        } else {
+          analysis = "Profil marqué par une baisse significative de l'accomplissement personnel. Vous ressentez une perte de sens, d'efficacité ou de reconnaissance. Risque d'effondrement motivationnel si non pris en charge.";
+        }
+      }
+
+      return { dominant, analysis };
+    }
+
+    // ============================================================
+    // EVENT HANDLERS
+    // ============================================================
+
+    function startTest() {
+      state.view = 'questionnaire';
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleAnswer(questionId, value) {
+      state.answers[questionId] = value;
+      render();
+    }
+
+    function submitTest() {
+      const allAnswered = QUESTIONS.every(q => state.answers[q.id] !== undefined);
+      if (allAnswered) {
+        state.view = 'results';
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function resetTest() {
+      state = {
+        view: 'intro',
+        answers: {},
+        email: ''
+      };
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handlePDF() {
+      window.print();
+    }
+
+    function handleDownloadJSON() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total);
+      const profile = analyzeProfile(scores.dimensions);
+
+      const data = {
+        test: "Burn-out : Stade d'Épuisement",
+        version: "1.0",
+        date: new Date().toISOString(),
+        answers: state.answers,
+        scores: scores,
+        result: {
+          band: resultBand.band,
+          message: resultBand.message,
+          recommendations: resultBand.recommendations
+        },
+        profile: profile
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `noesis-burnout-${Date.now()}.json`;
+      a.click();
+    }
+
+    function handleEmail() {
+      if (!state.email) return;
+
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total);
+      const profile = analyzeProfile(scores.dimensions);
+
+      const subject = encodeURIComponent(`Résultats Test Burn-out NOÉSIS`);
+      const body = encodeURIComponent(`
+Bonjour,
+
+Voici mes résultats au test Burn-out : Stade d'Épuisement de NOÉSIS.
+
+Score total : ${scores.total}/135
+Résultat : ${resultBand.band}
+
+${resultBand.message}
+
+Scores détaillés :
+- Épuisement émotionnel : ${scores.dimensions.ee}/${QUESTIONS.filter(q => q.dim === 'ee').length * 3}
+- Dépersonnalisation/Cynisme : ${scores.dimensions.dp}/${QUESTIONS.filter(q => q.dim === 'dp').length * 3}
+- Accomplissement personnel : ${scores.dimensions.pa}/${QUESTIONS.filter(q => q.dim === 'pa').length * 3}
+
+Profil : ${profile.analysis}
+
+Recommandations :
+${resultBand.recommendations.map((r, i) => `${i+1}. ${r}`).join('\n')}
+
+---
+Test réalisé sur https://noesisautopsie.github.io/noesis-site/auto-tests/burn-out-stade-epuisement-noesis-tailwind.html
+      `);
+
+      window.location.href = `mailto:${state.email}?subject=${subject}&body=${body}`;
+    }
+
+    function attachEventListeners() {
+      // Les event listeners sont déjà dans le HTML via onclick
+    }
+
+    // ============================================================
+    // INITIALIZATION
+    // ============================================================
+
+    render();
   </script>
 </body>
 </html>
