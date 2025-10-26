@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOÉSIS — Transformer la confusion en lucidité</title>
-    <meta name="description" content="Maison d'édition intellectuelle ultra-premium spécialisée dans l'analyse rigoureuse de l'emprise psychologique, du trauma et des violences. Méthode transdisciplinaire reproductible.">
+    <title>NOESIS — Transformer la confusion en lucidité</title>
+    <meta name="description" content="Ressources accessibles pour comprendre l'emprise psychologique, le trauma et les violences personnelles et professionnelles. Outils pratiques, analyses scientifiques claires et accompagnement concret pour tous.">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:wght@400;600;700&display=swap');
 
         :root {
-            --noir: #111111;
-            --blanc-casse: #F9F9F6;
-            --gris-clair: #F5F4F0;
-            --bordeaux: #7D3C4A;
-            --bordeaux-leger: #9D5C6A;
-            --gris-texte: #555555;
-            --or-discret: #C9A968;
+            /* Palette NOESIS Black & Gold Premium */
+            --noir-absolu: #0A0A0A;
+            --noir-doux: #111111;
+            --noir-surface: #1A1A1A;
+            --creme-principal: #F7F5EF;
+            --creme-chaud: #F9F7F1;
+            --blanc-surface: #FFFFFF;
+            --or-signature: #C7A86D;
+            --or-riche: #D4B980;
+            --or-sombre: #A89158;
+            --text-primary: #0A0A0A;
+            --text-secondary: rgba(10,10,10,0.75);
+            --text-on-dark: #F7F5EF;
+            --text-on-dark-muted: rgba(247,245,239,0.75);
+            
+            /* Mapping anciennes variables pour compatibilité */
+            --noir: var(--noir-absolu);
+            --blanc-casse: var(--creme-principal);
+            --gris-clair: var(--creme-chaud);
+            --bordeaux: var(--or-signature);
+            --bordeaux-leger: var(--or-riche);
+            --gris-texte: var(--text-secondary);
+            --or-discret: var(--or-signature);
         }
 
         * {
@@ -50,107 +66,186 @@
         }
 
         /* ============================================
-           BANDEAU URGENCE PREMIUM
+           NAVIGATION
            ============================================ */
-        .urgence-banner {
-            background: linear-gradient(90deg, 
-                rgba(125, 60, 74, 1) 0%, 
-                rgba(125, 60, 74, 0.95) 50%,
-                rgba(157, 92, 106, 0.95) 100%);
-            color: white;
-            padding: 11px 0;
-            text-align: center;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 3000;
-            box-shadow: 
-                0 2px 8px rgba(125, 60, 74, 0.3),
-                0 4px 16px rgba(0, 0, 0, 0.15);
-            letter-spacing: 0.03em;
+        /* ============================================
+           AVERTISSEMENT CONTENU SENSIBLE
+           ============================================ */
+        .content-warning {
+            background: linear-gradient(180deg, 
+                rgba(247, 245, 239, 1) 0%, 
+                rgba(249, 247, 241, 1) 100%);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+            padding: 32px 0;
+            position: relative;
         }
 
-        .urgence-banner a {
-            color: white;
-            text-decoration: none;
-            margin: 0 14px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: inline-block;
-        }
-
-        .urgence-banner a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .social-links {
+        .content-warning::before {
+            content: '';
             position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            gap: 8px;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                var(--or-signature) 0%, 
+                var(--or-sombre) 100%);
         }
 
-        .social-links a {
-            margin: 0;
-            width: 36px;
-            height: 36px;
+        .warning-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .warning-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(4px);
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
-        .social-links a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        .warning-icon-large {
+            width: 32px;
+            height: 32px;
+            color: var(--or-sombre);
+            flex-shrink: 0;
+            display: block;
+            vertical-align: middle;
+        }
+
+        .warning-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--noir-absolu);
+            letter-spacing: 0.02em;
+        }
+
+        .warning-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .warning-content p {
+            margin-bottom: 16px;
+        }
+
+        .warning-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-content strong {
+            font-weight: 600;
+            color: var(--noir-absolu);
+        }
+
+        .warning-urgence {
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.08) 0%, 
+                rgba(199, 168, 109, 0.12) 100%);
+            border: 1px solid rgba(199, 168, 109, 0.25);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .warning-urgence-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--or-sombre);
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: block;
+            vertical-align: middle;
+        }
+
+        .warning-urgence-text {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .warning-urgence-text strong {
+            font-weight: 700;
+            color: var(--noir-absolu);
+        }
+
+        /* Responsive Avertissement */
+        @media (max-width: 768px) {
+            .content-warning {
+                padding: 24px 0;
+            }
+
+            .warning-container {
+                padding: 0 20px;
+            }
+
+            .warning-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .warning-icon-large {
+                width: 28px;
+                height: 28px;
+            }
+
+            .warning-title {
+                font-size: 20px;
+            }
+
+            .warning-content {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .warning-urgence {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .warning-urgence-text {
+                font-size: 13px;
+            }
         }
 
         /* ============================================
-           NAVIGATION PREMIUM LUXUEUSE
+           NAVIGATION PREMIUM LUXUEUSE — FOND NOIR
            ============================================ */
         nav {
             position: sticky;
-            top: 42px;
+            top: 0;
             background: linear-gradient(180deg, 
-                rgba(249, 249, 246, 0.98) 0%, 
-                rgba(249, 249, 246, 0.95) 100%);
+                var(--noir-absolu) 0%, 
+                rgba(10, 10, 10, 0.98) 100%);
             backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(125, 60, 74, 0.08);
-            padding: 28px 0;
+            border-bottom: 1px solid rgba(199, 168, 109, 0.15);
+            padding: 20px 0;
             z-index: 2000;
             box-shadow: 
-                0 1px 3px rgba(0, 0, 0, 0.04),
-                0 4px 12px rgba(0, 0, 0, 0.03),
-                0 8px 24px rgba(125, 60, 74, 0.04);
+                0 2px 8px rgba(0, 0, 0, 0.6),
+                0 4px 16px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(199, 168, 109, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
-            padding: 18px 0;
-            background: linear-gradient(180deg, 
-                rgba(249, 249, 246, 1) 0%, 
-                rgba(249, 249, 246, 0.98) 100%);
+            padding: 14px 0;
+            background: var(--noir-absolu);
+            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
             box-shadow: 
-                0 2px 4px rgba(0, 0, 0, 0.05),
-                0 8px 16px rgba(0, 0, 0, 0.04),
-                0 16px 32px rgba(125, 60, 74, 0.08);
+                0 4px 12px rgba(0, 0, 0, 0.8),
+                0 8px 24px rgba(0, 0, 0, 0.5),
+                0 16px 48px rgba(199, 168, 109, 0.12);
         }
 
         nav .container {
@@ -161,19 +256,28 @@
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--noir);
+            color: var(--creme-principal);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-variant: small-caps;
             position: relative;
-            display: inline-block;
+            display: flex;
+            align-items: center;
         }
 
-        .logo::before {
+        nav.scrolled .logo {
+            font-size: 24px;
+        }
+
+        .logo-text {
+            position: relative;
+        }
+
+        .logo-text::before {
             content: '';
             position: absolute;
             width: 100%;
@@ -182,18 +286,18 @@
             left: 0;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                var(--bordeaux) 50%, 
+                var(--or-signature) 50%, 
                 transparent 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .logo:hover {
-            color: var(--bordeaux);
+            color: var(--or-riche);
             letter-spacing: 0.28em;
         }
 
-        .logo:hover::before {
+        .logo:hover .logo-text::before {
             opacity: 1;
         }
 
@@ -202,10 +306,11 @@
             gap: 2px;
             list-style: none;
             align-items: center;
-            background-color: rgba(245, 244, 240, 0.5);
+            background-color: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(199, 168, 109, 0.15);
             border-radius: 50px;
             padding: 6px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         nav li {
@@ -216,7 +321,7 @@
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 13px;
             font-weight: 600;
-            color: var(--gris-texte);
+            color: rgba(247, 245, 239, 0.75);
             text-decoration: none;
             position: relative;
             padding: 10px 18px;
@@ -233,19 +338,19 @@
             inset: 0;
             border-radius: 40px;
             background: linear-gradient(135deg, 
-                var(--bordeaux) 0%, 
-                var(--bordeaux-leger) 100%);
+                var(--or-signature) 0%, 
+                var(--or-riche) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
         nav a:not(.logo):hover {
-            color: white;
+            color: var(--noir-absolu);
             transform: translateY(-1px);
             box-shadow: 
-                0 4px 12px rgba(125, 60, 74, 0.25),
-                0 2px 4px rgba(125, 60, 74, 0.15);
+                0 4px 12px rgba(199, 168, 109, 0.3),
+                0 2px 4px rgba(199, 168, 109, 0.2);
         }
 
         nav a:not(.logo):hover::before {
@@ -253,59 +358,127 @@
         }
 
         nav a:not(.logo).active {
-            color: white;
+            color: var(--noir-absolu);
             background: linear-gradient(135deg, 
-                var(--bordeaux) 0%, 
-                var(--bordeaux-leger) 100%);
+                var(--or-signature) 0%, 
+                var(--or-riche) 100%);
             box-shadow: 
-                0 4px 12px rgba(125, 60, 74, 0.3),
-                0 2px 4px rgba(125, 60, 74, 0.2);
+                0 4px 12px rgba(199, 168, 109, 0.35),
+                0 2px 4px rgba(199, 168, 109, 0.25);
+        }
+
+        /* Boutons sociaux dans nav */
+        .nav-social {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 16px;
+            padding-left: 16px;
+            border-left: 1px solid rgba(199, 168, 109, 0.2);
+        }
+
+        .nav-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: transparent;
+            color: rgba(247, 245, 239, 0.75);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-social-link svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 1.5;
+        }
+
+        .nav-social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, 
+                var(--or-signature) 0%, 
+                var(--or-riche) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-social-link:hover {
+            color: var(--noir-absolu);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 4px 12px rgba(199, 168, 109, 0.3),
+                0 2px 4px rgba(199, 168, 109, 0.2);
+        }
+
+        .nav-social-link:hover::before {
+            opacity: 1;
         }
 
         /* ============================================
-           HERO SECTION
+           HERO SECTION CINÉMATIQUE BLACK & GOLD
            ============================================ */
         .hero {
-            background: linear-gradient(135deg, var(--blanc-casse) 0%, var(--gris-clair) 100%);
-            min-height: 85vh;
+            background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+            min-height: 50vh;
             display: flex;
             align-items: center;
-            padding: 160px 40px 120px;
+            padding: 80px 40px 60px;
             position: relative;
             overflow: hidden;
-            margin-top: 42px;
         }
 
+        /* Halo or animé (SANS ligne verticale) */
         .hero::before {
             content: '';
             position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(125, 60, 74, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(199,168,109,0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulseGold 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGold {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: translate(-50%, -50%) scale(1); 
+            }
+            50% { 
+                opacity: 0.5; 
+                transform: translate(-50%, -50%) scale(1.1); 
+            }
         }
 
         .hero-content {
             max-width: 900px;
             position: relative;
             z-index: 1;
+            text-align: center;
+            margin: 0 auto;
         }
 
         .hero-badge {
             display: inline-block;
-            background-color: var(--bordeaux);
-            color: white;
+            background-color: transparent;
+            color: var(--or-signature);
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 8px 20px;
-            border-radius: 24px;
+            padding: 0;
             margin-bottom: 32px;
-            box-shadow: 0 4px 16px rgba(125, 60, 74, 0.25);
         }
 
         .hero h1 {
@@ -314,20 +487,23 @@
             font-weight: 700;
             line-height: 1.15;
             margin-bottom: 32px;
-            color: var(--noir);
+            color: var(--text-on-dark);
         }
 
         .hero-subtitle {
             font-size: 24px;
             line-height: 1.6;
-            color: var(--gris-texte);
+            color: var(--text-on-dark-muted);
             margin-bottom: 48px;
+            margin-left: auto;
+            margin-right: auto;
             max-width: 750px;
         }
 
         .hero-cta {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 24px;
         }
 
@@ -336,18 +512,18 @@
             font-size: 16px;
             font-weight: 700;
             padding: 18px 40px;
-            background-color: var(--bordeaux);
-            color: white;
+            background-color: var(--or-signature);
+            color: var(--noir-absolu);
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(125, 60, 74, 0.3);
+            box-shadow: 0 6px 20px rgba(199,168,109,0.3);
         }
 
         .btn-primary:hover {
-            background-color: #6A2F3D;
+            background-color: var(--or-riche);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(125, 60, 74, 0.4);
+            box-shadow: 0 8px 24px rgba(199,168,109,0.4);
         }
 
         .btn-secondary {
@@ -356,16 +532,17 @@
             font-weight: 600;
             padding: 18px 40px;
             background-color: transparent;
-            color: var(--noir);
+            color: var(--text-on-dark);
             text-decoration: none;
-            border: 2px solid var(--noir);
-            border-radius: 4px;
+            border: 2px solid var(--text-on-dark);
+            border-radius: 50px;
             transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
-            background-color: var(--noir);
-            color: white;
+            background-color: var(--blanc-surface);
+            color: var(--noir-absolu);
+            border-color: var(--blanc-surface);
         }
 
         /* ============================================
@@ -398,7 +575,7 @@
         }
 
         /* ============================================
-           CITATION LAME NOÉSIS
+           CITATION LAME NOESIS
            ============================================ */
         .citation-lame {
             padding: 120px 40px;
@@ -469,13 +646,23 @@
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
-        .axe-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--bordeaux);
+        .axe-symbol {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 64px;
+            font-weight: 300;
             line-height: 1;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
+            display: block;
+            color: var(--bordeaux);
+            opacity: 0.85;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: -0.02em;
+        }
+
+        .axe-card:hover .axe-symbol {
+            transform: translateY(-4px);
+            opacity: 1;
+            color: var(--noir-absolu);
         }
 
         .axe-card h3 {
@@ -493,12 +680,25 @@
         }
 
         .integration-box {
-            background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-leger) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--creme-principal) 0%, var(--creme-chaud) 100%);
+            color: var(--noir-absolu);
             padding: 48px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(125, 60, 74, 0.25);
+            box-shadow: 0 8px 32px rgba(199, 168, 109, 0.25);
+            border: 2px solid var(--or-signature);
+            position: relative;
+        }
+
+        .integration-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+            border-radius: 12px 12px 0 0;
         }
 
         .integration-box h3 {
@@ -506,12 +706,13 @@
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 24px;
+            color: var(--or-sombre);
         }
 
         .integration-box p {
             font-size: 19px;
             line-height: 1.8;
-            opacity: 0.95;
+            color: var(--text-primary);
         }
 
         /* ============================================
@@ -545,15 +746,19 @@
 
         .discover-card-new {
             background: linear-gradient(135deg, 
-                rgba(30, 30, 30, 0.95) 0%, 
-                rgba(25, 25, 25, 0.95) 100%);
-            backdrop-filter: blur(10px);
-            padding: 48px;
-            border-radius: 12px;
-            border: 1px solid rgba(125, 60, 74, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                rgba(26, 26, 26, 0.98) 0%, 
+                rgba(20, 20, 20, 0.98) 100%);
+            backdrop-filter: blur(12px);
+            padding: 56px;
+            border-radius: 16px;
+            border: 1.5px solid rgba(199, 168, 109, 0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
         }
 
         .discover-card-new::before {
@@ -562,33 +767,90 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(125, 60, 74, 0.5) 50%, 
+                rgba(199, 168, 109, 0.6) 50%, 
                 transparent 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
+        .discover-card-new::after {
+            content: '';
+            position: absolute;
+            inset: -1.5px;
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.4), 
+                transparent 40%,
+                transparent 60%,
+                rgba(199, 168, 109, 0.4));
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
         .discover-card-new:hover {
-            border-color: rgba(125, 60, 74, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+            border-color: rgba(199, 168, 109, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 8px 24px rgba(199, 168, 109, 0.2),
+                0 4px 12px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .discover-card-new:hover::before {
             opacity: 1;
         }
 
-        .card-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 64px;
-            font-weight: 700;
-            color: var(--bordeaux-leger);
-            opacity: 0.25;
-            line-height: 1;
-            margin-bottom: 24px;
+        .discover-card-new:hover::after {
+            opacity: 0.15;
+        }
+
+        .card-icon-wrapper {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.18) 0%, 
+                rgba(199, 168, 109, 0.12) 100%);
+            border-radius: 18px;
+            margin-bottom: 32px;
+            border: 1.5px solid rgba(199, 168, 109, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 
+                0 4px 12px rgba(199, 168, 109, 0.12),
+                0 2px 4px rgba(199, 168, 109, 0.08);
+        }
+
+        .discover-card-new:hover .card-icon-wrapper {
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.28) 0%, 
+                rgba(199, 168, 109, 0.18) 100%);
+            border-color: rgba(199, 168, 109, 0.5);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 8px 24px rgba(199, 168, 109, 0.25),
+                0 4px 8px rgba(199, 168, 109, 0.15);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            stroke: var(--or-signature);
+            stroke-width: 1.8;
+            fill: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .discover-card-new:hover .card-icon {
+            stroke: var(--or-riche);
+            transform: scale(1.15);
+            filter: drop-shadow(0 2px 8px rgba(199, 168, 109, 0.4));
         }
 
         .card-badge {
@@ -634,7 +896,7 @@
         }
 
         .card-categories li::before {
-            content: '"”';
+            content: '—';
             position: absolute;
             left: 0;
             color: var(--bordeaux-leger);
@@ -729,13 +991,33 @@
             transform: translateX(4px);
         }
 
-        .article-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+        .article-status {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 10px;
             font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            min-width: auto;
+        }
+
+        .article-status.status-available {
+            background: linear-gradient(135deg, 
+                rgba(125, 60, 74, 0.12), 
+                rgba(125, 60, 74, 0.18));
             color: var(--bordeaux);
-            opacity: 0.5;
-            min-width: 40px;
+            border: 1px solid rgba(125, 60, 74, 0.3);
+        }
+
+        .article-status.status-soon {
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.12), 
+                rgba(199, 168, 109, 0.18));
+            color: var(--or-sombre);
+            border: 1px solid rgba(199, 168, 109, 0.3);
         }
 
         .article-item h4 {
@@ -814,12 +1096,32 @@
             color: var(--bordeaux);
         }
 
-        .test-number {
+        .test-status {
+            display: inline-block;
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
-            color: var(--bordeaux);
             letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .status-available {
+            background: linear-gradient(135deg, 
+                rgba(125, 60, 74, 0.12), 
+                rgba(125, 60, 74, 0.18));
+            color: var(--bordeaux);
+            border: 1px solid rgba(125, 60, 74, 0.3);
+        }
+
+        .status-soon {
+            background: linear-gradient(135deg, 
+                rgba(199, 168, 109, 0.12), 
+                rgba(199, 168, 109, 0.18));
+            color: var(--or-sombre);
+            border: 1px solid rgba(199, 168, 109, 0.3);
         }
 
         .test-card h4 {
@@ -945,7 +1247,7 @@
         }
 
         .accompagnement-list li::before {
-            content: 'â†’';
+            content: '→';
             position: absolute;
             left: 0;
             color: var(--bordeaux);
@@ -956,11 +1258,12 @@
             max-width: 800px;
             margin: 80px auto 0;
             padding: 56px;
-            background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-leger) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+            color: var(--text-on-dark);
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 8px 32px rgba(125, 60, 74, 0.25);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(199, 168, 109, 0.25);
+            border: 2px solid var(--or-signature);
         }
 
         .accompagnement-cta-box h3 {
@@ -968,25 +1271,25 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 24px;
-            color: white;
+            color: var(--or-signature);
         }
 
         .accompagnement-cta-box p {
             font-size: 18px;
             line-height: 1.8;
             margin-bottom: 32px;
-            opacity: 0.95;
+            color: var(--text-on-dark-muted);
         }
 
         .accompagnement-cta-box a:not(.btn-primary) {
-            color: white;
+            color: var(--or-signature);
             text-decoration: underline;
             font-weight: 600;
         }
 
         .accompagnement-cta-box .btn-primary {
-            background-color: white;
-            color: var(--bordeaux);
+            background-color: var(--or-signature);
+            color: var(--noir-absolu);
         }
 
         .accompagnement-cta-box .btn-primary:hover {
@@ -1044,8 +1347,8 @@
             font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: white;
-            background-color: var(--bordeaux);
+            color: var(--noir-absolu);
+            background-color: var(--or-signature);
             padding: 8px 20px;
             border-radius: 0;
             display: inline-block;
@@ -1110,7 +1413,7 @@
         }
 
         .book-details-box li::before {
-            content: 'â†’';
+            content: '→';
             position: absolute;
             left: 0;
             color: var(--bordeaux);
@@ -1124,8 +1427,8 @@
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 15px;
             font-weight: 700;
-            color: white;
-            background-color: var(--bordeaux);
+            color: var(--noir-absolu);
+            background-color: var(--or-signature);
             text-decoration: none;
             margin-top: 32px;
             padding: 16px 36px;
@@ -1134,17 +1437,17 @@
         }
 
         .book-link:hover {
-            background-color: #6A2F3D;
+            background-color: var(--or-riche);
             gap: 16px;
         }
 
         .book-link::after {
-            content: 'â†’';
+            content: '→';
             font-size: 18px;
         }
 
         /* ============================================
-           ENGAGEMENT NOÉSIS PREMIUM
+           ENGAGEMENT NOESIS PREMIUM
            ============================================ */
         .engagement-section {
             padding: 120px 40px;
@@ -1171,29 +1474,30 @@
             width: 100px;
             height: 100px;
             margin: 0 auto 32px;
-            background-color: var(--bordeaux);
+            background-color: transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--bordeaux);
+            border: 3px solid var(--or-signature);
             box-shadow: 
-                0 8px 24px rgba(125, 60, 74, 0.15),
-                0 4px 12px rgba(125, 60, 74, 0.1);
+                0 8px 24px rgba(199, 168, 109, 0.15),
+                0 4px 12px rgba(199, 168, 109, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .engagement-item:hover .engagement-icon-wrapper {
             transform: translateY(-4px);
+            background-color: rgba(199, 168, 109, 0.1);
             box-shadow: 
-                0 12px 32px rgba(125, 60, 74, 0.2),
-                0 6px 16px rgba(125, 60, 74, 0.15);
+                0 12px 32px rgba(199, 168, 109, 0.2),
+                0 6px 16px rgba(199, 168, 109, 0.15);
         }
 
         .engagement-icon {
             width: 42px;
             height: 42px;
-            color: white;
+            color: var(--or-sombre);
         }
 
         .engagement-item h4 {
@@ -1218,8 +1522,8 @@
            ============================================ */
         .cta-section {
             padding: 120px 40px;
-            background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-leger) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+            color: var(--text-on-dark);
             text-align: center;
         }
 
@@ -1228,6 +1532,7 @@
             font-size: 52px;
             font-weight: 700;
             margin-bottom: 32px;
+            color: var(--or-signature);
         }
 
         .cta-section p {
@@ -1237,7 +1542,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.95;
+            color: var(--text-on-dark-muted);
         }
 
         .cta-buttons {
@@ -1252,17 +1557,18 @@
             font-size: 16px;
             font-weight: 700;
             padding: 18px 40px;
-            background-color: white;
-            color: var(--bordeaux);
+            background-color: var(--or-signature);
+            color: var(--noir-absolu);
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(199, 168, 109, 0.3);
         }
 
         .btn-light:hover {
+            background-color: var(--or-riche);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(199, 168, 109, 0.4);
         }
 
         .btn-outline-light {
@@ -1271,16 +1577,16 @@
             font-weight: 600;
             padding: 18px 40px;
             background-color: transparent;
-            color: white;
+            color: var(--or-signature);
             text-decoration: none;
-            border: 2px solid white;
+            border: 2px solid var(--or-signature);
             border-radius: 4px;
             transition: all 0.3s ease;
         }
 
         .btn-outline-light:hover {
-            background-color: white;
-            color: var(--bordeaux);
+            background-color: var(--or-signature);
+            color: var(--noir-absolu);
         }
 
         /* ============================================
@@ -1322,19 +1628,59 @@
         }
 
         .urgence-box {
-            background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-leger) 100%);
-            padding: 32px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+            padding: 36px;
+            border-radius: 16px;
             margin-top: 16px;
+            border: 2px solid var(--or-signature);
+            box-shadow: 
+                0 8px 32px rgba(199, 168, 109, 0.25),
+                0 2px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .urgence-box p {
+            font-family: 'Inter', sans-serif !important;
+            margin-bottom: 8px;
+        }
+
+        .urgence-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(247, 245, 239, 0.85);
+            margin-bottom: 10px;
         }
 
         .urgence-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: white;
-            line-height: 1.2;
-            margin: 8px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--or-signature);
+            line-height: 1.1;
+            margin: 0 0 6px 0;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 12px rgba(199, 168, 109, 0.3);
+        }
+
+        .urgence-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgba(247, 245, 239, 0.75);
+            margin-bottom: 28px;
+        }
+
+        .urgence-divider {
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(199, 168, 109, 0.3) 50%, 
+                transparent 100%);
+            margin: 24px 0;
         }
 
         .footer-bottom {
@@ -1347,6 +1693,72 @@
             margin: 0;
             opacity: 0.7;
             font-size: 14px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: rgba(199, 168, 109, 0.12);
+            border: 1.5px solid rgba(199, 168, 109, 0.25);
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--creme-principal);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(199, 168, 109, 0.2) 50%, 
+                transparent 100%);
+            transition: left 0.5s ease;
+        }
+
+        .footer-social-link:hover::before {
+            left: 100%;
+        }
+
+        .footer-social-link:hover {
+            background: var(--or-signature);
+            color: var(--noir-absolu);
+            border-color: var(--or-riche);
+            transform: translateX(4px);
+            box-shadow: 
+                0 4px 16px rgba(199, 168, 109, 0.3),
+                0 2px 8px rgba(199, 168, 109, 0.2);
+        }
+
+        .footer-social-icon {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+
+        .footer-social-link:hover .footer-social-icon {
+            transform: scale(1.15) rotate(5deg);
+            stroke-width: 2.5;
         }
 
         /* ============================================
@@ -1377,10 +1789,6 @@
             .discover-grid,
             .books-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                display: none;
             }
 
             .hero-cta {
@@ -1415,27 +1823,12 @@
 </head>
 <body>
 
-    <!-- BANDEAU URGENCE FIXE -->
-    <div class="urgence-banner">
-        <span>EN DANGER ?</span>
-        <a href="tel:3919">3919</a>
-        <span>|</span>
-        <a href="sms:114">SMS : 114</a>
-        <span>|</span>
-        <a href="tel:17">Urgences : 17</a>
-        
-        <div class="social-links">
-            <a href="https://www.instagram.com/noesis_analyse" target="_blank" aria-label="Instagram">IG</a>
-            <a href="https://www.linkedin.com/company/noesis-analyse" target="_blank" aria-label="LinkedIn">IN</a>
-            <a href="https://www.facebook.com/noesisanalyse" target="_blank" aria-label="Facebook">FB</a>
-            <a href="https://www.amazon.fr/stores/NOÉSIS/author" target="_blank" aria-label="Amazon">AZ</a>
-        </div>
-    </div>
-
     <!-- NAVIGATION -->
     <nav id="navbar">
         <div class="container">
-            <a href="#accueil" class="logo">Noésis</a>
+            <a href="#accueil" class="logo">
+                <span class="logo-text">NOESIS</span>
+            </a>
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#methode">La Méthode</a></li>
@@ -1446,10 +1839,69 @@
                 <li><a href="#livres">Livres</a></li>
                 <li><a href="./accompagnement.html">Accompagnement</a></li>
                 <li><a href="#engagement">Engagement</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@noesisexplique" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="TikTok NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:noesisexplique@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
+
+    <!-- AVERTISSEMENT CONTENU SENSIBLE -->
+    <section class="content-warning">
+        <div class="warning-container">
+            <div class="warning-header">
+                <svg class="warning-icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <h2 class="warning-title">Avertissement sur le Contenu</h2>
+            </div>
+            
+            <div class="warning-content">
+                <p>
+                    Les analyses proposées sur ce site abordent des <strong>thématiques sensibles</strong> liées à l'emprise psychologique, au trauma et aux violences. Le contenu peut réactiver des souvenirs difficiles ou susciter des réactions émotionnelles intenses.
+                </p>
+                
+                <div class="warning-urgence">
+                    <svg class="warning-urgence-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <div class="warning-urgence-text">
+                        <strong>En situation de danger immédiat :</strong> contactez le <strong>17</strong> (police/gendarmerie) ou le <strong>3919</strong> (Violences Femmes Info, gratuit et anonyme) ou envoyez un <strong>SMS au 114</strong>. Un accompagnement professionnel demeure indispensable pour toute situation de violence avérée.
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 16px; color: rgba(10, 10, 10, 0.75);">
+                    NOESIS propose des outils d'analyse et de compréhension, et ne se substitue en aucun cas à un suivi thérapeutique, médical ou juridique approprié.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- HERO SECTION -->
     <section id="accueil" class="hero">
@@ -1457,7 +1909,7 @@
             <div class="hero-badge">Analyse Transdisciplinaire Premium</div>
             <h1>Transformer la confusion en lucidité</h1>
             <p class="hero-subtitle">
-                Analyses rigoureuses de l'emprise psychologique, du trauma et des violences. Une méthode transdisciplinaire reproductible au service de la vérité.
+                Analyses rigoureuses de l'emprise psychologique, du trauma et des violences personnelles et professionnelles. Une méthode transdisciplinaire reproductible au service de la vérité.
             </p>
             <div class="hero-cta">
                 <a href="#methode" class="btn-primary">Découvrir la Méthode</a>
@@ -1471,13 +1923,13 @@
         <div class="about-content">
             <h2 class="section-title">Qui suis-je ?</h2>
             <p class="about-text">
-                NOÉSIS est dédiée à l'analyse rigoureuse des mécanismes de l'emprise psychologique, du trauma et des violences personnelles et professionnelles.
+                NOESIS est dédiée à l'analyse rigoureuse des mécanismes de l'emprise psychologique, du trauma et des violences personnelles et professionnelles.
             </p>
             <p class="about-text">
                 Notre mission consiste à transformer la confusion en lucidité à travers une approche transdisciplinaire systématique. Nous intégrons cinq axes scientifiques complémentaires pour chaque analyse, garantissant une compréhension exhaustive et reproductible des phénomènes complexes.
             </p>
             <p class="about-text">
-                Notre mission : <strong>comprendre ensemble les mécanismes, les reconnaître, et trouver des solutions adaptées à chacun</strong>. Que vous cherchiez à avancer, à comprendre, à identifier une situation, à en avoir le cœur net ou à vous défendre, NOÉSIS vous accompagne avec rigueur et sans jugement.
+                Notre mission : <strong>comprendre ensemble les mécanismes, les reconnaître, et trouver des solutions adaptées à chacun</strong>. Que vous cherchiez à avancer, à comprendre, à identifier une situation, à en avoir le cœur net ou à vous défendre, NOESIS vous accompagne avec rigueur et sans jugement.
             </p>
         </div>
     </section>
@@ -1492,47 +1944,47 @@
     <!-- MÉTHODE 5 AXES -->
     <section id="methode" class="methode-section">
         <div class="container">
-            <h2 class="section-title">La Méthode NOÉSIS</h2>
+            <h2 class="section-title">La Méthode NOESIS</h2>
             <p class="section-intro">
-                Chaque analyse NOÉSIS intègre systématiquement cinq dimensions scientifiques complémentaires pour offrir une compréhension exhaustive et rigoureuse des phénomènes étudiés.
+                Pour vous aider à comprendre votre situation avec précision et nuance, chaque analyse NOESIS mobilise cinq expertises scientifiques complémentaires. Cette approche transdisciplinaire garantit que vous disposez d'une vision complète — biologique, psychologique, criminologique, culturelle et systémique — pour prendre des décisions éclairées et retrouver votre pouvoir d'agir.
             </p>
 
             <div class="axes-grid">
                 <div class="axe-card">
-                    <div class="axe-number">1</div>
+                    <span class="axe-symbol">◈</span>
                     <h3>Neuropsychologie</h3>
-                    <p>Que se passe-t-il dans le cerveau ? Cortisol, amygdale, circuits de récompense, mémoire traumatique, dissociation.</p>
+                    <p>Comprendre les réactions de votre cerveau face au stress, à la manipulation ou au trauma. Nous décryptons les mécanismes biologiques — cortisol, amygdale, mémoire traumatique — pour vous aider à reconnaître que vos réactions sont normales, prévisibles et réversibles.</p>
                 </div>
 
                 <div class="axe-card">
-                    <div class="axe-number">2</div>
+                    <span class="axe-symbol">◆</span>
                     <h3>Psychologie Cognitive</h3>
-                    <p>Comment la pensée est-elle reprogrammée ? Dissonance cognitive, biais, gaslighting, auto-blâme, distorsions perceptives.</p>
+                    <p>Identifier comment votre perception a pu être altérée par des stratégies de manipulation. Nous analysons la dissonance cognitive, le gaslighting et les distorsions de pensée pour vous redonner confiance en votre propre jugement et reconstruire votre lucidité.</p>
                 </div>
 
                 <div class="axe-card">
-                    <div class="axe-number">3</div>
+                    <span class="axe-symbol">◇</span>
                     <h3>Criminologie</h3>
-                    <p>Qui agit ? Comment ? Pourquoi ? Profils psychopathiques, techniques d'emprise, cycles de violence, stratégies prédatrices.</p>
+                    <p>Reconnaître les profils et stratégies des personnes nocives. Nous documentons les techniques d'emprise, les cycles de violence et les patterns prédateurs pour vous permettre d'identifier les comportements dangereux avant qu'il ne soit trop tard, et de nommer ce que vous avez vécu.</p>
                 </div>
 
                 <div class="axe-card">
-                    <div class="axe-number">4</div>
+                    <span class="axe-symbol">◉</span>
                     <h3>Anthropologie</h3>
-                    <p>Quel cadre culturel rend l'emprise possible ? Mythes romantiques, victim-blaming, normes genrées, scripts sociaux.</p>
+                    <p>Comprendre les mythes culturels qui rendent la violence acceptable ou invisible. Nous analysons les scripts sociaux, les normes genrées et le victim-blaming pour vous libérer de la culpabilité injustifiée et vous montrer que le problème n'est jamais vous.</p>
                 </div>
 
                 <div class="axe-card">
-                    <div class="axe-number">5</div>
+                    <span class="axe-symbol">◐</span>
                     <h3>Sciences Sociales</h3>
-                    <p>Quel système protège ou invisibilise ? Dépendance économique, inadaptation institutionnelle, barrières systémiques.</p>
+                    <p>Identifier les barrières systémiques qui compliquent votre protection ou votre sortie. Nous documentons les failles institutionnelles, la dépendance économique et les obstacles structurels pour vous aider à naviguer le système, obtenir vos droits et accéder aux ressources existantes.</p>
                 </div>
             </div>
 
             <div class="integration-box">
-                <h3>Intégration Systémique</h3>
+                <h3>Pourquoi Cette Approche Globale ?</h3>
                 <p>
-                    Ces cinq dimensions ne sont jamais isolées. Elles s'éclairent mutuellement pour révéler la complexité multidimensionnelle des phénomènes d'emprise. Cette approche permet de dépasser les explications simplistes et de comprendre comment biologie, psychologie, comportement, culture et système social interagissent pour créer, maintenir ou libérer de l'emprise.
+                    Parce que la violence et l'emprise ne s'expliquent jamais par un seul facteur, qu'elles se manifestent dans la sphère personnelle, relationnelle ou professionnelle. Votre cerveau réagit biologiquement, vos pensées sont altérées psychologiquement, un agresseur déploie des stratégies criminologiques, la culture peut minimiser ou justifier les violences, et le système social peut multiplier les obstacles ou faciliter la protection. Du harcèlement moral au travail aux violences conjugales, des dérives managériales aux manipulations affectives, NOESIS vous offre une compréhension complète qui respecte la complexité de votre expérience et vous donne les clés pour agir efficacement à tous les niveaux.
                 </p>
             </div>
         </div>
@@ -1543,13 +1995,21 @@
         <div class="container">
             <h2 class="section-title">Ce que vous trouverez ici</h2>
             <p class="section-intro">
-                Une bibliothèque intellectuelle complète pour comprendre, identifier et agir face à l'emprise psychologique et aux violences.
+                Des outils et ressources accessibles à tous pour comprendre ce que vous vivez, identifier les situations à risque et retrouver votre pouvoir d'agir. Tout est conçu pour être utilisable immédiatement, sans prérequis.
             </p>
 
             <div class="discover-grid-new">
                 <!-- Card 1 - Articles -->
                 <div class="discover-card-new">
-                    <div class="card-number">01</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
                     <div class="card-badge">15 analyses approfondies</div>
                     <h3>Articles & Analyses</h3>
                     <p class="card-description">
@@ -1565,7 +2025,12 @@
 
                 <!-- Card 2 - Auto-tests -->
                 <div class="discover-card-new">
-                    <div class="card-number">02</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                    </div>
                     <div class="card-badge">13 outils d'évaluation</div>
                     <h3>Auto-tests Scientifiques</h3>
                     <p class="card-description">
@@ -1582,15 +2047,22 @@
 
                 <!-- Card 3 - Livres -->
                 <div class="discover-card-new">
-                    <div class="card-number">03</div>
-                    <div class="card-badge">Bibliothèque Noésis</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            <path d="M8 7h8"/>
+                            <path d="M8 11h8"/>
+                        </svg>
+                    </div>
+                    <div class="card-badge">Bibliothèque Noesis</div>
                     <h3>Livres & Guides</h3>
                     <p class="card-description">
                         Ouvrages de référence alliant rigueur scientifique et accessibilité. Outils pratiques immédiatement actionnables pour reprendre le pouvoir sur votre vie.
                     </p>
                     <ul class="card-categories">
-                        <li><em>Tu n'es pas fouÂ·folle</em> "” Comprendre le gaslighting</li>
-                        <li><em>L'habit ne fait pas le monstre</em> "” Red flags & manipulation</li>
+                        <li><em>Tu n'es pas fou·folle</em> — Comprendre le gaslighting</li>
+                        <li><em>L'habit ne fait pas le monstre</em> — Red flags & manipulation</li>
                         <li>Auto-tests intégrés, protocoles de protection, ressources d'urgence</li>
                     </ul>
                     <a href="#livres" class="card-link">Découvrir nos livres</a>
@@ -1598,7 +2070,14 @@
 
                 <!-- Card 4 - Podcasts -->
                 <div class="discover-card-new">
-                    <div class="card-number">04</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="23"/>
+                            <line x1="8" y1="23" x2="16" y2="23"/>
+                        </svg>
+                    </div>
                     <div class="card-badge">Bientôt disponible</div>
                     <h3>Podcasts</h3>
                     <p class="card-description">
@@ -1614,7 +2093,14 @@
 
                 <!-- Card 5 - Accompagnement -->
                 <div class="discover-card-new">
-                    <div class="card-number">05</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
                     <div class="card-badge">Sur mesure</div>
                     <h3>Accompagnement Personnalisé</h3>
                     <p class="card-description">
@@ -1630,7 +2116,12 @@
 
                 <!-- Card 6 - Plan de Sécurité -->
                 <div class="discover-card-new">
-                    <div class="card-number">06</div>
+                    <div class="card-icon-wrapper">
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
                     <div class="card-badge">Accès gratuit</div>
                     <h3>Plan de Sécurité</h3>
                     <p class="card-description">
@@ -1654,13 +2145,6 @@
         </blockquote>
     </section>
 
-    <!-- CITATION LAME 2 -->
-    <section class="citation-lame">
-        <blockquote>
-            L'emprise ne commence jamais par la violence. Elle commence par une offre de protection qui crée la dette.
-        </blockquote>
-    </section>
-
     <!-- ARTICLES -->
     <section id="articles" class="articles-section">
         <div class="container">
@@ -1675,49 +2159,49 @@
                     <div class="strate-header">
                         <span class="strate-badge">Strate 1</span>
                         <h3>Phénomènes Identifiables</h3>
-                        <p>Portes d'entrée "” Situations reconnaissables du quotidien</p>
+                        <p>Portes d'entrée — Situations reconnaissables du quotidien</p>
                     </div>
                     <div class="articles-list">
                         <div class="article-item">
-                            <span class="article-number">01</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>TDAH au Féminin</h4>
                                 <p>Sous-diagnostic, symptômes masqués et vulnérabilités spécifiques</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">02</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Syndrome de l'Imposteur</h4>
                                 <p>Quand le doute légitime devient auto-sabotage systématique</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">03</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Burn-out</h4>
                                 <p>Épuisement professionnel, stades et reconstruction</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">04</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Parents Toxiques</h4>
                                 <p>Patterns dysfonctionnels et transmission générationnelle</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">05</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Red Flags</h4>
                                 <p>Signaux d'alarme phase par phase dans les relations</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">06</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Plan de Sécurité</h4>
-                                <p>Protocole de sortie sécurisée "” Téléchargement PDF gratuit</p>
+                                <p>Protocole de sortie sécurisée — Téléchargement PDF gratuit</p>
                             </div>
                         </div>
                     </div>
@@ -1728,46 +2212,46 @@
                     <div class="strate-header">
                         <span class="strate-badge">Strate 2</span>
                         <h3>Mécanismes d'Emprise</h3>
-                        <p>Approfondissement "” Comment les stratégies prédatrices fonctionnent</p>
+                        <p>Approfondissement — Comment les stratégies prédatrices fonctionnent</p>
                     </div>
                     <div class="articles-list">
                         <div class="article-item">
-                            <span class="article-number">07</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Trauma Bonding</h4>
                                 <p>Pourquoi le cerveau reste attaché à celui qui le détruit</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">08</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Love Bombing</h4>
                                 <p>Distinction entre enthousiasme authentique et stratégie prédatrice</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">09</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Vampires Énergétiques</h4>
                                 <p>Typologie des profils asymétriques et épuisement relationnel</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">10</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Gaslighting</h4>
                                 <p>Arme de déstabilisation cognitive et reprogrammation perceptive</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">11</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Harcèlement Moral au Travail</h4>
                                 <p>Éléments caractérisant juridiquement et stratégies institutionnelles</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">12</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Attachement Anxieux</h4>
                                 <p>Style relationnel, hypervigilance et cycle de réassurance</p>
@@ -1781,25 +2265,25 @@
                     <div class="strate-header">
                         <span class="strate-badge">Strate 3</span>
                         <h3>Fondations Neuropsychologiques</h3>
-                        <p>Guides exhaustifs "” Architecture biologique et cognitive du trauma</p>
+                        <p>Guides exhaustifs — Architecture biologique et cognitive du trauma</p>
                     </div>
                     <div class="articles-list">
                         <div class="article-item">
-                            <span class="article-number">13</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Trauma Complexe (CPTSD)</h4>
                                 <p>Distinction PTSD/CPTSD/Dépression et trajectoires de guérison</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">14</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Mémoire Traumatique</h4>
                                 <p>Fragmentation mémorielle, reviviscences et réintégration</p>
                             </div>
                         </div>
                         <div class="article-item">
-                            <span class="article-number">15</span>
+                            <span class="article-status status-soon">Bientôt</span>
                             <div>
                                 <h4>Rumination Mentale</h4>
                                 <p>Distinction productive/pathologique et leviers de déblocage</p>
@@ -1829,14 +2313,14 @@
                     <h3>Neurodiversité & Vulnérabilités</h3>
                     <div class="tests-grid">
                         <a href="/auto-tests/test-tdah.html" class="test-card">
-                            <span class="test-number">01</span>
+                            <span class="test-status status-available">Disponible</span>
                             <h4>TDAH Adulte : Diagnostic Différentiel</h4>
-                            <p class="test-meta">50 questions Â· 15-18 min</p>
+                            <p class="test-meta">50 questions · 15-18 min</p>
                         </a>
                         <div class="test-card">
-                            <span class="test-number">02</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Syndrome de l'Imposteur vs Environnement Toxique</h4>
-                            <p class="test-meta">40 questions Â· 12-15 min</p>
+                            <p class="test-meta">40 questions · 12-15 min</p>
                         </div>
                     </div>
                 </div>
@@ -1846,19 +2330,19 @@
                     <h3>Contextes Professionnels</h3>
                     <div class="tests-grid">
                         <div class="test-card">
-                            <span class="test-number">03</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Burn-out : Stade d'Épuisement</h4>
-                            <p class="test-meta">48 questions Â· 16-20 min</p>
+                            <p class="test-meta">48 questions · 16-20 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">04</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Harcèlement Moral : Éléments Caractérisant Juridiquement</h4>
-                            <p class="test-meta">50 questions Â· 18-20 min</p>
+                            <p class="test-meta">50 questions · 18-20 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">05</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Gaslighting Professionnel</h4>
-                            <p class="test-meta">42 questions Â· 14-17 min</p>
+                            <p class="test-meta">42 questions · 14-17 min</p>
                         </div>
                     </div>
                 </div>
@@ -1868,29 +2352,29 @@
                     <h3>Relations Personnelles</h3>
                     <div class="tests-grid">
                         <div class="test-card">
-                            <span class="test-number">06</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Red Flags : Grille d'Évaluation par Phase</h4>
-                            <p class="test-meta">50 questions Â· 18-20 min</p>
+                            <p class="test-meta">50 questions · 18-20 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">07</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Trauma Bonding vs Amour Sain vs Attachement Anxieux</h4>
-                            <p class="test-meta">48 questions Â· 16-19 min</p>
+                            <p class="test-meta">48 questions · 16-19 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">08</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Love Bombing vs Enthousiasme Authentique</h4>
-                            <p class="test-meta">40 questions Â· 12-15 min</p>
+                            <p class="test-meta">40 questions · 12-15 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">09</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Vampires Énergétiques : Typologie et Asymétrie</h4>
-                            <p class="test-meta">45 questions Â· 14-17 min</p>
+                            <p class="test-meta">45 questions · 14-17 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">10</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Parents Toxiques : Identification des Patterns</h4>
-                            <p class="test-meta">50 questions Â· 17-20 min</p>
+                            <p class="test-meta">50 questions · 17-20 min</p>
                         </div>
                     </div>
                 </div>
@@ -1900,19 +2384,19 @@
                     <h3>Trauma & Symptômes</h3>
                     <div class="tests-grid">
                         <div class="test-card">
-                            <span class="test-number">11</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Trauma Complexe (CPTSD) vs PTSD vs Dépression</h4>
-                            <p class="test-meta">50 questions Â· 18-20 min</p>
+                            <p class="test-meta">50 questions · 18-20 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">12</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Mémoire Traumatique : Fragmentation Mémorielle</h4>
-                            <p class="test-meta">45 questions Â· 15-18 min</p>
+                            <p class="test-meta">45 questions · 15-18 min</p>
                         </div>
                         <div class="test-card">
-                            <span class="test-number">13</span>
+                            <span class="test-status status-soon">Bientôt disponible</span>
                             <h4>Rumination Mentale : Productive vs Pathologique</h4>
-                            <p class="test-meta">42 questions Â· 13-16 min</p>
+                            <p class="test-meta">42 questions · 13-16 min</p>
                         </div>
                     </div>
                 </div>
@@ -1933,7 +2417,7 @@
         <div class="container">
             <h2 class="section-title">Podcasts</h2>
             <p class="section-intro">
-                Analyses audio approfondies pour comprendre les mécanismes de l'emprise en situation. Format idéal pour accompagner votre quotidien tout en maintenant la rigueur intellectuelle NOÉSIS.
+                Analyses audio approfondies pour comprendre les mécanismes de l'emprise en situation. Format idéal pour écouter en voiture, en transports ou pendant vos activités, sans perdre en clarté et en précision scientifique.
             </p>
 
             <div class="coming-soon-box">
@@ -1945,11 +2429,11 @@
                 </div>
                 <h3>Bientôt Disponible</h3>
                 <p>
-                    La bibliothèque audio NOÉSIS est en préparation. Vous y trouverez des décryptages de cas concrets anonymisés, des entretiens avec experts transdisciplinaires, et des outils pratiques à emporter partout.
+                    La bibliothèque audio NOESIS est en préparation. Vous y trouverez des décryptages de cas concrets anonymisés, des entretiens avec experts transdisciplinaires, et des outils pratiques à emporter partout.
                 </p>
                 <p style="margin-top: 24px;">
                     <strong>Prochains épisodes prévus :</strong><br>
-                    Anatomie d'un gaslighting progressif Â· Le trauma bonding expliqué Â· Sortir du burn-out étape par étape
+                    Anatomie d'un gaslighting progressif · Le trauma bonding expliqué · Sortir du burn-out étape par étape
                 </p>
             </div>
         </div>
@@ -1966,10 +2450,10 @@
 
             <div style="max-width: 820px; margin: 0 auto; text-align: center; padding: 48px 32px; background: white; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
                 <p style="font-size: 20px; line-height: 1.7; margin-bottom: 32px;">
-                    Les services d'accompagnement NOÉSIS vous offrent une <strong>cartographie transdisciplinaire</strong> de votre situation : Analyse Flash, Cartographie Complète, Organisation Documentaire, Suivi Stratégique.
+                    Les services d'accompagnement NOESIS vous offrent une <strong>cartographie transdisciplinaire</strong> de votre situation : Analyse Flash, Cartographie Complète, Organisation Documentaire, Suivi Stratégique.
                 </p>
                 <a href="/accompagnement.html" class="btn-primary" style="font-size: 16px; padding: 16px 40px;">
-                    Découvrir les services d'accompagnement â†’
+                    Découvrir les services d'accompagnement →
                 </a>
                 <p style="margin-top: 24px; font-size: 16px; color: var(--gris-texte); font-style: italic;">
                     Ces prestations constituent un outil de clarification destiné à préparer vos démarches auprès de professionnels compétents.
@@ -1983,7 +2467,7 @@
         <div class="container">
             <h2 class="section-title">Nos Livres</h2>
             <p class="section-intro">
-                Ouvrages de référence alliant rigueur scientifique, accessibilité et outils pratiques immédiatement actionnables. Chaque livre intègre la méthode transdisciplinaire NOÉSIS.
+                Ouvrages de référence alliant rigueur scientifique, accessibilité et outils pratiques immédiatement actionnables. Chaque livre intègre la méthode transdisciplinaire NOESIS.
             </p>
 
             <div class="books-grid">
@@ -1991,7 +2475,7 @@
                 <div class="book-card">
                     <div class="book-content">
                         <div class="book-badge">Collection Essentiels #1</div>
-                        <h3>Tu n'es pas fouÂ·folle</h3>
+                        <h3>Tu n'es pas fou·folle</h3>
                         <p class="book-subtitle">Reconnaître le gaslighting et s'en libérer</p>
                         
                         <p>
@@ -2040,19 +2524,19 @@
                         <p>
                             <strong>Pour qui ?</strong> Toute personne ayant traversé ou traversant une situation de violence relationnelle, ainsi que les proches cherchant à comprendre sans juger.
                         </p>
-                        <a href="https://www.amazon.fr/dp/XXXXX" target="_blank" class="book-link">Commander sur Amazon</a>
+                        <a href="https://www.amazon.fr/dp/B0FSS5W5VY" target="_blank" class="book-link">Commander sur Amazon</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ENGAGEMENT NOÉSIS -->
+    <!-- ENGAGEMENT NOESIS -->
     <section id="engagement" class="engagement-section">
         <div class="container">
             <h2 class="section-title">Notre Engagement</h2>
             <p class="section-intro">
-                NOÉSIS s'engage à maintenir les standards intellectuels et éthiques les plus élevés dans chaque production, chaque analyse, chaque interaction.
+                NOESIS s'engage à vous offrir des ressources fiables, scientifiquement fondées et immédiatement utilisables, dans le respect absolu de votre dignité et de votre expérience.
             </p>
 
             <div class="engagement-grid">
@@ -2122,9 +2606,41 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h4>NOÉSIS</h4>
-                    <p>Intelligence analytique spécialisée dans la compréhension rigoureuse de l'emprise psychologique, du trauma et des violences. Méthode transdisciplinaire reproductible.</p>
+                    <h4>NOESIS</h4>
+                    <p>Des ressources accessibles et scientifiquement fondées pour comprendre l'emprise psychologique, le trauma et les violences personnelles et professionnelles. Une approche transdisciplinaire ouverte à tous.</p>
                     <p style="margin-top: 24px; font-family: 'Crimson Text', serif; font-size: 17px; line-height: 1.7;">Comprendre ensemble. Reconnaître les mécanismes. Trouver des solutions adaptées à chacun.</p>
+                    
+                    <div class="footer-social-links">
+                        <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram NOESIS">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@noesisexplique" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="TikTok NOESIS">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                            </svg>
+                            <span>TikTok</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn NOESIS">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:noesisexplique@gmail.com" class="footer-social-link" aria-label="Email NOESIS">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>Contact</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div>
@@ -2154,21 +2670,27 @@
                 <div>
                     <h4>Ressources d'Urgence</h4>
                     <div class="urgence-box">
-                        <p style="color: white; font-weight: 600; font-size: 15px;">Violences Femmes Info</p>
+                        <p class="urgence-label">Violences Femmes Info</p>
                         <div class="urgence-number">3919</div>
-                        <p style="font-size: 14px; opacity: 0.9;">Écoute, gratuit, anonyme, 7j/7</p>
+                        <p class="urgence-description">Écoute gratuite, anonyme et confidentielle — 7j/7</p>
                         
-                        <p style="margin-top: 24px; color: white; font-weight: 600; font-size: 15px;">SMS d'alerte</p>
-                        <p style="font-size: 28px; font-weight: 700; color: white; margin: 4px 0;">114</p>
+                        <div class="urgence-divider"></div>
                         
-                        <p style="margin-top: 24px; color: white; font-weight: 600; font-size: 15px;">Urgences</p>
-                        <p style="font-size: 28px; font-weight: 700; color: white; margin: 4px 0;">17 ou 112</p>
+                        <p class="urgence-label">SMS d'alerte</p>
+                        <div class="urgence-number" style="font-size: 48px;">114</div>
+                        <p class="urgence-description">Service discret pour personnes sourdes ou malentendantes</p>
+                        
+                        <div class="urgence-divider"></div>
+                        
+                        <p class="urgence-label">Urgences</p>
+                        <div class="urgence-number" style="font-size: 48px;">17 ou 112</div>
+                        <p class="urgence-description">Police secours — Appel d'urgence européen</p>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>Â© 2025 NOÉSIS "” Tous droits réservés</p>
+                <p>© 2025 NOESIS — Tous droits réservés</p>
             </div>
         </div>
     </footer>
