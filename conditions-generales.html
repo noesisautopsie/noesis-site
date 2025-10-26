@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions Générales de Prestation | NOESIS</title>
+    <meta name="description" content="Conditions générales de prestation des services NOESIS - Accompagnement, formations et analyses.">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --noir-absolu: #0A0A0A;
+            --noir-doux: #111111;
+            --noir-surface: #1A1A1A;
+            --creme-principal: #F7F5EF;
+            --creme-chaud: #F9F7F1;
+            --blanc-surface: #FFFFFF;
+            --or-signature: #C7A86D;
+            --or-riche: #D4B980;
+            --or-sombre: #A89158;
+            --or-subtil: rgba(199,168,109,.08);
+            --border-leger: rgba(10,10,10,.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--noir-absolu);
+            background: linear-gradient(135deg, var(--creme-principal) 0%, var(--creme-chaud) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--or-signature), transparent);
+        }
+        
+        .meta {
+            text-align: center;
+            color: rgba(10,10,10,.55);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            margin-top: 40px;
+        }
+        
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--noir-absolu);
+            margin-top: 60px;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 28px;
+            background: var(--or-signature);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--noir-doux);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--noir-absolu);
+        }
+        
+        strong {
+            font-weight: 600;
+            color: var(--noir-absolu);
+        }
+        
+        ul, ol {
+            margin-left: 0;
+            margin-bottom: 20px;
+            list-style: none;
+            counter-reset: item;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--or-signature);
+            font-weight: 600;
+        }
+        
+        ol li {
+            counter-increment: item;
+        }
+        
+        ol li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: var(--or-signature);
+            font-weight: 600;
+        }
+        
+        .warning-box {
+            background: var(--blanc-surface);
+            border-left: 4px solid var(--or-signature);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(10,10,10,.06);
+            position: relative;
+        }
+        
+        .warning-box strong {
+            color: var(--or-sombre);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        a {
+            color: var(--or-sombre);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            border-bottom: 1px solid rgba(199,168,109,.3);
+        }
+        
+        a:hover {
+            color: var(--or-signature);
+            border-bottom-color: var(--or-signature);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 60px;
+            color: var(--noir-absolu);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            border: 2px solid var(--noir-absolu);
+            padding: 14px 28px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        .back-link:hover {
+            background: var(--noir-absolu);
+            color: var(--creme-principal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(10,10,10,.15);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        hr {
+            margin: 50px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-leger), transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px;
+            }
+            
+            h1 {
+                font-size: 38px;
+            }
+            
+            h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conditions Générales de Prestation</h1>
+        <p class="meta">Dernière mise à jour : Octobre 2025</p>
+        
+        <h2>1. Objet et Champ d'Application</h2>
+        <p>Les présentes Conditions Générales de Prestation (CGP) régissent les relations contractuelles entre <strong>NOESIS</strong>, représentée par son autrice et directrice scientifique, et toute personne physique ou morale (ci-après « le Client ») souhaitant bénéficier des services d'accompagnement, de formation ou d'analyse proposés par NOESIS.</p>
+        
+        <p>Les services proposés incluent notamment :</p>
+        <ul>
+            <li><strong>Analyse Flash :</strong> Premier diagnostic rapide (1h)</li>
+            <li><strong>Cartographie Complète :</strong> Analyse transdisciplinaire approfondie (2h30)</li>
+            <li><strong>Suivi Stratégique :</strong> Accompagnement régulier pour ajustement de stratégie</li>
+            <li><strong>Organisation Documentaire :</strong> Structuration de dossiers de preuves</li>
+            <li><strong>Formations professionnelles :</strong> Associations, entreprises, institutions</li>
+        </ul>
+        
+        <h2>2. Nature des Prestations</h2>
+        
+        <h3>2.1. Cadre Épistémologique</h3>
+        <p>NOESIS propose une <strong>approche transdisciplinaire</strong> intégrant neuropsychologie, psychologie cognitive, criminologie, anthropologie et sciences sociales. Cette méthode vise à éclairer les mécanismes de l'emprise psychologique, du trauma et des violences personnelles et professionnelles.</p>
+        
+        <div class="warning-box">
+            <strong>IMPORTANT :</strong> NOESIS ne propose pas de services thérapeutiques, médicaux ou juridiques. Les prestations sont éducatives, analytiques et méthodologiques. Elles ne remplacent pas un suivi psychologique, psychiatrique ou un conseil juridique.
+        </div>
+        
+        <h3>2.2. Accompagnement Individuel</h3>
+        <p>L'accompagnement individuel consiste en :</p>
+        <ul>
+            <li>Analyse transdisciplinaire de la situation du Client</li>
+            <li>Identification des mécanismes en jeu (neurobiologiques, psychologiques, criminologiques, sociaux)</li>
+            <li>Élaboration d'une compréhension structurée de la situation</li>
+            <li>Orientation vers ressources appropriées (thérapeutes, juristes, associations)</li>
+        </ul>
+        
+        <h3>2.3. Formations Professionnelles</h3>
+        <p>Les formations s'adressent aux professionnels (associations, entreprises, institutions) et portent sur :</p>
+        <ul>
+            <li>Compréhension des mécanismes d'emprise et de manipulation</li>
+            <li>Identification des signaux d'alerte</li>
+            <li>Protocoles d'intervention et d'orientation</li>
+            <li>Prévention des violences (personnelles et professionnelles)</li>
+        </ul>
+        
+        <h2>3. Modalités de Conclusion du Contrat</h2>
+        
+        <h3>3.1. Demande Initiale</h3>
+        <p>Toute demande de prestation doit être adressée par email à <strong>noesisexplique@gmail.com</strong> en précisant :</p>
+        <ul>
+            <li>Type de prestation souhaitée</li>
+            <li>Contexte et objectifs</li>
+            <li>Disponibilités</li>
+        </ul>
+        
+        <h3>3.2. Entretien Préliminaire</h3>
+        <p>Un entretien gratuit de 20-30 minutes est proposé pour :</p>
+        <ul>
+            <li>Évaluer l'adéquation entre demande et offre NOESIS</li>
+            <li>Clarifier les attentes</li>
+            <li>Orienter vers d'autres ressources si nécessaire</li>
+        </ul>
+        
+        <h3>3.3. Acceptation</h3>
+        <p>Le contrat est réputé conclu après :</p>
+        <ol>
+            <li>Envoi d'un devis détaillé par NOESIS</li>
+            <li>Acceptation expresse du devis par le Client</li>
+            <li>Paiement d'un acompte de 30% (sauf dispense explicite)</li>
+        </ol>
+        
+        <h2>4. Tarifs et Modalités de Paiement</h2>
+        
+        <h3>4.1. Tarifs Indicatifs</h3>
+        <p>Les tarifs sont communiqués sur devis personnalisé. À titre indicatif :</p>
+        <ul>
+            <li><strong>Analyse Flash :</strong> 60€ (séance 1h + synthèse 8-10 pages)</li>
+            <li><strong>Cartographie Complète :</strong> 180€ (entretien 2h30 + document 20-35 pages)</li>
+            <li><strong>Suivi Stratégique :</strong> 50€/heure (forfait 4 séances : 180€, forfait 8 séances : 340€)</li>
+            <li><strong>Organisation Documentaire :</strong> 250-450€ selon volume (dossier 40-80 pages)</li>
+            <li><strong>Formations professionnelles :</strong> Sur devis (demi-journée ou journée complète)</li>
+        </ul>
+        
+        <div class="warning-box">
+            <strong>Tarif Solidaire :</strong> Sur simple demande, sans justificatif ni jugement. Le tarif solidaire s'applique à toutes les prestations horaires (30€/h au lieu de 50€/h). L'Analyse Flash passe à 35€, la Cartographie Complète à 110€. L'argent ne doit jamais être un obstacle à la compréhension.
+        </div>
+        
+        <h3>4.2. Modalités de Paiement</h3>
+        <ul>
+            <li><strong>Analyse Flash & Cartographie Complète :</strong> Acompte 30% à la réservation, solde après prestation</li>
+            <li><strong>Suivi Stratégique :</strong> Paiement après chaque séance ou forfait prépayé</li>
+            <li><strong>Organisation Documentaire :</strong> 50% à la commande, 50% à livraison</li>
+            <li><strong>Moyens acceptés :</strong> Virement bancaire, chèque</li>
+            <li><strong>Délai de paiement :</strong> 15 jours à réception de facture</li>
+        </ul>
+        
+        <h2>5. Obligations de NOESIS</h2>
+        
+        <p>NOESIS s'engage à :</p>
+        <ul>
+            <li><strong>Rigueur scientifique :</strong> Fonder ses analyses sur données scientifiques validées</li>
+            <li><strong>Confidentialité absolue :</strong> Aucune information ne sera divulguée sans accord explicite</li>
+            <li><strong>Respect et dignité :</strong> Adopter une posture non jugeante et bienveillante</li>
+            <li><strong>Transparence :</strong> Clarifier limites et champ d'intervention</li>
+            <li><strong>Orientation adaptée :</strong> Rediriger vers ressources appropriées si nécessaire</li>
+        </ul>
+        
+        <h2>6. Obligations du Client</h2>
+        
+        <p>Le Client s'engage à :</p>
+        <ul>
+            <li>Fournir informations exactes et complètes</li>
+            <li>Respecter horaires convenus</li>
+            <li>Signaler tout empêchement dans délai raisonnable (48h minimum)</li>
+            <li>Régler prestations selon modalités convenues</li>
+            <li>Comprendre que NOESIS ne remplace pas suivi thérapeutique ou juridique</li>
+        </ul>
+        
+        <h2>7. Annulations et Modifications</h2>
+        
+        <h3>7.1. Annulation par le Client</h3>
+        <ul>
+            <li><strong>Plus de 48h avant :</strong> Reprogrammation gratuite</li>
+            <li><strong>Moins de 48h avant :</strong> 50% du tarif horaire facturé</li>
+            <li><strong>Absence sans prévenir :</strong> 100% du tarif horaire facturé</li>
+        </ul>
+        
+        <h3>7.2. Annulation par NOESIS</h3>
+        <p>En cas d'empêchement, NOESIS s'engage à prévenir dans les plus brefs délais et proposer une reprogrammation sans frais.</p>
+        
+        <h2>8. Confidentialité et Protection des Données</h2>
+        
+        <h3>8.1. Engagement de Confidentialité</h3>
+        <p>NOESIS garantit la <strong>confidentialité absolue</strong> de toutes informations partagées durant les prestations. Aucun témoignage, cas ou situation ne sera reproduit, même anonymisé, sans accord écrit explicite du Client.</p>
+        
+        <h3>8.2. RGPD</h3>
+        <p>Conformément au RGPD, le Client dispose d'un droit d'accès, de rectification et de suppression de ses données. Contact : noesisexplique@gmail.com</p>
+        
+        <h2>9. Limites et Exclusions de Responsabilité</h2>
+        
+        <p><strong>NOESIS ne peut être tenue responsable de :</strong></p>
+        <ul>
+            <li>Décisions prises par le Client suite aux prestations</li>
+            <li>Issues judiciaires ou thérapeutiques externes aux prestations</li>
+            <li>Situations d'urgence nécessitant intervention immédiate (police, SAMU)</li>
+        </ul>
+        
+        <div class="warning-box">
+            <strong>Urgences :</strong> En cas de danger immédiat, contactez le 17 (police), le 3919 (violences), le 15 (SAMU) ou le 114 (urgence SMS). NOESIS n'est pas un service d'urgence.
+        </div>
+        
+        <h2>10. Propriété Intellectuelle</h2>
+        
+        <p>Tous supports (présentations, documents, analyses) fournis par NOESIS demeurent propriété intellectuelle de NOESIS. Leur reproduction ou diffusion sans autorisation est interdite.</p>
+        
+        <h2>11. Litiges et Juridiction</h2>
+        
+        <p>En cas de litige, une résolution amiable sera recherchée en priorité. À défaut, les tribunaux compétents de Cherbourg-en-Cotentin (France) seront seuls compétents.</p>
+        
+        <h2>12. Modifications des CGP</h2>
+        
+        <p>NOESIS se réserve le droit de modifier les présentes CGP à tout moment. Les Clients seront informés par email des modifications substantielles.</p>
+        
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #DDD;">
+        
+        <p style="text-align: center; color: #666; font-size: 14px;">
+            Pour toute question concernant ces conditions, contactez-nous à <strong>noesisexplique@gmail.com</strong>
+        </p>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</body>
+</html>

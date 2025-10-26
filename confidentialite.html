@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité | NOESIS</title>
+    <meta name="description" content="Politique de confidentialité et protection des données personnelles - NOESIS.">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --noir-absolu: #0A0A0A;
+            --noir-doux: #111111;
+            --noir-surface: #1A1A1A;
+            --creme-principal: #F7F5EF;
+            --creme-chaud: #F9F7F1;
+            --blanc-surface: #FFFFFF;
+            --or-signature: #C7A86D;
+            --or-riche: #D4B980;
+            --or-sombre: #A89158;
+            --or-subtil: rgba(199,168,109,.08);
+            --border-leger: rgba(10,10,10,.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--noir-absolu);
+            background: linear-gradient(135deg, var(--creme-principal) 0%, var(--creme-chaud) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--or-signature), transparent);
+        }
+        
+        .meta {
+            text-align: center;
+            color: rgba(10,10,10,.55);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            margin-top: 40px;
+        }
+        
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--noir-absolu);
+            margin-top: 60px;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 28px;
+            background: var(--or-signature);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--noir-doux);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--noir-absolu);
+        }
+        
+        strong {
+            font-weight: 600;
+            color: var(--noir-absolu);
+        }
+        
+        ul {
+            margin-left: 0;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--or-signature);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: var(--blanc-surface);
+            border-left: 4px solid var(--or-signature);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(10,10,10,.06);
+        }
+        
+        .highlight-box strong {
+            color: var(--or-sombre);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 32px 0;
+            background: var(--blanc-surface);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(10,10,10,.06), 0 1px 2px rgba(10,10,10,.08);
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-leger);
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--noir-absolu), var(--noir-doux));
+            color: var(--creme-principal);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+        
+        tbody tr:hover {
+            background: var(--or-subtil);
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        td {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        a {
+            color: var(--or-sombre);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            border-bottom: 1px solid rgba(199,168,109,.3);
+        }
+        
+        a:hover {
+            color: var(--or-signature);
+            border-bottom-color: var(--or-signature);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 60px;
+            color: var(--noir-absolu);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            border: 2px solid var(--noir-absolu);
+            padding: 14px 28px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        .back-link:hover {
+            background: var(--noir-absolu);
+            color: var(--creme-principal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(10,10,10,.15);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        hr {
+            margin: 50px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-leger), transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px;
+            }
+            
+            h1 {
+                font-size: 38px;
+            }
+            
+            h2 {
+                font-size: 26px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 12px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Politique de Confidentialité</h1>
+        <p class="meta">Dernière mise à jour : Octobre 2025 | Conforme RGPD</p>
+        
+        <div class="highlight-box">
+            <strong>Engagement NOESIS :</strong> La protection de vos données personnelles est une priorité absolue. Cette politique détaille comment vos informations sont collectées, utilisées, protégées et vos droits en la matière.
+        </div>
+        
+        <h2>1. Responsable du Traitement des Données</h2>
+        
+        <p><strong>Identité :</strong> NOESIS, représentée par Sandy Enault, Directrice de publication</p>
+        <p><strong>Contact :</strong> noesisexplique@gmail.com</p>
+        <p><strong>Siège :</strong> Cherbourg-en-Cotentin, France</p>
+        
+        <h2>2. Données Collectées et Finalités</h2>
+        
+        <h3>2.1. Vue d'Ensemble</h3>
+        <p>NOESIS collecte uniquement les données <strong>strictement nécessaires</strong> à la fourniture de ses services. Aucune donnée n'est collectée à votre insu.</p>
+        
+        <h3>2.2. Tableau Récapitulatif</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Type de Données</th>
+                    <th>Finalité</th>
+                    <th>Base Légale</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prénom, Email<br/>(Formulaire contact)</td>
+                    <td>Répondre à vos demandes</td>
+                    <td>Consentement</td>
+                    <td>3 ans après dernier échange</td>
+                </tr>
+                <tr>
+                    <td>Prénom, Email<br/>(Newsletter)</td>
+                    <td>Envoi newsletter mensuelle</td>
+                    <td>Consentement explicite</td>
+                    <td>Jusqu'à désinscription</td>
+                </tr>
+                <tr>
+                    <td>Email<br/>(Téléchargement PDF)</td>
+                    <td>Envoi Plan de Sécurité</td>
+                    <td>Consentement</td>
+                    <td>3 ans</td>
+                </tr>
+                <tr>
+                    <td>Informations accompagnement</td>
+                    <td>Prestation personnalisée</td>
+                    <td>Contrat</td>
+                    <td>5 ans (obligations légales)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>2.3. Données Sensibles</h3>
+        <p>Dans le cadre des accompagnements, des <strong>données sensibles</strong> (santé, violences subies) peuvent être partagées volontairement. Ces données bénéficient d'une protection renforcée :</p>
+        <ul>
+            <li>Stockage sécurisé chiffré</li>
+            <li>Accès strictement limité</li>
+            <li>Anonymisation systématique si utilisées à des fins éducatives</li>
+            <li>Suppression à la fin du délai légal de conservation</li>
+        </ul>
+        
+        <h2>3. Utilisation des Données</h2>
+        
+        <h3>3.1. Ce que NOESIS Fait</h3>
+        <ul>
+            <li>Répondre à vos demandes de contact</li>
+            <li>Envoyer la newsletter (uniquement si consentement explicite)</li>
+            <li>Fournir les ressources demandées (Plan de Sécurité, guides)</li>
+            <li>Assurer le suivi des prestations d'accompagnement</li>
+            <li>Améliorer la qualité des services (retours anonymisés)</li>
+        </ul>
+        
+        <h3>3.2. Ce que NOESIS Ne Fait JAMAIS</h3>
+        <ul>
+            <li>❌ Vendre vos données à des tiers</li>
+            <li>❌ Partager vos informations sans votre accord</li>
+            <li>❌ Utiliser vos données à des fins publicitaires</li>
+            <li>❌ Envoyer des emails non sollicités (spam)</li>
+            <li>❌ Transférer vos données hors Union Européenne</li>
+        </ul>
+        
+        <h2>4. Vos Droits (RGPD)</h2>
+        
+        <p>Conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong>, vous disposez des droits suivants :</p>
+        
+        <h3>4.1. Droit d'Accès</h3>
+        <p>Vous pouvez demander une copie de toutes les données personnelles que NOESIS détient vous concernant.</p>
+        
+        <h3>4.2. Droit de Rectification</h3>
+        <p>Vous pouvez corriger ou mettre à jour vos données si elles sont inexactes ou incomplètes.</p>
+        
+        <h3>4.3. Droit à l'Effacement (« Droit à l'Oubli »)</h3>
+        <p>Vous pouvez demander la suppression de vos données personnelles, sauf si NOESIS a une obligation légale de les conserver (ex : factures, délais légaux).</p>
+        
+        <h3>4.4. Droit d'Opposition</h3>
+        <p>Vous pouvez vous opposer à certains traitements de données, notamment à la newsletter (désinscription à tout moment via lien en bas d'email).</p>
+        
+        <h3>4.5. Droit à la Portabilité</h3>
+        <p>Vous pouvez récupérer vos données dans un format structuré et lisible par machine.</p>
+        
+        <h3>4.6. Droit à la Limitation du Traitement</h3>
+        <p>Vous pouvez demander la limitation temporaire du traitement de vos données dans certaines situations.</p>
+        
+        <h3>4.7. Comment Exercer vos Droits ?</h3>
+        <p>Pour toute demande, contactez : <strong>noesisexplique@gmail.com</strong></p>
+        <p>Délai de réponse : <strong>1 mois maximum</strong> (peut être prolongé de 2 mois si demande complexe).</p>
+        
+        <h2>5. Sécurité des Données</h2>
+        
+        <p>NOESIS met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données :</p>
+        
+        <ul>
+            <li><strong>Chiffrement :</strong> Connexions HTTPS, stockage chiffré</li>
+            <li><strong>Accès restreint :</strong> Seule l'autrice a accès aux données</li>
+            <li><strong>Sauvegardes sécurisées :</strong> Backups réguliers chiffrés</li>
+            <li><strong>Anonymisation :</strong> Suppression identifiants si utilisés à fins éducatives</li>
+            <li><strong>Mots de passe robustes :</strong> Protection comptes par mots de passe forts</li>
+        </ul>
+        
+        <p>Malgré ces mesures, aucun système n'est infaillible à 100%. En cas de violation de données, vous serez informé·e dans les <strong>72 heures</strong> conformément au RGPD.</p>
+        
+        <h2>6. Cookies et Technologies de Suivi</h2>
+        
+        <h3>6.1. Situation Actuelle</h3>
+        <p>Le site NOESIS n'utilise actuellement <strong>aucun cookie</strong> de tracking, publicité ou analytics (Google Analytics, Facebook Pixel, etc.).</p>
+        
+        <h3>6.2. Évolution Future</h3>
+        <p>Si des cookies devaient être intégrés à l'avenir (par exemple, pour améliorer l'expérience utilisateur), vous en serez informé·e par un bandeau de consentement conforme RGPD. Vous pourrez alors :</p>
+        <ul>
+            <li>Accepter tous les cookies</li>
+            <li>Refuser les cookies non essentiels</li>
+            <li>Personnaliser vos choix</li>
+        </ul>
+        
+        <h2>7. Partage des Données avec des Tiers</h2>
+        
+        <h3>7.1. Prestataires Techniques</h3>
+        <p>NOESIS peut faire appel à des prestataires pour des services techniques :</p>
+        <ul>
+            <li><strong>Hébergement :</strong> GitHub Pages (États-Unis, conforme Privacy Shield)</li>
+            <li><strong>Email :</strong> Service email sécurisé européen</li>
+        </ul>
+        
+        <p>Ces prestataires sont soumis à des clauses contractuelles strictes de confidentialité et ne peuvent utiliser vos données qu'aux fins prévues par NOESIS.</p>
+        
+        <h3>7.2. Obligations Légales</h3>
+        <p>NOESIS peut être amenée à divulguer vos données si la loi l'exige (réquisition judiciaire, protection d'un mineur en danger, etc.).</p>
+        
+        <h2>8. Transferts Hors Union Européenne</h2>
+        
+        <p>Vos données sont principalement stockées et traitées dans l'<strong>Union Européenne</strong>. Si un transfert hors UE devait avoir lieu (ex : hébergement GitHub Pages), NOESIS s'assure que des garanties appropriées sont en place (clauses contractuelles types, Privacy Shield, etc.).</p>
+        
+        <h2>9. Durée de Conservation</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Type de Données</th>
+                    <th>Durée de Conservation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Demandes de contact</td>
+                    <td>3 ans après dernier échange</td>
+                </tr>
+                <tr>
+                    <td>Newsletter</td>
+                    <td>Jusqu'à désinscription</td>
+                </tr>
+                <tr>
+                    <td>Téléchargements PDF</td>
+                    <td>3 ans</td>
+                </tr>
+                <tr>
+                    <td>Prestations d'accompagnement</td>
+                    <td>5 ans (obligations comptables/légales)</td>
+                </tr>
+                <tr>
+                    <td>Factures</td>
+                    <td>10 ans (obligations comptables)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>À l'issue de ces délais, vos données sont <strong>supprimées définitivement</strong> ou anonymisées.</p>
+        
+        <h2>10. Données des Mineurs</h2>
+        
+        <p>Les services NOESIS ne sont pas destinés aux <strong>mineurs de moins de 16 ans</strong> sans consentement parental. Si vous avez moins de 16 ans, merci de demander à un parent ou tuteur légal de nous contacter avant de fournir des informations personnelles.</p>
+        
+        <h2>11. Modifications de la Politique</h2>
+        
+        <p>NOESIS se réserve le droit de modifier cette politique de confidentialité à tout moment. Toute modification substantielle sera :</p>
+        <ul>
+            <li>Notifiée par email aux abonné·e·s newsletter</li>
+            <li>Affichée sur le site avec nouvelle date de mise à jour</li>
+            <li>Soumise à votre consentement si nécessaire</li>
+        </ul>
+        
+        <h2>12. Réclamations</h2>
+        
+        <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez déposer une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) :</p>
+        
+        <p><strong>CNIL</strong><br/>
+        3 Place de Fontenoy<br/>
+        TSA 80715<br/>
+        75334 Paris Cedex 07<br/>
+        Tél : 01 53 73 22 22<br/>
+        Site : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+        
+        <h2>13. Contact</h2>
+        
+        <p>Pour toute question concernant cette politique de confidentialité ou l'exercice de vos droits :</p>
+        
+        <div class="highlight-box">
+            <p><strong>Email :</strong> noesisexplique@gmail.com</p>
+            <p><strong>Objet :</strong> [RGPD] suivi de votre demande</p>
+            <p><strong>Délai de réponse :</strong> 1 mois maximum</p>
+        </div>
+        
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #DDD;">
+        
+        <p style="text-align: center; color: #666; font-size: 14px;">
+            © 2025 NOESIS — Protection des données personnelles conforme RGPD
+        </p>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</body>
+</html>

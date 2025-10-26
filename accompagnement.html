@@ -3,223 +3,522 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accompagnement Personnalisé — NOÉSIS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <title>Accompagnement Personnalisé | NOÉSIS</title>
+    <meta name="description" content="Accompagnement transdisciplinaire pour comprendre l'emprise, le trauma et les violences. Méthode NOÉSIS rigoureuse et bienveillante.">
+    
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+        :root {
+            /* Palette NOESIS Black & Gold Premium */
+            --noir-absolu: #0A0A0A;
+            --noir-doux: #111111;
+            --noir-surface: #1A1A1A;
+            --creme-principal: #F7F5EF;
+            --creme-chaud: #F9F7F1;
+            --blanc-surface: #FFFFFF;
+            --or-signature: #C7A86D;
+            --or-riche: #D4B980;
+            --or-sombre: #A89158;
+            --text-primary: #0A0A0A;
+            --text-secondary: rgba(10,10,10,0.75);
+            --text-on-dark: #F7F5EF;
+            --text-on-dark-muted: rgba(247,245,239,0.75);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --noir: #111111;
-            --blanc-casse: #F9F9F6;
-            --gris-clair: #F5F4F0;
-            --bordeaux: #7D3C4A;
-            --bordeaux-leger: #9D5C6A;
-            --gris-texte: #555555;
-            --or: #C9A968;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Crimson Text', serif;
             font-size: 19px;
             line-height: 1.8;
-            color: var(--noir);
-            background: var(--blanc-casse);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            color: var(--text-primary);
+            background-color: var(--creme-principal);
+            overflow-x: hidden;
         }
 
-        /* HEADER PREMIUM */
-        .urgence-bar {
-            background: var(--bordeaux);
-            color: var(--blanc-casse);
-            padding: 10px 32px;
-            text-align: center;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        ::selection {
+            background-color: var(--or-signature);
+            color: white;
         }
 
-        .urgence-bar .urgence-text {
-            flex: 1;
-            letter-spacing: 0.3px;
-        }
 
-        .urgence-bar .social-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .urgence-bar .social-icons a {
-            color: var(--blanc-casse);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .urgence-bar .social-icons a:hover {
-            opacity: 0.8;
-        }
-
-        nav {
-            background: #FFFFFF;
-            padding: 28px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 1px 16px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 43px;
-            z-index: 999;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 34px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-variant: small-caps;
-            color: var(--noir);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 36px;
-            list-style: none;
-        }
-
-        nav a {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--noir);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--bordeaux);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--bordeaux);
-        }
-
-        /* HERO PREMIUM */
-        .hero {
-            background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-leger) 100%);
-            color: var(--blanc-casse);
-            padding: 140px 48px 100px;
-            text-align: center;
+        /* PRÉSENTATION ACCOMPAGNEMENT — FOND CLAIR */
+        .presentation-accompagnement {
+            background: linear-gradient(135deg, var(--creme-principal), var(--creme-chaud));
+            color: var(--text-primary);
+            padding: 100px 40px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .presentation-accompagnement::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 50%);
-            pointer-events: none;
+            top: -30%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(199,168,109,0.08) 0%, transparent 70%);
+            animation: pulseGlow 8s ease-in-out infinite;
         }
 
-        .hero h1 {
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .presentation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .presentation-container h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 62px;
+            font-size: 56px;
             font-weight: 700;
-            margin-bottom: 28px;
             line-height: 1.15;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: 23px;
-            max-width: 820px;
-            margin: 0 auto;
-            line-height: 1.65;
-            opacity: 0.97;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 96px 48px;
-        }
-
-        /* INTRO SECTION OPTIMISÉE */
-        .intro-section {
-            max-width: 880px;
-            margin: 0 auto 96px;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
             text-align: center;
+            color: var(--noir-absolu);
         }
 
-        .intro-section h2 {
+        .presentation-lead {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .presentation-content h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 46px;
+            font-size: 38px;
             font-weight: 700;
-            color: var(--bordeaux);
-            margin-bottom: 36px;
+            color: var(--or-sombre);
+            margin-bottom: 28px;
             line-height: 1.25;
         }
 
-        .intro-section p {
-            margin-bottom: 28px;
-            text-align: left;
+        .presentation-content p {
+            margin-bottom: 24px;
+            line-height: 1.8;
+            font-size: 19px;
         }
 
-        .intro-section p:last-child {
+        .presentation-disclaimer {
+            background: var(--blanc-surface);
+            border-left: 4px solid var(--or-signature);
+            padding: 24px 28px;
+            margin-top: 40px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(10,10,10,0.06);
+        }
+
+        .presentation-disclaimer p {
             margin-bottom: 0;
+            color: var(--text-primary);
         }
 
-        /* SERVICES GRID PREMIUM */
+        .presentation-disclaimer strong {
+            color: var(--or-sombre);
+        }
+
+        /* POURQUOI NOÉSIS EST ACCESSIBLE */
+        .pourquoi-accessible {
+            background: var(--blanc-surface);
+            padding: 100px 40px;
+        }
+
+        .accessible-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .accessible-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .accessible-intro {
+            font-size: 19px;
+            line-height: 1.7;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .accessible-table {
+            background: var(--creme-principal);
+            border: 1px solid rgba(10,10,10,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(10,10,10,0.06);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
+            background: var(--noir-absolu);
+            color: var(--text-on-dark);
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 20px;
+            gap: 16px;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
+            padding: 24px 20px;
+            gap: 16px;
+            border-bottom: 1px solid rgba(10,10,10,0.08);
+            transition: background 0.3s ease;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-row:hover {
+            background: rgba(199,168,109,0.05);
+        }
+
+        .table-row.highlight {
+            background: linear-gradient(135deg, rgba(199,168,109,0.12), rgba(199,168,109,0.08));
+            border-left: 4px solid var(--or-signature);
+        }
+
+        .table-row.highlight:hover {
+            background: linear-gradient(135deg, rgba(199,168,109,0.18), rgba(199,168,109,0.12));
+        }
+
+        .table-cell {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .table-row.highlight .table-cell {
+            font-weight: 600;
+            color: var(--noir-absolu);
+        }
+
+        /* TRANSPARENCE ET LIMITES */
+        .transparence-limites {
+            background: var(--blanc-surface);
+            border: 1px solid rgba(10,10,10,0.12);
+            border-radius: 16px;
+            padding: 60px 48px;
+            margin: 100px auto;
+            max-width: 1000px;
+            box-shadow: 0 4px 24px rgba(10,10,10,0.08);
+        }
+
+        .transparence-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 32px;
+        }
+
+        .transparence-intro {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--noir-absolu);
+            margin-bottom: 24px;
+        }
+
+        .transparence-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .transparence-list {
+            list-style: none;
+            margin: 32px 0;
+            padding: 0;
+        }
+
+        .transparence-list li {
+            padding: 16px 0 16px 32px;
+            position: relative;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(10,10,10,0.06);
+        }
+
+        .transparence-list li:last-child {
+            border-bottom: none;
+        }
+
+        .transparence-list li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: var(--or-sombre);
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .transparence-footer {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(10,10,10,0.08);
+        }
+
+        /* NAVIGATION PREMIUM LUXUEUSE — FOND NOIR */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, 
+                var(--noir-absolu) 0%, 
+                rgba(10, 10, 10, 0.98) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(199, 168, 109, 0.15);
+            padding: 20px 0;
+            z-index: 2000;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.6),
+                0 4px 16px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(199, 168, 109, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            padding: 14px 0;
+            background: var(--noir-absolu);
+            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.8),
+                0 8px 24px rgba(0, 0, 0, 0.5),
+                0 16px 48px rgba(199, 168, 109, 0.12);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            max-width: 1300px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--creme-principal);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-variant: small-caps;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav.scrolled .logo {
+            font-size: 24px;
+        }
+
+        .logo-text {
+            position: relative;
+        }
+
+        .logo-text::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--or-signature) 50%, 
+                transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .logo:hover {
+            color: var(--or-riche);
+            letter-spacing: 0.28em;
+        }
+
+        .logo:hover .logo-text::before {
+            opacity: 1;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2px;
+            list-style: none;
+            align-items: center;
+            background-color: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(199, 168, 109, 0.15);
+            border-radius: 50px;
+            padding: 6px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a:not(.logo) {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(247, 245, 239, 0.75);
+            text-decoration: none;
+            position: relative;
+            padding: 10px 18px;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        nav a:not(.logo)::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            background: linear-gradient(135deg, 
+                var(--or-signature) 0%, 
+                var(--or-riche) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a:not(.logo):hover {
+            color: var(--noir-absolu);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 4px 12px rgba(199, 168, 109, 0.3),
+                0 2px 4px rgba(199, 168, 109, 0.2);
+        }
+
+        nav a:not(.logo):hover::before {
+            opacity: 1;
+        }
+
+        nav a:not(.logo):active {
+            transform: translateY(0);
+        }
+
+        .nav-social {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 16px;
+            padding-left: 16px;
+            border-left: 1px solid rgba(199, 168, 109, 0.2);
+        }
+
+        .nav-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: transparent;
+            color: rgba(247, 245, 239, 0.75);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-social-link svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 1.5;
+        }
+
+        .nav-social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, 
+                var(--or-signature) 0%, 
+                var(--or-riche) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-social-link:hover {
+            color: var(--noir-absolu);
+            transform: translateY(-1px);
+            box-shadow: 
+                0 4px 12px rgba(199, 168, 109, 0.3),
+                0 2px 4px rgba(199, 168, 109, 0.2);
+        }
+
+        .nav-social-link:hover::before {
+            opacity: 1;
+        }
+
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px;
+        }
+
+        /* SERVICES GRID */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 96px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 48px;
+            margin-bottom: 100px;
         }
 
         .service-card {
-            background: #FFFFFF;
-            border-left: 4px solid var(--bordeaux);
-            padding: 48px 36px;
-            box-shadow: 0 2px 32px rgba(0,0,0,0.06);
+            background: var(--blanc-surface);
+            border: 1px solid rgba(10,10,10,0.08);
+            border-radius: 12px;
+            padding: 48px 40px;
+            box-shadow: 0 2px 16px rgba(10,10,10,0.04);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
 
         .service-card::before {
@@ -227,251 +526,365 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(125,60,74,0.02) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--or-signature), var(--or-sombre));
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 48px rgba(125,60,74,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 48px rgba(10,10,10,0.12);
+            border-color: rgba(199,168,109,0.2);
         }
 
         .service-card:hover::before {
-            opacity: 1;
+            height: 100%;
         }
 
         .service-badge {
             display: inline-block;
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--bordeaux);
-            background: rgba(125,60,74,0.08);
-            padding: 7px 14px;
-            border-radius: 3px;
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            color: var(--or-sombre);
+            background: rgba(199,168,109,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
         }
 
         .service-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
-            color: var(--noir);
-            margin-bottom: 14px;
+            color: var(--noir-absolu);
+            margin-bottom: 16px;
             line-height: 1.2;
         }
 
         .service-tagline {
             font-size: 18px;
             font-style: italic;
-            color: var(--gris-texte);
+            color: var(--text-secondary);
             margin-bottom: 24px;
             line-height: 1.5;
         }
 
-        .service-card .description {
-            margin-bottom: 28px;
-            line-height: 1.7;
+        .service-description {
+            margin-bottom: 32px;
+            line-height: 1.8;
         }
 
-        .service-card .price {
+        .service-price {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--bordeaux);
-            margin: 28px 0 20px;
+            color: var(--or-signature);
+            margin: 32px 0 24px;
+        }
+
+        .service-price span {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
         .service-card ul {
             list-style: none;
-            margin: 24px 0;
-            padding-left: 0;
+            margin: 28px 0;
         }
 
         .service-card li {
-            padding: 10px 0 10px 28px;
+            padding: 12px 0 12px 32px;
             position: relative;
-            font-size: 17px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        .service-card li:before {
-            content: "→";
+        .service-card li::before {
+            content: '—';
             position: absolute;
             left: 0;
-            color: var(--bordeaux);
+            color: var(--or-signature);
             font-weight: 600;
-            font-size: 18px;
         }
 
+        /* CTA BUTTONS */
         .cta-button {
             display: inline-block;
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 700;
             letter-spacing: 0.5px;
-            color: var(--blanc-casse);
-            background: var(--bordeaux);
-            padding: 15px 36px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            margin-top: 24px;
-            box-shadow: 0 4px 16px rgba(125,60,74,0.2);
+            padding: 16px 40px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
         }
 
-        .cta-button:hover {
-            background: var(--bordeaux-leger);
+        .cta-primary {
+            background: var(--or-signature);
+            color: var(--noir-absolu);
+            box-shadow: 0 4px 16px rgba(199,168,109,0.25);
+        }
+
+        .cta-primary:hover {
+            background: var(--or-riche);
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(125,60,74,0.3);
+            box-shadow: 0 8px 24px rgba(199,168,109,0.35);
         }
 
-        /* DISCLAIMER PREMIUM */
-        .disclaimer {
-            background: #FFFFFF;
-            border: 2px solid var(--bordeaux);
-            border-radius: 6px;
-            padding: 48px 52px;
-            max-width: 940px;
-            margin: 96px auto 0;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        .cta-secondary {
+            background: transparent;
+            color: var(--noir-absolu);
+            border: 2px solid var(--noir-absolu);
+            padding: 14px 38px;
         }
 
-        .disclaimer h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--bordeaux);
-            margin-bottom: 24px;
+        .cta-secondary:hover {
+            background: var(--noir-absolu);
+            color: var(--creme-principal);
         }
 
-        .disclaimer p {
-            margin-bottom: 18px;
-            font-size: 18px;
-            line-height: 1.75;
-        }
-
-        .disclaimer p:last-child {
-            margin-bottom: 0;
-        }
-
-        .disclaimer strong {
-            color: var(--bordeaux);
-        }
-
-        .disclaimer ul {
-            margin-left: 28px;
-            margin-top: 16px;
-        }
-
-        .disclaimer li {
-            margin-bottom: 10px;
-            line-height: 1.7;
-        }
-
-        /* TABLEAU COMPARATIF PREMIUM */
-        .comparison-section {
-            margin: 96px auto;
-            max-width: 960px;
-        }
-
-        .comparison-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--bordeaux);
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        .comparison-section > p {
-            text-align: center;
-            margin-bottom: 48px;
-            max-width: 740px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--gris-texte);
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: #FFFFFF;
-            box-shadow: 0 2px 24px rgba(0,0,0,0.06);
-            border-radius: 6px;
+        /* TARIFS SECTION */
+        .tarifs-section {
+            background: linear-gradient(135deg, var(--noir-absolu), var(--noir-surface));
+            color: var(--text-on-dark);
+            padding: 100px 40px;
+            border-radius: 16px;
+            margin: 100px 0;
+            position: relative;
             overflow: hidden;
         }
 
-        th, td {
-            padding: 22px 24px;
-            text-align: left;
-            border-bottom: 1px solid var(--gris-clair);
-            font-size: 17px;
+        .tarifs-section::before {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(199,168,109,0.12) 0%, transparent 70%);
         }
 
-        th {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-            background: rgba(125,60,74,0.04);
-            color: var(--bordeaux);
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
+        .tarifs-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        .tarifs-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        tr:hover {
-            background: rgba(125,60,74,0.02);
+        .tarifs-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-on-dark-muted);
+            margin-bottom: 60px;
+            line-height: 1.7;
         }
 
-        .highlight-row {
-            background: rgba(125,60,74,0.06) !important;
-            font-weight: 600;
+        .tarifs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
         }
 
-        .highlight-row:hover {
-            background: rgba(125,60,74,0.08) !important;
+        .tarif-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(199,168,109,0.2);
+            border-radius: 12px;
+            padding: 40px 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        /* FOOTER PREMIUM */
+        .tarif-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--or-signature);
+            transform: translateY(-4px);
+        }
+
+        .tarif-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--or-signature);
+        }
+
+        .tarif-prix {
+            font-size: 40px;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 8px;
+        }
+
+        .tarif-unite {
+            font-size: 16px;
+            color: var(--text-on-dark-muted);
+            margin-bottom: 24px;
+        }
+
+        .tarif-description {
+            line-height: 1.7;
+            color: var(--text-on-dark-muted);
+        }
+
+        /* METHODOLOGIE */
+        .methodologie-section {
+            max-width: 1000px;
+            margin: 100px auto;
+        }
+
+        .methodologie-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .methodo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .methodo-item {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .methodo-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--or-signature);
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .methodo-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 16px;
+        }
+
+        .methodo-item p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            max-width: 900px;
+            margin: 100px auto;
+        }
+
+        .faq-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: var(--blanc-surface);
+            border: 1px solid rgba(10,10,10,0.08);
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(10,10,10,0.04);
+        }
+
+        .faq-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 16px;
+        }
+
+        .faq-answer {
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            background: linear-gradient(135deg, var(--or-signature), var(--or-riche));
+            padding: 80px 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 100px 0;
+        }
+
+        .cta-final h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 24px;
+        }
+
+        .cta-final p {
+            font-size: 20px;
+            color: rgba(10,10,10,0.85);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-final .cta-button {
+            background: var(--noir-absolu);
+            color: var(--creme-principal);
+        }
+
+        .cta-final .cta-button:hover {
+            background: var(--noir-surface);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
         footer {
-            background: #2A2A2A;
-            color: #E8E8E4;
-            padding: 72px 48px 36px;
+            background: var(--noir-absolu);
+            color: var(--text-on-dark);
+            padding: 80px 40px 40px;
         }
 
         .footer-content {
-            max-width: 1240px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 56px;
-            margin-bottom: 48px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
         }
 
         .footer-section h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--or);
             margin-bottom: 24px;
-        }
-
-        .footer-section p {
-            font-size: 15px;
-            line-height: 1.7;
+            color: var(--or-signature);
         }
 
         .footer-section ul {
@@ -479,115 +892,316 @@
         }
 
         .footer-section li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .footer-section a {
-            color: #E8E8E4;
+            color: var(--text-on-dark-muted);
             text-decoration: none;
             transition: color 0.3s ease;
             font-size: 16px;
         }
 
         .footer-section a:hover {
-            color: var(--or);
+            color: var(--or-signature);
         }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(199,168,109,0.2);
             text-align: center;
-            padding-top: 36px;
-            border-top: 1px solid rgba(232,232,228,0.15);
+            color: var(--text-on-dark-muted);
             font-size: 14px;
-            font-family: 'Source Sans Pro', sans-serif;
-            color: rgba(232,232,228,0.7);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 42px;
-            }
-            
-            .hero p {
-                font-size: 20px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 20px;
+            nav {
+                padding: 16px 0;
             }
 
-            .comparison-section,
-            .intro-section,
-            .disclaimer {
-                padding-left: 24px;
-                padding-right: 24px;
+            nav ul {
+                gap: 1px;
+                padding: 4px;
+                flex-wrap: wrap;
+            }
+
+            nav a:not(.logo) {
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .nav-social {
+                margin-left: 8px;
+                padding-left: 8px;
+                gap: 2px;
+            }
+
+            .nav-social-link {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-social-link svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .presentation-accompagnement {
+                padding: 80px 24px;
+            }
+
+            .presentation-container h1 {
+                font-size: 40px;
+            }
+
+            .presentation-lead {
+                font-size: 19px;
+            }
+
+            .presentation-content h2 {
+                font-size: 32px;
+            }
+
+            .presentation-content p {
+                font-size: 17px;
+            }
+
+            .pourquoi-accessible {
+                padding: 80px 24px;
+            }
+
+            .accessible-container h2 {
+                font-size: 36px;
+            }
+
+            .accessible-intro {
+                font-size: 17px;
+            }
+
+            .table-header {
+                display: none;
+            }
+
+            .table-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 20px 16px;
+            }
+
+            .table-cell {
+                position: relative;
+                padding-left: 0;
+            }
+
+            .table-cell::before {
+                content: attr(data-label);
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--or-sombre);
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .transparence-limites {
+                padding: 40px 24px;
+                margin: 80px 24px;
+            }
+
+            .transparence-container h2 {
+                font-size: 32px;
+            }
+
+            .transparence-intro {
+                font-size: 18px;
+            }
+
+            .transparence-container p {
+                font-size: 16px;
+            }
+
+            .transparence-list li {
+                font-size: 16px;
+                padding-left: 28px;
+            }
+
+            .container {
+                padding: 80px 24px;
+            }
+
+            .tarifs-section h2,
+            .methodologie-section h2,
+            .faq-section h2,
+            .cta-final h2 {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- BANDE URGENCE -->
-    <div class="urgence-bar">
-        <div class="urgence-text">
-            🚨 En danger ? 3919 | SMS : 114 | Urgences : 17
-        </div>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/noesis_analyse" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/company/noesis" target="_blank">LinkedIn</a>
-            <a href="https://www.facebook.com/noesisanalyse" target="_blank">Facebook</a>
-        </div>
-    </div>
-
+    
     <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">NOÉSIS</div>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="methode.html">La Méthode</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="auto-tests.html">Auto-tests</a></li>
-            <li><a href="livres.html">Livres</a></li>
-            <li><a href="podcasts.html">Podcasts</a></li>
-            <li><a href="accompagnement.html">Accompagnement</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    <nav id="navbar">
+        <div class="container">
+            <a href="index.html#accueil" class="logo">
+                <span class="logo-text">NOÉSIS</span>
+            </a>
+            <ul>
+                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html#methode">La Méthode</a></li>
+                <li><a href="index.html#decouvrir">Découvrir</a></li>
+                <li><a href="index.html#articles">Articles</a></li>
+                <li><a href="./auto-tests/">Auto-tests</a></li>
+                <li><a href="index.html#podcasts">Podcasts</a></li>
+                <li><a href="index.html#livres">Livres</a></li>
+                <li><a href="accompagnement.html">Accompagnement</a></li>
+                <li><a href="index.html#engagement">Engagement</a></li>
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@noesisexplique" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="TikTok NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:noesisexplique@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Accompagnement Personnalisé</h1>
-        <p>Cartographie de votre situation. Construction de dossiers structurés pour démarches juridiques, professionnelles ou thérapeutiques.</p>
+    <!-- PRÉSENTATION ACCOMPAGNEMENT -->
+    <section class="presentation-accompagnement">
+        <div class="presentation-container">
+            <h1>Accompagnement Personnalisé</h1>
+            <p class="presentation-lead">Cartographie de votre situation. Construction de dossiers structurés pour démarches juridiques, professionnelles ou thérapeutiques.</p>
+            
+            <div class="presentation-content">
+                <h2>Sortir de la Confusion par la Clarté</h2>
+                <p>Vous vous sentez perdu dans une situation complexe — emprise personnelle, violence professionnelle, dynamique familiale toxique. Vous avez besoin de clarté avant de consulter un avocat, un psychologue, ou avant de prendre une décision importante.</p>
+                
+                <p>Les services d'accompagnement NOÉSIS vous offrent une <strong>cartographie transdisciplinaire de votre situation</strong> par application de la méthode NOÉSIS (neuropsychologie, psychologie cognitive, criminologie, anthropologie, sciences sociales).</p>
+                
+                <div class="presentation-disclaimer">
+                    <p><strong>Avertissement Important :</strong> Ces prestations constituent un outil de clarification destiné à préparer vos démarches auprès de professionnels compétents. Elles ne remplacent en aucun cas un diagnostic médical, un conseil juridique ou une psychothérapie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POURQUOI NOÉSIS EST ACCESSIBLE -->
+    <section class="pourquoi-accessible">
+        <div class="accessible-container">
+            <h2>Pourquoi NOÉSIS est Accessible</h2>
+            <p class="accessible-intro">Les services NOÉSIS ne remplacent pas les professionnels reconnus. Ils constituent une première étape de clarification accessible, avant ou en complément de vos démarches.</p>
+            
+            <div class="accessible-table">
+                <div class="table-header">
+                    <div class="table-col">Besoin</div>
+                    <div class="table-col">Professionnel Compétent</div>
+                    <div class="table-col">Tarif Indicatif</div>
+                    <div class="table-col">Quand ?</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell" data-label="Besoin">Diagnostic psychologique</div>
+                    <div class="table-cell" data-label="Professionnel">Psychologue clinicien</div>
+                    <div class="table-cell" data-label="Tarif">300-500 €</div>
+                    <div class="table-cell" data-label="Quand">Symptômes trauma/anxiété</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell" data-label="Besoin">Conseil juridique</div>
+                    <div class="table-cell" data-label="Professionnel">Avocat spécialisé</div>
+                    <div class="table-cell" data-label="Tarif">150-200 €/h</div>
+                    <div class="table-cell" data-label="Quand">Avant toute procédure</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell" data-label="Besoin">Expertise judiciaire</div>
+                    <div class="table-cell" data-label="Professionnel">Expert agréé</div>
+                    <div class="table-cell" data-label="Tarif">1500-3000 €</div>
+                    <div class="table-cell" data-label="Quand">Demande par tribunal</div>
+                </div>
+                
+                <div class="table-row highlight">
+                    <div class="table-cell" data-label="Besoin"><strong>Clarification</strong></div>
+                    <div class="table-cell" data-label="Professionnel"><strong>NOÉSIS</strong></div>
+                    <div class="table-cell" data-label="Tarif"><strong>60-180 €</strong></div>
+                    <div class="table-cell" data-label="Quand"><strong>Avant de consulter</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSPARENCE ET LIMITES -->
+    <section class="transparence-limites">
+        <div class="transparence-container">
+            <h2>Transparence et Limites</h2>
+            
+            <p class="transparence-intro">NOÉSIS n'est ni un cabinet juridique, ni un cabinet médical, ni un cabinet de psychologie.</p>
+            
+            <p>Les prestations d'accompagnement NOÉSIS constituent une aide à la clarification et à l'organisation documentaire. Elles s'appuient sur une méthode transdisciplinaire rigoureuse mobilisant les sciences humaines et sociales.</p>
+            
+            <p><strong>Ces services ne remplacent en aucun cas :</strong></p>
+            
+            <ul class="transparence-list">
+                <li>Un diagnostic médical ou psychologique (consultez un psychologue clinicien ou psychiatre)</li>
+                <li>Un conseil juridique (consultez un avocat inscrit au barreau)</li>
+                <li>Une psychothérapie (consultez un psychothérapeute agréé)</li>
+                <li>Une expertise officielle opposable devant les tribunaux</li>
+            </ul>
+            
+            <p class="transparence-footer">Pour toute démarche thérapeutique, judiciaire ou professionnelle, vous devez impérativement consulter les professionnels compétents et diplômés dans ces domaines.</p>
+        </div>
     </section>
 
     <!-- INTRO -->
     <div class="container">
-        <section class="intro-section">
-            <h2>Sortir de la Confusion par la Clarté</h2>
-            
-            <p>Vous vous sentez perdu dans une situation complexe — emprise personnelle, violence professionnelle, dynamique familiale toxique. Vous avez besoin de <strong>clarté</strong> avant de consulter un avocat, un psychologue, ou avant de prendre une décision importante.</p>
 
-            <p>Les services d'accompagnement NOÉSIS vous offrent une <strong>cartographie transdisciplinaire</strong> de votre situation par application de la méthode NOÉSIS (neuropsychologie, psychologie cognitive, criminologie, anthropologie, sciences sociales).</p>
-
-            <p>Ces prestations constituent un <strong>outil de clarification</strong> destiné à préparer vos démarches auprès de professionnels compétents. Elles ne remplacent en aucun cas un diagnostic médical, un conseil juridique ou une psychothérapie.</p>
-        </section>
-
-        <!-- SERVICES GRID -->
+        <!-- SERVICES -->
         <section class="services-grid">
-            <!-- SERVICE 1 : FLASH -->
+            
+            <!-- Analyse Flash -->
             <div class="service-card">
-                <span class="service-badge">Point d'entrée</span>
+                <span class="service-badge">Point d'Entrée</span>
                 <h3>Analyse Flash</h3>
                 <p class="service-tagline">Première clarification rapide</p>
+                <p class="service-description">Entretien structuré d'1h pour poser un premier diagnostic de votre situation. Vous repartez avec un document synthétique, une chronologie factuelle, l'identification des patterns principaux et une orientation vers les ressources adaptées.</p>
                 
-                <p class="description"><strong>Pour qui ?</strong> Personnes cherchant une première structuration de leur situation avant d'approfondir ou de consulter des professionnels.</p>
-
-                <div class="price">120 €</div>
-
+                <div class="service-price">60€<span> / séance</span></div>
+                
                 <ul>
                     <li>Entretien structuré (1h, visio)</li>
                     <li>Document synthétique (8-10 pages)</li>
@@ -595,20 +1209,19 @@
                     <li>Identification des patterns principaux</li>
                     <li>Orientation vers ressources</li>
                 </ul>
-
-                <a href="analyse-flash.html" class="cta-button">En savoir plus</a>
+                
+                <a href="mailto:noesisexplique@gmail.com?subject=Demande%20Analyse%20Flash" class="cta-button cta-primary">Prendre rendez-vous</a>
             </div>
 
-            <!-- SERVICE 2 : CARTOGRAPHIE COMPLÈTE -->
+            <!-- Cartographie Complète -->
             <div class="service-card">
-                <span class="service-badge">Analyse approfondie</span>
+                <span class="service-badge">Analyse Approfondie</span>
                 <h3>Cartographie Complète</h3>
                 <p class="service-tagline">Compréhension par les 5 axes NOÉSIS</p>
+                <p class="service-description">Analyse multidimensionnelle rigoureuse pour comprendre tous les mécanismes en jeu. Entretien exploratoire 2h30 + document NOÉSIS 20-35 pages + analyse transdisciplinaire (5 axes) + cartographie visuelle + bibliographie contextuelle + 1 échange de suivi (15 jours).</p>
                 
-                <p class="description"><strong>Pour qui ?</strong> Personnes nécessitant une analyse multidimensionnelle rigoureuse pour préparer des démarches juridiques, thérapeutiques ou professionnelles.</p>
-
-                <div class="price">280 €</div>
-
+                <div class="service-price">180€</div>
+                
                 <ul>
                     <li>Entretien exploratoire (2h30, visio)</li>
                     <li>Document NOÉSIS (20-35 pages)</li>
@@ -617,20 +1230,38 @@
                     <li>Bibliographie contextualisée</li>
                     <li>1 échange de suivi (15 jours)</li>
                 </ul>
-
-                <a href="cartographie-complete.html" class="cta-button">En savoir plus</a>
+                
+                <a href="mailto:noesisexplique@gmail.com?subject=Demande%20Cartographie%20Complète" class="cta-button cta-primary">Prendre rendez-vous</a>
             </div>
 
-            <!-- SERVICE 3 : ORGANISATION DOCUMENTAIRE -->
+            <!-- Suivi Stratégique -->
             <div class="service-card">
-                <span class="service-badge">Construction dossier</span>
+                <span class="service-badge">Accompagnement Continu</span>
+                <h3>Suivi Stratégique</h3>
+                <p class="service-tagline">Ajustement tactique</p>
+                <p class="service-description">Pour les personnes en procédure longue (judiciaire, RH) nécessitant un accompagnement régulier pour ajuster leur stratégie. Séances individuelles (1h, visio) + compte-rendu après chaque séance + forfait flexible.</p>
+                
+                <div class="service-price">50€<span> / heure</span></div>
+                
+                <ul>
+                    <li>Séances individuelles (1h, visio)</li>
+                    <li>Compte-rendu après chaque séance</li>
+                    <li>Forfait 4 séances : 180€ (-10%)</li>
+                    <li>Forfait 8 séances : 340€ (-15%)</li>
+                </ul>
+                
+                <a href="mailto:noesisexplique@gmail.com?subject=Demande%20Suivi%20Stratégique" class="cta-button cta-primary">Prendre rendez-vous</a>
+            </div>
+
+            <!-- Organisation Documentaire -->
+            <div class="service-card">
+                <span class="service-badge">Construction Dossier</span>
                 <h3>Organisation Documentaire</h3>
                 <p class="service-tagline">Structuration de preuves</p>
+                <p class="service-description">Pour personnes engagées dans des démarches (juridiques, RH, thérapeutiques) nécessitant une compilation rigoureuse de leurs documents. Compilation et indexation de pièces + chronologie détaillée + structuration thématique + note contextuelle scientifique + dossier exploitable (40-80 pages).</p>
                 
-                <p class="description"><strong>Pour qui ?</strong> Personnes engagées dans des démarches (juridiques, RH, thérapeutiques) nécessitant une compilation rigoureuse de leurs documents.</p>
-
-                <div class="price">380-680 €</div>
-
+                <div class="service-price">250-450€</div>
+                
                 <ul>
                     <li>Compilation et indexation de pièces</li>
                     <li>Chronologie détaillée</li>
@@ -639,90 +1270,118 @@
                     <li>Dossier exploitable (40-80 pages)</li>
                     <li>Tarif selon volume documentaire</li>
                 </ul>
-
-                <a href="organisation-documentaire.html" class="cta-button">En savoir plus</a>
-            </div>
-
-            <!-- SERVICE 4 : SUIVI STRATÉGIQUE -->
-            <div class="service-card">
-                <span class="service-badge">Accompagnement continu</span>
-                <h3>Suivi Stratégique</h3>
-                <p class="service-tagline">Ajustement tactique</p>
                 
-                <p class="description"><strong>Pour qui ?</strong> Personnes en procédure longue (judiciaire, RH) nécessitant un accompagnement régulier pour ajuster leur stratégie.</p>
+                <a href="mailto:noesisexplique@gmail.com?subject=Demande%20Organisation%20Documentaire" class="cta-button cta-secondary">Demander un devis</a>
+            </div>
+            
+        </section>
 
-                <div class="price">75 €/h</div>
-
-                <ul>
-                    <li>Séances individuelles (1h, visio)</li>
-                    <li>Compte-rendu après chaque séance</li>
-                    <li>Forfait 4 séances : 270 € (-10%)</li>
-                    <li>Forfait 8 séances : 500 € (-17%)</li>
-                </ul>
-
-                <a href="suivi-strategique.html" class="cta-button">En savoir plus</a>
+        <!-- TARIFS SECTION -->
+        <section class="tarifs-section">
+            <div class="tarifs-content">
+                <h2>Tarification Accessible & Solidaire</h2>
+                <p class="tarifs-subtitle">L'accompagnement NOÉSIS doit être accessible. Des tarifs solidaires sont systématiquement proposés sur simple demande, sans justificatif ni jugement.</p>
+                
+                <div class="tarifs-grid">
+                    <div class="tarif-card">
+                        <h3>Point d'Entrée</h3>
+                        <div class="tarif-prix">60€</div>
+                        <div class="tarif-unite">Analyse Flash</div>
+                        <p class="tarif-description">Premier accompagnement accessible pour poser un diagnostic initial. Parfait pour tester la méthode NOÉSIS avant d'aller plus loin.</p>
+                    </div>
+                    
+                    <div class="tarif-card">
+                        <h3>Tarif Horaire</h3>
+                        <div class="tarif-prix">50€</div>
+                        <div class="tarif-unite">par heure</div>
+                        <p class="tarif-description">Suivi stratégique flexible. Forfaits dégressifs : 4 séances à 180€ (-10%) ou 8 séances à 340€ (-15%). Résiliable à tout moment.</p>
+                    </div>
+                    
+                    <div class="tarif-card">
+                        <h3>Tarif Solidaire</h3>
+                        <div class="tarif-prix">30€</div>
+                        <div class="tarif-unite">par heure</div>
+                        <p class="tarif-description">Sur simple demande, sans justificatif. Aucun jugement, juste de la solidarité. L'argent ne doit jamais être un obstacle à la compréhension.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- TABLEAU COMPARATIF -->
-        <section class="comparison-section">
-            <h3>Pourquoi NOÉSIS est Accessible</h3>
-            <p>Les services NOÉSIS ne remplacent pas les professionnels reconnus. Ils constituent une première étape de clarification accessible, avant ou en complément de vos démarches.</p>
+        <!-- METHODOLOGIE -->
+        <section class="methodologie-section">
+            <h2>Comment se Déroule l'Accompagnement ?</h2>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>Besoin</th>
-                        <th>Professionnel Compétent</th>
-                        <th>Tarif Indicatif</th>
-                        <th>Quand ?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Diagnostic psychologique</td>
-                        <td>Psychologue clinicien</td>
-                        <td>300-500 €</td>
-                        <td>Symptômes trauma/anxiété</td>
-                    </tr>
-                    <tr>
-                        <td>Conseil juridique</td>
-                        <td>Avocat spécialisé</td>
-                        <td>150-200 €/h</td>
-                        <td>Avant toute procédure</td>
-                    </tr>
-                    <tr>
-                        <td>Expertise judiciaire</td>
-                        <td>Expert agréé</td>
-                        <td>1500-3000 €</td>
-                        <td>Demandé par tribunal</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td>Clarification</td>
-                        <td><strong>NOÉSIS</strong></td>
-                        <td><strong>120-680 €</strong></td>
-                        <td><strong>Avant de consulter</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="methodo-grid">
+                <div class="methodo-item">
+                    <div class="methodo-number">1</div>
+                    <h3>Premier Contact</h3>
+                    <p>Entretien préliminaire gratuit (20-30 min) par email ou visio pour évaluer l'adéquation entre votre demande et mon offre. Si nécessaire, je vous oriente vers d'autres ressources.</p>
+                </div>
+                
+                <div class="methodo-item">
+                    <div class="methodo-number">2</div>
+                    <h3>Analyse Transdisciplinaire</h3>
+                    <p>Séances en visio sécurisée. J'applique la méthode NOÉSIS à votre situation : neurobiologie, psychologie, criminologie, culture, système social. Vous repartez avec une cartographie claire.</p>
+                </div>
+                
+                <div class="methodo-item">
+                    <div class="methodo-number">3</div>
+                    <h3>Synthèse & Orientation</h3>
+                    <p>Document de synthèse personnalisé après chaque séance. Orientation vers thérapeutes, juristes, associations selon vos besoins. Mon rôle : éclairer, pas soigner ni défendre.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- DISCLAIMER -->
-        <section class="disclaimer">
-            <h3>Transparence et Limites</h3>
-            <p><strong>NOÉSIS n'est ni un cabinet juridique, ni un cabinet médical, ni un cabinet de psychologie.</strong></p>
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2>Questions Fréquentes</h2>
             
-            <p>Les prestations d'accompagnement NOÉSIS constituent une aide à la clarification et à l'organisation documentaire. Elles s'appuient sur une méthode transdisciplinaire rigoureuse mobilisant les sciences humaines et sociales.</p>
+            <div class="faq-item">
+                <div class="faq-question">Quelle offre choisir pour commencer ?</div>
+                <div class="faq-answer">Si vous découvrez NOÉSIS, commencez par l'<strong>Analyse Flash (60€)</strong>. C'est le point d'entrée idéal pour poser un premier diagnostic sans trop investir. Si vous avez besoin d'une compréhension exhaustive, optez pour la <strong>Cartographie Complète (180€)</strong>. Le <strong>Suivi Stratégique (50€/h)</strong> convient si vous êtes déjà en procédure et avez besoin d'ajustements réguliers.</div>
+            </div>
             
-            <p><strong>Ces services ne remplacent en aucun cas :</strong></p>
-            <ul>
-                <li>Un diagnostic médical ou psychologique (consultez un psychologue clinicien ou psychiatre)</li>
-                <li>Un conseil juridique (consultez un avocat inscrit au barreau)</li>
-                <li>Une psychothérapie (consultez un psychothérapeute agréé)</li>
-                <li>Une expertise officielle opposable devant les tribunaux</li>
-            </ul>
+            <div class="faq-item">
+                <div class="faq-question">L'accompagnement NOÉSIS remplace-t-il une thérapie ?</div>
+                <div class="faq-answer">Non. Je ne suis pas thérapeute. Mon accompagnement vise à <strong>comprendre et analyser</strong> votre situation, pas à vous soigner. Si vous avez besoin d'un suivi thérapeutique (trauma, anxiété, dépression), je vous oriente vers des professionnel·le·s compétent·e·s. Mon rôle est complémentaire à la thérapie, pas concurrent.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Comment accéder au tarif solidaire ?</div>
+                <div class="faq-answer">Il suffit de le demander dans votre email de contact. <strong>Aucun justificatif exigé, aucun jugement.</strong> Le tarif solidaire (30€/h au lieu de 50€/h) s'applique à toutes les prestations horaires. L'Analyse Flash passe à 35€, la Cartographie Complète à 110€. L'argent ne doit jamais être un obstacle à la compréhension.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Puis-je bénéficier d'un accompagnement si je suis en danger immédiat ?</div>
+                <div class="faq-answer">Si vous êtes en <strong>danger immédiat</strong>, appelez le 17 (police), le 3919 (violences femmes info) ou le 114 (SMS urgence). Mon accompagnement ne remplace pas les services d'urgence. Il est adapté pour comprendre votre situation, préparer une sortie sécurisée ou analyser après coup.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Les séances sont-elles confidentielles ?</div>
+                <div class="faq-answer"><strong>Absolument.</strong> Confidentialité totale garantie. Aucune information ne sera divulguée sans votre accord explicite. Vos données personnelles sont protégées conformément au RGPD. Les exemples ou cas mentionnés publiquement sont toujours anonymisés et ne permettent aucune identification.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">L'accompagnement fonctionne-t-il pour les violences professionnelles ?</div>
+                <div class="faq-answer">Oui. La méthode NOÉSIS s'applique autant aux <strong>violences personnelles</strong> (conjugales, familiales) qu'aux <strong>violences professionnelles</strong> (harcèlement moral, dérives managériales, emprise organisationnelle). Les mécanismes de pouvoir, de manipulation et de contrôle sont similaires, seul le contexte diffère.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Puis-je annuler ou reporter une séance ?</div>
+                <div class="faq-answer">Oui, avec préavis de <strong>48h minimum</strong>. En-dessous de 48h, la séance est due (sauf urgence avérée). Politique d'annulation flexible et humaine : je comprends que votre situation peut être instable.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Comment se passe le paiement ?</div>
+                <div class="faq-answer">Paiement par virement bancaire ou chèque. Pour l'Analyse Flash et la Cartographie Complète : <strong>acompte de 30%</strong> à la réservation, solde après prestation. Pour le Suivi Stratégique : paiement après chaque séance ou forfait prépayé. Organisation Documentaire : 50% à la commande, 50% à livraison.</div>
+            </div>
+        </section>
 
-            <p>Pour toute démarche thérapeutique, judiciaire ou professionnelle, vous devez impérativement consulter les professionnels compétents et diplômés dans ces domaines.</p>
+        <!-- CTA FINAL -->
+        <section class="cta-final">
+            <h2>Prêt·e à Faire le Point ?</h2>
+            <p>Prenez rendez-vous pour un premier échange gratuit. Ensemble, nous verrons si l'accompagnement NOÉSIS est adapté à votre situation.</p>
+            <a href="mailto:noesisexplique@gmail.com?subject=Demande%20Accompagnement%20NOÉSIS" class="cta-button">Prendre contact</a>
         </section>
     </div>
 
@@ -731,43 +1390,40 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>NOÉSIS</h4>
-                <p>Transformer la confusion en lucidité à travers une analyse transdisciplinaire rigoureuse de l'emprise, du trauma et des violences.</p>
+                <p>Intelligence transdisciplinaire au service de la lucidité collective. Comprendre l'emprise, le trauma et les violences pour mieux s'en protéger.</p>
             </div>
-            <div class="footer-section">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="methode.html">La Méthode</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="auto-tests.html">Auto-tests</a></li>
-                    <li><a href="livres.html">Livres</a></li>
-                    <li><a href="podcasts.html">Podcasts</a></li>
-                    <li><a href="accompagnement.html">Accompagnement</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+            
             <div class="footer-section">
                 <h4>Ressources</h4>
                 <ul>
-                    <li><a href="plan-securite.pdf" target="_blank">Plan de Sécurité (PDF)</a></li>
-                    <li><a href="#">Numéros d'urgence</a></li>
-                    <li><a href="mentions-legales.html">Mentions légales</a></li>
-                    <li><a href="confidentialite.html">Politique RGPD</a></li>
+                    <li><a href="plan-securite.html">Plan de Sécurité</a></li>
+                    <li><a href="index.html#decouvrir">Articles & Auto-tests</a></li>
+                    <li><a href="index.html#livres">Nos Livres</a></li>
                 </ul>
             </div>
+            
             <div class="footer-section">
-                <h4>Suivez NOÉSIS</h4>
+                <h4>Accompagnement</h4>
                 <ul>
-                    <li><a href="https://www.instagram.com/noesis_analyse" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.linkedin.com/company/noesis" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://www.facebook.com/noesisanalyse" target="_blank">Facebook</a></li>
-                    <li><a href="mailto:noesisexplique@gmail.com">noesisexplique@gmail.com</a></li>
+                    <li><a href="accompagnement.html">Services</a></li>
+                    <li><a href="conditions-generales.html">Conditions Générales</a></li>
+                    <li><a href="mailto:noesisexplique@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            © 2025 NOÉSIS — Tous droits réservés
+            <p>&copy; 2025 NOÉSIS — Tous droits réservés</p>
         </div>
     </footer>
+
 </body>
 </html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales | NOESIS</title>
+    <meta name="description" content="Mentions légales du site NOESIS - Informations juridiques et éditoriales.">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --noir-absolu: #0A0A0A;
+            --noir-doux: #111111;
+            --noir-surface: #1A1A1A;
+            --creme-principal: #F7F5EF;
+            --creme-chaud: #F9F7F1;
+            --blanc-surface: #FFFFFF;
+            --or-signature: #C7A86D;
+            --or-riche: #D4B980;
+            --or-sombre: #A89158;
+            --or-subtil: rgba(199,168,109,.08);
+            --border-leger: rgba(10,10,10,.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--noir-absolu);
+            background: linear-gradient(135deg, var(--creme-principal) 0%, var(--creme-chaud) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--noir-absolu);
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--or-signature), transparent);
+        }
+        
+        .meta {
+            text-align: center;
+            color: rgba(10,10,10,.55);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            margin-top: 40px;
+        }
+        
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--noir-absolu);
+            margin-top: 60px;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 28px;
+            background: var(--or-signature);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--noir-doux);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--noir-absolu);
+        }
+        
+        strong {
+            font-weight: 600;
+            color: var(--noir-absolu);
+        }
+        
+        ul {
+            margin-left: 0;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--or-signature);
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: var(--blanc-surface);
+            border: 1px solid var(--border-leger);
+            padding: 32px;
+            margin: 32px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(10,10,10,.06), 0 1px 2px rgba(10,10,10,.08);
+            position: relative;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .info-box p {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        a {
+            color: var(--or-sombre);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            border-bottom: 1px solid rgba(199,168,109,.3);
+        }
+        
+        a:hover {
+            color: var(--or-signature);
+            border-bottom-color: var(--or-signature);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 60px;
+            color: var(--noir-absolu);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            border: 2px solid var(--noir-absolu);
+            padding: 14px 28px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        .back-link:hover {
+            background: var(--noir-absolu);
+            color: var(--creme-principal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(10,10,10,.15);
+            border-bottom: 2px solid var(--noir-absolu);
+        }
+        
+        hr {
+            margin: 50px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-leger), transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px;
+            }
+            
+            h1 {
+                font-size: 38px;
+            }
+            
+            h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mentions Légales</h1>
+        <p class="meta">Dernière mise à jour : Octobre 2025</p>
+        
+        <h2>1. Éditeur du Site</h2>
+        
+        <div class="info-box">
+            <p><strong>Nom :</strong> NOESIS</p>
+            <p><strong>Directrice de publication :</strong> Sandy Enault</p>
+            <p><strong>Email :</strong> noesisexplique@gmail.com</p>
+            <p><strong>Siège :</strong> Cherbourg-en-Cotentin, France</p>
+        </div>
+        
+        <p><strong>Statut :</strong> Entreprise individuelle en cours de création. NOESIS est actuellement un projet intellectuel porté par une personne, avec ambition de devenir structure collective à terme.</p>
+        
+        <h2>2. Hébergement</h2>
+        
+        <div class="info-box">
+            <p><strong>Hébergeur :</strong> GitHub Pages</p>
+            <p><strong>Société :</strong> GitHub, Inc.</p>
+            <p><strong>Adresse :</strong> 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis</p>
+            <p><strong>Site web :</strong> <a href="https://pages.github.com" target="_blank" rel="noopener">https://pages.github.com</a></p>
+        </div>
+        
+        <h2>3. Propriété Intellectuelle</h2>
+        
+        <h3>3.1. Contenus du Site</h3>
+        <p>L'ensemble des contenus présents sur ce site (textes, images, vidéos, graphismes, logos, icônes, analyses, méthodologies) sont la <strong>propriété exclusive de NOESIS</strong> ou font l'objet d'une autorisation d'utilisation.</p>
+        
+        <p>Toute reproduction, représentation, modification, publication, adaptation, totale ou partielle, des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de NOESIS.</p>
+        
+        <h3>3.2. Exceptions — Ressources Libres</h3>
+        <p>Les documents suivants peuvent être librement téléchargés, partagés et reproduits à des fins <strong>non commerciales</strong> :</p>
+        <ul>
+            <li>Plan de Sécurité (PDF gratuit)</li>
+            <li>Auto-tests d'évaluation</li>
+            <li>Ressources éducatives explicitement marquées comme libres de droits</li>
+        </ul>
+        
+        <p>Pour toute utilisation commerciale, professionnelle ou médiatique de ces ressources, merci de contacter : noesisexplique@gmail.com</p>
+        
+        <h3>3.3. Citations et Références</h3>
+        <p>Les citations d'auteurs tiers sont utilisées dans un cadre d'exception pédagogique et de droit de citation (article L122-5 du Code de la propriété intellectuelle). Les sources sont systématiquement mentionnées.</p>
+        
+        <h2>4. Protection des Données Personnelles (RGPD)</h2>
+        
+        <h3>4.1. Responsable du Traitement</h3>
+        <p>NOESIS est responsable du traitement des données personnelles collectées sur ce site.</p>
+        
+        <h3>4.2. Données Collectées</h3>
+        <p>Les données personnelles collectées peuvent inclure :</p>
+        <ul>
+            <li><strong>Formulaires de contact :</strong> Prénom, email, message</li>
+            <li><strong>Newsletter :</strong> Prénom, email</li>
+            <li><strong>Téléchargements :</strong> Email (pour envoi du PDF)</li>
+            <li><strong>Accompagnement :</strong> Informations fournies volontairement par le Client</li>
+        </ul>
+        
+        <h3>4.3. Finalités du Traitement</h3>
+        <ul>
+            <li>Répondre aux demandes de contact</li>
+            <li>Envoyer la newsletter (consentement explicite, désinscription à tout moment)</li>
+            <li>Fournir les ressources demandées (Plan de Sécurité, guides)</li>
+            <li>Assurer le suivi des prestations d'accompagnement</li>
+        </ul>
+        
+        <h3>4.4. Durée de Conservation</h3>
+        <ul>
+            <li><strong>Demandes de contact :</strong> 3 ans après dernier échange</li>
+            <li><strong>Newsletter :</strong> Jusqu'à désinscription</li>
+            <li><strong>Accompagnement :</strong> 5 ans après fin de prestation (obligations légales)</li>
+        </ul>
+        
+        <h3>4.5. Vos Droits</h3>
+        <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+        <ul>
+            <li><strong>Droit d'accès :</strong> Obtenir copie de vos données</li>
+            <li><strong>Droit de rectification :</strong> Corriger données inexactes</li>
+            <li><strong>Droit à l'effacement :</strong> Supprimer vos données</li>
+            <li><strong>Droit d'opposition :</strong> Vous opposer à un traitement</li>
+            <li><strong>Droit à la portabilité :</strong> Récupérer vos données dans format structuré</li>
+        </ul>
+        
+        <p>Pour exercer ces droits, contactez : <strong>noesisexplique@gmail.com</strong></p>
+        
+        <h3>4.6. Sécurité des Données</h3>
+        <p>NOESIS met en œuvre toutes mesures techniques et organisationnelles appropriées pour garantir la sécurité et la confidentialité de vos données personnelles.</p>
+        
+        <h3>4.7. Cookies</h3>
+        <p>Ce site n'utilise actuellement <strong>aucun cookie</strong> de tracking, publicité ou analytics. Si cette politique évolue, vous en serez informé par bandeau de consentement conforme RGPD.</p>
+        
+        <h2>5. Liens Hypertextes</h2>
+        
+        <h3>5.1. Liens Sortants</h3>
+        <p>Le site NOESIS peut contenir des liens vers des sites externes (numéros d'urgence, associations, institutions). NOESIS ne peut être tenue responsable du contenu de ces sites tiers.</p>
+        
+        <h3>5.2. Liens Entrants</h3>
+        <p>Tout site souhaitant établir un lien vers le site NOESIS peut le faire librement, à condition que ce lien :</p>
+        <ul>
+            <li>Ouvre le site dans une nouvelle fenêtre</li>
+            <li>Ne dénature pas l'information</li>
+            <li>Ne présente pas NOESIS de manière trompeuse</li>
+        </ul>
+        
+        <h2>6. Limitation de Responsabilité</h2>
+        
+        <h3>6.1. Contenu du Site</h3>
+        <p>NOESIS s'efforce de fournir des informations aussi exactes et à jour que possible. Toutefois, NOESIS ne peut garantir l'exactitude, la complétude ou l'actualité des informations diffusées.</p>
+        
+        <p>Les contenus de ce site sont fournis à <strong>titre éducatif et informatif</strong>. Ils ne constituent en aucun cas :</p>
+        <ul>
+            <li>Un diagnostic médical ou psychologique</li>
+            <li>Un conseil juridique</li>
+            <li>Une prise en charge thérapeutique</li>
+        </ul>
+        
+        <h3>6.2. Disponibilité du Site</h3>
+        <p>NOESIS s'efforce d'assurer l'accessibilité du site 24h/24, 7j/7, mais ne peut être tenue responsable en cas d'interruption, de dysfonctionnement ou d'indisponibilité temporaire.</p>
+        
+        <h3>6.3. Urgences</h3>
+        <p>NOESIS n'est pas un service d'urgence. En cas de danger immédiat, contactez :</p>
+        <ul>
+            <li><strong>17</strong> : Police / Gendarmerie</li>
+            <li><strong>3919</strong> : Violences Femmes Info</li>
+            <li><strong>15</strong> : SAMU</li>
+            <li><strong>114</strong> : Urgence SMS</li>
+        </ul>
+        
+        <h2>7. Droit Applicable et Juridiction</h2>
+        
+        <p>Les présentes mentions légales sont régies par le <strong>droit français</strong>. Tout litige relatif à l'utilisation du site sera soumis à la compétence exclusive des tribunaux de Cherbourg-en-Cotentin (France).</p>
+        
+        <h2>8. Contact</h2>
+        
+        <p>Pour toute question concernant ces mentions légales ou le fonctionnement du site :</p>
+        
+        <div class="info-box">
+            <p><strong>Email :</strong> noesisexplique@gmail.com</p>
+            <p><strong>Instagram :</strong> <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener">@noesis_analyse</a></p>
+            <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener">NOESIS Analyse</a></p>
+        </div>
+        
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #DDD;">
+        
+        <p style="text-align: center; color: #666; font-size: 14px;">
+            © 2025 NOESIS — Tous droits réservés
+        </p>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</body>
+</html>
