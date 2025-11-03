@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autotest TDAH Adaptatif — Évaluation Multidimensionnelle | NOÉSIS</title>
+  <meta name="description" content="Outil d'auto-évaluation scientifiquement calibré pour le Trouble du Déficit de l'Attention avec ou sans Hyperactivité (TDAH). Analyse par âge, contextes multiples et exportation professionnelle.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Autotest TDAH Adaptatif — NOÉSIS">
+  <meta property="og:description" content="Évaluation rigoureuse du TDAH avec adaptation par âge, analyse contextuelle et profil personnalisé.">
+  <meta property="og:type" content="website">
+  
+  <!-- Polices Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==================== VARIABLES CSS NOÉSIS ==================== */
+    :root {
+      /* Palette Chromatique NOÉSIS */
+      --noir-absolu: #0A0A0A;
+      --noir-doux: #111111;
+      --noir-surface: #1A1A1A;
+      --creme-principal: #F7F5EF;
+      --creme-chaud: #F9F7F1;
+      --blanc-surface: #FFFFFF;
+      --or-signature: #C7A86D;
+      --or-riche: #D4B980;
+      --or-sombre: #A89158;
+      --or-subtil: rgba(199,168,109,.08);
+      --or-leger: rgba(199,168,109,.15);
+      --or-moyen: rgba(199,168,109,.25);
+      
+      /* Dimensions Thématiques */
+      --inattention-color: #2563eb;
+      --inattention-bg: rgba(37,99,235,0.08);
+      --hyperactivite-color: #dc2626;
+      --hyperactivite-bg: rgba(220,38,38,0.08);
+      --executif-color: #7c3aed;
+      --executif-bg: rgba(124,58,237,0.08);
+      --emotion-color: #ea580c;
+      --emotion-bg: rgba(234,88,12,0.08);
+      
+      /* Typographie */
+      --fs-xs: 12px; --fs-sm: 14px; --fs-md: 18px;
+      --fs-lg: 21px; --fs-xl: 24px; --fs-2xl: 32px;
+      --fs-3xl: 42px; --fs-4xl: 56px;
+      --lh-tight: 1.2; --lh-normal: 1.5; --lh-relaxed: 1.7;
+      
+      /* Spacing (échelle 8px) */
+      --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-6: 24px;
+      --s-8: 32px; --s-12: 48px; --s-16: 64px; --s-20: 80px;
+      
+      /* Ombres */
+      --shadow-soft: 0 2px 8px rgba(10,10,10,.08), 0 1px 2px rgba(10,10,10,.12);
+      --shadow-medium: 0 4px 16px rgba(10,10,10,.1), 0 2px 4px rgba(10,10,10,.15);
+      --shadow-large: 0 8px 32px rgba(10,10,10,.12), 0 2px 8px rgba(10,10,10,.18);
+      
+      /* Bordures */
+      --border-subtil: rgba(10,10,10,.08);
+      --border-leger: rgba(10,10,10,.12);
+      --border-visible: rgba(10,10,10,.18);
+      
+      /* Rayons */
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+      --radius-xl: 16px; --radius-2xl: 24px; --radius-pill: 9999px;
+      
+      /* Transitions */
+      --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms; --duration-normal: 250ms; --duration-slow: 350ms;
+    }
+    
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--noir-absolu);
+      background: var(--creme-principal);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: var(--lh-tight);
+    }
+    
+    /* ==================== LAYOUT ==================== */
+    .app-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--s-12) var(--s-6);
+    }
+    
+    .screen {
+      display: none;
+    }
+    
+    .screen.active {
+      display: block;
+      animation: fadeIn var(--duration-normal) var(--ease-standard);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ==================== ÉCRAN INTRO ==================== */
+    .intro-header {
+      text-align: center;
+      margin-bottom: var(--s-12);
+    }
+    
+    .icon-container {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--s-4);
+      background: linear-gradient(135deg, var(--or-subtil), var(--or-leger));
+      border: 2px solid var(--or-signature);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .icon-svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--or-signature);
+      fill: none;
+    }
+    
+    .intro-title {
+      font-size: var(--fs-3xl);
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-3);
+    }
+    
+    .intro-subtitle {
+      font-size: var(--fs-md);
+      color: rgba(10,10,10,0.6);
+      font-weight: 400;
+    }
+    
+    /* Cartes */
+    .card {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-12);
+      margin-bottom: var(--s-8);
+      box-shadow: var(--shadow-large);
+    }
+    
+    .card h2 {
+      font-size: var(--fs-xl);
+      margin-bottom: var(--s-6);
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+    }
+    
+    .card-icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--or-signature);
+    }
+    
+    /* Warning Box */
+    .warning-box {
+      background: #fffbeb;
+      border-left: 4px solid var(--or-signature);
+      border-radius: var(--radius-md);
+      padding: var(--s-6);
+      margin-bottom: var(--s-8);
+    }
+    
+    .warning-box h3 {
+      font-size: var(--fs-lg);
+      margin-bottom: var(--s-3);
+      display: flex;
+      align-items: center;
+      gap: var(--s-2);
+    }
+    
+    .warning-box p {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.75);
+    }
+    
+    /* Dimensions List */
+    .dimensions-list {
+      display: grid;
+      gap: var(--s-4);
+    }
+    
+    .dimension-item {
+      background: var(--creme-chaud);
+      border-left: 3px solid var(--inattention-color);
+      border-radius: var(--radius-md);
+      padding: var(--s-4);
+      transition: transform var(--duration-normal) var(--ease-standard);
+    }
+    
+    .dimension-item:hover {
+      transform: translateX(4px);
+    }
+    
+    .dimension-item.hyperactivite { border-left-color: var(--hyperactivite-color); }
+    .dimension-item.executif { border-left-color: var(--executif-color); }
+    .dimension-item.emotion { border-left-color: var(--emotion-color); }
+    
+    .dimension-item h4 {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+    }
+    
+    .dimension-item p {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.7);
+      line-height: var(--lh-normal);
+    }
+    
+    /* Steps */
+    .steps-list {
+      display: grid;
+      gap: var(--s-4);
+      margin-top: var(--s-6);
+    }
+    
+    .step-item {
+      display: flex;
+      gap: var(--s-4);
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--or-signature);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: var(--fs-sm);
+    }
+    
+    .step-content h5 {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+    }
+    
+    .step-content p {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.7);
+    }
+    
+    /* Consentement */
+    .consent-section {
+      margin-top: var(--s-8);
+      padding: var(--s-6);
+      background: var(--creme-chaud);
+      border-radius: var(--radius-lg);
+    }
+    
+    .consent-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-3);
+      cursor: pointer;
+    }
+    
+    .consent-checkbox input[type="checkbox"] {
+      margin-top: 4px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    
+    .consent-checkbox label {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      cursor: pointer;
+    }
+    
+    /* Anamnèse */
+    .anamnese-section {
+      margin-top: var(--s-8);
+    }
+    
+    .anamnese-field {
+      margin-bottom: var(--s-6);
+    }
+    
+    .anamnese-field label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+      font-size: var(--fs-sm);
+    }
+    
+    .anamnese-field input,
+    .anamnese-field select {
+      width: 100%;
+      padding: var(--s-3);
+      border: 1.5px solid var(--border-leger);
+      border-radius: var(--radius-md);
+      font-size: var(--fs-sm);
+      font-family: inherit;
+      transition: border-color var(--duration-normal) var(--ease-standard);
+    }
+    
+    .anamnese-field input:focus,
+    .anamnese-field select:focus {
+      outline: none;
+      border-color: var(--or-signature);
+    }
+    
+    .anamnese-hint {
+      font-size: var(--fs-xs);
+      color: rgba(10,10,10,0.6);
+      margin-top: var(--s-2);
+    }
+    
+    /* Boutons */
+    .btn {
+      padding: var(--s-4) var(--s-12);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-standard);
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: var(--or-signature);
+      color: white;
+    }
+    
+    .btn-primary:hover:not(:disabled) {
+      background: var(--or-riche);
+      transform: scale(1.02);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--or-sombre);
+      border: 1.5px solid var(--or-signature);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--or-subtil);
+    }
+    
+    .btn-container {
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      margin-top: var(--s-8);
+    }
+    
+    /* ==================== ÉCRAN TEST ==================== */
+    .test-header {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--s-6);
+      margin-bottom: var(--s-8);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .progress-container {
+      margin-bottom: var(--s-4);
+    }
+    
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--s-2);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--creme-principal);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+      border-radius: var(--radius-pill);
+      transition: width var(--duration-slow) var(--ease-spring);
+    }
+    
+    .dimension-badge {
+      display: inline-block;
+      padding: var(--s-2) var(--s-4);
+      background: var(--inattention-bg);
+      color: var(--inattention-color);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .dimension-badge.hyperactivite { background: var(--hyperactivite-bg); color: var(--hyperactivite-color); }
+    .dimension-badge.executif { background: var(--executif-bg); color: var(--executif-color); }
+    .dimension-badge.emotion { background: var(--emotion-bg); color: var(--emotion-color); }
+    
+    /* Question Container */
+    .question-container {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-12);
+      box-shadow: var(--shadow-large);
+      margin-bottom: var(--s-8);
+    }
+    
+    .question-number {
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      color: rgba(10,10,10,0.5);
+      margin-bottom: var(--s-3);
+    }
+    
+    .question-text {
+      font-size: var(--fs-xl);
+      line-height: var(--lh-normal);
+      margin-bottom: var(--s-8);
+      color: var(--noir-absolu);
+    }
+    
+    /* Échelle de Réponses */
+    .answer-options {
+      display: grid;
+      gap: var(--s-3);
+    }
+    
+    .answer-option {
+      padding: var(--s-4);
+      background: var(--creme-chaud);
+      border: 2px solid transparent;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-standard);
+    }
+    
+    .answer-option:hover {
+      border-color: var(--or-leger);
+      background: var(--blanc-surface);
+    }
+    
+    .answer-option.selected {
+      border-color: var(--or-signature);
+      background: var(--or-subtil);
+    }
+    
+    .answer-option input[type="radio"] {
+      display: none;
+    }
+    
+    .answer-label {
+      display: block;
+      cursor: pointer;
+    }
+    
+    .answer-main {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+    }
+    
+    .answer-sublabel {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.65);
+      line-height: var(--lh-normal);
+    }
+    
+    /* Navigation Footer */
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--s-4);
+    }
+    
+    /* Masquer bouton Suivant avec progression automatique */
+    #next-btn {
+      display: none;
+    }
+    
+    .nav-footer .btn {
+      flex: 1;
+      max-width: 200px;
+    }
+    
+    .questions-remaining {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.6);
+      text-align: center;
+    }
+    
+    /* ==================== ÉCRAN RÉSULTATS ==================== */
+    .results-hero {
+      text-align: center;
+      margin-bottom: var(--s-12);
+    }
+    
+    .score-hero {
+      font-size: 120px;
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--or-signature);
+      line-height: 1;
+      margin-bottom: var(--s-3);
+    }
+    
+    .score-fraction {
+      font-size: var(--fs-xl);
+      color: rgba(10,10,10,0.4);
+      font-weight: 400;
+    }
+    
+    .level-badge {
+      display: inline-block;
+      padding: var(--s-3) var(--s-8);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-md);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--s-4);
+    }
+    
+    .level-badge.minimal { background: #d1fae5; color: #065f46; }
+    .level-badge.low { background: #dbeafe; color: #1e40af; }
+    .level-badge.moderate { background: #fef3c7; color: #92400e; }
+    .level-badge.high { background: #fee2e2; color: #991b1b; }
+    
+    .score-message {
+      font-size: var(--fs-lg);
+      color: rgba(10,10,10,0.75);
+      line-height: var(--lh-relaxed);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Profil Section */
+    .profile-section {
+      background: var(--creme-chaud);
+      border-radius: var(--radius-xl);
+      padding: var(--s-8);
+      margin-bottom: var(--s-8);
+    }
+    
+    .profile-section h2 {
+      font-size: var(--fs-2xl);
+      margin-bottom: var(--s-6);
+    }
+    
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--s-4);
+      margin-bottom: var(--s-6);
+    }
+    
+    .profile-item {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-md);
+      padding: var(--s-4);
+    }
+    
+    .profile-label {
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(10,10,10,0.6);
+      margin-bottom: var(--s-2);
+      font-weight: 600;
+    }
+    
+    .profile-value {
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      color: var(--noir-absolu);
+    }
+    
+    /* Dimensions Analysis */
+    .dimension-analysis {
+      display: grid;
+      gap: var(--s-6);
+    }
+    
+    .dimension-card {
+      background: var(--blanc-surface);
+      border-left: 4px solid var(--inattention-color);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .dimension-card.hyperactivite { border-left-color: var(--hyperactivite-color); }
+    .dimension-card.executif { border-left-color: var(--executif-color); }
+    .dimension-card.emotion { border-left-color: var(--emotion-color); }
+    
+    .dimension-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--s-4);
+    }
+    
+    .dimension-name {
+      font-size: var(--fs-lg);
+      font-weight: 600;
+    }
+    
+    .dimension-score-display {
+      font-size: var(--fs-xl);
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--or-signature);
+    }
+    
+    .dimension-bar-container {
+      height: 12px;
+      background: var(--creme-principal);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-bottom: var(--s-4);
+    }
+    
+    .dimension-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--inattention-color), rgba(37,99,235,0.7));
+      border-radius: var(--radius-pill);
+      transition: width var(--duration-slow) var(--ease-spring);
+    }
+    
+    .dimension-card.hyperactivite .dimension-bar-fill {
+      background: linear-gradient(90deg, var(--hyperactivite-color), rgba(220,38,38,0.7));
+    }
+    
+    .dimension-card.executif .dimension-bar-fill {
+      background: linear-gradient(90deg, var(--executif-color), rgba(124,58,237,0.7));
+    }
+    
+    .dimension-card.emotion .dimension-bar-fill {
+      background: linear-gradient(90deg, var(--emotion-color), rgba(234,88,12,0.7));
+    }
+    
+    .dimension-interpretation {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.75);
+    }
+    
+    /* Recommandations */
+    .recommendations-section {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-12);
+      box-shadow: var(--shadow-large);
+      margin-bottom: var(--s-8);
+    }
+    
+    .recommendations-section h2 {
+      font-size: var(--fs-2xl);
+      margin-bottom: var(--s-6);
+    }
+    
+    .recommendation-list {
+      display: grid;
+      gap: var(--s-4);
+    }
+    
+    .recommendation-item {
+      padding: var(--s-4);
+      background: var(--creme-chaud);
+      border-left: 3px solid var(--or-signature);
+      border-radius: var(--radius-md);
+    }
+    
+    .recommendation-item h4 {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+    }
+    
+    .recommendation-item p {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.75);
+      line-height: var(--lh-relaxed);
+    }
+    
+    /* Export Actions */
+    .export-actions {
+      display: flex;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: var(--s-8);
+    }
+    
+    .export-actions .btn {
+      flex: 1;
+      min-width: 180px;
+    }
+    
+    /* Disclaimer */
+    .disclaimer-box {
+      background: var(--creme-chaud);
+      border: 1.5px solid var(--border-leger);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+      margin-top: var(--s-12);
+    }
+    
+    .disclaimer-box h4 {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      margin-bottom: var(--s-3);
+    }
+    
+    .disclaimer-box p {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.75);
+      margin-bottom: var(--s-3);
+    }
+    
+    .disclaimer-box p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .emergency-contact {
+      margin-top: var(--s-4);
+      padding-top: var(--s-4);
+      border-top: 1px solid var(--border-subtil);
+      font-weight: 600;
+    }
+    
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .app-container {
+        padding: var(--s-6) var(--s-4);
+      }
+      
+      .intro-title {
+        font-size: var(--fs-2xl);
+      }
+      
+      .question-text {
+        font-size: var(--fs-lg);
+      }
+      
+      .score-hero {
+        font-size: 80px;
+      }
+      
+      .nav-footer {
+        flex-direction: column;
+      }
+      
+      .nav-footer .btn {
+        max-width: 100%;
+        width: 100%;
+      }
+      
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .intro-title {
+        font-size: var(--fs-xl);
+      }
+      
+      .score-hero {
+        font-size: 64px;
+      }
+      
+      .btn-container {
+        flex-direction: column;
+      }
+      
+      .btn-container .btn {
+        width: 100%;
+      }
+    }
+    
+    /* ==================== PRINT ==================== */
+    @media print {
+      body {
+        background: white;
+      }
+      
+      .export-actions,
+      .btn {
+        display: none !important;
+      }
+      
+      .card,
+      .question-container,
+      .recommendations-section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="app" class="app-container">
+    
+    <!-- ==================== ÉCRAN INTRO ==================== -->
+    <div id="intro-screen" class="screen active">
+      
+      <div class="intro-header">
+        <div class="icon-container">
+          <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h1 class="intro-title">Autotest TDAH Adaptatif</h1>
+        <p class="intro-subtitle">Évaluation multidimensionnelle avec calibration par âge et analyse contextuelle</p>
+      </div>
+      
+      <div class="warning-box">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          Avertissement Important
+        </h3>
+        <p>
+          Cet outil est destiné à l'<strong>auto-évaluation informative</strong> et ne remplace en aucun cas un diagnostic clinique. Le Trouble du Déficit de l'Attention avec ou sans Hyperactivité (TDAH) ne peut être diagnostiqué que par un professionnel qualifié (psychiatre, neuropsychologue, neuropédiatre) après un bilan complet.
+        </p>
+        <p>
+          Les résultats reflètent votre perception subjective actuelle et doivent être interprétés avec prudence. En cas de scores élevés ou de souffrance significative, consultez un spécialiste.
+        </p>
+      </div>
+      
+      <div class="card">
+        <h2>
+          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+          Méthodologie
+        </h2>
+        <p>
+          Ce questionnaire évalue <strong>4 dimensions cliniques</strong> du TDAH selon les critères DSM-5-TR, adaptées aux groupes d'âge (enfants, adolescents, adultes, seniors). L'analyse intègre des <strong>modulateurs contextuels</strong> (âge de début, multi-contextes, type d'évaluateur) et calcule un <strong>indice de risque composite</strong> (0–100) tenant compte des facteurs situationnels.
+        </p>
+        
+        <h3 style="font-size: var(--fs-lg); margin-top: var(--s-6); margin-bottom: var(--s-4);">Dimensions Évaluées</h3>
+        <div class="dimensions-list">
+          <div class="dimension-item inattention">
+            <h4>Inattention</h4>
+            <p>Difficulté à maintenir l'attention, distractibilité, oublis fréquents, difficultés organisationnelles.</p>
+          </div>
+          <div class="dimension-item hyperactivite">
+            <h4>Hyperactivité / Impulsivité</h4>
+            <p>Agitation motrice, incapacité à rester en place, difficulté à attendre, tendance à interrompre.</p>
+          </div>
+          <div class="dimension-item executif">
+            <h4>Fonctions Exécutives</h4>
+            <p>Planification, mémoire de travail, flexibilité cognitive, inhibition, initiation des tâches.</p>
+          </div>
+          <div class="dimension-item emotion">
+            <h4>Régulation Émotionnelle</h4>
+            <p>Réactivité émotionnelle excessive, difficultés de gestion des frustrations, instabilité de l'humeur.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>
+          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+          Comment ça marche
+        </h2>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h5>Informations Préliminaires</h5>
+              <p>Renseignez votre âge, le contexte d'impact et quelques données anamnestiques essentielles (optionnel mais recommandé pour affiner l'analyse).</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h5>Questionnaire (40 items)</h5>
+              <p>Répondez à 40 questions sur une échelle de fréquence à 4 points (Jamais → Systématiquement). Chaque item évalue un comportement observable spécifique.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h5>Analyse Personnalisée</h5>
+              <p>Obtenez vos scores par dimension, un profil global, un indice de risque composite et des recommandations adaptées à votre situation.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h5>Export & Partage</h5>
+              <p>Téléchargez un PDF professionnel ou exportez les données JSON pour un suivi longitudinal ou une consultation spécialisée.</p>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: var(--s-6); font-size: var(--fs-sm); color: rgba(10,10,10,0.6);">
+          <strong>Durée estimée :</strong> 8–12 minutes • <strong>Nombre de questions :</strong> 40 • <strong>Confidentialité :</strong> 100% locale (aucune donnée transmise)
+        </p>
+      </div>
+      
+      <!-- Anamnèse Préliminaire -->
+      <div class="card anamnese-section">
+        <h2>Informations Préliminaires (Optionnel)</h2>
+        <p style="margin-bottom: var(--s-6); font-size: var(--fs-sm); color: rgba(10,10,10,0.7);">
+          Ces informations permettent d'affiner l'interprétation des résultats selon votre profil. Vous pouvez les laisser vides si vous le souhaitez.
+        </p>
+        
+        <div class="anamnese-field">
+          <label for="user-age">Âge</label>
+          <input type="number" id="user-age" min="6" max="99" placeholder="Ex : 28">
+          <p class="anamnese-hint">L'analyse sera calibrée selon les seuils normatifs de votre groupe d'âge.</p>
+        </div>
+        
+        <div class="anamnese-field">
+          <label for="user-name">Nom / Initiales (pour le PDF)</label>
+          <input type="text" id="user-name" placeholder="Ex : A.D. ou Anonymous" maxlength="50">
+          <p class="anamnese-hint">Optionnel. Utilisé uniquement pour personnaliser le document exporté.</p>
+        </div>
+        
+        <div class="anamnese-field">
+          <label for="onset-age">Les difficultés ont-elles commencé avant 12 ans ?</label>
+          <select id="onset-age">
+            <option value="unknown">Je ne sais pas / Non précisé</option>
+            <option value="yes">Oui, avant 12 ans</option>
+            <option value="no">Non, après 12 ans</option>
+          </select>
+          <p class="anamnese-hint">Critère diagnostique DSM-5 : début des symptômes avant 12 ans.</p>
+        </div>
+        
+        <div class="anamnese-field">
+          <label for="multi-context">Les difficultés se manifestent-elles dans plusieurs contextes ?</label>
+          <select id="multi-context">
+            <option value="unknown">Je ne sais pas</option>
+            <option value="yes">Oui (≥2 contextes : maison, école/travail, social)</option>
+            <option value="no">Non (un seul contexte principalement)</option>
+          </select>
+          <p class="anamnese-hint">L'impact dans plusieurs domaines de vie renforce la probabilité clinique.</p>
+        </div>
+        
+        <div class="anamnese-field">
+          <label for="evaluator-type">Vous répondez en tant que :</label>
+          <select id="evaluator-type">
+            <option value="self">Personne concernée (auto-évaluation)</option>
+            <option value="parent">Parent / Tuteur</option>
+            <option value="teacher">Enseignant / Éducateur</option>
+            <option value="partner">Conjoint / Proche</option>
+            <option value="other">Autre</option>
+          </select>
+          <p class="anamnese-hint">Le type d'évaluateur influence la formulation de l'analyse narrative.</p>
+        </div>
+      </div>
+      
+      <!-- Consentement -->
+      <div class="consent-section">
+        <div class="consent-checkbox">
+          <input type="checkbox" id="consent-check">
+          <label for="consent-check">
+            J'ai lu et compris les avertissements. Je confirme que cet outil est utilisé à des fins informatives uniquement et qu'il ne remplace pas une consultation avec un professionnel de santé qualifié. Je comprends que toutes mes données restent locales et ne sont transmises à aucun serveur.
+          </label>
+        </div>
+      </div>
+      
+      <div class="btn-container">
+        <button class="btn btn-primary" id="start-btn" disabled>Démarrer l'Évaluation</button>
+      </div>
+      
+    </div>
+    
+    <!-- ==================== ÉCRAN TEST ==================== -->
+    <div id="test-screen" class="screen">
+      
+      <div class="test-header">
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Progression</span>
+            <span id="progress-text">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--s-3);">
+          <span class="dimension-badge" id="current-dimension-badge">Inattention</span>
+        </div>
+      </div>
+      
+      <div class="question-container">
+        <p class="question-number" id="question-number">Question 1/40</p>
+        <h2 class="question-text" id="question-text"></h2>
+        
+        <div class="answer-options" id="answer-options">
+          <!-- Options générées dynamiquement -->
+        </div>
+      </div>
+      
+      <div class="nav-footer">
+        <button class="btn btn-secondary" id="prev-btn" style="visibility: hidden;">← Précédent</button>
+        <div class="questions-remaining" id="questions-remaining"></div>
+        <button class="btn btn-primary" id="next-btn" disabled>Suivant →</button>
+      </div>
+      
+    </div>
+    
+    <!-- ==================== ÉCRAN RÉSULTATS ==================== -->
+    <div id="results-screen" class="screen">
+      
+      <div class="results-hero">
+        <div class="score-hero" id="total-score-display">0</div>
+        <p class="score-fraction">/ 120</p>
+        <div class="level-badge" id="global-level-badge">Niveau</div>
+        <p class="score-message" id="score-message"></p>
+      </div>
+      
+      <!-- Profil Anamnestique -->
+      <div class="profile-section" id="profile-section">
+        <h2>Profil & Contexte</h2>
+        <div class="profile-grid" id="profile-grid">
+          <!-- Généré dynamiquement -->
+        </div>
+        <div style="margin-top: var(--s-6);">
+          <p style="font-size: var(--fs-sm); color: rgba(10,10,10,0.7); line-height: var(--lh-relaxed);">
+            <strong>Indice de Risque Composite :</strong> <span id="risk-index-value" style="font-weight: 600; color: var(--or-signature);"></span> / 100
+          </p>
+          <p style="font-size: var(--fs-xs); color: rgba(10,10,10,0.6); margin-top: var(--s-2);">
+            Cet indice intègre les scores bruts, l'âge, les contextes d'impact et la qualité des réponses (détection de patterns uniformes). Il fournit une estimation globale du niveau de difficulté.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Analyse Dimensionnelle -->
+      <div class="card">
+        <h2>Analyse par Dimension</h2>
+        <div class="dimension-analysis" id="dimension-analysis">
+          <!-- Généré dynamiquement -->
+        </div>
+      </div>
+      
+      <!-- Analyse Approfondie du Profil -->
+      <div class="card" style="background: linear-gradient(135deg, #F7F5EF 0%, #F9F7F1 100%); border: 2px solid var(--or-signature);">
+        <h2 style="display: flex; align-items: center; gap: var(--s-3);">
+          <svg class="card-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Analyse Approfondie du Profil
+        </h2>
+        <div id="profile-analysis-container">
+          <!-- Généré dynamiquement -->
+        </div>
+      </div>
+      
+      <!-- Recommandations -->
+      <div class="recommendations-section">
+        <h2>Recommandations Personnalisées</h2>
+        <div class="recommendation-list" id="recommendation-list">
+          <!-- Généré dynamiquement -->
+        </div>
+      </div>
+      
+      <!-- Actions Export -->
+      <div class="export-actions">
+        <button class="btn btn-primary" id="pdf-btn">📄 Télécharger PDF</button>
+        <button class="btn btn-secondary" id="email-btn">✉️ Envoyer par Email</button>
+        <button class="btn btn-secondary" id="json-btn">📊 Exporter JSON</button>
+        <button class="btn btn-secondary" id="reset-btn">🔄 Recommencer</button>
+      </div>
+      
+      <!-- Disclaimer Final -->
+      <div class="disclaimer-box">
+        <h4>Nature et Limites de l'Outil</h4>
+        <p>
+          Ce questionnaire constitue un <strong>outil de sensibilisation et de pré-évaluation</strong>, conçu selon des standards méthodologiques rigoureux mais <strong>non validé psychométriquement</strong> par protocole scientifique formel (validation convergente, fidélité test-retest, analyse factorielle confirmatoire).
+        </p>
+        <p>
+          Les résultats reflètent votre <strong>perception subjective</strong> à un instant donné et <strong>ne constituent en aucun cas un diagnostic clinique</strong>.
+        </p>
+        <p>
+          En cas de scores élevés, de détresse significative ou de questionnement persistant, nous recommandons fortement de <strong>consulter un professionnel qualifié</strong> (psychiatre, neuropsychologue, neuropédiatre).
+        </p>
+        <p class="emergency-contact">
+          <strong>Ressources Spécialisées France :</strong><br>
+          • Association HyperSupers TDAH France : <a href="https://www.tdah-france.fr" target="_blank">www.tdah-france.fr</a><br>
+          • Lignes d'écoute : 3114 (prévention suicide), Fil Santé Jeunes 0800 235 236
+        </p>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <!-- ==================== SCRIPTS EXTERNES (PDF) ==================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <script>
+    // ==================== ÉTAT GLOBAL ====================
+    const state = {
+      currentScreen: 'intro',
+      answers: {},
+      currentQuestionIndex: 0,
+      anamnesis: {
+        age: null,
+        name: '',
+        onsetAge: 'unknown',
+        multiContext: 'unknown',
+        evaluatorType: 'self'
+      }
+    };
+    
+    // ==================== DONNÉES — QUESTIONS ====================
+    const QUESTIONS = [
+      // INATTENTION (10 items)
+      { id: 1, text: "J'ai du mal à maintenir mon attention sur des tâches longues ou répétitives.", dim: "inattention" },
+      { id: 2, text: "Je fais fréquemment des erreurs d'inattention dans mon travail ou mes études.", dim: "inattention" },
+      { id: 3, text: "J'ai l'impression de ne pas écouter quand on me parle directement.", dim: "inattention" },
+      { id: 4, text: "J'ai du mal à suivre les instructions jusqu'au bout et à terminer les tâches.", dim: "inattention" },
+      { id: 5, text: "J'évite ou reporte systématiquement les tâches nécessitant un effort mental soutenu.", dim: "inattention" },
+      { id: 6, text: "Je perds fréquemment des objets essentiels (clés, téléphone, documents).", dim: "inattention" },
+      { id: 7, text: "Je suis facilement distrait·e par des stimuli externes (bruits, mouvements).", dim: "inattention" },
+      { id: 8, text: "J'oublie des rendez-vous, des échéances ou des tâches du quotidien.", dim: "inattention" },
+      { id: 9, text: "J'ai des difficultés à organiser mes activités et à gérer mon temps.", dim: "inattention" },
+      { id: 10, text: "Je passe d'une tâche à l'autre sans les terminer, avec une impression de dispersion mentale.", dim: "inattention" },
+      
+      // HYPERACTIVITÉ / IMPULSIVITÉ (10 items)
+      { id: 11, text: "Je bouge sans arrêt les mains, les pieds ou je m'agite sur ma chaise.", dim: "hyperactivite" },
+      { id: 12, text: "J'ai du mal à rester assis·e longtemps dans des situations qui l'exigent.", dim: "hyperactivite" },
+      { id: 13, text: "Je ressens une tension interne, une sensation d'être sous pression constante.", dim: "hyperactivite" },
+      { id: 14, text: "J'ai des difficultés à me détendre ou à pratiquer des activités calmes.", dim: "hyperactivite" },
+      { id: 15, text: "Je parle de manière excessive, parfois sans pouvoir m'arrêter.", dim: "hyperactivite" },
+      { id: 16, text: "Je réponds aux questions avant qu'elles soient terminées.", dim: "hyperactivite" },
+      { id: 17, text: "J'ai du mal à attendre mon tour dans les files d'attente ou les conversations.", dim: "hyperactivite" },
+      { id: 18, text: "J'interromps les autres ou je m'impose dans leurs activités.", dim: "hyperactivite" },
+      { id: 19, text: "Je prends des décisions impulsives sans réfléchir aux conséquences.", dim: "hyperactivite" },
+      { id: 20, text: "J'ai tendance à agir sous le coup de l'émotion, avec des regrets ensuite.", dim: "hyperactivite" },
+      
+      // FONCTIONS EXÉCUTIVES (10 items)
+      { id: 21, text: "J'ai des difficultés à planifier les étapes d'un projet complexe.", dim: "executif" },
+      { id: 22, text: "Je peine à estimer le temps nécessaire pour accomplir une tâche.", dim: "executif" },
+      { id: 23, text: "Je procrastine systématiquement, même pour des choses importantes.", dim: "executif" },
+      { id: 24, text: "J'ai du mal à gérer plusieurs informations simultanément (mémoire de travail).", dim: "executif" },
+      { id: 25, text: "Je me sens bloqué·e quand il faut passer d'une activité à une autre (rigidité).", dim: "executif" },
+      { id: 26, text: "J'ai du mal à m'auto-corriger ou à ajuster mon comportement selon le contexte.", dim: "executif" },
+      { id: 27, text: "Je me lance dans une tâche sans préparation ni stratégie claire.", dim: "executif" },
+      { id: 28, text: "J'ai des difficultés à inhiber mes premières réactions ou mes impulsions.", dim: "executif" },
+      { id: 29, text: "Je ne parviens pas à maintenir un effort mental sur la durée nécessaire.", dim: "executif" },
+      { id: 30, text: "J'oublie rapidement les consignes ou les informations qu'on vient de me donner.", dim: "executif" },
+      
+      // RÉGULATION ÉMOTIONNELLE (10 items)
+      { id: 31, text: "Je réagis de manière disproportionnée face aux contrariétés mineures.", dim: "emotion" },
+      { id: 32, text: "Mon humeur change rapidement et de façon imprévisible.", dim: "emotion" },
+      { id: 33, text: "Je vis mes émotions avec une intensité beaucoup plus forte que les autres.", dim: "emotion" },
+      { id: 34, text: "J'ai du mal à me calmer une fois que je suis énervé·e ou frustré·e.", dim: "emotion" },
+      { id: 35, text: "Je suis facilement blessé·e par les critiques ou les remarques.", dim: "emotion" },
+      { id: 36, text: "J'éprouve une sensation chronique d'ennui ou d'insatisfaction.", dim: "emotion" },
+      { id: 37, text: "Je ressens une impatience constante, une difficulté à tolérer l'attente.", dim: "emotion" },
+      { id: 38, text: "J'ai des difficultés à gérer le stress, avec une sensation de débordement rapide.", dim: "emotion" },
+      { id: 39, text: "Je passe d'un état d'excitation à un état de découragement très rapidement.", dim: "emotion" },
+      { id: 40, text: "Je ressens une hypersensibilité émotionnelle face aux stimuli (sons, lumières, textures).", dim: "emotion" }
+    ];
+    
+    // ==================== ÉCHELLE DE RÉPONSES ====================
+    const SCALE_OPTIONS = [
+      { value: 0, label: "Jamais", sublabel: "Absence totale de manifestation" },
+      { value: 1, label: "Rarement", sublabel: "Quelques occurrences isolées" },
+      { value: 2, label: "Souvent", sublabel: "Manifestations régulières, impact notable" },
+      { value: 3, label: "Systématiquement", sublabel: "Présence constante, impact majeur" }
+    ];
+    
+    // ==================== DIMENSIONS ====================
+    const DIMENSIONS = [
+      {
+        key: "inattention",
+        label: "Inattention",
+        fullLabel: "Inattention",
+        description: "Difficulté à maintenir l'attention, distractibilité, oublis, désorganisation",
+        color: "var(--inattention-color)",
+        bg: "var(--inattention-bg)"
+      },
+      {
+        key: "hyperactivite",
+        label: "Hyperactivité/Impulsivité",
+        fullLabel: "Hyperactivité & Impulsivité",
+        description: "Agitation motrice, impulsivité décisionnelle, difficulté à attendre",
+        color: "var(--hyperactivite-color)",
+        bg: "var(--hyperactivite-bg)"
+      },
+      {
+        key: "executif",
+        label: "Fonctions Exécutives",
+        fullLabel: "Fonctions Exécutives",
+        description: "Planification, organisation, mémoire de travail, flexibilité cognitive",
+        color: "var(--executif-color)",
+        bg: "var(--executif-bg)"
+      },
+      {
+        key: "emotion",
+        label: "Régulation Émotionnelle",
+        fullLabel: "Régulation Émotionnelle",
+        description: "Réactivité émotionnelle, instabilité de l'humeur, hypersensibilité",
+        color: "var(--emotion-color)",
+        bg: "var(--emotion-bg)"
+      }
+    ];
+    
+    // ==================== SEUILS PAR ÂGE ====================
+    // Format : { min_score_percent_for_level: [faible, léger, modéré, élevé] }
+    const AGE_THRESHOLDS = {
+      '6-12': {
+        inattention: [0, 40, 60, 80],
+        hyperactivite: [0, 45, 65, 85],
+        executif: [0, 40, 60, 80],
+        emotion: [0, 35, 55, 75]
+      },
+      '13-17': {
+        inattention: [0, 35, 55, 75],
+        hyperactivite: [0, 40, 60, 80],
+        executif: [0, 35, 55, 75],
+        emotion: [0, 30, 50, 70]
+      },
+      '18-54': {
+        inattention: [0, 30, 50, 70],
+        hyperactivite: [0, 35, 55, 75],
+        executif: [0, 30, 50, 70],
+        emotion: [0, 25, 45, 65]
+      },
+      '55+': {
+        inattention: [0, 28, 48, 68],
+        hyperactivite: [0, 33, 53, 73],
+        executif: [0, 28, 48, 68],
+        emotion: [0, 23, 43, 63]
+      }
+    };
+    
+    // ==================== INTERPRÉTATIONS DIMENSIONNELLES ====================
+    const DIMENSION_INTERPRETATIONS = {
+      inattention: {
+        minimal: "Les indicateurs d'inattention sont absents ou négligeables. Votre capacité à maintenir l'attention sur des tâches variées semble préservée.",
+        low: "Présence légère de difficultés attentionnelles sans impact fonctionnel majeur. Il peut s'agir de fluctuations normales liées au stress ou à la fatigue.",
+        moderate: "Manifestations significatives d'inattention avec impact notable sur la vie quotidienne. Une évaluation approfondie pourrait identifier des stratégies compensatoires.",
+        high: "Niveau élevé de difficultés attentionnelles nécessitant attention particulière. Ces manifestations peuvent affecter significativement la productivité et le bien-être. Consultation recommandée."
+      },
+      hyperactivite: {
+        minimal: "Les indicateurs d'hyperactivité et d'impulsivité sont absents ou négligeables. Vous semblez capable de réguler votre niveau d'activité et vos impulsions.",
+        low: "Présence légère d'agitation ou d'impulsivité, sans retentissement majeur. Cela peut refléter un tempérament dynamique plutôt qu'un dysfonctionnement.",
+        moderate: "Manifestations significatives d'hyperactivité ou d'impulsivité avec impact sur les interactions sociales ou la gestion du quotidien. Des techniques de régulation pourraient être bénéfiques.",
+        high: "Niveau élevé d'agitation motrice ou d'impulsivité nécessitant attention. Ces manifestations peuvent entraîner des difficultés relationnelles ou professionnelles. Évaluation spécialisée recommandée."
+      },
+      executif: {
+        minimal: "Les fonctions exécutives (planification, organisation, mémoire de travail) semblent préservées. Vous parvenez généralement à gérer les tâches complexes.",
+        low: "Difficultés légères en planification ou organisation, sans impact fonctionnel significatif. Des outils simples (listes, agenda) peuvent suffire.",
+        moderate: "Manifestations significatives de difficultés exécutives avec impact notable sur la gestion du temps et des projets. Une évaluation neuropsychologique pourrait préciser le profil.",
+        high: "Niveau élevé de dysfonctionnement exécutif nécessitant attention. Ces difficultés peuvent compromettre l'autonomie professionnelle ou scolaire. Consultation spécialisée fortement recommandée."
+      },
+      emotion: {
+        minimal: "La régulation émotionnelle semble globalement adaptée. Vous parvenez à gérer vos émotions dans la plupart des situations.",
+        low: "Réactivité émotionnelle légèrement augmentée, sans retentissement majeur. Cela peut refléter une sensibilité naturelle plutôt qu'une dysrégulation clinique.",
+        moderate: "Manifestations significatives de dysrégulation émotionnelle avec impact sur le bien-être et les relations. Des approches thérapeutiques (TCC, pleine conscience) pourraient être bénéfiques.",
+        high: "Niveau élevé de dysrégulation émotionnelle nécessitant attention. Ces manifestations peuvent entraîner une souffrance importante. Consultation en santé mentale fortement recommandée."
+      }
+    };
+    
+    // ==================== BANDES DE RÉSULTATS ====================
+    const RESULT_BANDS = [
+      {
+        min: 0, max: 30,
+        level: "Absence de Manifestation",
+        severity: "minimal",
+        interpretation: "Les indicateurs évalués sont absents ou négligeables. Profil normatif attendu.",
+        color: "#059669",
+        recommendations: [
+          "Maintenir un équilibre de vie sain (sommeil, activité physique, gestion du stress).",
+          "Rester attentif aux variations dans le temps, surtout en périodes de charge accrue.",
+          "Favoriser des stratégies d'organisation proactives pour préserver l'efficacité."
+        ]
+      },
+      {
+        min: 31, max: 50,
+        level: "Présence Légère",
+        severity: "low",
+        interpretation: "Manifestations légères, sans impact fonctionnel significatif. Surveillance préventive recommandée.",
+        color: "#0284c7",
+        recommendations: [
+          "Mettre en place des outils simples d'organisation (listes, alarmes, plannings).",
+          "Identifier les contextes où les difficultés se manifestent le plus.",
+          "Pratiquer des techniques de gestion du stress (respiration, pauses régulières).",
+          "Envisager un bilan si les symptômes s'intensifient ou persistent au-delà de 6 mois."
+        ]
+      },
+      {
+        min: 51, max: 75,
+        level: "Présence Modérée",
+        severity: "moderate",
+        interpretation: "Manifestations significatives avec impact fonctionnel notable. Intervention ciblée conseillée.",
+        color: "#f59e0b",
+        recommendations: [
+          "Consulter un professionnel pour une évaluation approfondie (neuropsychologue, psychiatre).",
+          "Explorer des stratégies compensatoires adaptées (coaching, psychoéducation, TCC).",
+          "Aménager l'environnement (réduction des distracteurs, structuration des tâches).",
+          "Envisager un soutien scolaire ou professionnel selon le contexte.",
+          "Maintenir une hygiène de vie rigoureuse (sommeil, alimentation, activité physique)."
+        ]
+      },
+      {
+        min: 76, max: 120,
+        level: "Présence Sévère",
+        severity: "high",
+        interpretation: "Manifestations intenses avec altération fonctionnelle majeure. Consultation spécialisée fortement recommandée.",
+        color: "#dc2626",
+        recommendations: [
+          "Consulter en urgence un psychiatre ou neuropsychologue spécialisé en TDAH.",
+          "Réaliser un bilan complet (tests neuropsychologiques, questionnaires standardisés).",
+          "Envisager une prise en charge multimodale (psychothérapie, éventuellement médicamenteuse).",
+          "Solliciter des aménagements scolaires ou professionnels (tiers-temps, plan de soutien).",
+          "Rejoindre des groupes de soutien ou associations spécialisées (ex. HyperSupers TDAH France).",
+          "Évaluer les comorbidités fréquentes (anxiété, dépression, troubles du sommeil)."
+        ]
+      }
+    ];
+    
+    // ==================== FONCTIONS UTILITAIRES ====================
+    
+    function getAgeGroup(age) {
+      if (!age) return '18-54'; // Défaut adulte
+      if (age >= 6 && age <= 12) return '6-12';
+      if (age >= 13 && age <= 17) return '13-17';
+      if (age >= 18 && age <= 54) return '18-54';
+      return '55+';
+    }
+    
+    function getSeverityLevel(percentage, thresholds) {
+      if (percentage < thresholds[1]) return 'minimal';
+      if (percentage < thresholds[2]) return 'low';
+      if (percentage < thresholds[3]) return 'moderate';
+      return 'high';
+    }
+    
+    function getDimensionInterpretation(dimKey, percentage, ageGroup) {
+      const thresholds = AGE_THRESHOLDS[ageGroup][dimKey];
+      const level = getSeverityLevel(percentage, thresholds);
+      return DIMENSION_INTERPRETATIONS[dimKey][level];
+    }
+    
+    function calculateRiskIndex(scores, anamnesis) {
+      // Indice composite 0-100
+      let index = 0;
+      
+      // Base : score total normalisé
+      const totalPercentage = (scores.total / scores.maxTotal) * 100;
+      index += totalPercentage * 0.5; // 50% du poids
+      
+      // Modulateurs contextuels
+      if (anamnesis.onsetAge === 'yes') index += 10; // Début précoce
+      if (anamnesis.multiContext === 'yes') index += 15; // Multi-contextes
+      
+      // Poids par domaine (simulation : on estime l'impact selon les dimensions)
+      const dimScores = scores.dimensions;
+      const maxImpact = Math.max(
+        dimScores.inattention.percentage,
+        dimScores.hyperactivite.percentage,
+        dimScores.executif.percentage,
+        dimScores.emotion.percentage
+      );
+      index += maxImpact * 0.25; // 25% du poids
+      
+      // Qualité des réponses : détection de patterns uniformes
+      const answersArray = Object.values(state.answers);
+      const allSame = answersArray.every(v => v === answersArray[0]);
+      if (allSame) index -= 20; // Pénalité pour réponses uniformes (suspect)
+      
+      // Clamp 0-100
+      return Math.max(0, Math.min(100, Math.round(index)));
+    }
+    
+    // ==================== CALCUL SCORES ====================
+    
+    function calculateScores() {
+      const dimensions = {};
+      let total = 0;
+      
+      DIMENSIONS.forEach(dim => {
+        const questionsForDim = QUESTIONS.filter(q => q.dim === dim.key);
+        const score = questionsForDim.reduce((sum, q) => {
+          return sum + (state.answers[q.id] || 0);
+        }, 0);
+        const maxScore = questionsForDim.length * 3;
+        const percentage = Math.round((score / maxScore) * 100);
+        
+        dimensions[dim.key] = { score, maxScore, percentage };
+        total += score;
+      });
+      
+      const maxTotal = QUESTIONS.length * 3;
+      const ageGroup = getAgeGroup(state.anamnesis.age);
+      const riskIndex = calculateRiskIndex({ dimensions, total, maxTotal }, state.anamnesis);
+      
+      return { dimensions, total, maxTotal, ageGroup, riskIndex };
+    }
+    
+    function getResultBand(totalScore, maxTotal) {
+      const percentage = (totalScore / maxTotal) * 100;
+      return RESULT_BANDS.find(band => percentage >= band.min && percentage <= band.max);
+    }
+    
+    // ==================== ANALYSE APPROFONDIE DU PROFIL ====================
+    
+    function generateProfileAnalysis(scores) {
+      const analysis = {
+        dominantDimensions: [],
+        profilePattern: '',
+        specificInsights: [],
+        functionalImpact: '',
+        developmentalConsiderations: '',
+        interactionPatterns: ''
+      };
+      
+      // 1. Identifier dimensions dominantes (>60%)
+      const dimArray = Object.entries(scores.dimensions).map(([key, data]) => ({
+        key,
+        ...data,
+        label: DIMENSIONS.find(d => d.key === key).fullLabel
+      })).sort((a, b) => b.percentage - a.percentage);
+      
+      analysis.dominantDimensions = dimArray.filter(d => d.percentage >= 60);
+      
+      // 2. Déterminer pattern de profil
+      const high = dimArray.filter(d => d.percentage >= 70).map(d => d.key);
+      const moderate = dimArray.filter(d => d.percentage >= 40 && d.percentage < 70).map(d => d.key);
+      const low = dimArray.filter(d => d.percentage < 40).map(d => d.key);
+      
+      if (high.length >= 3) {
+        analysis.profilePattern = 'Profil Global Sévère';
+        analysis.specificInsights.push("Vos résultats révèlent une présentation multidimensionnelle marquée du TDAH, avec des manifestations significatives dans la majorité des domaines évalués. Cette constellation de difficultés suggère un impact fonctionnel étendu nécessitant une attention particulière.");
+      } else if (high.includes('inattention') && high.includes('executif')) {
+        analysis.profilePattern = 'Profil Inattentif avec Dysfonction Exécutive';
+        analysis.specificInsights.push("Votre profil se caractérise principalement par des difficultés attentionnelles associées à un dysfonctionnement exécutif. Cette combinaison est typique du sous-type inattentif du TDAH et affecte particulièrement la planification, l'organisation et la gestion des tâches complexes.");
+      } else if (high.includes('hyperactivite') && moderate.includes('emotion')) {
+        analysis.profilePattern = 'Profil Hyperactif-Impulsif avec Dysrégulation Émotionnelle';
+        analysis.specificInsights.push("Votre profil révèle une prédominance de l'agitation motrice et de l'impulsivité, accompagnée d'une régulation émotionnelle fragile. Cette association peut générer des difficultés importantes dans les interactions sociales et la gestion des situations stressantes.");
+      } else if (dimArray[0].percentage - dimArray[3].percentage > 40) {
+        analysis.profilePattern = 'Profil Hétérogène avec Dimension Prédominante';
+        analysis.specificInsights.push(`Votre profil présente une hétérogénéité marquée, avec une prédominance nette de la dimension "${dimArray[0].label}" (${dimArray[0].percentage}%). Cette dispersion suggère que les manifestations du TDAH s'expriment de manière sélective plutôt que généralisée.`);
+      } else {
+        analysis.profilePattern = 'Profil Équilibré Modéré';
+        analysis.specificInsights.push("Votre profil se caractérise par une distribution relativement homogène des manifestations à travers les différentes dimensions du TDAH. Cette présentation suggère un impact fonctionnel modéré mais étendu.");
+      }
+      
+      // 3. Impact fonctionnel contextualisé
+      const ageGroup = scores.ageGroup;
+      const hasMultiContext = state.anamnesis.multiContext === 'yes';
+      const earlyOnset = state.anamnesis.onsetAge === 'yes';
+      
+      if (ageGroup === '6-12') {
+        analysis.functionalImpact = "À votre âge, ces manifestations peuvent affecter significativement les apprentissages scolaires, les relations avec les pairs et le développement de l'autonomie. Les difficultés dans la régulation comportementale et attentionnelle à cette période critique peuvent compromettre l'acquisition des compétences académiques fondamentales.";
+      } else if (ageGroup === '13-17') {
+        analysis.functionalImpact = "Durant l'adolescence, ces manifestations peuvent interférer avec la scolarité, la construction identitaire et les relations sociales. Les défis liés à l'organisation, la gestion du temps et la régulation émotionnelle deviennent particulièrement saillants face aux exigences croissantes d'autonomie.";
+      } else if (ageGroup === '18-54') {
+        analysis.functionalImpact = "À l'âge adulte, ces manifestations peuvent impacter significativement la vie professionnelle, les relations interpersonnelles et la gestion du quotidien. Les difficultés exécutives et attentionnelles peuvent compromettre la productivité, tandis que la dysrégulation émotionnelle affecte la qualité des relations.";
+      } else {
+        analysis.functionalImpact = "À votre stade de vie, ces manifestations peuvent affecter la qualité de vie globale, l'autonomie fonctionnelle et le bien-être psychologique. Le vieillissement peut parfois masquer certains symptômes d'hyperactivité tout en exacerbant les difficultés attentionnelles et mnésiques.";
+      }
+      
+      if (hasMultiContext) {
+        analysis.functionalImpact += " Le fait que ces difficultés se manifestent dans plusieurs contextes de vie renforce l'hypothèse d'un trouble sous-jacent plutôt que de simples réactions situationnelles.";
+      }
+      
+      // 4. Considérations développementales
+      if (earlyOnset) {
+        analysis.developmentalConsiderations = "Le début précoce des symptômes (avant 12 ans) est un critère diagnostique central du TDAH selon le DSM-5-TR. Cette chronologie suggère une origine neurodéveloppementale, distinguant le TDAH de difficultés attentionnelles acquises à l'âge adulte. L'installation précoce implique souvent des mécanismes compensatoires développés au fil du temps, qui peuvent masquer partiellement l'intensité des difficultés sous-jacentes.";
+      } else if (state.anamnesis.onsetAge === 'no') {
+        analysis.developmentalConsiderations = "L'apparition tardive des symptômes (après 12 ans) peut questionner le diagnostic de TDAH stricto sensu, bien que certaines recherches récentes suggèrent l'existence de formes à début tardif. Il conviendrait d'explorer d'autres hypothèses diagnostiques (troubles anxieux, dépression, syndrome post-commotionnel, effets médicamenteux) qui peuvent mimer les manifestations du TDAH.";
+      }
+      
+      // 5. Patterns d'interaction entre dimensions
+      const inatt = scores.dimensions.inattention?.percentage || 0;
+      const hyper = scores.dimensions.hyperactivite?.percentage || 0;
+      const exec = scores.dimensions.executif?.percentage || 0;
+      const emo = scores.dimensions.emotion?.percentage || 0;
+      
+      if (exec > 65 && (inatt > 65 || hyper > 65)) {
+        analysis.interactionPatterns = "L'association entre dysfonctionnement exécutif et manifestations attentionnelles/hyperactives crée un effet amplificateur. Les difficultés à planifier et organiser exacerbent les problèmes d'attention, créant un cercle vicieux où chaque domaine détériore les capacités de l'autre. Des interventions ciblant spécifiquement les fonctions exécutives (structuration, stratégies métacognitives) pourraient avoir un effet bénéfique en cascade.";
+      }
+      
+      if (emo > 60 && hyper > 60) {
+        analysis.interactionPatterns += (analysis.interactionPatterns ? " " : "") + "La combinaison dysrégulation émotionnelle et impulsivité constitue un facteur de vulnérabilité majeur pour les relations interpersonnelles et la prise de décision. L'impulsivité réduit le délai de réflexion nécessaire à la modulation émotionnelle, tandis que l'intensité émotionnelle alimente les comportements impulsifs. Des approches thérapeutiques intégrant régulation émotionnelle (pleine conscience, TCC) et gestion de l'impulsivité sont particulièrement indiquées.";
+      }
+      
+      if (inatt > 70 && hyper < 30) {
+        analysis.interactionPatterns += (analysis.interactionPatterns ? " " : "") + "Votre profil à prédominance inattentive (faible hyperactivité motrice) correspond au sous-type historiquement appelé 'TDAH de type inattentif'. Ce profil, plus fréquent chez les femmes, est souvent sous-diagnostiqué car moins perturbateur en apparence. Cependant, l'impact fonctionnel peut être tout aussi sévère, particulièrement sur le plan académique et professionnel.";
+      }
+      
+      // 6. Insights spécifiques par dimension dominante
+      if (analysis.dominantDimensions.length > 0) {
+        analysis.dominantDimensions.forEach(dim => {
+          if (dim.key === 'inattention' && dim.percentage >= 70) {
+            analysis.specificInsights.push("Vos difficultés attentionnelles marquées peuvent se manifester par une distractibilité importante, des oublis fréquents, des difficultés à soutenir l'effort mental et une tendance à la procrastination face aux tâches exigeantes. Ces manifestations génèrent souvent un sentiment de sous-performance chronique malgré des capacités intellectuelles préservées.");
+          }
+          
+          if (dim.key === 'hyperactivite' && dim.percentage >= 70) {
+            analysis.specificInsights.push("Votre niveau élevé d'hyperactivité et d'impulsivité peut se traduire par une agitation motrice constante, des difficultés à rester assis, une tendance à interrompre les autres, et des décisions prises sans réflexion suffisante. Ces manifestations peuvent être perçues par l'entourage comme un manque de considération ou de contrôle, alors qu'elles reflètent un dysfonctionnement neurologique sous-jacent.");
+          }
+          
+          if (dim.key === 'executif' && dim.percentage >= 70) {
+            analysis.specificInsights.push("Vos difficultés exécutives majeures affectent votre capacité à planifier, organiser, prioriser et mener à terme les projets. La mémoire de travail limitée rend difficile le maintien simultané de plusieurs informations, tandis que la rigidité cognitive complique l'adaptation face aux imprévus. Ces déficits génèrent fréquemment un sentiment de débordement et d'inefficacité.");
+          }
+          
+          if (dim.key === 'emotion' && dim.percentage >= 70) {
+            analysis.specificInsights.push("Votre dysrégulation émotionnelle sévère se caractérise par une réactivité émotionnelle intense, des variations d'humeur rapides, une difficulté à moduler les émotions négatives et une hypersensibilité aux stimuli émotionnels. Bien que moins reconnue dans les critères diagnostiques classiques du TDAH, cette dimension constitue souvent la source majeure de souffrance subjective et de complications relationnelles.");
+          }
+        });
+      }
+      
+      // 7. Considérations sur les comorbidités potentielles
+      if (emo > 70 && scores.riskIndex > 70) {
+        analysis.specificInsights.push("⚠️ Votre niveau élevé de dysrégulation émotionnelle associé à un indice de risque important suggère la possibilité de comorbidités anxio-dépressives. Le TDAH est fréquemment associé à des troubles anxieux (30-50% des cas) et dépressifs (20-30% des cas). Une évaluation clinique complète devrait explorer ces dimensions pour adapter au mieux les interventions thérapeutiques.");
+      }
+      
+      return analysis;
+    }
+    
+    // ==================== NAVIGATION ====================
+    
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId + '-screen').classList.add('active');
+      state.currentScreen = screenId;
+    }
+    
+    function startTest() {
+      // Collecter anamnèse
+      state.anamnesis.age = parseInt(document.getElementById('user-age').value) || null;
+      state.anamnesis.name = document.getElementById('user-name').value.trim() || 'Anonyme';
+      state.anamnesis.onsetAge = document.getElementById('onset-age').value;
+      state.anamnesis.multiContext = document.getElementById('multi-context').value;
+      state.anamnesis.evaluatorType = document.getElementById('evaluator-type').value;
+      
+      state.currentQuestionIndex = 0;
+      state.answers = {};
+      showScreen('test');
+      renderQuestion();
+    }
+    
+    function nextQuestion() {
+      if (state.currentQuestionIndex < QUESTIONS.length - 1) {
+        state.currentQuestionIndex++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+    
+    function prevQuestion() {
+      if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex--;
+        renderQuestion();
+      }
+    }
+    
+    function selectAnswer(value) {
+      state.answers[QUESTIONS[state.currentQuestionIndex].id] = value;
+      renderQuestion();
+      
+      // Progression automatique après sélection avec délai pour feedback visuel
+      setTimeout(() => {
+        nextQuestion();
+      }, 400);
+    }
+    
+    function showResults() {
+      showScreen('results');
+      renderResults();
+    }
+    
+    function resetTest() {
+      if (confirm("Êtes-vous sûr·e de vouloir recommencer ? Toutes vos réponses seront perdues.")) {
+        state.currentQuestionIndex = 0;
+        state.answers = {};
+        state.anamnesis = { age: null, name: '', onsetAge: 'unknown', multiContext: 'unknown', evaluatorType: 'self' };
+        document.getElementById('user-age').value = '';
+        document.getElementById('user-name').value = '';
+        document.getElementById('onset-age').value = 'unknown';
+        document.getElementById('multi-context').value = 'unknown';
+        document.getElementById('evaluator-type').value = 'self';
+        document.getElementById('consent-check').checked = false;
+        showScreen('intro');
+      }
+    }
+    
+    // ==================== RENDU QUESTION ====================
+    
+    function renderQuestion() {
+      const q = QUESTIONS[state.currentQuestionIndex];
+      const dim = DIMENSIONS.find(d => d.key === q.dim);
+      
+      // Progress
+      const progress = ((state.currentQuestionIndex + 1) / QUESTIONS.length) * 100;
+      document.getElementById('progress-fill').style.width = progress + '%';
+      document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+      
+      // Dimension badge
+      const badge = document.getElementById('current-dimension-badge');
+      badge.textContent = dim.label;
+      badge.className = 'dimension-badge ' + dim.key;
+      
+      // Question
+      document.getElementById('question-number').textContent = `Question ${state.currentQuestionIndex + 1}/${QUESTIONS.length}`;
+      document.getElementById('question-text').textContent = q.text;
+      
+      // Options
+      const optionsContainer = document.getElementById('answer-options');
+      optionsContainer.innerHTML = SCALE_OPTIONS.map(opt => `
+        <div class="answer-option ${state.answers[q.id] === opt.value ? 'selected' : ''}" onclick="selectAnswer(${opt.value})">
+          <input type="radio" name="answer" value="${opt.value}" id="opt-${opt.value}" ${state.answers[q.id] === opt.value ? 'checked' : ''}>
+          <label for="opt-${opt.value}" class="answer-label">
+            <div class="answer-main">${opt.label}</div>
+            <div class="answer-sublabel">${opt.sublabel}</div>
+          </label>
+        </div>
+      `).join('');
+      
+      // Boutons navigation
+      document.getElementById('prev-btn').style.visibility = state.currentQuestionIndex > 0 ? 'visible' : 'hidden';
+      document.getElementById('next-btn').disabled = state.answers[q.id] === undefined;
+      document.getElementById('next-btn').textContent = state.currentQuestionIndex === QUESTIONS.length - 1 ? 'Voir les Résultats' : 'Suivant →';
+      
+      // Questions restantes
+      const remaining = QUESTIONS.length - state.currentQuestionIndex - 1;
+      document.getElementById('questions-remaining').textContent = remaining > 0 ? `${remaining} question${remaining > 1 ? 's' : ''} restante${remaining > 1 ? 's' : ''}` : 'Dernière question';
+    }
+    
+    // ==================== RENDU RÉSULTATS ====================
+    
+    function renderResults() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total, scores.maxTotal);
+      
+      // Hero Score
+      document.getElementById('total-score-display').textContent = scores.total;
+      document.getElementById('global-level-badge').textContent = resultBand.level;
+      document.getElementById('global-level-badge').className = 'level-badge ' + resultBand.severity;
+      document.getElementById('score-message').textContent = resultBand.interpretation;
+      
+      // Profil Anamnestique
+      const profileGrid = document.getElementById('profile-grid');
+      profileGrid.innerHTML = `
+        <div class="profile-item">
+          <div class="profile-label">Âge</div>
+          <div class="profile-value">${state.anamnesis.age || 'Non précisé'}</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-label">Groupe d'âge</div>
+          <div class="profile-value">${scores.ageGroup}</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-label">Début symptômes</div>
+          <div class="profile-value">${state.anamnesis.onsetAge === 'yes' ? 'Avant 12 ans' : state.anamnesis.onsetAge === 'no' ? 'Après 12 ans' : 'Non précisé'}</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-label">Multi-contextes</div>
+          <div class="profile-value">${state.anamnesis.multiContext === 'yes' ? 'Oui (≥2)' : state.anamnesis.multiContext === 'no' ? 'Non' : 'Non précisé'}</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-label">Évaluateur</div>
+          <div class="profile-value">${getEvaluatorLabel(state.anamnesis.evaluatorType)}</div>
+        </div>
+      `;
+      
+      document.getElementById('risk-index-value').textContent = scores.riskIndex;
+      
+      // Analyse Dimensionnelle
+      const dimensionAnalysis = document.getElementById('dimension-analysis');
+      dimensionAnalysis.innerHTML = Object.entries(scores.dimensions).map(([key, data]) => {
+        const dim = DIMENSIONS.find(d => d.key === key);
+        const thresholds = AGE_THRESHOLDS[scores.ageGroup][key];
+        const level = getSeverityLevel(data.percentage, thresholds);
+        const interpretation = getDimensionInterpretation(key, data.percentage, scores.ageGroup);
+        
+        return `
+          <div class="dimension-card ${key}">
+            <div class="dimension-header">
+              <span class="dimension-name">${dim.fullLabel}</span>
+              <span class="dimension-score-display">${data.percentage}%</span>
+            </div>
+            <div class="dimension-bar-container">
+              <div class="dimension-bar-fill" style="width: ${data.percentage}%"></div>
+            </div>
+            <p class="dimension-interpretation">${interpretation}</p>
+          </div>
+        `;
+      }).join('');
+      
+      // Analyse Approfondie du Profil
+      const profileAnalysis = generateProfileAnalysis(scores);
+      const analysisContainer = document.getElementById('profile-analysis-container');
+      analysisContainer.innerHTML = `
+        <div style="background: white; border: 2px solid var(--or-signature); border-radius: var(--radius-xl); padding: var(--s-6); margin-bottom: var(--s-6);">
+          <h3 style="font-size: var(--fs-lg); color: var(--or-signature); margin-bottom: var(--s-3);">
+            ${profileAnalysis.profilePattern}
+          </h3>
+        </div>
+        
+        ${profileAnalysis.specificInsights.length > 0 ? `
+          <div style="margin-bottom: var(--s-6);">
+            <h4 style="font-size: var(--fs-md); font-weight: 600; margin-bottom: var(--s-4); color: var(--noir-absolu);">
+              Observations Cliniques
+            </h4>
+            ${profileAnalysis.specificInsights.map(insight => `
+              <div style="margin-bottom: var(--s-4); padding: var(--s-4); background: white; border-left: 3px solid var(--or-signature); border-radius: var(--radius-md);">
+                <p style="font-size: var(--fs-sm); line-height: var(--lh-relaxed); margin: 0; text-align: justify;">
+                  ${insight}
+                </p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+        
+        ${profileAnalysis.functionalImpact ? `
+          <div style="margin-bottom: var(--s-6);">
+            <h4 style="font-size: var(--fs-md); font-weight: 600; margin-bottom: var(--s-3); color: var(--noir-absolu);">
+              Impact Fonctionnel
+            </h4>
+            <p style="font-size: var(--fs-sm); line-height: var(--lh-relaxed); text-align: justify; padding: var(--s-4); background: white; border-radius: var(--radius-md);">
+              ${profileAnalysis.functionalImpact}
+            </p>
+          </div>
+        ` : ''}
+        
+        ${profileAnalysis.developmentalConsiderations ? `
+          <div style="margin-bottom: var(--s-6);">
+            <h4 style="font-size: var(--fs-md); font-weight: 600; margin-bottom: var(--s-3); color: var(--noir-absolu);">
+              Considérations Développementales
+            </h4>
+            <p style="font-size: var(--fs-sm); line-height: var(--lh-relaxed); text-align: justify; padding: var(--s-4); background: white; border-radius: var(--radius-md);">
+              ${profileAnalysis.developmentalConsiderations}
+            </p>
+          </div>
+        ` : ''}
+        
+        ${profileAnalysis.interactionPatterns ? `
+          <div style="margin-bottom: var(--s-6);">
+            <h4 style="font-size: var(--fs-md); font-weight: 600; margin-bottom: var(--s-3); color: var(--noir-absolu);">
+              Interactions entre Dimensions
+            </h4>
+            <p style="font-size: var(--fs-sm); line-height: var(--lh-relaxed); text-align: justify; padding: var(--s-4); background: white; border-radius: var(--radius-md);">
+              ${profileAnalysis.interactionPatterns}
+            </p>
+          </div>
+        ` : ''}
+        
+        ${profileAnalysis.dominantDimensions.length > 0 ? `
+          <div style="background: #FFFBEB; border: 2px solid #F59E0B; border-radius: var(--radius-lg); padding: var(--s-4);">
+            <p style="font-size: var(--fs-sm); font-weight: 600; color: #92400E; margin-bottom: var(--s-2);">
+              📊 Dimensions Prédominantes (≥60%)
+            </p>
+            <p style="font-size: var(--fs-sm); color: #78350F; margin: 0;">
+              ${profileAnalysis.dominantDimensions.map(d => `<strong>${d.label}</strong> (${d.percentage}%)`).join(' • ')}
+            </p>
+          </div>
+        ` : ''}
+      `;
+      
+      // Recommandations
+      const recommendationList = document.getElementById('recommendation-list');
+      recommendationList.innerHTML = resultBand.recommendations.map(rec => `
+        <div class="recommendation-item">
+          <p>${rec}</p>
+        </div>
+      `).join('');
+    }
+    
+    function getEvaluatorLabel(type) {
+      const labels = {
+        self: 'Auto-évaluation',
+        parent: 'Parent/Tuteur',
+        teacher: 'Enseignant',
+        partner: 'Conjoint/Proche',
+        other: 'Autre'
+      };
+      return labels[type] || 'Auto-évaluation';
+    }
+    
+    // ==================== EXPORT PDF ====================
+    
+    async function generatePDF() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total, scores.maxTotal);
+      
+      const printWindow = window.open('', '', 'width=210mm,height=297mm');
+      
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+          <meta charset="UTF-8">
+          <title>Rapport TDAH — ${state.anamnesis.name} — NOÉSIS</title>
+          <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+          
+          <style>
+            @page { size: A4 portrait; margin: 25mm 20mm; }
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+              font-family: 'Inter', sans-serif;
+              font-size: 10.5pt;
+              line-height: 1.6;
+              color: #0A0A0A;
+              background: #FFFFFF;
+            }
+            h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; color: #0A0A0A; page-break-after: avoid; }
+            h1 { font-size: 22pt; margin-bottom: 8pt; letter-spacing: -0.02em; }
+            h2 { font-size: 16pt; margin-top: 24pt; margin-bottom: 12pt; border-bottom: 1.5pt solid #C7A86D; padding-bottom: 6pt; }
+            h3 { font-size: 13pt; margin-top: 18pt; margin-bottom: 8pt; color: #C7A86D; }
+            p { margin-bottom: 10pt; text-align: justify; hyphens: auto; }
+            strong { font-weight: 600; color: #0A0A0A; }
+            
+            .header {
+              text-align: center;
+              padding-bottom: 18pt;
+              margin-bottom: 24pt;
+              border-bottom: 2pt solid #C7A86D;
+            }
+            .logo { font-family: 'Fraunces', serif; font-size: 28pt; font-weight: 700; letter-spacing: 0.05em; color: #C7A86D; margin-bottom: 6pt; }
+            .document-title { font-size: 11pt; font-weight: 500; color: rgba(10,10,10,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+            .metadata { margin-top: 8pt; font-size: 9pt; color: rgba(10,10,10,0.5); }
+            
+            .section { margin-bottom: 24pt; page-break-inside: avoid; }
+            
+            .score-container {
+              background: linear-gradient(135deg, #F7F5EF 0%, #F9F7F1 100%);
+              border: 1.5pt solid #C7A86D;
+              border-radius: 8pt;
+              padding: 18pt;
+              margin-bottom: 18pt;
+              text-align: center;
+            }
+            .score-main { font-family: 'Fraunces', serif; font-size: 48pt; font-weight: 700; color: #C7A86D; line-height: 1; margin-bottom: 6pt; }
+            .score-label { font-size: 11pt; font-weight: 500; color: rgba(10,10,10,0.7); margin-bottom: 12pt; }
+            .level-badge { display: inline-block; padding: 6pt 16pt; border-radius: 999pt; font-size: 10pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+            .level-badge.minimal { background: #d1fae5; color: #065f46; }
+            .level-badge.low { background: #dbeafe; color: #1e40af; }
+            .level-badge.moderate { background: #fef3c7; color: #92400e; }
+            .level-badge.high { background: #fee2e2; color: #991b1b; }
+            .interpretation-text { margin-top: 12pt; font-size: 10pt; line-height: 1.5; text-align: left; color: rgba(10,10,10,0.8); }
+            
+            .dimension-grid { display: grid; grid-template-columns: 1fr; gap: 12pt; margin-bottom: 18pt; }
+            .dimension-card { background: #FAFAFA; border-left: 3pt solid #C7A86D; padding: 12pt; border-radius: 0 4pt 4pt 0; page-break-inside: avoid; }
+            .dimension-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6pt; }
+            .dimension-name { font-weight: 600; font-size: 11pt; color: #0A0A0A; }
+            .dimension-score { font-family: 'Fraunces', serif; font-size: 12pt; font-weight: 600; color: #C7A86D; }
+            .dimension-bar { height: 6pt; background: #E5E5E5; border-radius: 3pt; overflow: hidden; margin-bottom: 8pt; }
+            .dimension-bar-fill { height: 100%; background: linear-gradient(90deg, #C7A86D, #D4B980); border-radius: 3pt; }
+            .dimension-description { font-size: 9.5pt; line-height: 1.4; color: rgba(10,10,10,0.7); }
+            
+            .profile-table { width: 100%; border-collapse: collapse; margin: 12pt 0; }
+            .profile-table td { padding: 8pt; border-bottom: 0.5pt solid #E5E5E5; vertical-align: top; }
+            .profile-table td:first-child { font-weight: 600; width: 40%; }
+            
+            .recommendation-list { list-style: none; padding-left: 0; counter-reset: rec-counter; }
+            .recommendation-item { counter-increment: rec-counter; position: relative; padding-left: 28pt; margin-bottom: 12pt; line-height: 1.5; }
+            .recommendation-item:before { content: counter(rec-counter); position: absolute; left: 0; top: 0; width: 20pt; height: 20pt; background: #C7A86D; color: white; border-radius: 50%; font-size: 9pt; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+            
+            .warning-box { background: #FFFBEB; border: 1pt solid #F59E0B; border-radius: 6pt; padding: 14pt; margin: 18pt 0; }
+            .warning-title { font-weight: 600; color: #92400E; margin-bottom: 6pt; font-size: 10.5pt; }
+            .warning-text { font-size: 9.5pt; line-height: 1.5; color: #78350F; }
+            
+            .footer { margin-top: 32pt; padding-top: 18pt; border-top: 1pt solid #E5E5E5; text-align: center; font-size: 8.5pt; color: rgba(10,10,10,0.5); page-break-inside: avoid; }
+            .footer-logo { font-family: 'Fraunces', serif; font-weight: 700; font-size: 11pt; color: #C7A86D; margin-bottom: 4pt; }
+            
+            @media print {
+              body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+              .section { page-break-inside: avoid; }
+              h2 { page-break-after: avoid; }
+              .dimension-card { page-break-inside: avoid; }
+            }
+          </style>
+        </head>
+        <body>
+          
+          <div class="header">
+            <div class="logo">NOÉSIS</div>
+            <div class="document-title">Rapport d'Évaluation TDAH Adaptatif</div>
+            <div class="metadata">
+              Participant : ${state.anamnesis.name} • Généré le ${new Date().toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} à ${new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="score-container">
+              <div class="score-main">${scores.total}<span style="font-size: 24pt; color: rgba(10,10,10,0.3);">/${scores.maxTotal}</span></div>
+              <div class="score-label">Score Total</div>
+              <div class="level-badge ${resultBand.severity}">${resultBand.level}</div>
+              <p class="interpretation-text">${resultBand.interpretation}</p>
+            </div>
+          </div>
+          
+          <div class="section">
+            <h2>Profil & Contexte</h2>
+            <table class="profile-table">
+              <tr><td>Âge</td><td>${state.anamnesis.age || 'Non précisé'}</td></tr>
+              <tr><td>Groupe d'âge</td><td>${scores.ageGroup}</td></tr>
+              <tr><td>Début des symptômes</td><td>${state.anamnesis.onsetAge === 'yes' ? 'Avant 12 ans' : state.anamnesis.onsetAge === 'no' ? 'Après 12 ans' : 'Non précisé'}</td></tr>
+              <tr><td>Impact multi-contextes</td><td>${state.anamnesis.multiContext === 'yes' ? 'Oui (≥2 domaines)' : state.anamnesis.multiContext === 'no' ? 'Non' : 'Non précisé'}</td></tr>
+              <tr><td>Type d'évaluateur</td><td>${getEvaluatorLabel(state.anamnesis.evaluatorType)}</td></tr>
+              <tr><td>Indice de Risque Composite</td><td><strong>${scores.riskIndex} / 100</strong></td></tr>
+            </table>
+            <p style="font-size: 9pt; color: rgba(10,10,10,0.6);">
+              L'indice de risque composite intègre les scores dimensionnels, l'âge de début, les contextes d'impact et la cohérence des réponses.
+            </p>
+          </div>
+          
+          <div class="section">
+            <h2>Analyse par Dimension</h2>
+            <div class="dimension-grid">
+              ${Object.entries(scores.dimensions).map(([key, data]) => {
+                const dim = DIMENSIONS.find(d => d.key === key);
+                const interpretation = getDimensionInterpretation(key, data.percentage, scores.ageGroup);
+                return `
+                  <div class="dimension-card">
+                    <div class="dimension-header">
+                      <span class="dimension-name">${dim.fullLabel}</span>
+                      <span class="dimension-score">${data.score}/${data.maxScore} (${data.percentage}%)</span>
+                    </div>
+                    <div class="dimension-bar">
+                      <div class="dimension-bar-fill" style="width: ${data.percentage}%"></div>
+                    </div>
+                    <p class="dimension-description">${interpretation}</p>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+          
+          <div class="section">
+            <h2>Analyse Approfondie du Profil</h2>
+            ${(() => {
+              const profileAnalysis = generateProfileAnalysis(scores);
+              return `
+                <div style="background: #F7F5EF; border: 1.5pt solid #C7A86D; border-radius: 8pt; padding: 16pt; margin-bottom: 16pt;">
+                  <h3 style="margin-top: 0; font-size: 12pt; color: #C7A86D;">${profileAnalysis.profilePattern}</h3>
+                </div>
+                
+                ${profileAnalysis.specificInsights.length > 0 ? `
+                  <div style="margin-bottom: 16pt;">
+                    <h3 style="font-size: 11.5pt;">Observations Cliniques</h3>
+                    ${profileAnalysis.specificInsights.map(insight => `
+                      <p style="margin-bottom: 10pt; padding-left: 12pt; border-left: 2pt solid #C7A86D; text-align: justify;">
+                        ${insight}
+                      </p>
+                    `).join('')}
+                  </div>
+                ` : ''}
+                
+                ${profileAnalysis.functionalImpact ? `
+                  <div style="margin-bottom: 16pt;">
+                    <h3 style="font-size: 11.5pt;">Impact Fonctionnel</h3>
+                    <p style="text-align: justify;">${profileAnalysis.functionalImpact}</p>
+                  </div>
+                ` : ''}
+                
+                ${profileAnalysis.developmentalConsiderations ? `
+                  <div style="margin-bottom: 16pt;">
+                    <h3 style="font-size: 11.5pt;">Considérations Développementales</h3>
+                    <p style="text-align: justify;">${profileAnalysis.developmentalConsiderations}</p>
+                  </div>
+                ` : ''}
+                
+                ${profileAnalysis.interactionPatterns ? `
+                  <div style="margin-bottom: 16pt;">
+                    <h3 style="font-size: 11.5pt;">Interactions entre Dimensions</h3>
+                    <p style="text-align: justify;">${profileAnalysis.interactionPatterns}</p>
+                  </div>
+                ` : ''}
+                
+                ${profileAnalysis.dominantDimensions.length > 0 ? `
+                  <div style="background: #FFFBEB; border: 1pt solid #F59E0B; border-radius: 6pt; padding: 12pt; margin-top: 16pt;">
+                    <p style="font-size: 10pt; font-weight: 600; color: #92400E; margin-bottom: 6pt;">
+                      📊 Dimensions Prédominantes (≥60%)
+                    </p>
+                    <p style="font-size: 9.5pt; color: #78350F; margin-bottom: 0;">
+                      ${profileAnalysis.dominantDimensions.map(d => `${d.label} (${d.percentage}%)`).join(' • ')}
+                    </p>
+                  </div>
+                ` : ''}
+              `;
+            })()}
+          </div>
+          
+          <div class="section">
+            <h2>Détail des Réponses</h2>
+            <p style="font-size: 9.5pt; color: rgba(10,10,10,0.7); margin-bottom: 14pt;">
+              Cette section présente l'ensemble des questions posées et vos réponses respectives, organisées par dimension.
+            </p>
+            ${DIMENSIONS.map(dim => {
+              const questionsForDim = QUESTIONS.filter(q => q.dim === dim.key);
+              return `
+                <div style="margin-bottom: 20pt; page-break-inside: avoid;">
+                  <h3 style="color: ${dim.color}; margin-bottom: 10pt;">${dim.fullLabel}</h3>
+                  ${questionsForDim.map((q, idx) => {
+                    const answer = state.answers[q.id];
+                    const answerLabel = SCALE_OPTIONS.find(opt => opt.value === answer);
+                    return `
+                      <div style="margin-bottom: 12pt; padding-left: 12pt; border-left: 2pt solid #E5E5E5; page-break-inside: avoid;">
+                        <p style="font-size: 10pt; font-weight: 600; margin-bottom: 4pt; color: rgba(10,10,10,0.8);">
+                          Question ${QUESTIONS.indexOf(q) + 1} : ${q.text}
+                        </p>
+                        <p style="font-size: 9.5pt; margin-bottom: 2pt;">
+                          <strong style="color: #C7A86D;">Réponse :</strong> ${answerLabel ? answerLabel.label : 'Non répondu'}
+                          ${answerLabel && answerLabel.sublabel ? `<span style="color: rgba(10,10,10,0.6); font-size: 9pt;"> (${answerLabel.sublabel})</span>` : ''}
+                        </p>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              `;
+            }).join('')}
+          </div>
+          
+          <div class="section">
+            <h2>Recommandations Personnalisées</h2>
+            <ol class="recommendation-list">
+              ${resultBand.recommendations.map(rec => `<li class="recommendation-item">${rec}</li>`).join('')}
+            </ol>
+          </div>
+          
+          <div class="warning-box">
+            <div class="warning-title">⚠ Avertissement Important</div>
+            <p class="warning-text">
+              Ce questionnaire constitue un outil de sensibilisation et ne remplace en aucun cas une consultation avec un professionnel qualifié. Les résultats reflètent votre perception subjective et nécessitent interprétation contextuelle.
+            </p>
+            <p class="warning-text" style="margin-top: 8pt;">
+              <strong>Ressources France :</strong> HyperSupers TDAH France (www.tdah-france.fr) • 3114 (prévention suicide) • Fil Santé Jeunes 0800 235 236
+            </p>
+          </div>
+          
+          <div class="footer">
+            <div class="footer-logo">NOÉSIS</div>
+            <p>Intelligence transdisciplinaire au service de la lucidité</p>
+            <p style="margin-top: 8pt;">© ${new Date().getFullYear()} NOÉSIS — Tous droits réservés</p>
+            <p style="margin-top: 6pt; font-size: 8pt;">
+              Outil de sensibilisation et pré-évaluation — Non validé psychométriquement<br>
+              Ne remplace pas une consultation avec un professionnel qualifié<br>
+              Confidentialité : aucune donnée collectée sans action explicite
+            </p>
+          </div>
+          
+        </body>
+        </html>
+      `);
+      
+      printWindow.document.close();
+      
+      setTimeout(() => {
+        printWindow.print();
+      }, 800);
+    }
+    
+    // ==================== EXPORT EMAIL ====================
+    
+    function sendResultsByEmail() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total, scores.maxTotal);
+      
+      const emailBody = `
+Rapport NOÉSIS — Autotest TDAH Adaptatif
+Participant : ${state.anamnesis.name}
+Généré le ${new Date().toLocaleDateString('fr-FR')}
+
+SCORE TOTAL : ${scores.total}/${scores.maxTotal} (${Math.round((scores.total/scores.maxTotal)*100)}%)
+NIVEAU : ${resultBand.level}
+INDICE DE RISQUE COMPOSITE : ${scores.riskIndex} / 100
+
+ANALYSE DIMENSIONNELLE :
+${Object.entries(scores.dimensions).map(([key, data]) => {
+  const dim = DIMENSIONS.find(d => d.key === key);
+  return `• ${dim.fullLabel} : ${data.percentage}%`;
+}).join('\n')}
+
+PROFIL :
+• Âge : ${state.anamnesis.age || 'Non précisé'}
+• Groupe d'âge : ${scores.ageGroup}
+• Début symptômes : ${state.anamnesis.onsetAge === 'yes' ? 'Avant 12 ans' : state.anamnesis.onsetAge === 'no' ? 'Après 12 ans' : 'Non précisé'}
+• Multi-contextes : ${state.anamnesis.multiContext === 'yes' ? 'Oui (≥2)' : state.anamnesis.multiContext === 'no' ? 'Non' : 'Non précisé'}
+• Évaluateur : ${getEvaluatorLabel(state.anamnesis.evaluatorType)}
+
+Pour consulter le rapport complet avec analyses approfondies et recommandations personnalisées, veuillez télécharger la version PDF depuis l'interface NOÉSIS.
+
+---
+NOÉSIS — Intelligence transdisciplinaire
+© ${new Date().getFullYear()} — Tous droits réservés
+      `.trim();
+      
+      const subject = `Rapport TDAH Adaptatif — ${state.anamnesis.name} — NOÉSIS`;
+      const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+      
+      window.location.href = mailtoLink;
+    }
+    
+    // ==================== EXPORT JSON ====================
+    
+    function downloadJSON() {
+      const scores = calculateScores();
+      const resultBand = getResultBand(scores.total, scores.maxTotal);
+      
+      const data = {
+        metadata: {
+          test: "Autotest TDAH Adaptatif",
+          version: "1.0 - NOÉSIS",
+          theoreticalFramework: "DSM-5-TR",
+          date: new Date().toISOString(),
+          participant: state.anamnesis.name
+        },
+        anamnesis: {
+          age: state.anamnesis.age,
+          ageGroup: scores.ageGroup,
+          onsetAge: state.anamnesis.onsetAge,
+          multiContext: state.anamnesis.multiContext,
+          evaluatorType: state.anamnesis.evaluatorType
+        },
+        responses: {
+          answers: state.answers,
+          completion: `${Object.keys(state.answers).length}/${QUESTIONS.length}`
+        },
+        scoring: {
+          total: scores.total,
+          maxTotal: scores.maxTotal,
+          percentage: Math.round((scores.total/scores.maxTotal)*100),
+          riskIndex: scores.riskIndex,
+          dimensions: scores.dimensions,
+          resultBand: {
+            level: resultBand.level,
+            severity: resultBand.severity,
+            interpretation: resultBand.interpretation
+          }
+        },
+        detailedResponses: QUESTIONS.map(q => ({
+          id: q.id,
+          dimension: q.dim,
+          text: q.text,
+          response: {
+            value: state.answers[q.id],
+            label: SCALE_OPTIONS.find(opt => opt.value === state.answers[q.id])?.label,
+            sublabel: SCALE_OPTIONS.find(opt => opt.value === state.answers[q.id])?.sublabel
+          }
+        }))
+      };
+      
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `noesis-tdah-${Date.now()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    
+    // ==================== EVENT LISTENERS ====================
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      // Consentement
+      document.getElementById('consent-check').addEventListener('change', (e) => {
+        document.getElementById('start-btn').disabled = !e.target.checked;
+      });
+      
+      // Boutons
+      document.getElementById('start-btn').addEventListener('click', startTest);
+      document.getElementById('next-btn').addEventListener('click', nextQuestion);
+      document.getElementById('prev-btn').addEventListener('click', prevQuestion);
+      document.getElementById('pdf-btn').addEventListener('click', generatePDF);
+      document.getElementById('email-btn').addEventListener('click', sendResultsByEmail);
+      document.getElementById('json-btn').addEventListener('click', downloadJSON);
+      document.getElementById('reset-btn').addEventListener('click', resetTest);
+    });
+    
+    // Rendre selectAnswer accessible globalement
+    window.selectAnswer = selectAnswer;
+  </script>
+  
+</body>
+</html>

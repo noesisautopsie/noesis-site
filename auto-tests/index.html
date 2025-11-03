@@ -1,529 +1,1031 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-tests NOÉSIS — Évaluation clinique rigoureuse</title>
-    <meta name="description" content="Auto-tests scientifiquement fondés pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire NOÉSIS.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO -->
+  <title>Auto-tests NOÉSIS — Évaluation Clinique Rigoureuse</title>
+  <meta name="description" content="Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire NOÉSIS.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Auto-tests NOÉSIS — Évaluation Clinique Rigoureuse">
+  <meta property="og:description" content="Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise.">
+  <meta property="og:image" content="https://noesisautopsie.github.io/noesis-site/assets/images/og-auto-tests.jpg">
+  <meta property="og:url" content="https://noesisautopsie.github.io/noesis-site/auto-tests/">
+  <meta property="og:site_name" content="NOÉSIS">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auto-tests NOÉSIS — Évaluation Clinique Rigoureuse">
+  <meta name="twitter:description" content="Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques et mécanismes d'emprise.">
+  <meta name="twitter:image" content="https://noesisautopsie.github.io/noesis-site/assets/images/twitter-auto-tests.jpg">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://noesisautopsie.github.io/noesis-site/auto-tests/">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       VARIABLES CSS — SYSTÈME NOÉSIS BLACK & GOLD
+       ============================================ */
+    :root {
+      /* Noirs — Autorité & Professionnalisme */
+      --noir-absolu: #0A0A0A;
+      --noir-doux: #111111;
+      --noir-surface: #1A1A1A;
+      
+      /* Crèmes — Chaleur & Accessibilité */
+      --creme-principal: #F7F5EF;
+      --creme-chaud: #F9F7F1;
+      --blanc-surface: #FFFFFF;
+      
+      /* Or — Signature Premium */
+      --or-signature: #C7A86D;
+      --or-riche: #D4B980;
+      --or-sombre: #A89158;
+      --or-subtil: rgba(199,168,109,.08);
+      --or-leger: rgba(199,168,109,.15);
+      --or-moyen: rgba(199,168,109,.25);
+      
+      /* Hiérarchie Textuelle */
+      --text-primary: #0A0A0A;
+      --text-secondary: rgba(10,10,10,.75);
+      --text-tertiary: rgba(10,10,10,.55);
+      --text-on-dark: #F7F5EF;
+      --text-on-dark-muted: rgba(247,245,239,.75);
+      
+      /* Bordures */
+      --border-subtil: rgba(10,10,10,.08);
+      --border-leger: rgba(10,10,10,.12);
+      --border-visible: rgba(10,10,10,.18);
+      --border-or: rgba(199,168,109,.3);
+      
+      /* Typographie */
+      --fs-xs: 12px;
+      --fs-sm: 14px;
+      --fs-md: 18px;
+      --fs-lg: 21px;
+      --fs-xl: 24px;
+      --fs-2xl: 32px;
+      --fs-3xl: 42px;
+      --fs-4xl: 56px;
+      --fs-5xl: 72px;
+      
+      --lh-tight: 1.2;
+      --lh-normal: 1.5;
+      --lh-relaxed: 1.7;
+      
+      /* Spacing — Grille 8pt */
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-6: 24px;
+      --s-8: 32px;
+      --s-12: 48px;
+      --s-16: 64px;
+      --s-20: 80px;
+      --s-24: 96px;
+      
+      /* Ombres */
+      --shadow-subtle: 0 1px 3px rgba(10,10,10,.1);
+      --shadow-soft: 0 2px 8px rgba(10,10,10,.08), 0 1px 2px rgba(10,10,10,.12);
+      --shadow-medium: 0 4px 16px rgba(10,10,10,.1), 0 2px 4px rgba(10,10,10,.15);
+      --shadow-gold-subtle: 0 2px 12px rgba(199,168,109,.12);
+      --shadow-gold-medium: 0 4px 24px rgba(199,168,109,.18);
+      
+      /* Transitions */
+      --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 250ms;
+      --duration-slow: 350ms;
+      
+      /* Rayons */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 9999px;
+    }
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-md);
+      line-height: var(--lh-normal);
+      color: var(--text-primary);
+      background-color: var(--creme-principal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* ============================================
+       NAVIGATION STICKY PREMIUM
+       ============================================ */
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--noir-absolu);
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+      transition: all var(--duration-normal) var(--ease-standard);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--s-6) var(--s-8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--text-on-dark);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+    
+    .nav-logo:hover {
+      color: var(--or-signature);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: var(--s-1);
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      padding: var(--s-3) var(--s-4);
+      border-radius: var(--radius-pill);
+      transition: all var(--duration-fast) var(--ease-spring);
+      white-space: nowrap;
+    }
+    
+    .nav-links a:hover {
+      color: var(--text-on-dark);
+      background: rgba(199,168,109,.15);
+    }
+    
+    .nav-social {
+      display: flex;
+      gap: var(--s-3);
+      align-items: center;
+      margin-left: var(--s-4);
+      padding-left: var(--s-4);
+      border-left: 1px solid rgba(247,245,239,.15);
+    }
+    
+    .nav-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: var(--text-on-dark-muted);
+      border-radius: var(--radius-pill);
+      transition: all var(--duration-fast) var(--ease-spring);
+    }
+    
+    .nav-social a:hover {
+      color: var(--or-signature);
+      background: rgba(199,168,109,.15);
+    }
+    
+    .nav-social svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* ============================================
+       HERO SECTION CINÉMATIQUE
+       ============================================ */
+    .hero-section {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--s-24) var(--s-8);
+      background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+      overflow: hidden;
+    }
+    
+    /* Halo Or Animé */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--or-moyen) 0%, transparent 70%);
+      opacity: 0.3;
+      animation: pulseGold 8s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGold {
+      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+    }
+    
 
-        :root {
-            --noir: #111111;
-            --blanc-casse: #F9F9F6;
-            --gris-clair: #F5F4F0;
-            --bordeaux: #7D3C4A;
-            --bordeaux-leger: #9D5C6A;
-            --gris-texte: #555555;
-            --or-discret: #C9A968;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Crimson Text', serif;
-            font-size: 19px;
-            line-height: 1.8;
-            color: var(--noir);
-            background-color: var(--blanc-casse);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* HEADER */
-        .urgence-banner {
-            background: linear-gradient(90deg, var(--bordeaux), var(--bordeaux-leger));
-            color: white;
-            padding: 11px 0;
-            text-align: center;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .urgence-banner a {
-            color: white;
-            text-decoration: none;
-            margin: 0 14px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .urgence-banner a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        nav {
-            background-color: white;
-            padding: 24px 0;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--noir);
-            text-decoration: none;
-            font-variant: small-caps;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-        }
-
-        nav a:not(.logo) {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--gris-texte);
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 40px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:not(.logo):hover {
-            background-color: var(--bordeaux);
-            color: white;
-        }
-
-        /* HERO */
-        .hero {
-            padding: 120px 40px 80px;
-            text-align: center;
-            background: linear-gradient(135deg, #F9F9F6 0%, #F5F4F0 100%);
-        }
-
-        .hero-badge {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--bordeaux);
-            background-color: rgba(125, 60, 74, 0.08);
-            padding: 10px 24px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 32px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 72px;
-            font-weight: 700;
-            color: var(--noir);
-            line-height: 1.1;
-            margin-bottom: 32px;
-        }
-
-        .hero-subtitle {
-            font-size: 22px;
-            color: var(--gris-texte);
-            max-width: 800px;
-            margin: 0 auto 48px;
-            line-height: 1.7;
-        }
-
-        /* WARNING BOX */
-        .warning-box {
-            background-color: white;
-            border: 2px solid var(--bordeaux);
-            border-radius: 8px;
-            padding: 32px;
-            margin: 64px auto;
-            max-width: 900px;
-            text-align: center;
-            box-shadow: 0 4px 24px rgba(125, 60, 74, 0.1);
-        }
-
-        .warning-box h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--bordeaux);
-            margin-bottom: 16px;
-        }
-
-        .warning-box p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--gris-texte);
-        }
-
-        /* CATEGORIES */
-        .categories-section {
-            padding: 80px 40px;
-        }
-
-        .category {
-            margin-bottom: 80px;
-        }
-
-        .category-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--bordeaux);
-            margin-bottom: 16px;
-        }
-
-        .category-description {
-            font-size: 20px;
-            color: var(--gris-texte);
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .tests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 32px;
-        }
-
-        .test-card {
-            background-color: white;
-            border-left: 4px solid var(--bordeaux);
-            padding: 32px;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-
-        .test-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(125, 60, 74, 0.15);
-        }
-
-        .test-badge {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--bordeaux);
-            background-color: rgba(125, 60, 74, 0.08);
-            padding: 6px 14px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-
-        .test-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--noir);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .test-card p {
-            font-size: 17px;
-            color: var(--gris-texte);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .test-meta {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            color: var(--gris-texte);
-            display: flex;
-            gap: 16px;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #2A2A2A;
-            color: #E8E8E4;
-            padding: 64px 40px 32px;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        .footer-columns h4 {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--bordeaux-leger);
-            margin-bottom: 16px;
-        }
-
-        .footer-columns a {
-            color: #E8E8E4;
-            text-decoration: none;
-            font-size: 15px;
-            display: block;
-            margin-bottom: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-columns a:hover {
-            color: var(--bordeaux-leger);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            color: #999;
-        }
-    </style>
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      animation: fadeInUp 0.8s var(--ease-spring);
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or-signature);
+      background: var(--or-subtil);
+      padding: var(--s-3) var(--s-6);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--s-8);
+      animation: fadeInUp 0.8s var(--ease-spring);
+    }
+    
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-4xl);
+      font-weight: 700;
+      line-height: var(--lh-tight);
+      color: var(--text-on-dark);
+      margin-bottom: var(--s-6);
+      animation: fadeInUp 0.8s var(--ease-spring) 0.15s backwards;
+    }
+    
+    .hero-description {
+      font-size: var(--fs-lg);
+      line-height: var(--lh-relaxed);
+      color: var(--text-on-dark-muted);
+      max-width: 720px;
+      margin: 0 auto var(--s-8);
+      animation: fadeInUp 0.8s var(--ease-spring) 0.3s backwards;
+    }
+    
+    /* ============================================
+       WARNING BOX PREMIUM
+       ============================================ */
+    .warning-box {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--s-6) var(--s-8);
+      background: linear-gradient(180deg, var(--blanc-surface), var(--creme-principal));
+      border-bottom: 1px solid var(--border-or);
+      box-shadow: 0 2px 12px rgba(199,168,109,.08);
+    }
+    
+    .warning-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+    }
+    
+    .warning-title {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      color: var(--or-sombre);
+      margin-bottom: var(--s-3);
+      text-align: center;
+    }
+    
+    .warning-box p {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--text-primary);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    /* ============================================
+       CATEGORIES SECTION
+       ============================================ */
+    .categories-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--s-20) var(--s-8);
+    }
+    
+    .category {
+      margin-bottom: var(--s-20);
+    }
+    
+    .category-header {
+      text-align: center;
+      margin-bottom: var(--s-12);
+    }
+    
+    .category-title {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-3xl);
+      font-weight: 700;
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-4);
+    }
+    
+    .category-description {
+      font-size: var(--fs-lg);
+      line-height: var(--lh-relaxed);
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* ============================================
+       TESTS GRID
+       ============================================ */
+    .tests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: var(--s-8);
+    }
+    
+    /* ============================================
+       CARD PREMIUM
+       ============================================ */
+    .test-card {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--creme-principal), var(--creme-chaud));
+      border: 1px solid var(--border-leger);
+      border-radius: var(--radius-lg);
+      padding: var(--s-8);
+      transition: all var(--duration-normal) var(--ease-spring);
+    }
+    
+    .test-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, var(--or-signature), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--duration-normal) var(--ease-spring);
+    }
+    
+    .test-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--or-signature);
+    }
+    
+    .test-card:hover::before {
+      opacity: 1;
+    }
+    
+    .test-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--or-sombre);
+      background: var(--or-subtil);
+      padding: var(--s-2) var(--s-4);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--s-4);
+    }
+    
+    /* Badge de Statut */
+    .status-badge {
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: var(--s-2) var(--s-3);
+      border-radius: var(--radius-pill);
+    }
+    
+    .status-disponible {
+      background: rgba(67, 160, 71, 0.1);
+      color: #43A047;
+      border: 1px solid rgba(67, 160, 71, 0.2);
+    }
+    
+    .status-bientot {
+      background: var(--or-subtil);
+      color: var(--or-sombre);
+      border: 1px solid var(--border-or);
+    }
+    
+    .test-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-xl);
+      font-weight: 600;
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-4);
+      line-height: var(--lh-tight);
+    }
+    
+    .test-card p {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--text-secondary);
+      margin-bottom: var(--s-6);
+    }
+    
+    .test-meta {
+      display: flex;
+      gap: var(--s-4);
+      font-size: var(--fs-sm);
+      color: var(--text-tertiary);
+    }
+    
+    .test-meta span {
+      display: flex;
+      align-items: center;
+      gap: var(--s-2);
+    }
+    
+    /* Card Désactivée (À venir) */
+    .test-card-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    
+    .test-card-disabled .test-badge {
+      background: var(--border-leger);
+      color: var(--text-tertiary);
+    }
+    
+    /* ============================================
+       FOOTER ÉDITORIAL
+       ============================================ */
+    .site-footer {
+      background: var(--noir-absolu);
+      color: var(--text-on-dark);
+      padding: var(--s-20) var(--s-8) var(--s-8);
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: var(--s-12);
+      margin-bottom: var(--s-12);
+    }
+    
+    .footer-column h4 {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-xl);
+      font-weight: 600;
+      color: var(--text-on-dark);
+      margin-bottom: var(--s-6);
+      letter-spacing: 0.02em;
+    }
+    
+    .footer-tagline {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--text-on-dark-muted);
+      margin-bottom: var(--s-6);
+      font-style: italic;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column a {
+      display: block;
+      font-size: var(--fs-md);
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      padding: var(--s-2) 0;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+    
+    .footer-column a:hover {
+      color: var(--or-signature);
+    }
+    
+    /* Footer Social Buttons */
+    .footer-social {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      margin-top: var(--s-6);
+    }
+    
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      padding: var(--s-3) var(--s-4);
+      background: rgba(247,245,239,.08);
+      border: 1px solid rgba(247,245,239,.15);
+      border-radius: var(--radius-md);
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      font-size: var(--fs-md);
+      transition: all var(--duration-fast) var(--ease-spring);
+    }
+    
+    .social-btn:hover {
+      background: rgba(199,168,109,.15);
+      border-color: var(--or-signature);
+      color: var(--text-on-dark);
+      transform: translateX(4px);
+    }
+    
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    
+    /* Urgence Box Premium */
+    .urgence-box {
+      background: linear-gradient(135deg, rgba(199,168,109,.08), rgba(199,168,109,.12));
+      border: 1px solid var(--or-signature);
+      border-radius: var(--radius-lg);
+      padding: var(--s-6);
+    }
+    
+    .urgence-box h4 {
+      color: var(--or-signature);
+      margin-bottom: var(--s-4);
+    }
+    
+    .urgence-item {
+      margin-bottom: var(--s-6);
+    }
+    
+    .urgence-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .urgence-label {
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-on-dark-muted);
+      margin-bottom: var(--s-2);
+    }
+    
+    .urgence-number {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-3xl);
+      font-weight: 700;
+      color: var(--or-signature);
+      text-decoration: none;
+      display: block;
+      transition: color var(--duration-fast) var(--ease-standard);
+    }
+    
+    .urgence-number:hover {
+      color: var(--or-riche);
+    }
+    
+    .urgence-description {
+      font-size: var(--fs-sm);
+      color: var(--text-on-dark-muted);
+      line-height: var(--lh-normal);
+      margin-top: var(--s-2);
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: var(--s-8);
+      border-top: 1px solid rgba(247,245,239,.12);
+      font-size: var(--fs-sm);
+      color: var(--text-on-dark-muted);
+      text-align: center;
+    }
+    
+    .footer-bottom p {
+      margin: 0;
+    }
+    
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .footer-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero-title {
+        font-size: var(--fs-3xl);
+      }
+      
+      .hero-description {
+        font-size: var(--fs-md);
+      }
+      
+      .category-title {
+        font-size: var(--fs-2xl);
+      }
+      
+      .tests-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-columns {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--s-4);
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- URGENCE BANNER -->
-    <div class="urgence-banner">
-        🚨 EN DANGER ? <a href="tel:3919">3919</a> | SMS : <a href="sms:114">114</a> | Urgences : <a href="tel:17">17</a>
+
+  <!-- ============================================
+       NAVIGATION STICKY
+       ============================================ -->
+  <nav class="nav-sticky" role="navigation">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">NOÉSIS</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../methode.html">La Méthode</a></li>
+        <li><a href="../decouvrir.html">Découvrir</a></li>
+        <li><a href="../articles/">Articles</a></li>
+        <li><a href="./">Auto-tests</a></li>
+        <li><a href="../podcasts.html">Podcasts</a></li>
+        <li><a href="../livres.html">Livres</a></li>
+        <li><a href="../accompagnement.html">Accompagnement</a></li>
+        <li><a href="../engagement.html">Engagement</a></li>
+        <li class="nav-social">
+          <a href="https://instagram.com/noesis_analyse" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/noesis-analyse" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:noesisexplique@gmail.com" aria-label="Email">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="container">
-            <a href="../index.html" class="logo">Noésis</a>
-            <ul>
-                <li><a href="../index.html#accueil">Accueil</a></li>
-                <li><a href="../index.html#methode">La Méthode</a></li>
-                <li><a href="../index.html#articles">Articles</a></li>
-                <li><a href="./">Auto-tests</a></li>
-                <li><a href="../accompagnement.html">Accompagnement</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- ============================================
+       AVERTISSEMENT WARNING BOX
+       ============================================ -->
+  <div class="warning-box">
+    <h4 class="warning-title">⚠️ Avertissement Important</h4>
+    <p>
+      Ces auto-tests ne remplacent en aucun cas un diagnostic professionnel. Ils constituent des outils d'aide à la réflexion basés sur des critères cliniques reconnus. Pour toute situation complexe ou détresse importante, consultez impérativement un professionnel de santé qualifié.
+    </p>
+  </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-badge">Évaluation Clinique</div>
-        <h1>Auto-tests NOÉSIS</h1>
-        <p class="hero-subtitle">
-            Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire rigoureuse.
-        </p>
-    </section>
-
-    <!-- WARNING -->
-    <div class="warning-box">
-        <h3>⚠️ Avertissement Important</h3>
-        <p>
-            Ces auto-tests ne remplacent en aucun cas un diagnostic professionnel. Ils constituent des outils d'aide à la réflexion basés sur des critères cliniques reconnus. Pour toute situation complexe, consultez un professionnel de santé qualifié.
-        </p>
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge">Évaluation Clinique</span>
+      <h1 class="hero-title">Auto-tests NOÉSIS</h1>
+      <p class="hero-description">
+        Grilles d'évaluation scientifiquement fondées pour identifier patterns psychologiques, vulnérabilités et mécanismes d'emprise. Approche transdisciplinaire rigoureuse.
+      </p>
     </div>
+  </section>
 
-    <!-- CATEGORIES -->
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main id="main-content">
     <section class="categories-section">
-        <div class="container">
 
-            <!-- CATÉGORIE 1 : NEURODIVERSITÉ -->
-            <div class="category">
-                <h2 class="category-title">Neurodiversité & Vulnérabilités</h2>
-                <p class="category-description">
-                    Identification de patterns neurodéveloppementaux et de mécanismes psychologiques créant des vulnérabilités spécifiques à l'emprise.
-                </p>
-                <div class="tests-grid">
-                    <a href="./test-tdah.html" class="test-card">
-                        <div class="test-badge">Neurodiversité</div>
-                        <h3>TDAH au Féminin</h3>
-                        <p>Diagnostic différentiel des symptômes de TDAH chez les femmes, souvent sous-diagnostiqués ou confondus avec d'autres troubles.</p>
-                        <div class="test-meta">
-                            <span>📋 15 questions</span>
-                            <span>⏱️ 8 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./syndrome-imposteur-environnement-toxique-noesis-tailwind.html" class="test-card">
-                        <div class="test-badge">Psychologie</div>
-                        <h3>Syndrome de l'Imposteur vs Environnement Toxique</h3>
-                        <p>Différenciation entre auto-dévalorisation interne et gaslighting systémique externe.</p>
-                        <div class="test-meta">
-                            <span>📋 12 questions</span>
-                            <span>⏱️ 7 min</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CATÉGORIE 2 : CONTEXTES PROFESSIONNELS -->
-            <div class="category">
-                <h2 class="category-title">Contextes Professionnels</h2>
-                <p class="category-description">
-                    Évaluation de situations d'emprise, de harcèlement et de manipulation en milieu professionnel selon grilles juridiques et cliniques.
-                </p>
-                <div class="tests-grid">
-                    <a href="./burn-out-stade-epuisement-noesis-tailwind.html" class="test-card">
-                        <div class="test-badge">Burn-out</div>
-                        <h3>Burn-out : Stade d'Épuisement</h3>
-                        <p>Identification du niveau d'épuisement professionnel selon critères de Maslach et ICD-11.</p>
-                        <div class="test-meta">
-                            <span>📋 18 questions</span>
-                            <span>⏱️ 10 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./harcelement-moral-grille-juridique-noesis.html" class="test-card">
-                        <div class="test-badge">Juridique</div>
-                        <h3>Harcèlement Moral : Éléments Juridiques</h3>
-                        <p>Grille d'évaluation basée sur la jurisprudence française et les critères caractérisant le harcèlement moral au travail.</p>
-                        <div class="test-meta">
-                            <span>📋 20 questions</span>
-                            <span>⏱️ 12 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./gaslighting-professionnel-clinique-noesis-tailwind.html" class="test-card">
-                        <div class="test-badge">Manipulation</div>
-                        <h3>Gaslighting Professionnel</h3>
-                        <p>Identification des techniques de manipulation cognitive et de distorsion de la réalité en contexte professionnel.</p>
-                        <div class="test-meta">
-                            <span>📋 15 questions</span>
-                            <span>⏱️ 9 min</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CATÉGORIE 3 : RELATIONS PERSONNELLES -->
-            <div class="category">
-                <h2 class="category-title">Relations Personnelles</h2>
-                <p class="category-description">
-                    Analyse de dynamiques relationnelles toxiques, patterns d'emprise affective et mécanismes de contrôle coercitif.
-                </p>
-                <div class="tests-grid">
-                    <a href="./red-flags-evaluation-par-phase-noesis-final.html" class="test-card">
-                        <div class="test-badge">Red Flags</div>
-                        <h3>Red Flags : Grille par Phase</h3>
-                        <p>Évaluation des signaux d'alerte selon les phases relationnelles (séduction, installation, contrôle, emprise).</p>
-                        <div class="test-meta">
-                            <span>📋 25 questions</span>
-                            <span>⏱️ 15 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./trauma-bonding-amour-sain-attachement-anxieux-noesis-tailwind.html" class="test-card">
-                        <div class="test-badge">Attachement</div>
-                        <h3>Trauma Bonding vs Amour Sain vs Attachement Anxieux</h3>
-                        <p>Différenciation entre lien traumatique, relation saine et insécurité d'attachement.</p>
-                        <div class="test-meta">
-                            <span>📋 20 questions</span>
-                            <span>⏱️ 12 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./test-entourage-cons-v2-tailwind-noesis.html" class="test-card">
-                        <div class="test-badge">Vampires Énergétiques</div>
-                        <h3>Vampires Énergétiques : Typologie</h3>
-                        <p>Identification de patterns de relations asymétriques chroniques et extraction d'énergie émotionnelle.</p>
-                        <div class="test-meta">
-                            <span>📋 18 questions</span>
-                            <span>⏱️ 10 min</span>
-                        </div>
-                    </a>
-
-                    <a href="./parentalite-toxique-reconstruction-noesis-tailwind.html" class="test-card">
-                        <div class="test-badge">Famille</div>
-                        <h3>Parents Toxiques : Patterns</h3>
-                        <p>Identification de dynamiques parentales dysfonctionnelles et impacts développementaux à long terme.</p>
-                        <div class="test-meta">
-                            <span>📋 22 questions</span>
-                            <span>⏱️ 13 min</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CATÉGORIE 4 : TRAUMA & SYMPTÔMES -->
-            <div class="category">
-                <h2 class="category-title">Trauma & Symptômes</h2>
-                <p class="category-description">
-                    Dépistage de symptomatologies post-traumatiques complexes et mécanismes neuropsychologiques associés.
-                </p>
-                <div class="tests-grid">
-                    <!-- Les tests de cette catégorie seront ajoutés ultérieurement -->
-                    <div class="test-card" style="opacity: 0.6; pointer-events: none;">
-                        <div class="test-badge">À venir</div>
-                        <h3>Trauma Complexe (CPTSD)</h3>
-                        <p>Différenciation PTSD aigu / PTSD complexe / trouble développemental du trauma.</p>
-                        <div class="test-meta">
-                            <span>📋 25 questions</span>
-                            <span>⏱️ 15 min</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <!-- CATÉGORIE 1 : NEURODIVERSITÉ -->
+      <div class="category">
+        <div class="category-header">
+          <h2 class="category-title">Neurodiversité & Vulnérabilités</h2>
+          <p class="category-description">
+            Identification de patterns neurodéveloppementaux et de mécanismes psychologiques créant des vulnérabilités spécifiques à l'emprise.
+          </p>
         </div>
+        
+        <div class="tests-grid">
+          <a href="./test-tdah.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Neurodiversité</span>
+            <h3>TDAH au Féminin</h3>
+            <p>Diagnostic différentiel des symptômes de TDAH chez les femmes, souvent sous-diagnostiqués ou confondus avec d'autres troubles.</p>
+            <div class="test-meta">
+              <span>📋 50 questions</span>
+              <span>⏱️ 12 min</span>
+            </div>
+          </a>
+
+          <a href="./syndrome-imposteur-environnement-toxique-noesis-tailwind.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Psychologie</span>
+            <h3>Syndrome de l'Imposteur vs Environnement Toxique</h3>
+            <p>Différenciation entre auto-dévalorisation interne et gaslighting systémique externe.</p>
+            <div class="test-meta">
+              <span>📋 60 questions</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CATÉGORIE 2 : CONTEXTES PROFESSIONNELS -->
+      <div class="category">
+        <div class="category-header">
+          <h2 class="category-title">Contextes Professionnels</h2>
+          <p class="category-description">
+            Évaluation de situations d'emprise, de harcèlement et de manipulation en milieu professionnel selon grilles juridiques et cliniques.
+          </p>
+        </div>
+        
+        <div class="tests-grid">
+          <a href="./burn-out-stade-epuisement-noesis-tailwind.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Burn-out</span>
+            <h3>Burn-out : Stade d'Épuisement</h3>
+            <p>Identification du niveau d'épuisement professionnel selon critères de Maslach et ICD-11.</p>
+            <div class="test-meta">
+              <span>📋 45 questions</span>
+              <span>⏱️ 12 min</span>
+            </div>
+          </a>
+
+          <a href="./harcelement-moral-grille-juridique-noesis.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Juridique</span>
+            <h3>Harcèlement Moral : Éléments Juridiques</h3>
+            <p>Grille d'évaluation basée sur la jurisprudence française et les critères caractérisant le harcèlement moral au travail.</p>
+            <div class="test-meta">
+              <span>📋 Variable</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </a>
+
+          <a href="./gaslighting-professionnel-clinique-noesis-tailwind.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Manipulation</span>
+            <h3>Gaslighting Professionnel</h3>
+            <p>Identification des techniques de manipulation cognitive et de distorsion de la réalité en contexte professionnel.</p>
+            <div class="test-meta">
+              <span>📋 60 questions</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CATÉGORIE 3 : RELATIONS PERSONNELLES -->
+      <div class="category">
+        <div class="category-header">
+          <h2 class="category-title">Relations Personnelles</h2>
+          <p class="category-description">
+            Analyse de dynamiques relationnelles toxiques, patterns d'emprise affective et mécanismes de contrôle coercitif.
+          </p>
+        </div>
+        
+        <div class="tests-grid">
+          <a href="./red-flags-evaluation-par-phase-noesis-final.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Red Flags</span>
+            <h3>Red Flags : Grille par Phase</h3>
+            <p>Évaluation des signaux d'alerte selon les phases relationnelles (séduction, installation, contrôle, emprise).</p>
+            <div class="test-meta">
+              <span>📋 50 questions</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </a>
+
+          <a href="./trauma-bonding-amour-sain-attachement-anxieux-noesis-tailwind.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Attachement</span>
+            <h3>Trauma Bonding vs Amour Sain vs Attachement Anxieux</h3>
+            <p>Différenciation entre lien traumatique, relation saine et insécurité d'attachement.</p>
+            <div class="test-meta">
+              <span>📋 50 questions</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </a>
+
+          <a href="./test-entourage-cons-v2-tailwind-noesis.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Vampires Énergétiques</span>
+            <h3>Vampires Énergétiques : Typologie</h3>
+            <p>Identification de patterns de relations asymétriques chroniques et extraction d'énergie émotionnelle.</p>
+            <div class="test-meta">
+              <span>📋 42 questions</span>
+              <span>⏱️ 12 min</span>
+            </div>
+          </a>
+
+          <a href="./parentalite-toxique-reconstruction-noesis-tailwind.html" class="test-card">
+            <span class="status-badge status-disponible">● Disponible</span>
+            <span class="test-badge">Famille</span>
+            <h3>Parents Toxiques : Patterns</h3>
+            <p>Identification de dynamiques parentales dysfonctionnelles et impacts développementaux à long terme.</p>
+            <div class="test-meta">
+              <span>📋 60 questions</span>
+              <span>⏱️ 18 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CATÉGORIE 4 : TRAUMA & SYMPTÔMES -->
+      <div class="category">
+        <div class="category-header">
+          <h2 class="category-title">Trauma & Symptômes</h2>
+          <p class="category-description">
+            Dépistage de symptomatologies post-traumatiques complexes et mécanismes neuropsychologiques associés.
+          </p>
+        </div>
+        
+        <div class="tests-grid">
+          <div class="test-card test-card-disabled">
+            <span class="status-badge status-bientot">⏳ Bientôt</span>
+            <span class="test-badge">À venir</span>
+            <h3>Trauma Complexe (CPTSD)</h3>
+            <p>Différenciation PTSD aigu, PTSD complexe et trouble développemental du trauma selon classifications ICD-11 et DSM-5-TR.</p>
+            <div class="test-meta">
+              <span>📋 25 questions</span>
+              <span>⏱️ 15 min</span>
+            </div>
+          </div>
+
+          <div class="test-card test-card-disabled">
+            <span class="status-badge status-bientot">⏳ Bientôt</span>
+            <span class="test-badge">À venir</span>
+            <h3>Dissociation : Spectre & Sévérité</h3>
+            <p>Évaluation des symptômes dissociatifs selon échelle DES (Dissociative Experiences Scale).</p>
+            <div class="test-meta">
+              <span>📋 18 questions</span>
+              <span>⏱️ 10 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
+  </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-columns">
-                <div>
-                    <h4>NOÉSIS</h4>
-                    <p style="margin-bottom: 16px;">Transformer la confusion en lucidité</p>
-                    <p style="font-size: 14px; line-height: 1.6;">Maison d'édition intellectuelle ultra-premium spécialisée dans l'analyse transdisciplinaire de l'emprise psychologique.</p>
-                </div>
-                <div>
-                    <h4>Navigation</h4>
-                    <a href="../index.html#accueil">Accueil</a>
-                    <a href="../index.html#methode">La Méthode</a>
-                    <a href="../index.html#articles">Articles</a>
-                    <a href="./">Auto-tests</a>
-                    <a href="../accompagnement.html">Accompagnement</a>
-                </div>
-                <div>
-                    <h4>Ressources</h4>
-                    <a href="../documents/CGP-NOESIS.pdf">Charte Graphique</a>
-                    <a href="tel:3919">3919 - Violences Femmes Info</a>
-                    <a href="sms:114">114 - Urgence SMS</a>
-                    <a href="tel:17">17 - Police / Gendarmerie</a>
-                </div>
-                <div>
-                    <h4>Contact</h4>
-                    <a href="mailto:noesisexplique@gmail.com">noesisexplique@gmail.com</a>
-                    <a href="https://instagram.com/noesis_analyse" target="_blank">Instagram</a>
-                    <a href="https://linkedin.com/company/noesis-analyse" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2025 NOÉSIS — Tous droits réservés
-            </div>
+  <!-- ============================================
+       FOOTER ÉDITORIAL
+       ============================================ -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-columns">
+        
+        <!-- Colonne 1: NOÉSIS -->
+        <div class="footer-column">
+          <h4>NOÉSIS</h4>
+          <p class="footer-tagline">Comprendre ensemble. Reconnaître les mécanismes. Trouver des solutions adaptées à chacun.</p>
+          
+          <div class="footer-social">
+            <a href="https://instagram.com/noesis_analyse" target="_blank" rel="noopener" class="social-btn">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="https://linkedin.com/company/noesis-analyse" target="_blank" rel="noopener" class="social-btn">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="mailto:noesisexplique@gmail.com" class="social-btn">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              Contact
+            </a>
+          </div>
         </div>
-    </footer>
+        
+        <!-- Colonne 2: Navigation -->
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../methode.html">La Méthode</a></li>
+            <li><a href="../articles/">Articles</a></li>
+            <li><a href="./">Auto-tests</a></li>
+            <li><a href="../livres.html">Livres</a></li>
+            <li><a href="../podcasts.html">Podcasts</a></li>
+            <li><a href="../accompagnement.html">Accompagnement</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Colonne 3: Ressources -->
+        <div class="footer-column">
+          <h4>Ressources</h4>
+          <ul>
+            <li><a href="../plan-securite.html">Plan de Sécurité</a></li>
+            <li><a href="../cgp.html">Conditions Générales de Prestation</a></li>
+            <li><a href="../mentions-legales.html">Mentions Légales</a></li>
+            <li><a href="../confidentialite.html">Politique de Confidentialité</a></li>
+          </ul>
+        </div>
+        
+        <!-- Colonne 4: Ressources d'Urgence -->
+        <div class="footer-column">
+          <div class="urgence-box">
+            <h4>Ressources d'Urgence</h4>
+            
+            <div class="urgence-item">
+              <div class="urgence-label">Violences Femmes Info</div>
+              <a href="tel:3919" class="urgence-number">3919</a>
+              <p class="urgence-description">Écoute gratuite, anonyme et confidentielle — 7j/7</p>
+            </div>
+            
+            <div class="urgence-item">
+              <div class="urgence-label">SMS d'Alerte</div>
+              <a href="sms:114" class="urgence-number">114</a>
+              <p class="urgence-description">Service discret pour personnes sourdes ou malentendantes</p>
+            </div>
+            
+            <div class="urgence-item">
+              <div class="urgence-label">Urgences</div>
+              <a href="tel:17" class="urgence-number">17 ou 112</a>
+              <p class="urgence-description">Police secours — Appel d'urgence européen</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 NOÉSIS — Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
