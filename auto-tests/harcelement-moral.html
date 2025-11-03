@@ -3,1406 +3,1823 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harcèlement Moral – Grille d'Évaluation Juridique NOÉSIS</title>
-  <meta name="description" content="Grille d'évaluation juridique du harcèlement moral en contexte professionnel basée sur l'article L1152-1 du Code du travail et la jurisprudence française.">
+  <title>Autotest Harcèlement Moral en Milieu Professionnel | NOÉSIS</title>
+  <meta name="description" content="Outil d'évaluation du harcèlement moral en contexte professionnel basé sur l'article L1152-1 du Code du travail et la jurisprudence française. 60 items, 6 axes juridiques.">
   
-  <!-- Typographies NOÉSIS modernes -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Autotest Harcèlement Moral en Milieu Professionnel — NOÉSIS">
+  <meta property="og:description" content="Évaluation du harcèlement moral en contexte professionnel selon le droit français.">
+  <meta property="og:type" content="website">
+  
+  <!-- Polices Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ==================== VARIABLES CSS NOÉSIS ==================== */
+    :root {
+      /* Palette Chromatique NOÉSIS */
+      --noir-absolu: #0A0A0A;
+      --noir-doux: #111111;
+      --noir-surface: #1A1A1A;
+      --creme-principal: #F7F5EF;
+      --creme-chaud: #F9F7F1;
+      --blanc-surface: #FFFFFF;
+      --or-signature: #C7A86D;
+      --or-riche: #D4B980;
+      --or-sombre: #A89158;
+      --or-subtil: rgba(199,168,109,.08);
+      --or-leger: rgba(199,168,109,.15);
+      --or-moyen: rgba(199,168,109,.25);
+      
+      /* Couleurs Dimensionnelles Harcèlement Moral */
+      --atteinte-color: #dc2626;
+      --atteinte-bg: rgba(220,38,38,0.08);
+      --isolement-color: #7c3aed;
+      --isolement-bg: rgba(124,58,237,0.08);
+      --degradation-color: #ea580c;
+      --degradation-bg: rgba(234,88,12,0.08);
+      --violence-color: #be123c;
+      --violence-bg: rgba(190,18,60,0.08);
+      --sante-color: #0891b2;
+      --sante-bg: rgba(8,145,178,0.08);
+      --systematique-color: #854d0e;
+      --systematique-bg: rgba(133,77,14,0.08);
+      
+      /* Typographie */
+      --fs-xs: 12px; --fs-sm: 14px; --fs-md: 18px;
+      --fs-lg: 21px; --fs-xl: 24px; --fs-2xl: 32px;
+      --fs-3xl: 42px; --fs-4xl: 56px;
+      --lh-tight: 1.2; --lh-normal: 1.5; --lh-relaxed: 1.7;
+      
+      /* Spacing (échelle 8px) */
+      --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-6: 24px;
+      --s-8: 32px; --s-12: 48px; --s-16: 64px; --s-20: 80px;
+      
+      /* Ombres */
+      --shadow-soft: 0 2px 8px rgba(10,10,10,.08), 0 1px 2px rgba(10,10,10,.12);
+      --shadow-medium: 0 4px 16px rgba(10,10,10,.1), 0 2px 4px rgba(10,10,10,.15);
+      --shadow-large: 0 8px 32px rgba(10,10,10,.12), 0 2px 8px rgba(10,10,10,.18);
+      
+      /* Bordures */
+      --border-subtil: rgba(10,10,10,.08);
+      --border-leger: rgba(10,10,10,.12);
+      --border-visible: rgba(10,10,10,.18);
+      
+      /* Rayons */
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+      --radius-xl: 16px; --radius-2xl: 24px; --radius-pill: 9999px;
+      
+      /* Transitions */
+      --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms; --duration-normal: 250ms; --duration-slow: 350ms;
+    }
+    
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #F9F9F6;
-      color: #333333;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--noir-absolu);
+      background: var(--creme-principal);
+      -webkit-font-smoothing: antialiased;
     }
     
-    .container {
-      max-width: 750px;
+    h1, h2, h3, h4, h5 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: var(--lh-tight);
+    }
+    
+    /* ==================== LAYOUT ==================== */
+    .app-container {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: var(--s-12) var(--s-6);
     }
     
-    .intro-card {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 48px 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    .screen {
+      display: none;
+    }
+    
+    .screen.active {
+      display: block;
+      animation: fadeIn var(--duration-normal) var(--ease-standard);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ==================== ÉCRAN INTRO ==================== */
+    .intro-header {
       text-align: center;
+      margin-bottom: var(--s-12);
     }
     
-    .brain-icon {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, #7D3C4A 0%, #9D5C6A 100%);
-      border-radius: 50%;
-      display: inline-flex;
+    .icon-container {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--s-4);
+      background: linear-gradient(135deg, var(--or-subtil), var(--or-leger));
+      border: 2px solid var(--or-signature);
+      border-radius: var(--radius-xl);
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
-      color: white;
     }
     
-    h1 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 8px;
+    .icon-svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--or-signature);
+      fill: none;
     }
     
-    .subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      color: #666666;
-      margin-bottom: 32px;
+    .intro-title {
+      font-size: var(--fs-3xl);
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-3);
     }
     
+    .intro-subtitle {
+      font-size: var(--fs-md);
+      color: rgba(10,10,10,0.6);
+      font-weight: 400;
+    }
+    
+    /* Cartes */
+    .card {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-12);
+      margin-bottom: var(--s-8);
+      box-shadow: var(--shadow-large);
+    }
+    
+    .card h2 {
+      font-size: var(--fs-xl);
+      margin-bottom: var(--s-6);
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+    }
+    
+    .card-icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--or-signature);
+    }
+    
+    .card p {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.8);
+      margin-bottom: var(--s-4);
+    }
+    
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Warning Box */
     .warning-box {
-      background: #FFFBF0;
-      border-left: 4px solid #F59E0B;
-      border-radius: 8px;
-      padding: 20px 24px;
-      text-align: left;
-      margin: 32px 0;
+      background: #fffbeb;
+      border-left: 4px solid var(--or-signature);
+      border-radius: var(--radius-md);
+      padding: var(--s-6);
+      margin-bottom: var(--s-8);
     }
     
     .warning-box h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 8px;
+      font-size: var(--fs-lg);
+      margin-bottom: var(--s-3);
+      display: flex;
+      align-items: center;
+      gap: var(--s-2);
+    }
+    
+    .warning-icon {
+      width: 20px;
+      height: 20px;
+      stroke: var(--or-signature);
+      fill: none;
     }
     
     .warning-box p {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #555555;
-      margin-bottom: 8px;
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.75);
+      margin-bottom: var(--s-3);
     }
     
     .warning-box p:last-child {
       margin-bottom: 0;
     }
     
-    .info-box {
-      background: #F8F9FA;
-      border-radius: 8px;
-      padding: 24px;
-      text-align: left;
-      margin: 24px 0;
+    /* Legal Box */
+    .legal-box {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      border-radius: var(--radius-md);
+      padding: var(--s-6);
+      margin-bottom: var(--s-8);
     }
     
-    .info-box h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 16px;
+    .legal-box h3 {
+      font-size: var(--fs-lg);
+      margin-bottom: var(--s-3);
+      color: #991b1b;
     }
     
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 16px;
+    .legal-box p {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-relaxed);
+      color: rgba(153,27,27,0.85);
+      margin-bottom: var(--s-3);
     }
     
-    .badge {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    
-    .badge.legal { color: #7D3C4A; }
-    .badge.clinical { color: #0EA5E9; }
-    .badge.neurosciences { color: #8B5CF6; }
-    
-    .info-box p {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #555555;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 32px 0;
-    }
-    
-    .stat-card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px 20px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    
-    .stat-icon {
-      width: 40px;
-      height: 40px;
-      margin: 0 auto 12px;
-      color: #7D3C4A;
-    }
-    
-    .stat-value {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 4px;
-    }
-    
-    .stat-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: #666666;
-    }
-    
-    .btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 16px 48px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 32px;
-    }
-    
-    .btn-primary {
-      background: #7D3C4A;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background: #9D5C6A;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(125,60,74,0.3);
-    }
-    
-    /* Page Test */
-    .test-card {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #E5E7EB;
-      border-radius: 4px;
-      margin-bottom: 32px;
-      overflow: hidden;
-    }
-    
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #7D3C4A 0%, #9D5C6A 100%);
-      border-radius: 4px;
-      transition: width 0.3s ease;
-    }
-    
-    .question-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    
-    .question-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: white;
-      flex-shrink: 0;
-    }
-    
-    .axis-1 { background: #F59E0B; }
-    .axis-2 { background: #F43F5E; }
-    .axis-3 { background: #0EA5E9; }
-    .axis-4 { background: #8B5CF6; }
-    .axis-5 { background: #10B981; }
-    .axis-6 { background: #EF4444; }
-    
-    .question-text {
-      flex: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      color: #111111;
-      line-height: 1.5;
-    }
-    
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-    
-    .option-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      padding: 16px 24px;
-      border: 2px solid #E5E7EB;
-      border-radius: 8px;
-      background: white;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: left;
-    }
-    
-    .option-btn:hover {
-      border-color: #7D3C4A;
-      background: #FFF8F9;
-    }
-    
-    .option-btn.selected {
-      border-color: #7D3C4A;
-      background: #111111;
-      color: white;
-      font-weight: 600;
-    }
-    
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 32px;
-    }
-    
-    .btn-secondary {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 12px 32px;
-      border: 2px solid #7D3C4A;
-      border-radius: 8px;
-      background: white;
-      color: #7D3C4A;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .btn-secondary:hover {
-      background: #7D3C4A;
-      color: white;
-    }
-    
-    .btn-secondary:disabled {
-      border-color: #E5E7EB;
-      color: #9CA3AF;
-      cursor: not-allowed;
-    }
-    
-    /* Page Résultats */
-    .results-card {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-bottom: 24px;
-    }
-    
-    .results-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 24px;
-      color: #7D3C4A;
-    }
-    
-    .results-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 32px;
-      font-weight: 700;
-      text-align: center;
-      color: #111111;
-      margin-bottom: 32px;
-    }
-    
-    .score-display {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    
-    .score-value {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 64px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 8px;
-    }
-    
-    .score-badge {
-      display: inline-block;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 8px 20px;
-      border-radius: 20px;
-      margin-top: 8px;
-    }
-    
-    .badge-low { background: #D1FAE5; color: #065F46; }
-    .badge-moderate { background: #FEF3C7; color: #92400E; }
-    .badge-elevated { background: #FED7AA; color: #9A3412; }
-    .badge-critical { background: #FEE2E2; color: #991B1B; }
-    
-    .interpretation {
-      background: #F8F9FA;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 24px 0;
-      text-align: left;
-    }
-    
-    .interpretation h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 16px;
-    }
-    
-    .interpretation p {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #555555;
-      margin-bottom: 12px;
-    }
-    
-    .interpretation p:last-child {
+    .legal-box p:last-child {
       margin-bottom: 0;
     }
     
-    .axes-breakdown {
-      margin: 32px 0;
+    .legal-box strong {
+      color: #991b1b;
+      font-weight: 600;
     }
     
-    .axes-breakdown h3 {
+    /* Dimensions List */
+    .dimensions-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--s-6) 0;
+    }
+    
+    .dimension-item {
+      padding: var(--s-4);
+      margin-bottom: var(--s-3);
+      background: var(--blanc-surface);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid currentColor;
+    }
+    
+    .dimension-item.atteinte {
+      color: var(--atteinte-color);
+      background: var(--atteinte-bg);
+    }
+    
+    .dimension-item.isolement {
+      color: var(--isolement-color);
+      background: var(--isolement-bg);
+    }
+    
+    .dimension-item.degradation {
+      color: var(--degradation-color);
+      background: var(--degradation-bg);
+    }
+    
+    .dimension-item.violence {
+      color: var(--violence-color);
+      background: var(--violence-bg);
+    }
+    
+    .dimension-item.sante {
+      color: var(--sante-color);
+      background: var(--sante-bg);
+    }
+    
+    .dimension-item.systematique {
+      color: var(--systematique-color);
+      background: var(--systematique-bg);
+    }
+    
+    .dimension-item strong {
+      display: block;
+      font-size: var(--fs-lg);
+      margin-bottom: var(--s-2);
+      font-family: 'Fraunces', serif;
+    }
+    
+    .dimension-item p {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.75);
+      margin: 0;
+    }
+    
+    /* Consent Checkbox */
+    .consent-container {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-3);
+      padding: var(--s-6);
+      background: var(--blanc-surface);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--s-8);
+    }
+    
+    .consent-container input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    
+    .consent-container label {
+      font-size: var(--fs-md);
+      color: rgba(10,10,10,0.85);
+      cursor: pointer;
+      line-height: var(--lh-normal);
+    }
+    
+    /* Boutons */
+    .btn {
       font-family: 'Inter', sans-serif;
-      font-size: 20px;
+      font-size: var(--fs-md);
+      font-weight: 600;
+      padding: var(--s-4) var(--s-8);
+      border-radius: var(--radius-lg);
+      border: none;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-standard);
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: var(--or-signature);
+      color: var(--blanc-surface);
+    }
+    
+    .btn-primary:hover:not(:disabled) {
+      background: var(--or-sombre);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .btn-primary:disabled {
+      background: rgba(10,10,10,0.2);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    
+    .btn-secondary {
+      background: var(--blanc-surface);
+      color: var(--noir-absolu);
+      border: 2px solid var(--border-leger);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--or-signature);
+      color: var(--or-signature);
+    }
+    
+    .btn-full {
+      width: 100%;
+    }
+    
+    /* ==================== ÉCRAN QUESTIONNAIRE ==================== */
+    .question-container {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-12);
+      box-shadow: var(--shadow-large);
+    }
+    
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(10,10,10,0.08);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-bottom: var(--s-8);
+    }
+    
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+      transition: width var(--duration-slow) var(--ease-spring);
+    }
+    
+    .progress-text {
+      text-align: center;
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.6);
+      margin-bottom: var(--s-6);
+    }
+    
+    .question-number {
+      font-size: var(--fs-sm);
+      color: var(--or-signature);
+      font-weight: 600;
+      margin-bottom: var(--s-2);
+    }
+    
+    .question-text {
+      font-size: var(--fs-xl);
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-8);
+      line-height: var(--lh-normal);
+    }
+    
+    .dimension-badge {
+      display: inline-block;
+      padding: var(--s-2) var(--s-4);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      margin-bottom: var(--s-6);
+    }
+    
+    .dimension-badge.atteinte {
+      background: var(--atteinte-bg);
+      color: var(--atteinte-color);
+    }
+    
+    .dimension-badge.isolement {
+      background: var(--isolement-bg);
+      color: var(--isolement-color);
+    }
+    
+    .dimension-badge.degradation {
+      background: var(--degradation-bg);
+      color: var(--degradation-color);
+    }
+    
+    .dimension-badge.violence {
+      background: var(--violence-bg);
+      color: var(--violence-color);
+    }
+    
+    .dimension-badge.sante {
+      background: var(--sante-bg);
+      color: var(--sante-color);
+    }
+    
+    .dimension-badge.systematique {
+      background: var(--systematique-bg);
+      color: var(--systematique-color);
+    }
+    
+    .choices-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      margin-bottom: var(--s-8);
+    }
+    
+    .choice-option {
+      position: relative;
+    }
+    
+    .choice-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .choice-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      border: 2px solid var(--border-leger);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-standard);
+      background: var(--blanc-surface);
+    }
+    
+    .choice-option input[type="radio"]:checked + .choice-label {
+      border-color: var(--or-signature);
+      background: var(--or-subtil);
+    }
+    
+    .choice-label:hover {
+      border-color: var(--or-signature);
+      background: var(--or-subtil);
+    }
+    
+    .choice-main {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      color: var(--noir-absolu);
+    }
+    
+    .navigation-buttons {
+      display: flex;
+      gap: var(--s-4);
+      justify-content: space-between;
+    }
+    
+    /* ==================== ÉCRAN RÉSULTATS ==================== */
+    .results-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .result-header {
+      text-align: center;
+      margin-bottom: var(--s-12);
+      padding: var(--s-12);
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-large);
+    }
+    
+    .result-badge {
+      display: inline-block;
+      padding: var(--s-3) var(--s-6);
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-sm);
       font-weight: 700;
-      color: #111111;
-      margin-bottom: 24px;
-      text-align: left;
+      margin-bottom: var(--s-6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
-    .axis-item {
-      margin-bottom: 24px;
+    .result-badge.absence {
+      background: #d1fae5;
+      color: #065f46;
     }
     
-    .axis-header {
+    .result-badge.indices {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    
+    .result-badge.probable {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    
+    .result-badge.caracterise {
+      background: #fecaca;
+      color: #991b1b;
+    }
+    
+    .result-badge.grave {
+      background: #fce7f3;
+      color: #831843;
+    }
+    
+    .result-title {
+      font-size: var(--fs-3xl);
+      color: var(--noir-absolu);
+      margin-bottom: var(--s-3);
+    }
+    
+    .result-score {
+      font-size: var(--fs-xl);
+      color: rgba(10,10,10,0.6);
+      margin-bottom: var(--s-4);
+    }
+    
+    .result-summary {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.8);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--s-8);
+      margin-bottom: var(--s-12);
+    }
+    
+    .result-card {
+      background: var(--blanc-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--s-8);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .result-card h3 {
+      font-size: var(--fs-xl);
+      margin-bottom: var(--s-6);
+      color: var(--noir-absolu);
+    }
+    
+    .dimension-score-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      padding: var(--s-4);
+      margin-bottom: var(--s-3);
+      background: rgba(10,10,10,0.02);
+      border-radius: var(--radius-md);
+      border-left: 4px solid currentColor;
     }
     
-    .axis-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
+    .dimension-score-item.atteinte {
+      color: var(--atteinte-color);
+    }
+    
+    .dimension-score-item.isolement {
+      color: var(--isolement-color);
+    }
+    
+    .dimension-score-item.degradation {
+      color: var(--degradation-color);
+    }
+    
+    .dimension-score-item.violence {
+      color: var(--violence-color);
+    }
+    
+    .dimension-score-item.sante {
+      color: var(--sante-color);
+    }
+    
+    .dimension-score-item.systematique {
+      color: var(--systematique-color);
+    }
+    
+    .dimension-score-label {
+      font-size: var(--fs-sm);
       font-weight: 600;
-      color: #111111;
+      color: var(--noir-absolu);
     }
     
-    .axis-score {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 16px;
+    .dimension-score-value {
+      font-size: var(--fs-lg);
       font-weight: 700;
-      color: #666666;
     }
     
-    .axis-bar {
+    .dimension-bar {
       width: 100%;
-      height: 12px;
-      background: #E5E7EB;
-      border-radius: 6px;
+      height: 8px;
+      background: rgba(10,10,10,0.08);
+      border-radius: var(--radius-pill);
       overflow: hidden;
+      margin-top: var(--s-2);
     }
     
-    .axis-bar-fill {
+    .dimension-bar-fill {
       height: 100%;
-      border-radius: 6px;
-      transition: width 0.5s ease;
+      border-radius: var(--radius-pill);
+      transition: width var(--duration-slow) var(--ease-spring);
     }
     
-    .recommendations {
-      background: #F8F9FA;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 24px 0;
-      text-align: left;
+    .dimension-bar-fill.atteinte {
+      background: var(--atteinte-color);
     }
     
-    .recommendations h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 16px;
+    .dimension-bar-fill.isolement {
+      background: var(--isolement-color);
     }
     
-    .recommendations ol {
-      padding-left: 24px;
+    .dimension-bar-fill.degradation {
+      background: var(--degradation-color);
     }
     
-    .recommendations li {
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #555555;
-      margin-bottom: 12px;
+    .dimension-bar-fill.violence {
+      background: var(--violence-color);
     }
     
-    .recommendations li strong {
-      color: #111111;
-      font-weight: 600;
+    .dimension-bar-fill.sante {
+      background: var(--sante-color);
     }
     
-    .export-buttons {
+    .dimension-bar-fill.systematique {
+      background: var(--systematique-color);
+    }
+    
+    .profile-analysis {
+      background: var(--creme-chaud);
+      padding: var(--s-8);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--s-6);
+    }
+    
+    .profile-analysis h4 {
+      font-size: var(--fs-lg);
+      margin-bottom: var(--s-4);
+      color: var(--noir-absolu);
+    }
+    
+    .profile-analysis p {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.8);
+    }
+    
+    .recommendations-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .recommendation-item {
       display: flex;
-      gap: 12px;
-      margin: 32px 0;
-      flex-wrap: wrap;
+      gap: var(--s-3);
+      margin-bottom: var(--s-4);
+      padding: var(--s-4);
+      background: rgba(10,10,10,0.02);
+      border-radius: var(--radius-md);
     }
     
-    .btn-export {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px 24px;
-      border: 2px solid #7D3C4A;
-      border-radius: 8px;
-      background: white;
-      color: #7D3C4A;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .btn-export:hover {
-      background: #7D3C4A;
-      color: white;
-    }
-    
-    .footer {
-      text-align: center;
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid #E5E7EB;
-    }
-    
-    .footer p {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: #999999;
-      margin-bottom: 8px;
-    }
-    
-    .footer strong {
-      color: #666666;
-    }
-    
-    /* Styles pour l'impression PDF */
-    .print-only {
-      display: none;
-    }
-    
-    .print-questions-detail {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-top: 24px;
-    }
-    
-    .print-section-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #111111;
-      margin-bottom: 24px;
-      text-align: left;
-      padding-bottom: 12px;
-      border-bottom: 3px solid #7D3C4A;
-    }
-    
-    .print-axis-section {
-      margin-bottom: 28px;
-    }
-    
-    .print-axis-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding: 10px 14px;
-      border-radius: 8px;
-      background: #F8F9FA;
-    }
-    
-    .print-axis-badge {
-      width: 30px;
-      height: 30px;
+    .recommendation-number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--or-signature);
+      color: var(--blanc-surface);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Libre Baskerville', serif;
-      font-size: 14px;
+      font-size: var(--fs-sm);
       font-weight: 700;
-      color: white;
-      flex-shrink: 0;
     }
     
-    .print-axis-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
+    .recommendation-text {
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: rgba(10,10,10,0.85);
+    }
+    
+    .export-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--s-4);
+      margin-top: var(--s-8);
+    }
+    
+    .footer-info {
+      text-align: center;
+      margin-top: var(--s-12);
+      padding-top: var(--s-8);
+      border-top: 2px solid var(--border-subtil);
+    }
+    
+    .footer-info p {
+      font-size: var(--fs-sm);
+      color: rgba(10,10,10,0.5);
+      margin-bottom: var(--s-2);
+    }
+    
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: var(--fs-xl);
       font-weight: 700;
-      color: #111111;
-      flex: 1;
+      color: var(--or-signature);
+      margin-bottom: var(--s-3);
     }
     
-    .print-axis-score {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: #666666;
-    }
-    
-    .print-question-item {
-      margin-bottom: 14px;
-      padding: 12px 14px;
-      background: white;
-      border-left: 3px solid;
-      border-radius: 4px;
-    }
-    
-    .print-question-number {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: #999999;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 5px;
-    }
-    
-    .print-question-text {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #111111;
-      margin-bottom: 7px;
-    }
-    
-    .print-answer-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      color: #666666;
-      display: inline-block;
-      padding: 4px 11px;
-      border-radius: 12px;
-      background: #F8F9FA;
-    }
-    
-    @media print {
-      @page {
-        margin: 1.5cm 2cm;
-        size: A4;
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .app-container {
+        padding: var(--s-6) var(--s-4);
       }
       
-      body { 
-        background: white;
-        color: #111111;
-        margin: 0;
-        padding: 0;
+      .intro-title {
+        font-size: var(--fs-2xl);
       }
       
-      .btn, .export-buttons, .nav-buttons { 
-        display: none !important; 
+      .question-text {
+        font-size: var(--fs-lg);
       }
       
-      .container { 
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
+      .result-title {
+        font-size: var(--fs-2xl);
       }
       
-      .print-only { 
-        display: block !important; 
+      .results-grid {
+        grid-template-columns: 1fr;
       }
       
-      .results-card {
-        box-shadow: none;
-        border: none;
-        padding: 0 0 20px 0;
-        margin-bottom: 0;
-        page-break-after: avoid;
+      .navigation-buttons {
+        flex-direction: column;
       }
       
-      .results-icon {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto 16px;
-      }
-      
-      .results-title {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      
-      .score-display {
-        margin-bottom: 20px;
-      }
-      
-      .score-value {
-        font-size: 42px;
-        margin-bottom: 6px;
-      }
-      
-      .score-badge {
-        font-size: 13px;
-        padding: 6px 16px;
-      }
-      
-      .interpretation {
-        padding: 16px;
-        margin: 16px 0;
-        page-break-inside: avoid;
-      }
-      
-      .interpretation h3 {
-        font-size: 16px;
-        margin-bottom: 12px;
-      }
-      
-      .interpretation p {
-        font-size: 13px;
-        line-height: 1.5;
-        margin-bottom: 10px;
-      }
-      
-      .recommendations {
-        padding: 16px;
-        margin: 16px 0 20px 0;
-        page-break-inside: avoid;
-      }
-      
-      .recommendations h3 {
-        font-size: 16px;
-        margin-bottom: 12px;
-      }
-      
-      .recommendations ol {
-        padding-left: 20px;
-        margin: 0;
-      }
-      
-      .recommendations li {
-        font-size: 13px;
-        line-height: 1.5;
-        margin-bottom: 8px;
-      }
-      
-      .axes-breakdown {
-        margin: 20px 0;
-        page-break-before: avoid;
-      }
-      
-      .axes-breakdown h3 {
-        font-size: 18px;
-        margin-bottom: 16px;
-      }
-      
-      .axis-item {
-        page-break-inside: avoid;
-        margin-bottom: 12px;
-      }
-      
-      .axis-header {
-        margin-bottom: 6px;
-      }
-      
-      .axis-name {
-        font-size: 14px;
-      }
-      
-      .axis-score {
-        font-size: 14px;
-      }
-      
-      .axis-bar {
-        height: 10px;
-      }
-      
-      .print-questions-detail {
-        page-break-before: always;
-        padding: 20px 0 0 0;
-        box-shadow: none;
-        border: none;
-        margin: 0;
-      }
-      
-      .print-section-title {
-        font-size: 20px;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-      }
-      
-      .print-axis-section {
-        page-break-inside: avoid;
-        margin-bottom: 20px;
-      }
-      
-      .print-axis-header {
-        margin-bottom: 12px;
-        padding: 10px 12px;
-      }
-      
-      .print-axis-badge {
-        width: 28px;
-        height: 28px;
-        font-size: 13px;
-      }
-      
-      .print-axis-name {
-        font-size: 16px;
-      }
-      
-      .print-axis-score {
-        font-size: 14px;
-      }
-      
-      .print-question-item {
-        page-break-inside: avoid;
-        margin-bottom: 12px;
-        padding: 12px;
-      }
-      
-      .print-question-number {
-        font-size: 11px;
-        margin-bottom: 4px;
-      }
-      
-      .print-question-text {
-        font-size: 13px;
-        line-height: 1.5;
-        margin-bottom: 6px;
-      }
-      
-      .print-answer-label {
-        font-size: 12px;
-        padding: 3px 10px;
-      }
-      
-      .footer {
-        page-break-inside: avoid;
-        margin-top: 20px;
-        padding-top: 16px;
-      }
-      
-      .footer p {
-        font-size: 11px;
-        margin-bottom: 6px;
+      .btn {
+        width: 100%;
       }
     }
     
-    @media (max-width: 640px) {
-      .container { padding: 20px 16px; }
-      .intro-card { padding: 32px 24px; }
-      h1 { font-size: 28px; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .question-text { font-size: 16px; }
-      .score-value { font-size: 48px; }
-      .export-buttons { flex-direction: column; }
-      .btn-export { width: 100%; }
+    @media (max-width: 480px) {
+      .intro-title {
+        font-size: var(--fs-xl);
+      }
+      
+      .question-text {
+        font-size: var(--fs-md);
+      }
+      
+      .card {
+        padding: var(--s-6);
+      }
     }
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+  <div class="app-container">
     
-    const QUESTIONS = [
-      // AXE 1 : ATTEINTES À LA DIGNITÉ (Article L1152-1)
-      { id: 1, axis: 1, text: "Votre hiérarchie ou vos collègues vous humilient publiquement devant d'autres personnes." },
-      { id: 2, axis: 1, text: "Des propos déplacés, moqueries ou sarcasmes répétés visent votre personne, votre physique ou vos caractéristiques personnelles." },
-      { id: 3, axis: 1, text: "On vous dénie systématiquement toute compétence ou valeur professionnelle, quelle que soit la qualité de votre travail." },
-      { id: 4, axis: 1, text: "Vous êtes traité·e avec mépris ou condescendance dans les échanges quotidiens." },
-      { id: 5, axis: 1, text: "Des comportements non verbaux (regards, gestes, soupirs) expriment ostensiblement du dédain à votre égard." },
-      { id: 6, axis: 1, text: "Votre parole est systématiquement minimisée, ignorée ou ridiculisée lors de réunions ou d'échanges collectifs." },
-      { id: 7, axis: 1, text: "On vous attribue des responsabilités ou tâches dégradantes sans lien avec votre poste ou qualification." },
-      { id: 8, axis: 1, text: "Vous êtes critiqué·e de manière excessive ou disproportionnée pour des erreurs mineures ou inexistantes." },
-      { id: 9, axis: 1, text: "Des propos à caractère discriminatoire (genre, origine, âge, santé) sont tenus à votre encontre." },
-      { id: 10, axis: 1, text: "Vous ressentez une atteinte profonde à votre dignité personnelle dans votre environnement professionnel." },
+    <!-- ==================== ÉCRAN INTRO ==================== -->
+    <div id="screen-intro" class="screen active">
+      <div class="intro-header">
+        <div class="icon-container">
+          <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <h1 class="intro-title">Harcèlement Moral en Milieu Professionnel</h1>
+        <p class="intro-subtitle">Autotest d'Évaluation — Article L1152-1 du Code du Travail</p>
+      </div>
       
-      // AXE 2 : DÉGRADATION DES CONDITIONS DE TRAVAIL
-      { id: 11, axis: 2, text: "Vos missions sont progressivement vidées de leur contenu ou supprimées sans justification." },
-      { id: 12, axis: 2, text: "Vous êtes isolé·e physiquement (bureau éloigné, changement de service) sans raison objective." },
-      { id: 13, axis: 2, text: "On vous prive des moyens nécessaires pour accomplir votre travail (matériel, information, formation)." },
-      { id: 14, axis: 2, text: "Vous subissez une surcharge de travail délibérée avec des délais irréalistes." },
-      { id: 15, axis: 2, text: "Vos horaires de travail sont modifiés de manière arbitraire ou à votre désavantage." },
-      { id: 16, axis: 2, text: "On vous confie des tâches subalternes sans rapport avec votre qualification ou votre contrat." },
-      { id: 17, axis: 2, text: "Vous êtes exclu·e de projets, dossiers ou responsabilités qui relevaient de vos attributions." },
-      { id: 18, axis: 2, text: "Vos demandes légitimes (congés, formations, équipement) sont systématiquement refusées ou ignorées." },
-      { id: 19, axis: 2, text: "Votre environnement de travail devient progressivement insalubre, inconfortable ou impraticable." },
-      { id: 20, axis: 2, text: "Les modifications dans votre organisation de travail compromettent manifestement votre capacité à remplir vos fonctions." },
+      <div class="card">
+        <h2>
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          À propos de cet outil
+        </h2>
+        <p>Cet autotest explore <strong>60 situations professionnelles</strong> organisées selon <strong>6 axes juridiques</strong> basés sur l'article L1152-1 du Code du travail et la jurisprudence de la Cour de cassation française.</p>
+        <p>Durée estimée : <strong>15-20 minutes</strong>. Vos réponses restent <strong>strictement confidentielles</strong> et ne sont jamais transmises. Aucune donnée n'est collectée sans action explicite de votre part.</p>
+      </div>
       
-      // AXE 3 : ISOLEMENT SOCIAL ET PROFESSIONNEL
-      { id: 21, axis: 3, text: "Vos collègues cessent progressivement de vous adresser la parole ou vous évitent." },
-      { id: 22, axis: 3, text: "On vous exclut délibérément des pauses, déjeuners ou moments informels collectifs." },
-      { id: 23, axis: 3, text: "Les informations nécessaires à votre travail ne vous parviennent plus ou avec retard." },
-      { id: 24, axis: 3, text: "Vous n'êtes plus convié·e à certaines réunions dont vous devriez faire partie." },
-      { id: 25, axis: 3, text: "Des médisances, rumeurs ou propos diffamatoires circulent sur vous au sein de l'entreprise." },
-      { id: 26, axis: 3, text: "Vos communications (emails, appels) restent systématiquement sans réponse." },
-      { id: 27, axis: 3, text: "On vous attribue un espace de travail éloigné pour vous isoler du reste de l'équipe." },
-      { id: 28, axis: 3, text: "Vos tentatives de dialogue ou de collaboration sont systématiquement rejetées." },
-      { id: 29, axis: 3, text: "Vous constatez un changement brutal et coordonné dans l'attitude de plusieurs collègues à votre égard." },
-      { id: 30, axis: 3, text: "Vous ressentez un isolement professionnel et social croissant au sein de votre environnement de travail." },
+      <div class="card">
+        <h2>
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Les 6 axes juridiques évalués
+        </h2>
+        <ul class="dimensions-list">
+          <li class="dimension-item atteinte">
+            <strong>Atteinte aux droits et à la dignité</strong>
+            <p>Humiliations, insultes, dénigrement, discrimination, atteinte à la réputation professionnelle</p>
+          </li>
+          <li class="dimension-item isolement">
+            <strong>Isolement professionnel organisé</strong>
+            <p>Mise à l'écart délibérée, rupture de communication, exclusion systématique, ostracisme</p>
+          </li>
+          <li class="dimension-item degradation">
+            <strong>Dégradation des conditions de travail</strong>
+            <p>Retrait de moyens, placardisation, mutation abusive, objectifs irréalisables, privation de tâches</p>
+          </li>
+          <li class="dimension-item violence">
+            <strong>Violence verbale et psychologique</strong>
+            <p>Menaces, intimidation, chantage, cris, comportements agressifs répétés, climat de terreur</p>
+          </li>
+          <li class="dimension-item sante">
+            <strong>Altération de la santé physique/mentale</strong>
+            <p>Stress chronique, troubles anxieux, dépression, troubles somatiques, arrêts maladie</p>
+          </li>
+          <li class="dimension-item systematique">
+            <strong>Caractère répété et systématique</strong>
+            <p>Fréquence des comportements, durée, intentionnalité, préméditation, organisation méthodique</p>
+          </li>
+        </ul>
+      </div>
       
-      // AXE 4 : PRESSIONS ET MENACES IMPLICITES
-      { id: 31, axis: 4, text: "Votre supérieur hiérarchique exerce un contrôle excessif ou disproportionné sur votre travail." },
-      { id: 32, axis: 4, text: "Des menaces voilées concernant votre maintien dans l'entreprise ou votre évolution professionnelle sont formulées." },
-      { id: 33, axis: 4, text: "On vous laisse entendre que vous pourriez être licencié·e, muté·e ou sanctionné·e sans motif légitime." },
-      { id: 34, axis: 4, text: "Des remarques inquiétantes ou déstabilisantes sont faites régulièrement sur votre avenir dans l'entreprise." },
-      { id: 35, axis: 4, text: "Vous ressentez une pression constante à démissionner ou à accepter une rupture conventionnelle." },
-      { id: 36, axis: 4, text: "Votre hiérarchie utilise votre dépendance économique ou votre précarité pour vous contraindre." },
-      { id: 37, axis: 4, text: "Des sanctions disciplinaires injustifiées ou disproportionnées vous sont infligées." },
-      { id: 38, axis: 4, text: "On vous impose des objectifs inatteignables pour justifier ultérieurement une sanction." },
-      { id: 39, axis: 4, text: "Vous êtes placé·e dans une situation de peur récurrente concernant votre situation professionnelle." },
-      { id: 40, axis: 4, text: "Vous sentez que toute résistance ou protestation pourrait aggraver votre situation." },
+      <div class="legal-box">
+        <h3>⚖️ Cadre Juridique — Article L1152-1 du Code du Travail</h3>
+        <p><strong>Définition légale :</strong> "Aucun salarié ne doit subir les agissements répétés de harcèlement moral qui ont pour objet ou pour effet une dégradation de ses conditions de travail susceptible de porter atteinte à ses droits et à sa dignité, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel."</p>
+        <p><strong>Code pénal (art. 222-33-2) :</strong> Le harcèlement moral est un délit passible de 2 ans d'emprisonnement et 30 000 € d'amende.</p>
+        <p><strong>Protection juridique :</strong> Inversion de la charge de la preuve, nullité du licenciement pour harcèlement, responsabilité de l'employeur, protection des témoins.</p>
+      </div>
       
-      // AXE 5 : ATTEINTE À LA SANTÉ (Conséquences psychosomatiques)
-      { id: 41, axis: 5, text: "Vous éprouvez un stress chronique ou une anxiété permanente liés à votre situation professionnelle." },
-      { id: 42, axis: 5, text: "Des troubles du sommeil (insomnie, réveils nocturnes, cauchemars) apparaissent ou s'aggravent." },
-      { id: 43, axis: 5, text: "Vous ressentez une fatigue physique et mentale intense, persistante, même après repos." },
-      { id: 44, axis: 5, text: "Des manifestations somatiques apparaissent (maux de tête, troubles digestifs, tensions musculaires, palpitations)." },
-      { id: 45, axis: 5, text: "Vous constatez une perte de confiance en vous, un sentiment d'incapacité ou de dévalorisation." },
-      { id: 46, axis: 5, text: "Des symptômes dépressifs se manifestent (tristesse, pleurs, démotivation, idées noires)." },
-      { id: 47, axis: 5, text: "Vous développez des comportements d'évitement ou d'appréhension face à votre lieu de travail." },
-      { id: 48, axis: 5, text: "Votre concentration et vos capacités cognitives sont altérées de manière significative." },
-      { id: 49, axis: 5, text: "Vous êtes en arrêt maladie récurrent ou prolongé en raison de votre situation professionnelle." },
-      { id: 50, axis: 5, text: "Votre état de santé physique ou mentale s'est dégradé depuis le début de ces agissements." },
+      <div class="warning-box">
+        <h3>
+          <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          Avertissement Essentiel
+        </h3>
+        <p>Cet outil constitue un <strong>instrument d'orientation juridique</strong>. Il ne remplace en aucun cas l'analyse d'un avocat spécialisé en droit du travail ou d'un conseil juridique qualifié.</p>
+        <p>En cas de situation de harcèlement avérée, contactez : <strong>Inspection du travail (DREETS)</strong>, <strong>Défenseur des droits</strong>, <strong>France Victimes 116 006</strong>, ou <strong>3114</strong> (urgence psychologique).</p>
+        <p>Les résultats reflètent votre perception subjective et nécessitent une qualification juridique par un professionnel du droit.</p>
+      </div>
       
-      // AXE 6 : FACTEURS PROTECTEURS ET RECOURS POSSIBLES
-      { id: 51, axis: 6, text: "Vous avez alerté votre hiérarchie, les ressources humaines ou le CSE de votre situation." },
-      { id: 52, axis: 6, text: "Vous bénéficiez du soutien de collègues témoins de ces agissements." },
-      { id: 53, axis: 6, text: "Vous conservez des preuves écrites (emails, messages, comptes-rendus) des faits subis." },
-      { id: 54, axis: 6, text: "Vous avez consulté le médecin du travail pour faire constater votre état de santé." },
-      { id: 55, axis: 6, text: "Un certificat médical ou arrêt de travail mentionne explicitement le lien avec votre situation professionnelle." },
-      { id: 56, axis: 6, text: "Vous avez pris contact avec l'inspection du travail ou le défenseur des droits." },
-      { id: 57, axis: 6, text: "Un avocat spécialisé en droit du travail a été consulté pour évaluer votre situation." },
-      { id: 58, axis: 6, text: "Vous disposez de témoignages écrits de collègues corroborant vos déclarations." },
-      { id: 59, axis: 6, text: "Un syndicat ou une association d'aide aux victimes vous accompagne dans vos démarches." },
-      { id: 60, axis: 6, text: "Vous avez engagé une procédure formelle (main courante, signalement RH, prud'hommes) contre ces agissements." }
+      <div class="consent-container">
+        <input type="checkbox" id="consent-check">
+        <label for="consent-check">
+          Je comprends que cet outil est un dispositif d'orientation juridique et non un avis juridique formel. J'accepte de procéder à l'auto-évaluation en toute connaissance de cause.
+        </label>
+      </div>
+      
+      <button id="start-btn" class="btn btn-primary btn-full" disabled onclick="startTest()">
+        Commencer l'évaluation
+      </button>
+    </div>
+    
+    <!-- ==================== ÉCRAN QUESTIONNAIRE ==================== -->
+    <div id="screen-test" class="screen">
+      <div class="question-container">
+        <div class="progress-bar-container">
+          <div id="progress-bar" class="progress-bar-fill" style="width: 0%"></div>
+        </div>
+        <p id="progress-text" class="progress-text"></p>
+        
+        <span id="dimension-badge" class="dimension-badge"></span>
+        <p class="question-number" id="question-number"></p>
+        <h2 class="question-text" id="question-text"></h2>
+        
+        <div class="choices-container" id="choices-container"></div>
+        
+        <div class="navigation-buttons">
+          <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn">
+            ← Précédent
+          </button>
+          <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn" disabled>
+            Suivant →
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ==================== ÉCRAN RÉSULTATS ==================== -->
+    <div id="screen-results" class="screen">
+      <div class="results-container">
+        <div class="result-header">
+          <div id="result-badge" class="result-badge"></div>
+          <h1 class="result-title" id="result-title"></h1>
+          <p class="result-score" id="result-score"></p>
+          <p class="result-summary" id="result-summary"></p>
+        </div>
+        
+        <div class="results-grid">
+          <div class="result-card">
+            <h3>Analyse Dimensionnelle</h3>
+            <div id="dimension-scores"></div>
+          </div>
+          
+          <div class="result-card">
+            <h3>Analyse Juridique</h3>
+            <div id="profile-analysis" class="profile-analysis"></div>
+          </div>
+        </div>
+        
+        <div class="result-card">
+          <h3>Recommandations et Recours Juridiques</h3>
+          <ul class="recommendations-list" id="recommendations-list"></ul>
+        </div>
+        
+        <div class="result-card">
+          <h3>Exporter les Résultats</h3>
+          <div class="export-buttons">
+            <button class="btn btn-primary" onclick="generatePDF()">
+              📄 Télécharger PDF
+            </button>
+            <button class="btn btn-secondary" onclick="downloadJSON()">
+              💾 Télécharger JSON
+            </button>
+            <button class="btn btn-secondary" onclick="sendResultsByEmail()">
+              📧 Envoyer par email
+            </button>
+          </div>
+          <button class="btn btn-secondary btn-full" onclick="resetTest()" style="margin-top: var(--s-6);">
+            Refaire le test
+          </button>
+        </div>
+        
+        <div class="footer-info">
+          <p class="footer-logo">NOÉSIS</p>
+          <p>Intelligence transdisciplinaire au service de la lucidité</p>
+          <p>© 2025 NOÉSIS — Tous droits réservés</p>
+          <p style="margin-top: var(--s-3); font-size: var(--fs-xs);">
+            Outil d'évaluation du harcèlement moral en milieu professionnel<br>
+            Basé sur l'Article L1152-1 du Code du travail<br>
+            Ne remplace pas l'analyse d'un avocat spécialisé en droit du travail<br>
+            Confidentialité : aucune donnée collectée sans action explicite
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    // ==================== CONFIGURATION ====================
+    
+    const DIMENSIONS = [
+      { 
+        key: "atteinte", 
+        label: "Atteinte droits/dignité", 
+        fullLabel: "Atteinte aux droits et à la dignité",
+        color: "atteinte"
+      },
+      { 
+        key: "isolement", 
+        label: "Isolement professionnel", 
+        fullLabel: "Isolement professionnel organisé",
+        color: "isolement"
+      },
+      { 
+        key: "degradation", 
+        label: "Dégradation conditions", 
+        fullLabel: "Dégradation des conditions de travail",
+        color: "degradation"
+      },
+      { 
+        key: "violence", 
+        label: "Violence psychologique", 
+        fullLabel: "Violence verbale et psychologique",
+        color: "violence"
+      },
+      { 
+        key: "sante", 
+        label: "Altération santé", 
+        fullLabel: "Altération de la santé physique/mentale",
+        color: "sante"
+      },
+      { 
+        key: "systematique", 
+        label: "Caractère systématique", 
+        fullLabel: "Caractère répété et systématique",
+        color: "systematique"
+      }
     ];
-    
-    const AXES = [
-      { id: 1, name: "Atteintes à la dignité", color: "#F59E0B" },
-      { id: 2, name: "Dégradation conditions travail", color: "#F43F5E" },
-      { id: 3, name: "Isolement social professionnel", color: "#0EA5E9" },
-      { id: 4, name: "Pressions et menaces", color: "#8B5CF6" },
-      { id: 5, name: "Atteinte à la santé", color: "#10B981" },
-      { id: 6, name: "Facteurs protecteurs", color: "#EF4444" }
-    ];
-    
-    const OPTIONS = [
+
+    const SCALE_OPTIONS = [
       { value: 0, label: "Jamais" },
-      { value: 1, label: "Parfois" },
-      { value: 2, label: "Souvent" },
-      { value: 3, label: "Très souvent" }
+      { value: 1, label: "Rarement (1-2 fois)" },
+      { value: 2, label: "Parfois (mensuel)" },
+      { value: 3, label: "Fréquemment (hebdomadaire ou plus)" }
     ];
+
+    const QUESTIONS = [
+      // Atteinte aux droits et à la dignité (10)
+      {id:"Q1", dim:"atteinte", text:"On me dénigre, humilie ou ridiculise devant d'autres personnes."},
+      {id:"Q2", dim:"atteinte", text:"On critique systématiquement mon travail de manière injustifiée."},
+      {id:"Q3", dim:"atteinte", text:"On propage des rumeurs malveillantes sur moi."},
+      {id:"Q4", dim:"atteinte", text:"On insulte, injurie ou tient des propos dégradants à mon égard."},
+      {id:"Q5", dim:"atteinte", text:"On remet en cause mes compétences professionnelles sans fondement."},
+      {id:"Q6", dim:"atteinte", text:"On me fait des remarques discriminatoires (genre, âge, origine, etc.)."},
+      {id:"Q7", dim:"atteinte", text:"On s'attaque à ma réputation professionnelle auprès de tiers."},
+      {id:"Q8", dim:"atteinte", text:"On me traite de manière dégradante comparé à mes collègues."},
+      {id:"Q9", dim:"atteinte", text:"On bafoue mes droits fondamentaux de salarié·e."},
+      {id:"Q10", dim:"atteinte", text:"On porte atteinte à mon intégrité psychologique délibérément."},
+      
+      // Isolement professionnel organisé (10)
+      {id:"Q11", dim:"isolement", text:"On m'exclut systématiquement des réunions professionnelles."},
+      {id:"Q12", dim:"isolement", text:"On ne me transmet plus les informations nécessaires à mon travail."},
+      {id:"Q13", dim:"isolement", text:"Mes collègues m'évitent ou refusent de me parler."},
+      {id:"Q14", dim:"isolement", text:"On organise mon isolement géographique (bureau éloigné, placardisation)."},
+      {id:"Q15", dim:"isolement", text:"On ignore mes mails, appels et sollicitations professionnelles."},
+      {id:"Q16", dim:"isolement", text:"On me retire de projets collectifs sans justification."},
+      {id:"Q17", dim:"isolement", text:"On m'exclut des événements informels et moments de convivialité."},
+      {id:"Q18", dim:"isolement", text:"On décourage activement mes collègues de me fréquenter."},
+      {id:"Q19", dim:"isolement", text:"On me coupe de mes réseaux professionnels internes."},
+      {id:"Q20", dim:"isolement", text:"On pratique un ostracisme organisé à mon encontre."},
+      
+      // Dégradation des conditions de travail (10)
+      {id:"Q21", dim:"degradation", text:"On me retire des responsabilités que j'avais auparavant."},
+      {id:"Q22", dim:"degradation", text:"On me confie des tâches dévalorisantes ou sans rapport avec ma qualification."},
+      {id:"Q23", dim:"degradation", text:"On me fixe des objectifs impossibles à atteindre."},
+      {id:"Q24", dim:"degradation", text:"On me prive des moyens matériels nécessaires à mon travail."},
+      {id:"Q25", dim:"degradation", text:"On modifie unilatéralement mes conditions de travail (horaires, lieu, missions)."},
+      {id:"Q26", dim:"degradation", text:"On me surcharge de travail de manière délibérée et excessive."},
+      {id:"Q27", dim:"degradation", text:"On me sous-charge pour me priver d'activité professionnelle."},
+      {id:"Q28", dim:"degradation", text:"On sabote mon travail (suppression de fichiers, dissimulation d'informations)."},
+      {id:"Q29", dim:"degradation", text:"On me refuse l'accès à la formation professionnelle."},
+      {id:"Q30", dim:"degradation", text:"On bloque mon évolution de carrière sans motif légitime."},
+      
+      // Violence verbale et psychologique (10)
+      {id:"Q31", dim:"violence", text:"On me menace (licenciement, sanction, mutation forcée)."},
+      {id:"Q32", dim:"violence", text:"On crie sur moi ou adopte un ton agressif."},
+      {id:"Q33", dim:"violence", text:"On m'intimide par des comportements hostiles."},
+      {id:"Q34", dim:"violence", text:"On pratique du chantage (horaires, primes, évaluation)."},
+      {id:"Q35", dim:"violence", text:"On exerce une pression psychologique constante."},
+      {id:"Q36", dim:"violence", text:"On m'adresse des reproches injustifiés de manière agressive."},
+      {id:"Q37", dim:"violence", text:"On instaure un climat de peur et de terreur."},
+      {id:"Q38", dim:"violence", text:"On pratique l'intimidation physique (proximité excessive, gestes brusques)."},
+      {id:"Q39", dim:"violence", text:"On utilise un vocabulaire violent ou menaçant."},
+      {id:"Q40", dim:"violence", text:"On exerce des représailles si je proteste."},
+      
+      // Altération de la santé physique/mentale (10)
+      {id:"Q41", dim:"sante", text:"Je ressens un stress chronique lié à ces agissements."},
+      {id:"Q42", dim:"sante", text:"Je développe des troubles anxieux ou dépressifs."},
+      {id:"Q43", dim:"sante", text:"Je souffre de troubles du sommeil récurrents."},
+      {id:"Q44", dim:"sante", text:"Je présente des symptômes somatiques (maux, tensions, troubles digestifs)."},
+      {id:"Q45", dim:"sante", text:"J'ai pris des arrêts maladie liés à cette situation."},
+      {id:"Q46", dim:"sante", text:"Ma santé mentale s'est significativement dégradée."},
+      {id:"Q47", dim:"sante", text:"Je consulte un médecin ou psychologue pour ces difficultés."},
+      {id:"Q48", dim:"sante", text:"Je ressens un épuisement professionnel (burnout)."},
+      {id:"Q49", dim:"sante", text:"J'ai des pensées intrusives liées au travail."},
+      {id:"Q50", dim:"sante", text:"Mon état de santé global s'est détérioré."},
+      
+      // Caractère répété et systématique (10)
+      {id:"Q51", dim:"systematique", text:"Ces comportements se répètent depuis plusieurs mois."},
+      {id:"Q52", dim:"systematique", text:"Ces agissements ont une fréquence régulière (hebdomadaire ou plus)."},
+      {id:"Q53", dim:"systematique", text:"Ces comportements semblent organisés et prémédités."},
+      {id:"Q54", dim:"systematique", text:"Plusieurs personnes participent à ces agissements."},
+      {id:"Q55", dim:"systematique", text:"Ces comportements s'inscrivent dans une stratégie délibérée."},
+      {id:"Q56", dim:"systematique", text:"La direction ou hiérarchie est informée mais n'intervient pas."},
+      {id:"Q57", dim:"systematique", text:"Ces agissements s'intensifient dans le temps."},
+      {id:"Q58", dim:"systematique", text:"Ces comportements visent manifestement à me nuire."},
+      {id:"Q59", dim:"systematique", text:"Il existe une intentionnalité claire de dégradation."},
+      {id:"Q60", dim:"systematique", text:"Ces agissements constituent un système cohérent et organisé."}
+    ];
+
+    const RESULT_BANDS = [
+      {
+        range: [0, 30],
+        level: "absence",
+        label: "Absence de Harcèlement Caractérisé",
+        description: "Les éléments constitutifs du harcèlement moral au sens juridique ne sont pas réunis. Les difficultés relationnelles éventuelles relèvent davantage du conflit ponctuel ou de tensions interpersonnelles sans caractère répété ni systématique.",
+        recommendations: [
+          "Si tensions ponctuelles : privilégiez le dialogue direct avec votre hiérarchie ou les RH.",
+          "Documentez néanmoins tout comportement problématique par précaution.",
+          "En cas d'aggravation ultérieure, sollicitez les représentants du personnel.",
+          "Consultez la médecine du travail pour prévention si stress professionnel."
+        ]
+      },
+      {
+        range: [31, 60],
+        level: "indices",
+        label: "Indices Préoccupants — Vigilance Juridique",
+        description: "Certains éléments constituent des indices de harcèlement potentiel mais ne remplissent pas encore tous les critères jurisprudentiels (répétition, altération conditions, atteinte santé). Surveillance et documentation nécessaires.",
+        recommendations: [
+          "Documentez systématiquement tous les faits (dates, témoins, preuves écrites).",
+          "Sollicitez un entretien formel avec votre hiérarchie ou les RH en traçant l'échange.",
+          "Alertez les représentants du personnel (CSE, délégués syndicaux).",
+          "Consultez la médecine du travail pour constituer un dossier médical.",
+          "Prenez contact avec un avocat spécialisé en droit du travail pour analyse préventive.",
+          "Conservez tous échanges écrits (mails, SMS, courriers)."
+        ]
+      },
+      {
+        range: [61, 90],
+        level: "probable",
+        label: "Harcèlement Moral Probable — Action Juridique Recommandée",
+        description: "Les éléments réunis constituent un faisceau d'indices convergents caractérisant probablement un harcèlement moral au sens de l'article L1152-1. Plusieurs critères jurisprudentiels sont remplis (répétition, dégradation conditions, altération santé).",
+        recommendations: [
+          "URGENT : Constituez un dossier complet avec chronologie précise et preuves matérielles.",
+          "Sollicitez consultation juridique spécialisée en droit du travail (avocat, défenseur des droits).",
+          "Déposez une alerte formelle auprès de votre employeur (LRAR recommandée).",
+          "Alertez l'inspection du travail (DREETS) et demandez une enquête.",
+          "Activez le droit d'alerte auprès du CSE si disponible.",
+          "Consultez la médecine du travail pour certificat médical circonstancié.",
+          "Envisagez une prise en charge psychologique urgente.",
+          "Ne démissionnez pas sans conseil juridique (risque de perte de droits)."
+        ]
+      },
+      {
+        range: [91, 120],
+        level: "caracterise",
+        label: "Harcèlement Moral Caractérisé — Urgence Juridique",
+        description: "La situation remplit tous les critères constitutifs du harcèlement moral selon la jurisprudence constante : agissements répétés, dégradation conditions de travail, atteinte droits/dignité, altération santé. Qualification juridique établie.",
+        recommendations: [
+          "URGENCE ABSOLUE : Consultez immédiatement un avocat spécialisé en droit du travail.",
+          "Déposez une main courante ou plainte pénale (art. 222-33-2 Code pénal).",
+          "Saisissez l'inspection du travail et le Défenseur des droits simultanément.",
+          "Demandez protection en tant que victime via votre employeur (obligation de sécurité).",
+          "Sollicitez un arrêt de travail auprès de la médecine du travail.",
+          "Envisagez une prise en charge d'urgence aux victimes (116 006).",
+          "Constituez dossier juridique exhaustif pour action prud'homale.",
+          "Activez les procédures d'urgence (référé prud'homal si besoin).",
+          "Sollicitez accompagnement psychologique spécialisé en trauma professionnel."
+        ]
+      },
+      {
+        range: [121, 180],
+        level: "grave",
+        label: "Harcèlement Moral Grave et Systématique — Danger Imminent",
+        description: "Situation de harcèlement moral aggravé avec caractère systématique, organisé et intentionnel manifeste. Atteinte grave à l'intégrité physique et mentale. Configuration juridiquement qualifiable de maltraitance institutionnelle. Danger pour votre santé et sécurité.",
+        recommendations: [
+          "DANGER IMMINENT : Protégez immédiatement votre santé et sécurité.",
+          "Consultez avocat spécialisé ET médecin en urgence (arrêt travail prolongé).",
+          "Déposez plainte pénale pour harcèlement moral aggravé.",
+          "Saisissez simultanément : Inspection du travail, Défenseur des droits, Parquet.",
+          "Sollicitez protection judiciaire urgente (ordonnance de référé, protection fonctionnelle).",
+          "Activez dispositifs d'urgence : France Victimes 116 006, 3114 (prévention suicide).",
+          "Demandez reconnaissance accident du travail ou maladie professionnelle.",
+          "Documentez exhaustivement pour dossier pénal et prud'homal.",
+          "Envisagez prise en charge psychiatrique spécialisée en psychotraumatologie.",
+          "Mobilisez réseau soutien (famille, associations, syndicats).",
+          "Ne restez pas isolé·e : les recours juridiques sont nombreux et protecteurs."
+        ]
+      }
+    ];
+
+    // ==================== ÉTAT DE L'APPLICATION ====================
     
-    function HarcelementMoralTest() {
-      const [page, setPage] = useState('intro');
-      const [currentQ, setCurrentQ] = useState(0);
-      const [answers, setAnswers] = useState({});
+    let state = {
+      currentQuestionIndex: 0,
+      answers: {}
+    };
+
+    // ==================== FONCTIONS NAVIGATION ====================
+    
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      document.getElementById(screenId).classList.add('active');
+    }
+
+    function startTest() {
+      showScreen('screen-test');
+      displayQuestion();
+    }
+
+    function displayQuestion() {
+      const question = QUESTIONS[state.currentQuestionIndex];
+      const dimension = DIMENSIONS.find(d => d.key === question.dim);
       
-      const handleAnswer = (value) => {
-        const newAnswers = { ...answers, [QUESTIONS[currentQ].id]: value };
-        setAnswers(newAnswers);
-        
-        if (currentQ < QUESTIONS.length - 1) {
-          setTimeout(() => setCurrentQ(currentQ + 1), 300);
-        }
-      };
+      // Mise à jour progression
+      const progress = ((state.currentQuestionIndex + 1) / QUESTIONS.length) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+      document.getElementById('progress-text').textContent = 
+        `Question ${state.currentQuestionIndex + 1} sur ${QUESTIONS.length}`;
       
-      const calculateResults = () => {
-        // Axe 6 (Facteurs protecteurs) : score inversé
-        const axis6Questions = QUESTIONS.filter(q => q.axis === 6);
-        const axis6Max = axis6Questions.length * 3;
-        const axis6Current = axis6Questions.reduce((sum, q) => sum + (answers[q.id] || 0), 0);
-        const axis6Inverted = axis6Max - axis6Current;
+      // Badge dimension
+      const badge = document.getElementById('dimension-badge');
+      badge.textContent = dimension.label;
+      badge.className = 'dimension-badge ' + dimension.color;
+      
+      // Numéro et texte question
+      document.getElementById('question-number').textContent = 
+        `Question ${state.currentQuestionIndex + 1}`;
+      document.getElementById('question-text').textContent = question.text;
+      
+      // Choix de réponse
+      const choicesContainer = document.getElementById('choices-container');
+      choicesContainer.innerHTML = '';
+      
+      SCALE_OPTIONS.forEach(option => {
+        const isSelected = state.answers[question.id] === option.value;
         
-        // Autres axes : score normal
-        const otherAxes = [1, 2, 3, 4, 5];
-        const otherScore = QUESTIONS
-          .filter(q => otherAxes.includes(q.axis))
-          .reduce((sum, q) => sum + (answers[q.id] || 0), 0);
+        const choiceDiv = document.createElement('div');
+        choiceDiv.className = 'choice-option';
         
-        const totalScore = otherScore + axis6Inverted;
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'answer';
+        radio.value = option.value;
+        radio.id = 'choice-' + option.value;
+        radio.checked = isSelected;
+        radio.onchange = () => selectAnswer(option.value);
         
-        const axisScores = AXES.map(axis => {
-          const axisQuestions = QUESTIONS.filter(q => q.axis === axis.id);
-          const score = axisQuestions.reduce((sum, q) => sum + (answers[q.id] || 0), 0);
-          const maxScore = axisQuestions.length * 3;
-          
-          // Inverser le score pour l'axe 6
-          const finalScore = axis.id === 6 ? maxScore - score : score;
-          
-          return {
-            ...axis,
-            score: finalScore,
-            maxScore,
-            percentage: (finalScore / maxScore) * 100
-          };
+        const label = document.createElement('label');
+        label.className = 'choice-label';
+        label.htmlFor = 'choice-' + option.value;
+        label.innerHTML = `<span class="choice-main">${option.label}</span>`;
+        
+        choiceDiv.appendChild(radio);
+        choiceDiv.appendChild(label);
+        choicesContainer.appendChild(choiceDiv);
+      });
+      
+      // Boutons navigation
+      document.getElementById('prev-btn').style.display = 
+        state.currentQuestionIndex > 0 ? 'block' : 'none';
+      
+      const nextBtn = document.getElementById('next-btn');
+      nextBtn.disabled = state.answers[question.id] === undefined;
+      nextBtn.textContent = state.currentQuestionIndex === QUESTIONS.length - 1 
+        ? 'Voir les résultats' 
+        : 'Suivant →';
+    }
+
+    function selectAnswer(value) {
+      const question = QUESTIONS[state.currentQuestionIndex];
+      state.answers[question.id] = value;
+      document.getElementById('next-btn').disabled = false;
+    }
+
+    function nextQuestion() {
+      if (state.currentQuestionIndex < QUESTIONS.length - 1) {
+        state.currentQuestionIndex++;
+        displayQuestion();
+      } else {
+        calculateResults();
+      }
+    }
+
+    function previousQuestion() {
+      if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex--;
+        displayQuestion();
+      }
+    }
+
+    // ==================== CALCUL RÉSULTATS ====================
+    
+    function calculateResults() {
+      const scores = calculateScores();
+      const profile = getResultProfile(scores.total);
+      const profileAnalysis = analyzeProfile(scores);
+      
+      displayResults(scores, profile, profileAnalysis);
+      showScreen('screen-results');
+    }
+
+    function calculateScores() {
+      const dimensionScores = {};
+      let totalScore = 0;
+      
+      DIMENSIONS.forEach(dimension => {
+        let dimScore = 0;
+        let dimMax = 0;
+        
+        QUESTIONS.filter(q => q.dim === dimension.key).forEach(q => {
+          const answer = state.answers[q.id] || 0;
+          dimScore += answer;
+          dimMax += 3;
         });
         
-        return { totalScore, axisScores };
-      };
-      
-      const getInterpretation = (score) => {
-        if (score <= 60) {
-          return {
-            level: "Risque faible",
-            badge: "badge-low",
-            description: "Les situations décrites restent limitées ou isolées. Aucun élément caractéristique de harcèlement moral n'est identifié selon les critères juridiques (absence de répétition, d'intention manifeste ou d'effet sur les conditions de travail).",
-            recommendations: [
-              "Documenter tout changement notable dans vos conditions de travail ou relations professionnelles",
-              "Maintenir une communication écrite avec votre hiérarchie (emails, comptes-rendus)",
-              "Conserver les évaluations professionnelles et échanges formels",
-              "Solliciter un entretien RH si des tensions persistent ou s'intensifient"
-            ]
-          };
-        } else if (score <= 100) {
-          return {
-            level: "Risque modéré",
-            badge: "badge-moderate",
-            description: "Plusieurs éléments préoccupants sont identifiés. Les faits restent isolés ou ambigus au regard du droit, mais nécessitent vigilance et traçabilité. Le contexte professionnel montre des signes de dégradation justifiant une documentation rigoureuse.",
-            recommendations: [
-              "Constituer un dossier documenté : dates, faits précis, témoins, preuves matérielles",
-              "Alerter formellement les ressources humaines ou le CSE par écrit (AR recommandé)",
-              "Consulter le médecin du travail pour faire constater votre état de santé et établir un lien avec les conditions de travail",
-              "Prendre conseil auprès d'un avocat spécialisé en droit du travail pour évaluation juridique",
-              "Solliciter l'inspection du travail ou le défenseur des droits si absence de réponse interne"
-            ]
-          };
-        } else if (score <= 140) {
-          return {
-            level: "Harcèlement probable",
-            badge: "badge-elevated",
-            description: "Les éléments rapportés correspondent aux critères juridiques du harcèlement moral (Article L1152-1 : agissements répétés, dégradation des conditions de travail, atteinte à la dignité ou à la santé). Une évaluation juridique et médicale est nécessaire. La jurisprudence considère ce niveau de situation comme caractérisant potentiellement une infraction pénale.",
-            recommendations: [
-              "<strong>Consulter immédiatement un avocat spécialisé en droit du travail</strong> pour évaluation juridique et stratégie contentieuse",
-              "<strong>Consulter le médecin du travail en urgence</strong> : faire établir un lien de causalité entre travail et état de santé",
-              "Constituer un dossier de preuves complet : emails, SMS, témoignages écrits datés, certificats médicaux",
-              "Alerter formellement la direction et les RH par LRAR en décrivant factuellement les agissements",
-              "Saisir l'inspection du travail pour signalement et enquête",
-              "Envisager un arrêt de travail pour préserver votre santé si nécessaire",
-              "Contacter une association d'aide aux victimes (France Victimes : 116 006, Défenseur des droits)"
-            ]
-          };
-        } else {
-          return {
-            level: "Harcèlement caractérisé",
-            badge: "badge-critical",
-            description: "Les éléments rapportés constituent un faisceau d'indices graves caractérisant juridiquement le harcèlement moral au sens de l'article L1152-1 du Code du travail. La situation relève d'une infraction pénale (Code pénal art. 222-33-2, jusqu'à 2 ans d'emprisonnement et 30 000€ d'amende). Une action juridique et médicale immédiate est impérative.",
-            recommendations: [
-              "<strong>URGENCE : Consulter immédiatement un avocat spécialisé en droit du travail</strong> pour engager une procédure contentieuse (conseil de prud'hommes, plainte pénale)",
-              "<strong>Consultation médicale d'urgence</strong> : médecin du travail + médecin traitant pour certificats médicaux détaillés établissant le lien de causalité",
-              "<strong>Arrêt de travail</strong> pour mise à distance et protection de votre santé physique et mentale",
-              "<strong>Dépôt de plainte pénale</strong> pour harcèlement moral (Commissariat ou Procureur de la République)",
-              "<strong>Signalement immédiat à l'inspection du travail</strong> (DREETS) par LRAR avec pièces justificatives",
-              "<strong>Alerte CSE et syndicats</strong> : demande d'enquête interne et mesures conservatoires",
-              "<strong>Constitution d'un dossier exhaustif</strong> : chronologie détaillée, preuves matérielles, témoignages, certificats médicaux",
-              "<strong>Soutien psychologique spécialisé</strong> : consultation victimologie trauma au travail",
-              "<strong>Numéros d'urgence</strong> : 3114 (urgence psychologique), 116 006 (France Victimes), 39 19 (violences femmes), Défenseur des droits"
-            ]
-          };
-        }
-      };
-      
-      const reset = () => {
-        if (confirm('Êtes-vous sûr·e de vouloir recommencer le test ? Toutes vos réponses seront effacées.')) {
-          setPage('intro');
-          setCurrentQ(0);
-          setAnswers({});
-        }
-      };
-      
-      const exportPDF = () => {
-        window.print();
-      };
-      
-      const exportJSON = () => {
-        const { totalScore, axisScores } = calculateResults();
-        const interpretation = getInterpretation(totalScore);
-        
-        const data = {
-          test: "Harcèlement Moral – Grille d'Évaluation Juridique NOÉSIS",
-          date: new Date().toISOString(),
-          score_total: totalScore,
-          score_max: 180,
-          niveau: interpretation.level,
-          axes: axisScores.map(axis => ({
-            nom: axis.name,
-            score: axis.score,
-            score_max: axis.maxScore,
-            pourcentage: Math.round(axis.percentage)
-          })),
-          reponses: QUESTIONS.map(q => ({
-            question_id: q.id,
-            axe: q.axis,
-            texte: q.text,
-            reponse: OPTIONS.find(o => o.value === (answers[q.id] || 0))?.label || "Non répondu"
-          }))
+        dimensionScores[dimension.key] = {
+          score: dimScore,
+          max: dimMax,
+          percentage: Math.round((dimScore / dimMax) * 100)
         };
         
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `noesis-harcelement-moral-${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
+        totalScore += dimScore;
+      });
+      
+      return {
+        total: totalScore,
+        maxTotal: 180,
+        dimensions: dimensionScores
+      };
+    }
+
+    function getResultProfile(totalScore) {
+      return RESULT_BANDS.find(band => 
+        totalScore >= band.range[0] && totalScore <= band.range[1]
+      );
+    }
+
+    function analyzeProfile(scores) {
+      const dims = scores.dimensions;
+      
+      // Identifier dimension dominante
+      let maxKey = null;
+      let maxPercentage = 0;
+      
+      Object.entries(dims).forEach(([key, data]) => {
+        if (data.percentage > maxPercentage) {
+          maxPercentage = data.percentage;
+          maxKey = key;
+        }
+      });
+      
+      // Analyses juridiques spécifiques
+      let analysis = '';
+      
+      if (maxKey === 'atteinte' && dims.atteinte.percentage >= 60) {
+        analysis = "La dimension d'atteinte aux droits et à la dignité domine votre situation. Cette configuration juridique correspond au premier critère de l'article L1152-1 (atteinte droits/dignité). Éléments potentiellement qualifiables en harcèlement si répétition et altération santé démontrées.";
+      } else if (maxKey === 'isolement' && dims.isolement.percentage >= 60) {
+        analysis = "L'isolement professionnel organisé structure votre expérience. Jurisprudence constante : l'ostracisme systématique constitue une forme de harcèlement moral si intentionnel et dommageable. Critère aggravant reconnu par les tribunaux.";
+      } else if (maxKey === 'degradation' && dims.degradation.percentage >= 60) {
+        analysis = "La dégradation des conditions de travail est au cœur de votre situation. Élément central de l'article L1152-1 : 'dégradation conditions de travail'. Configuration juridique solide si couplée à répétition et atteinte santé.";
+      } else if (maxKey === 'violence' && dims.violence.percentage >= 60) {
+        analysis = "La violence psychologique domine. Jurisprudence : menaces, intimidation, climat de terreur constituent circonstances aggravantes. Potentiellement qualifiable en harcèlement moral aggravé (Code pénal art. 222-33-2).";
+      } else if (maxKey === 'sante' && dims.sante.percentage >= 60) {
+        analysis = "L'altération de santé est majeure. Critère jurisprudentiel décisif : dégradation état physique/mental démontrée. Ouvre droit à reconnaissance accident travail ou maladie professionnelle. Expertise médicale recommandée.";
+      } else if (maxKey === 'systematique' && dims.systematique.percentage >= 60) {
+        analysis = "Le caractère systématique et répété est établi. Élément constitutif fondamental du harcèlement moral : 'agissements répétés'. Configuration juridique remplissant critère temporal et intentionnel. Qualification juridique probable.";
+      } else {
+        analysis = "Votre situation présente une configuration complexe nécessitant analyse juridique approfondie pour qualifier précisément les faits au regard de l'article L1152-1 et de la jurisprudence applicable.";
+      }
+      
+      return {
+        dominant: maxKey || 'atteinte',
+        analysis: analysis
+      };
+    }
+
+    function displayResults(scores, profile, profileAnalysis) {
+      // Badge et titre
+      document.getElementById('result-badge').textContent = profile.level.toUpperCase();
+      document.getElementById('result-badge').className = 'result-badge ' + profile.level;
+      document.getElementById('result-title').textContent = profile.label;
+      document.getElementById('result-score').textContent = 
+        `Score total : ${scores.total} / ${scores.maxTotal}`;
+      document.getElementById('result-summary').textContent = profile.description;
+      
+      // Scores dimensionnels
+      const dimensionScoresContainer = document.getElementById('dimension-scores');
+      dimensionScoresContainer.innerHTML = '';
+      
+      DIMENSIONS.forEach(dimension => {
+        const data = scores.dimensions[dimension.key];
+        
+        const item = document.createElement('div');
+        item.className = 'dimension-score-item ' + dimension.color;
+        item.innerHTML = `
+          <span class="dimension-score-label">${dimension.label}</span>
+          <span class="dimension-score-value">${data.percentage}%</span>
+        `;
+        
+        const bar = document.createElement('div');
+        bar.className = 'dimension-bar';
+        bar.innerHTML = `<div class="dimension-bar-fill ${dimension.color}" style="width: ${data.percentage}%"></div>`;
+        
+        dimensionScoresContainer.appendChild(item);
+        dimensionScoresContainer.appendChild(bar);
+      });
+      
+      // Analyse juridique
+      const profileAnalysisContainer = document.getElementById('profile-analysis');
+      const dominantDimension = DIMENSIONS.find(d => d.key === profileAnalysis.dominant);
+      profileAnalysisContainer.innerHTML = `
+        <h4>Dimension juridique dominante : ${dominantDimension.label}</h4>
+        <p>${profileAnalysis.analysis}</p>
+      `;
+      
+      // Recommandations
+      const recommendationsList = document.getElementById('recommendations-list');
+      recommendationsList.innerHTML = '';
+      profile.recommendations.forEach((rec, idx) => {
+        const li = document.createElement('li');
+        li.className = 'recommendation-item';
+        li.innerHTML = `
+          <span class="recommendation-number">${idx + 1}</span>
+          <span class="recommendation-text">${rec}</span>
+        `;
+        recommendationsList.appendChild(li);
+      });
+    }
+
+    // ==================== EXPORT PDF ====================
+    
+    function generatePDF() {
+      const scores = calculateScores();
+      const profile = getResultProfile(scores.total);
+      const profileAnalysis = analyzeProfile(scores);
+      
+      const printWindow = window.open('', '', 'width=800,height=600');
+      
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+          <meta charset="UTF-8">
+          <title>Résultats Harcèlement Moral — NOÉSIS</title>
+          <style>
+            @page { 
+              size: A4; 
+              margin: 15mm 20mm; 
+            }
+            
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            
+            body {
+              font-family: Arial, sans-serif;
+              font-size: 11pt;
+              line-height: 1.6;
+              color: #0A0A0A;
+            }
+            
+            h1 {
+              font-size: 18pt;
+              margin-bottom: 12pt;
+              color: #0A0A0A;
+              border-bottom: 3pt solid #C7A86D;
+              padding-bottom: 6pt;
+            }
+            
+            h2 {
+              font-size: 14pt;
+              margin-top: 16pt;
+              margin-bottom: 8pt;
+              color: #0A0A0A;
+            }
+            
+            h3 {
+              font-size: 12pt;
+              margin-top: 12pt;
+              margin-bottom: 6pt;
+              color: #0A0A0A;
+            }
+            
+            p {
+              margin-bottom: 8pt;
+              text-align: justify;
+            }
+            
+            .header {
+              text-align: center;
+              margin-bottom: 20pt;
+            }
+            
+            .logo {
+              font-size: 22pt;
+              font-weight: bold;
+              color: #C7A86D;
+              margin-bottom: 6pt;
+            }
+            
+            .subtitle {
+              font-size: 10pt;
+              color: rgba(10,10,10,0.6);
+            }
+            
+            .section {
+              margin-bottom: 20pt;
+              page-break-inside: avoid;
+            }
+            
+            .score-box {
+              background: #F7F5EF;
+              padding: 12pt;
+              border-radius: 6pt;
+              margin: 12pt 0;
+              border-left: 4pt solid #C7A86D;
+            }
+            
+            .dimension-item {
+              margin-bottom: 8pt;
+              padding: 8pt;
+              background: #FAFAFA;
+              border-left: 3pt solid;
+            }
+            
+            .dimension-item.atteinte { border-color: #dc2626; }
+            .dimension-item.isolement { border-color: #7c3aed; }
+            .dimension-item.degradation { border-color: #ea580c; }
+            .dimension-item.violence { border-color: #be123c; }
+            .dimension-item.sante { border-color: #0891b2; }
+            .dimension-item.systematique { border-color: #854d0e; }
+            
+            .recommendation-list {
+              list-style: none;
+              padding-left: 0;
+            }
+            
+            .recommendation-list li {
+              margin-bottom: 8pt;
+              padding-left: 20pt;
+              position: relative;
+            }
+            
+            .recommendation-list li:before {
+              content: "→";
+              position: absolute;
+              left: 0;
+              color: #C7A86D;
+              font-weight: bold;
+            }
+            
+            .question-detail {
+              font-size: 10pt;
+              margin-bottom: 6pt;
+              padding: 4pt 0;
+              border-bottom: 1px solid #E5E5E5;
+            }
+            
+            .legal-box {
+              background: #FEF2F2;
+              border: 2pt solid #DC2626;
+              padding: 12pt;
+              margin: 16pt 0;
+              border-radius: 6pt;
+            }
+            
+            .footer {
+              margin-top: 30pt;
+              padding-top: 12pt;
+              border-top: 2pt solid #E5E5E5;
+              text-align: center;
+              font-size: 9pt;
+              color: rgba(10,10,10,0.5);
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="logo">NOÉSIS</div>
+            <div class="subtitle">Intelligence transdisciplinaire au service de la lucidité</div>
+          </div>
+          
+          <h1>Résultats — Harcèlement Moral en Milieu Professionnel</h1>
+          
+          <div class="section">
+            <p><strong>Date :</strong> ${new Date().toLocaleDateString('fr-FR')}</p>
+            <p><strong>Profil :</strong> ${profile.label}</p>
+            
+            <div class="score-box">
+              <p><strong>Score Total :</strong> ${scores.total} / ${scores.maxTotal} (${Math.round((scores.total/scores.maxTotal)*100)}%)</p>
+            </div>
+          </div>
+          
+          <div class="legal-box">
+            <p><strong>⚖️ Cadre Juridique — Article L1152-1 du Code du Travail</strong></p>
+            <p>"Aucun salarié ne doit subir les agissements répétés de harcèlement moral qui ont pour objet ou pour effet une dégradation de ses conditions de travail susceptible de porter atteinte à ses droits et à sa dignité, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel."</p>
+          </div>
+          
+          <div class="section">
+            <h2>Interprétation Juridique</h2>
+            <p>${profile.description}</p>
+          </div>
+          
+          <div class="section">
+            <h2>Analyse Dimensionnelle</h2>
+            ${DIMENSIONS.map(dimension => {
+              const data = scores.dimensions[dimension.key];
+              return `
+                <div class="dimension-item ${dimension.color}">
+                  <strong>${dimension.fullLabel}</strong><br>
+                  Score : ${data.score}/${data.max} (${data.percentage}%)
+                </div>
+              `;
+            }).join('')}
+          </div>
+          
+          <div class="section">
+            <h2>Analyse Juridique</h2>
+            <h3>${DIMENSIONS.find(d => d.key === profileAnalysis.dominant).fullLabel}</h3>
+            <p>${profileAnalysis.analysis}</p>
+          </div>
+          
+          <div class="section">
+            <h2>Recommandations et Recours Juridiques</h2>
+            <ul class="recommendation-list">
+              ${profile.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div class="section" style="page-break-before: always;">
+            <h2>Détail des Réponses par Dimension Juridique</h2>
+            ${DIMENSIONS.map(dimension => {
+              const dimQuestions = QUESTIONS.filter(q => q.dim === dimension.key);
+              return `
+                <div style="margin-bottom: 16pt;">
+                  <h3>${dimension.fullLabel}</h3>
+                  ${dimQuestions.map(q => {
+                    const answer = state.answers[q.id];
+                    const answerLabel = SCALE_OPTIONS.find(opt => opt.value === answer)?.label || 'Non répondu';
+                    return `
+                      <div class="question-detail">
+                        <strong>${q.id}</strong> : ${q.text}<br>
+                        <span style="color: #666;">→ ${answerLabel}</span>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              `;
+            }).join('')}
+          </div>
+          
+          <div class="legal-box">
+            <p><strong>⚠️ Avertissement Important</strong></p>
+            <p>Ce questionnaire constitue un outil d'orientation juridique et ne remplace en aucun cas l'analyse d'un avocat spécialisé en droit du travail. Les résultats nécessitent qualification juridique par un professionnel du droit.</p>
+            <p><strong>Contacts urgence :</strong> Inspection du travail (DREETS), Défenseur des droits, France Victimes 116 006, 3114 (urgence psychologique).</p>
+          </div>
+          
+          <div class="footer">
+            <div class="logo" style="font-size: 14pt;">NOÉSIS</div>
+            <p>© ${new Date().getFullYear()} NOÉSIS — Tous droits réservés</p>
+            <p>Harcèlement Moral en Milieu Professionnel — Article L1152-1 du Code du travail<br>
+            Ne remplace pas l'analyse d'un avocat spécialisé en droit du travail<br>
+            Confidentialité : aucune donnée collectée sans action explicite</p>
+          </div>
+        </body>
+        </html>
+      `);
+      
+      printWindow.document.close();
+      
+      setTimeout(() => {
+        printWindow.print();
+      }, 800);
+    }
+
+    // ==================== EXPORT JSON ====================
+    
+    function downloadJSON() {
+      const scores = calculateScores();
+      const profile = getResultProfile(scores.total);
+      const profileAnalysis = analyzeProfile(scores);
+      
+      const data = {
+        metadata: {
+          test: "Harcèlement Moral en Milieu Professionnel",
+          version: "1.0 - NOÉSIS",
+          legalFramework: "Article L1152-1 du Code du travail, Code pénal art. 222-33-2",
+          date: new Date().toISOString()
+        },
+        responses: {
+          answers: state.answers,
+          completion: `${Object.keys(state.answers).length}/${QUESTIONS.length}`
+        },
+        scoring: {
+          total: scores.total,
+          maxTotal: scores.maxTotal,
+          percentage: Math.round((scores.total/scores.maxTotal)*100),
+          dimensions: scores.dimensions,
+          resultProfile: {
+            level: profile.level,
+            label: profile.label,
+            interpretation: profile.description
+          }
+        },
+        profileAnalysis: {
+          dominantDimension: profileAnalysis.dominant,
+          analysis: profileAnalysis.analysis
+        },
+        detailedResponses: QUESTIONS.map(q => ({
+          id: q.id,
+          dimension: q.dim,
+          text: q.text,
+          response: {
+            value: state.answers[q.id],
+            label: SCALE_OPTIONS.find(opt => opt.value === state.answers[q.id])?.label
+          }
+        }))
       };
       
-      if (page === 'intro') {
-        return (
-          <div className="container">
-            <div className="intro-card">
-              <div className="brain-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M9.5 2c-1.82 0-3.53.5-5 1.36C2.68 4.72 1.5 6.73 1.5 9c0 1.56.52 3 1.39 4.14.87 1.14 2.07 2 3.43 2.36"/>
-                  <path d="M14.5 2c1.82 0 3.53.5 5 1.36C21.32 4.72 22.5 6.73 22.5 9c0 1.56-.52 3-1.39 4.14-.87 1.14-2.07 2-3.43 2.36"/>
-                  <path d="M12 2v20"/>
-                  <path d="M9.5 15.5c0 1.38.62 2.5 1.5 2.5"/>
-                  <path d="M14.5 15.5c0 1.38-.62 2.5-1.5 2.5"/>
-                  <circle cx="9" cy="9" r="1"/>
-                  <circle cx="15" cy="9" r="1"/>
-                </svg>
-              </div>
-              
-              <h1>Harcèlement Moral</h1>
-              <p className="subtitle">Grille d'Évaluation Juridique – Contexte Professionnel</p>
-              
-              <div className="warning-box">
-                <h3>⚖️ Cadre Juridique et Méthodologique</h3>
-                <p>Cet outil s'appuie sur l'<strong>article L1152-1 du Code du travail</strong> et la jurisprudence française constante en matière de harcèlement moral. Il évalue la présence d'<strong>agissements répétés ayant pour objet ou pour effet une dégradation des conditions de travail susceptible de porter atteinte à vos droits, à votre dignité, d'altérer votre santé physique ou mentale, ou de compromettre votre avenir professionnel</strong>.</p>
-                <p><strong>Ce test ne constitue pas un diagnostic juridique ni médical.</strong> Il fournit un repérage objectivable de situations potentiellement caractéristiques de harcèlement moral et oriente vers les recours légaux appropriés.</p>
-                <p>Les résultats doivent être interprétés avec l'appui de professionnels compétents : <strong>avocat spécialisé en droit du travail, médecin du travail, inspection du travail</strong>.</p>
-              </div>
-              
-              <div className="info-box">
-                <h3>Méthodologie Scientifique</h3>
-                <div className="badges">
-                  <span className="badge legal">Droit du travail</span>
-                  <span className="badge clinical">Psychologie clinique</span>
-                  <span className="badge neurosciences">Neurosciences</span>
-                </div>
-                <p>L'évaluation repose sur 6 axes juridiques et cliniques alignés sur la définition légale du harcèlement moral et les travaux de Marie-France Hirigoyen, Heinz Leymann (LIPT), et les études INRS sur les risques psychosociaux. Chaque dimension est évaluée par 10 questions factuelles référencées à une période de 6 à 12 mois.</p>
-              </div>
-              
-              <div className="stats-grid">
-                <div className="stat-card">
-                  <svg className="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  <div className="stat-value">20-25</div>
-                  <div className="stat-label">minutes</div>
-                </div>
-                
-                <div className="stat-card">
-                  <svg className="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <line x1="18" y1="20" x2="18" y2="10"/>
-                    <line x1="12" y1="20" x2="12" y2="4"/>
-                    <line x1="6" y1="20" x2="6" y2="14"/>
-                  </svg>
-                  <div className="stat-value">60</div>
-                  <div className="stat-label">questions</div>
-                </div>
-                
-                <div className="stat-card">
-                  <svg className="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                  <div className="stat-value">Orientation</div>
-                  <div className="stat-label">juridique</div>
-                </div>
-              </div>
-              
-              <button className="btn btn-primary" onClick={() => setPage('test')}>
-                Commencer l'évaluation
-              </button>
-              
-              <div className="footer">
-                <p><strong>Confidentialité RGPD</strong></p>
-                <p>Aucune donnée n'est collectée ni transmise. Toutes vos réponses restent confidentielles.</p>
-              </div>
-            </div>
-          </div>
-        );
-      }
-      
-      if (page === 'test') {
-        const progress = ((currentQ + 1) / QUESTIONS.length) * 100;
-        const question = QUESTIONS[currentQ];
-        const currentAnswer = answers[question.id];
-        
-        return (
-          <div className="container">
-            <div className="test-card">
-              <div className="progress-bar">
-                <div className="progress-fill" style={{ width: `${progress}%` }}></div>
-              </div>
-              
-              <div style={{ textAlign: 'center', marginBottom: '32px', color: '#666', fontSize: '14px' }}>
-                Question {currentQ + 1} sur {QUESTIONS.length}
-              </div>
-              
-              <div className="question-header">
-                <div className={`question-number axis-${question.axis}`}>
-                  {currentQ + 1}
-                </div>
-                <div className="question-text">{question.text}</div>
-              </div>
-              
-              <div className="options">
-                {OPTIONS.map(option => (
-                  <button
-                    key={option.value}
-                    className={`option-btn ${currentAnswer === option.value ? 'selected' : ''}`}
-                    onClick={() => handleAnswer(option.value)}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-              
-              <div className="nav-buttons">
-                <button
-                  className="btn-secondary"
-                  onClick={() => currentQ > 0 && setCurrentQ(currentQ - 1)}
-                  disabled={currentQ === 0}
-                >
-                  ← Précédent
-                </button>
-                
-                {currentQ === QUESTIONS.length - 1 && Object.keys(answers).length === QUESTIONS.length ? (
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => setPage('results')}
-                    style={{ padding: '12px 32px', fontSize: '16px' }}
-                  >
-                    Voir les résultats
-                  </button>
-                ) : (
-                  <button
-                    className="btn-secondary"
-                    onClick={() => currentQ < QUESTIONS.length - 1 && setCurrentQ(currentQ + 1)}
-                    disabled={currentQ === QUESTIONS.length - 1}
-                  >
-                    Suivant →
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      }
-      
-      if (page === 'results') {
-        const { totalScore, axisScores } = calculateResults();
-        const interpretation = getInterpretation(totalScore);
-        
-        return (
-          <div className="container">
-            <div className="results-card">
-              <svg className="results-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 3v18h18"/>
-                <path d="M18 9l-5 5-4-4-4 4"/>
-                <circle cx="18" cy="9" r="2"/>
-                <circle cx="13" cy="14" r="2"/>
-                <circle cx="9" cy="10" r="2"/>
-                <circle cx="5" cy="14" r="2"/>
-              </svg>
-              
-              <h2 className="results-title">Analyse Juridique</h2>
-              
-              <div className="score-display">
-                <div className="score-value">{totalScore}<span style={{fontSize: '32px', color: '#999'}}> / 180</span></div>
-                <div className={`score-badge ${interpretation.badge}`}>{interpretation.level}</div>
-              </div>
-              
-              <div className="interpretation">
-                <h3>Interprétation Juridique</h3>
-                <p>{interpretation.description}</p>
-              </div>
-              
-              <div className="axes-breakdown">
-                <h3>Analyse par Dimension Juridique</h3>
-                {axisScores.map(axis => (
-                  <div key={axis.id} className="axis-item">
-                    <div className="axis-header">
-                      <span className="axis-name">{axis.name}</span>
-                      <span className="axis-score">{axis.score} / {axis.maxScore}</span>
-                    </div>
-                    <div className="axis-bar">
-                      <div
-                        className="axis-bar-fill"
-                        style={{
-                          width: `${axis.percentage}%`,
-                          background: axis.color
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="recommendations">
-                <h3>Recommandations et Recours Juridiques</h3>
-                <ol>
-                  {interpretation.recommendations.map((rec, idx) => (
-                    <li key={idx} dangerouslySetInnerHTML={{ __html: rec }}></li>
-                  ))}
-                </ol>
-              </div>
-              
-              <div className="export-buttons">
-                <button className="btn-export" onClick={exportPDF}>
-                  📄 Exporter en PDF
-                </button>
-                <button className="btn-export" onClick={exportJSON}>
-                  💾 Télécharger JSON
-                </button>
-                <button className="btn-export" onClick={reset}>
-                  🔄 Refaire le test
-                </button>
-              </div>
-            </div>
-            
-            {/* Section détails questions/réponses (visible uniquement à l'impression) */}
-            <div className="print-only print-questions-detail">
-              <div className="print-section-title">Détail des Réponses par Dimension Juridique</div>
-              
-              {AXES.map(axis => {
-                const axisQuestions = QUESTIONS.filter(q => q.axis === axis.id);
-                const axisData = axisScores.find(a => a.id === axis.id);
-                
-                return (
-                  <div key={axis.id} className="print-axis-section">
-                    <div className="print-axis-header">
-                      <div className="print-axis-badge" style={{background: axis.color}}>
-                        {axis.id}
-                      </div>
-                      <div className="print-axis-name">{axis.name}</div>
-                      <div className="print-axis-score">
-                        {axisData?.score} / {axisData?.maxScore}
-                      </div>
-                    </div>
-                    
-                    {axisQuestions.map((q) => {
-                      const answerValue = answers[q.id] !== undefined ? answers[q.id] : null;
-                      const answerLabel = answerValue !== null ? OPTIONS.find(opt => opt.value === answerValue)?.label : 'Non répondu';
-                      
-                      return (
-                        <div 
-                          key={q.id} 
-                          className="print-question-item"
-                          style={{borderLeftColor: axis.color}}
-                        >
-                          <div className="print-question-number">
-                            Question {q.id}
-                          </div>
-                          <div className="print-question-text">
-                            {q.text}
-                          </div>
-                          <div className="print-answer-label" style={{color: axis.color, background: `${axis.color}15`}}>
-                            → {answerLabel}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-              
-              <div style={{
-                marginTop: '24px',
-                paddingTop: '16px',
-                borderTop: '2px solid #E5E7EB',
-                textAlign: 'center'
-              }}>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '11px',
-                  color: '#999999',
-                  marginBottom: '4px'
-                }}>
-                  <strong style={{color: '#666666'}}>NOÉSIS – Harcèlement Moral : Grille d'Évaluation Juridique</strong>
-                </p>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '10px',
-                  color: '#999999',
-                  margin: 0
-                }}>
-                  Document généré le {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })} • Confidentiel
-                </p>
-              </div>
-            </div>
-            
-            <div className="footer">
-              <p><strong>NOÉSIS – Harcèlement Moral : Grille d'Évaluation Juridique v1.0 © 2025</strong></p>
-              <p>Outil d'orientation juridique basé sur l'Article L1152-1 du Code du travail</p>
-              <p style={{marginTop: '12px', fontSize: '12px', lineHeight: '1.6'}}>
-                <strong>Références :</strong> Code du travail art. L1152-1 • Code pénal art. 222-33-2 • Jurisprudence Cass. Soc. • Marie-France Hirigoyen, <em>Le harcèlement moral</em> • Heinz Leymann, <em>Mobbing at Work</em> • INRS, Risques psychosociaux • CNAM Paris, Prévention harcèlement institutionnel
-              </p>
-              <p style={{marginTop: '12px', fontWeight: '600'}}>
-                Contacts juridiques : Inspection du travail (DREETS) • Défenseur des droits • France Victimes 116 006 • 3114 (urgence psychologique)
-              </p>
-            </div>
-          </div>
-        );
-      }
-      
-      return null;
+      const blob = new Blob([JSON.stringify(data, null, 2)], { 
+        type: 'application/json;charset=utf-8' 
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `noesis-harcelement-moral-${Date.now()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
+
+    // ==================== ENVOI EMAIL ====================
     
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<HarcelementMoralTest />);
+    function sendResultsByEmail() {
+      const scores = calculateScores();
+      const profile = getResultProfile(scores.total);
+      
+      const emailBody = `
+Rapport NOÉSIS — Harcèlement Moral en Milieu Professionnel
+Généré le ${new Date().toLocaleDateString('fr-FR')}
+
+SCORE TOTAL : ${scores.total}/${scores.maxTotal} (${Math.round((scores.total/scores.maxTotal)*100)}%)
+QUALIFICATION JURIDIQUE : ${profile.label}
+
+ANALYSE DIMENSIONNELLE :
+${Object.entries(scores.dimensions).map(([key, data]) => {
+  const dimension = DIMENSIONS.find(d => d.key === key);
+  return `• ${dimension.fullLabel} : ${data.percentage}%`;
+}).join('\n')}
+
+CADRE JURIDIQUE : Article L1152-1 du Code du travail, Code pénal art. 222-33-2
+
+Pour consulter le rapport complet avec analyses juridiques et recommandations personnalisées, 
+veuillez télécharger la version PDF depuis l'interface NOÉSIS.
+
+---
+NOÉSIS — Intelligence transdisciplinaire
+© ${new Date().getFullYear()} — Tous droits réservés
+      `.trim();
+      
+      const subject = `Rapport Harcèlement Moral — NOÉSIS`;
+      const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+      
+      window.location.href = mailtoLink;
+    }
+
+    // ==================== RESET ====================
+    
+    function resetTest() {
+      state = {
+        currentQuestionIndex: 0,
+        answers: {}
+      };
+      showScreen('screen-intro');
+      document.getElementById('consent-check').checked = false;
+      document.getElementById('start-btn').disabled = true;
+    }
+
+    // ==================== INITIALISATION ====================
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const consentCheck = document.getElementById('consent-check');
+      const startBtn = document.getElementById('start-btn');
+      
+      consentCheck.addEventListener('change', function() {
+        startBtn.disabled = !this.checked;
+      });
+    });
   </script>
+
 </body>
 </html>
