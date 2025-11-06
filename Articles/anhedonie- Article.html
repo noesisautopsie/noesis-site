@@ -167,7 +167,7 @@
     h2 {
       font-size: clamp(var(--fs-2xl), 3.5vw, var(--fs-3xl));
       margin-bottom: var(--space-md);
-      margin-top: var(--space-3xl);
+      margin-top: var(--space-md);
     }
     
     h3 {
@@ -183,7 +183,7 @@
     }
     
     p {
-      margin-bottom: var(--space-md);
+      margin-bottom: var(--space-xs);
       max-width: var(--container-text);
     }
     
@@ -238,7 +238,7 @@
     .nav-main {
       background: var(--noir);
       border-bottom: 1px solid var(--border-or);
-      padding: var(--space-md) 0;
+      padding: var(--space-sm) 0;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -249,31 +249,35 @@
     .nav-wrapper {
       max-width: var(--container-wide);
       margin: 0 auto;
-      padding: 0 var(--space-md);
+      padding: 0 var(--space-lg);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: var(--space-xl);
     }
     
     .nav-logo {
       font-family: var(--font-serif);
-      font-size: var(--fs-xl);
+      font-size: var(--fs-lg);
       font-weight: 700;
-      color: var(--or);
+      color: var(--creme);
       text-decoration: none;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.1em;
       transition: color var(--transition-base);
+      flex-shrink: 0;
     }
     
     .nav-logo:hover {
-      color: var(--or-riche);
+      color: var(--or);
     }
     
     .nav-links {
       display: flex;
-      gap: var(--space-xl);
+      gap: var(--space-lg);
       list-style: none;
       align-items: center;
+      flex-grow: 1;
+      justify-content: center;
     }
     
     .nav-links a {
@@ -303,6 +307,25 @@
     
     .nav-links a:hover::after {
       width: 100%;
+    }
+    
+    .nav-social {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+      flex-shrink: 0;
+    }
+    
+    .nav-social a {
+      color: var(--text-on-dark-muted);
+      transition: color var(--transition-base);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-social a:hover {
+      color: var(--or);
     }
     
     /* ═══════════════════════════════════════════════════
@@ -595,13 +618,20 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      background: var(--or-leger);
-      color: var(--or-sombre);
-      font-family: var(--font-serif);
-      font-size: var(--fs-lg);
-      font-weight: 700;
-      border-radius: 50%;
+      background: linear-gradient(135deg, var(--or-leger) 0%, var(--or-subtil) 100%);
+      border: 2px solid var(--or);
+      border-radius: 4px;
       margin-bottom: var(--space-md);
+      position: relative;
+    }
+    
+    .card-initial::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: var(--or);
+      box-shadow: 0 6px 0 var(--or), 0 -6px 0 var(--or);
     }
     
     .card-article-related h4 {
@@ -922,12 +952,27 @@
     <div class="nav-wrapper">
       <a href="/" class="nav-logo" aria-label="Retour à l'accueil NOÉSIS">NOÉSIS</a>
       <ul class="nav-links">
+        <li><a href="/">Accueil</a></li>
         <li><a href="/methode">La Méthode</a></li>
-        <li><a href="/ressources/articles">Ressources</a></li>
+        <li><a href="/decouvrir">Découvrir</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/auto-tests">Auto-tests</a></li>
+        <li><a href="/podcasts">Podcasts</a></li>
         <li><a href="/livres">Livres</a></li>
-        <li><a href="/a-propos">À Propos</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/accompagnement">Accompagnement</a></li>
+        <li><a href="/engagement">Engagement</a></li>
       </ul>
+      <div class="nav-social">
+        <a href="https://instagram.com/noesis" aria-label="Instagram NOÉSIS" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://linkedin.com/company/noesis" aria-label="LinkedIn NOÉSIS" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="/contact" aria-label="Contact NOÉSIS">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
     </div>
   </nav>
   
@@ -943,8 +988,6 @@
         <div class="container-sm">
           <div class="article-meta">
             <span class="badge-category">Neuropsychologie & Trauma</span>
-            <span class="article-meta-divider" aria-hidden="true"></span>
-            <time datetime="2025-11-06">6 novembre 2025</time>
             <span class="article-meta-divider" aria-hidden="true"></span>
             <span>7 min de lecture</span>
           </div>
@@ -1064,31 +1107,27 @@
         <div class="grid-cards-3">
           
           <article class="card-article-related">
-            <span class="card-initial" aria-hidden="true">TB</span>
+            <span class="card-initial" aria-hidden="true"></span>
             <h4><a href="/ressources/articles/trauma-bonding">Trauma Bonding, quand l'attachement devient dépendance</a></h4>
             <p>Découvrez pourquoi le cerveau lie amour et douleur dans les relations d'emprise, et comment restaurer une attache saine sans culpabilité.</p>
             <a href="/ressources/articles/trauma-bonding" class="link-arrow" aria-label="Lire l'article sur le trauma bonding">Lire l'article →</a>
           </article>
           
           <article class="card-article-related">
-            <span class="card-initial" aria-hidden="true">CD</span>
+            <span class="card-initial" aria-hidden="true"></span>
             <h4><a href="/ressources/articles/cortisol-dissociation">Cortisol et dissociation, le corps qui se coupe pour survivre</a></h4>
             <p>Quand le stress devient permanent, le cerveau débranche la conscience pour éviter la surcharge. Une lecture neuropsychologique déculpabilisante.</p>
             <a href="/ressources/articles/cortisol-dissociation" class="link-arrow" aria-label="Lire l'article sur le cortisol et la dissociation">Lire l'article →</a>
           </article>
           
           <article class="card-article-related">
-            <span class="card-initial" aria-hidden="true">RF</span>
+            <span class="card-initial" aria-hidden="true"></span>
             <h4><a href="/ressources/articles/red-flags-emotionnels">Red Flags émotionnels, ces signaux que votre cerveau repère avant vous</a></h4>
             <p>Comprendre les alertes précoces du système nerveux face à la manipulation, et apprendre à leur faire confiance.</p>
             <a href="/ressources/articles/red-flags-emotionnels" class="link-arrow" aria-label="Lire l'article sur les red flags émotionnels">Lire l'article →</a>
           </article>
           
         </div>
-        
-        <blockquote class="quote-signature-center">
-          <p><strong>Ressentir n'est pas un luxe, c'est un signal de vie.</strong></p>
-        </blockquote>
       </div>
     </section>
     
