@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partenariats Commerciaux - NOÉSIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F7F5EF;
+            color: #0A0A0A;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid rgba(199, 168, 109, 0.25);
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 2px 8px rgba(10, 10, 10, 0.08), 0 1px 2px rgba(10, 10, 10, 0.12);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            color: #A89158;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(10, 10, 10, 0.65);
+            font-weight: 400;
+        }
+
+        .intro-text {
+            background: rgba(199, 168, 109, 0.08);
+            border-left: 3px solid #C7A86D;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #0A0A0A;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #A89158;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: #dc2626;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: #F9F7F1;
+            border: 1px solid rgba(10, 10, 10, 0.12);
+            border-radius: 6px;
+            color: #0A0A0A;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #C7A86D;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(199, 168, 109, 0.15);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A89158' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: rgba(10, 10, 10, 0.5);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            margin-top: 30px;
+            padding: 20px;
+            background: #F9F7F1;
+            border-radius: 6px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 12px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #C7A86D;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #0A0A0A;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #C7A86D 0%, #A89158 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(199, 168, 109, 0.3);
+            background: linear-gradient(135deg, #D4B980 0%, #C7A86D 100%);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .privacy-note {
+            margin-top: 25px;
+            padding: 15px;
+            background: #F9F7F1;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: rgba(10, 10, 10, 0.6);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            body {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Partenariats Commerciaux</h1>
+            <p class="subtitle">NOÉSIS</p>
+        </div>
+
+        <div class="intro-text">
+            NOÉSIS n'accepte que des collaborations rigoureusement alignées avec son éthique : rigueur scientifique, honnêteté intellectuelle, protection inconditionnelle de son audience. Toute proposition incompatible avec ces principes sera refusée, quel que soit l'avantage financier proposé. Si vous partagez ces valeurs et proposez une collaboration authentiquement bénéfique pour les personnes accompagnées par NOÉSIS, ce formulaire est fait pour vous.
+        </div>
+
+        <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE_PARTENARIATS" method="POST">
+            
+            <!-- Informations structure -->
+            <div class="form-group">
+                <label for="structure">Nom de votre structure <span class="required">*</span></label>
+                <input type="text" id="structure" name="structure" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type_structure">Type de structure <span class="required">*</span></label>
+                <select id="type_structure" name="type_structure" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="cabinet_psy">Cabinet psychologie / Thérapie</option>
+                    <option value="centre_formation">Centre de formation professionnelle</option>
+                    <option value="association">Association / ONG</option>
+                    <option value="media">Média / Plateforme éditoriale</option>
+                    <option value="marque_wellness">Marque / Entreprise (bien-être, développement personnel)</option>
+                    <option value="plateforme_tech">Plateforme tech / Application</option>
+                    <option value="editeur">Maison d'édition</option>
+                    <option value="institution">Institution publique / Organisme gouvernemental</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="site_web">Site web de votre structure</label>
+                <input type="url" id="site_web" name="site_web" placeholder="https://exemple.com">
+            </div>
+
+            <!-- Contact -->
+            <div class="form-group">
+                <label for="nom_contact">Votre nom <span class="required">*</span></label>
+                <input type="text" id="nom_contact" name="nom_contact" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fonction">Votre fonction <span class="required">*</span></label>
+                <input type="text" id="fonction" name="fonction" required placeholder="Directrice, Responsable partenariats, Fondateur...">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse e-mail professionnelle <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone">
+            </div>
+
+            <!-- Proposition collaboration -->
+            <div class="form-group">
+                <label for="type_collaboration">Type de collaboration envisagée <span class="required">*</span></label>
+                <select id="type_collaboration" name="type_collaboration" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="contenu_partage">Co-création de contenu / Collaboration éditoriale</option>
+                    <option value="formation">Intervention / Formation pour vos équipes ou votre audience</option>
+                    <option value="affiliation">Programme d'affiliation / Recommandation</option>
+                    <option value="licence">Licence de contenu NOÉSIS</option>
+                    <option value="sponsoring">Sponsoring / Partenariat financier</option>
+                    <option value="evenement">Participation à événement (conférence, webinaire, table ronde)</option>
+                    <option value="ambassadeur">Programme ambassadeur / Prescription</option>
+                    <option value="autre">Autre (à préciser)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="proposition">Décrivez votre proposition de collaboration <span class="required">*</span></label>
+                <textarea id="proposition" name="proposition" required placeholder="Contexte, objectifs, modalités envisagées, bénéfices mutuels attendus..."></textarea>
+            </div>
+
+            <!-- Audience et pertinence -->
+            <div class="form-group">
+                <label for="audience">Votre audience / Vos bénéficiaires <span class="required">*</span></label>
+                <textarea id="audience" name="audience" required placeholder="Profil, taille, canaux de diffusion... (ex: 15 000 abonnés Instagram femmes 30-45 ans, professionnels du soin psychique)"></textarea>
+                <p class="help-text">Cette information me permet d'évaluer l'alignement entre nos audiences respectives.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="valeurs_alignement">En quoi voyez-vous un alignement entre NOÉSIS et votre structure ? <span class="required">*</span></label>
+                <textarea id="valeurs_alignement" name="valeurs_alignement" required placeholder="Valeurs partagées, complémentarité des approches, objectifs communs..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="protection_audience">Comment garantissez-vous que votre produit/service respecte l'intégrité et les besoins réels de votre audience ? <span class="required">*</span></label>
+                <textarea id="protection_audience" name="protection_audience" required placeholder="Protocoles qualité, preuves d'efficacité, retours utilisateurs, mécanismes protection contre dérives commerciales..."></textarea>
+                <p class="help-text">NOÉSIS ne recommandera jamais un produit/service sans garantie sérieuse de qualité et d'éthique.</p>
+            </div>
+
+            <!-- Budget / Ressources -->
+            <div class="form-group">
+                <label for="budget">Budget alloué ou ressources disponibles</label>
+                <select id="budget" name="budget">
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="collaboration_gratuite">Collaboration sans échange financier (échange de visibilité, co-création)</option>
+                    <option value="budget_modeste">Budget < 500€</option>
+                    <option value="budget_moyen">Budget 500€ - 2000€</option>
+                    <option value="budget_confortable">Budget 2000€ - 5000€</option>
+                    <option value="budget_important">Budget > 5000€</option>
+                    <option value="a_definir">À définir ensemble</option>
+                </select>
+                <p class="help-text">Cette information m'aide à adapter ma réponse. Aucune proposition ne sera écartée sur ce seul critère.</p>
+            </div>
+
+            <!-- Timing -->
+            <div class="form-group">
+                <label for="timing">Timing envisagé <span class="required">*</span></label>
+                <select id="timing" name="timing" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="immediat">Immédiat (dans le mois)</option>
+                    <option value="court_terme">Court terme (1-3 mois)</option>
+                    <option value="moyen_terme">Moyen terme (3-6 mois)</option>
+                    <option value="long_terme">Long terme (6+ mois)</option>
+                    <option value="flexible">Flexible</option>
+                </select>
+            </div>
+
+            <!-- Informations complémentaires -->
+            <div class="form-group">
+                <label for="informations_complementaires">Informations complémentaires</label>
+                <textarea id="informations_complementaires" name="informations_complementaires" placeholder="Éléments de contexte, contraintes spécifiques, exemples de collaborations précédentes..."></textarea>
+            </div>
+
+            <!-- Consentement -->
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ethique_noesis" name="ethique_noesis" required>
+                    <label for="ethique_noesis">Je comprends que NOÉSIS refuse toute collaboration qui exploiterait les vulnérabilités de son audience ou qui privilégierait le profit sur la qualité et l'honnêteté. Je m'engage à respecter cette charte éthique. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="selectivite" name="selectivite" required>
+                    <label for="selectivite">J'accepte que NOÉSIS soit extrêmement sélective dans ses partenariats et puisse refuser ma proposition si elle ne répond pas à ses critères d'excellence et d'alignement éthique, même si elle présente un avantage financier. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consentement" name="consentement" required>
+                    <label for="consentement">Je confirme que cette demande s'inscrit dans une démarche professionnelle légitime et respectueuse des standards de rigueur scientifique et d'intégrité intellectuelle de NOÉSIS. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="confidentialite" name="confidentialite" required>
+                    <label for="confidentialite">J'accepte que mes informations soient utilisées uniquement dans le cadre de cette demande de partenariat et traitées de manière confidentielle. <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Envoyer ma proposition</button>
+
+            <div class="privacy-note">
+                <strong>Critères de refus automatique :</strong> Produits/services sans preuves d'efficacité, approches pseudo-scientifiques, exploitation marketing de la souffrance psychologique, promesses irréalistes de guérison rapide, structures aux pratiques commerciales agressives ou manipulatoires, incompatibilité avec la rigueur clinique et l'honnêteté intellectuelle de NOÉSIS.
+            </div>
+
+            <div class="privacy-note">
+                <strong>Confidentialité :</strong> Vos données ne seront jamais partagées, vendues ou utilisées à des fins commerciales tierces. Elles servent uniquement à évaluer votre proposition de partenariat. Vous pouvez demander leur suppression à tout moment.
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propositions de Collaboration - NOÉSIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F7F5EF;
+            color: #0A0A0A;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid rgba(199, 168, 109, 0.25);
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 2px 8px rgba(10, 10, 10, 0.08), 0 1px 2px rgba(10, 10, 10, 0.12);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            color: #A89158;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(10, 10, 10, 0.65);
+            font-weight: 400;
+        }
+
+        .intro-text {
+            background: rgba(199, 168, 109, 0.08);
+            border-left: 3px solid #C7A86D;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #0A0A0A;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #A89158;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: #dc2626;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: #F9F7F1;
+            border: 1px solid rgba(10, 10, 10, 0.12);
+            border-radius: 6px;
+            color: #0A0A0A;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #C7A86D;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(199, 168, 109, 0.15);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A89158' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: rgba(10, 10, 10, 0.5);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            margin-top: 30px;
+            padding: 20px;
+            background: #F9F7F1;
+            border-radius: 6px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 12px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #C7A86D;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #0A0A0A;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #C7A86D 0%, #A89158 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(199, 168, 109, 0.3);
+            background: linear-gradient(135deg, #D4B980 0%, #C7A86D 100%);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .privacy-note {
+            margin-top: 25px;
+            padding: 15px;
+            background: #F9F7F1;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: rgba(10, 10, 10, 0.6);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            body {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Propositions de Collaboration</h1>
+            <p class="subtitle">NOÉSIS</p>
+        </div>
+
+        <div class="intro-text">
+            NOÉSIS privilégie les collaborations fondées sur l'excellence intellectuelle, la complémentarité des expertises, et la création de valeur authentique pour son audience. Toute proposition motivée par la seule visibilité, opportunisme algorithmique, ou incompatible avec la rigueur scientifique sera refusée. Si votre démarche repose sur un alignement sincère et une contribution substantielle, vous êtes au bon endroit.
+        </div>
+
+        <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE_COLLABORATIONS" method="POST">
+            
+            <!-- Identité -->
+            <div class="form-group">
+                <label for="nom">Votre nom complet <span class="required">*</span></label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse e-mail <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profil">Votre profil professionnel <span class="required">*</span></label>
+                <select id="profil" name="profil" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="psychologue_clinicien">Psychologue clinicien·ne</option>
+                    <option value="psychiatre">Psychiatre</option>
+                    <option value="chercheur">Chercheur·se (psychologie, neurosciences, sociologie...)</option>
+                    <option value="juriste">Juriste / Avocat·e spécialisé·e violences</option>
+                    <option value="createur_contenu">Créateur·rice de contenu éducatif</option>
+                    <option value="journaliste">Journaliste / Auteur·rice</option>
+                    <option value="formateur">Formateur·rice professionnel·le</option>
+                    <option value="expert_domaine">Expert·e domaine connexe (préciser)</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="site_portfolio">Site web / Portfolio / Réseaux</label>
+                <input type="url" id="site_portfolio" name="site_portfolio" placeholder="https://exemple.com ou lien Instagram/LinkedIn">
+                <p class="help-text">Me permet d'évaluer votre travail et votre positionnement.</p>
+            </div>
+
+            <!-- Expertise -->
+            <div class="form-group">
+                <label for="expertise">Votre expertise spécifique <span class="required">*</span></label>
+                <textarea id="expertise" name="expertise" required placeholder="Domaines de compétence, formations, expérience clinique/académique, thématiques maîtrisées..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rigueur_scientifique">Comment garantissez-vous la rigueur scientifique de votre approche ? <span class="required">*</span></label>
+                <textarea id="rigueur_scientifique" name="rigueur_scientifique" required placeholder="Cadres théoriques utilisés, sources, formation continue, supervision éventuelle, distinction faits/hypothèses..."></textarea>
+                <p class="help-text">NOÉSIS refuse toute collaboration avec des approches pseudo-scientifiques ou aux fondements empiriques fragiles.</p>
+            </div>
+
+            <!-- Proposition collaboration -->
+            <div class="form-group">
+                <label for="type_collaboration">Type de collaboration envisagée <span class="required">*</span></label>
+                <select id="type_collaboration" name="type_collaboration" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="article_invite">Article invité / Co-écriture</option>
+                    <option value="interview">Interview / Échange croisé</option>
+                    <option value="podcast_video">Podcast / Vidéo conjointe</option>
+                    <option value="webinaire">Webinaire / Conférence en ligne</option>
+                    <option value="serie_contenu">Série de contenus thématiques</option>
+                    <option value="recherche">Projet de recherche / Étude conjointe</option>
+                    <option value="cross_promotion">Cross-promotion contenus (échange visibilité)</option>
+                    <option value="autre">Autre (à préciser)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="proposition_detaillee">Décrivez votre proposition de collaboration <span class="required">*</span></label>
+                <textarea id="proposition_detaillee" name="proposition_detaillee" required placeholder="Sujet précis, format, durée estimée, votre contribution spécifique, valeur ajoutée pour l'audience NOÉSIS..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="complementarite">En quoi nos expertises sont-elles complémentaires ? <span class="required">*</span></label>
+                <textarea id="complementarite" name="complementarite" required placeholder="Ce que vous apportez que NOÉSIS n'a pas, angles nouveaux, perspectives enrichissantes..."></textarea>
+            </div>
+
+            <!-- Audience et alignement -->
+            <div class="form-group">
+                <label for="connaissance_noesis">Que connaissez-vous de NOÉSIS ? <span class="required">*</span></label>
+                <textarea id="connaissance_noesis" name="connaissance_noesis" required placeholder="Contenus consultés, approche qui vous a marqué, ce que vous appréciez dans le positionnement NOÉSIS..."></textarea>
+                <p class="help-text">Cette question filtre les propositions génériques envoyées en masse.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="valeur_audience">Quelle valeur concrète cette collaboration apporterait-elle à l'audience NOÉSIS ? <span class="required">*</span></label>
+                <textarea id="valeur_audience" name="valeur_audience" required placeholder="Nouvelles connaissances, outils pratiques, perspectives inédites, réponses à questions non traitées..."></textarea>
+            </div>
+
+            <!-- Votre audience -->
+            <div class="form-group">
+                <label for="votre_audience">Votre propre audience (si applicable)</label>
+                <textarea id="votre_audience" name="votre_audience" placeholder="Taille, profil, canaux principaux... Ou précisez si vous n'avez pas d'audience publique."></textarea>
+                <p class="help-text">L'absence d'audience n'est pas disqualifiante si l'expertise est solide.</p>
+            </div>
+
+            <!-- Timing et disponibilité -->
+            <div class="form-group">
+                <label for="timing">Timing envisagé <span class="required">*</span></label>
+                <select id="timing" name="timing" required>
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="immediat">Immédiat (dans le mois)</option>
+                    <option value="court_terme">Court terme (1-3 mois)</option>
+                    <option value="moyen_terme">Moyen terme (3-6 mois)</option>
+                    <option value="flexible">Flexible selon vos disponibilités</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="disponibilite">Vos disponibilités approximatives</label>
+                <textarea id="disponibilite" name="disponibilite" placeholder="Créneaux possibles, contraintes de planning..."></textarea>
+            </div>
+
+            <!-- Informations complémentaires -->
+            <div class="form-group">
+                <label for="informations_complementaires">Informations complémentaires</label>
+                <textarea id="informations_complementaires" name="informations_complementaires" placeholder="Collaborations précédentes pertinentes, publications, projets en cours..."></textarea>
+            </div>
+
+            <!-- Consentement -->
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="rigueur" name="rigueur" required>
+                    <label for="rigueur">Je m'engage à respecter les standards de rigueur scientifique et d'honnêteté intellectuelle de NOÉSIS. Je ne proposerai aucun contenu pseudo-scientifique, approximatif, ou potentiellement nuisible à l'audience. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="authenticite" name="authenticite" required>
+                    <label for="authenticite">Je confirme que cette proposition repose sur un intérêt sincère pour le travail de NOÉSIS et non sur une stratégie opportuniste de visibilité ou de gain algorithmique. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="selectivite" name="selectivite" required>
+                    <label for="selectivite">J'accepte que NOÉSIS soit extrêmement sélective et puisse refuser ma proposition si elle ne répond pas à ses critères d'excellence, de complémentarité réelle, ou d'alignement éthique. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="confidentialite" name="confidentialite" required>
+                    <label for="confidentialite">J'accepte que mes informations soient utilisées uniquement dans le cadre de cette demande de collaboration et traitées de manière confidentielle. <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Envoyer ma proposition</button>
+
+            <div class="privacy-note">
+                <strong>Critères de refus automatique :</strong> Propositions génériques envoyées en masse, absence de connaissance réelle de NOÉSIS, approches pseudo-scientifiques (PNL non clinique, loi de l'attraction, énergétique sans fondement empirique...), promesses thérapeutiques irréalistes, incompatibilité avec la transdisciplinarité rigoureuse, démarche uniquement motivée par la visibilité.
+            </div>
+
+            <div class="privacy-note">
+                <strong>Confidentialité :</strong> Vos données ne seront jamais partagées ou utilisées à des fins commerciales. Elles servent uniquement à évaluer votre proposition de collaboration. Vous pouvez demander leur suppression à tout moment.
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
