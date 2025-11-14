@@ -238,6 +238,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -419,7 +420,8 @@
             border: none;
             cursor: pointer;
             padding: 8px;
-            z-index: 2001;
+            z-index: 2002;
+            position: relative;
             transition: all 0.3s ease;
         }
 
@@ -447,10 +449,13 @@
         @media (max-width: 1024px) {
             nav .container {
                 padding: 0 24px;
+                position: relative;
             }
 
             .menu-toggle {
                 display: flex;
+                position: relative;
+                z-index: 2002;
             }
 
             nav ul {
@@ -3039,31 +3044,55 @@
             }
         });
 
-        // Menu hamburger mobile
+        // Menu hamburger mobile - VERSION CORRIGÉE
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
         const body = document.body;
 
+        // Diagnostic
+        console.log('Menu Toggle Element:', menuToggle);
+        console.log('Nav Menu Element:', navMenu);
+        console.log('Menu Overlay Element:', menuOverlay);
+
         function toggleMenu() {
+            console.log('Toggle menu called'); // Debug
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
+            if (menuOverlay) {
+                menuOverlay.classList.toggle('active');
+            }
             body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            console.log('Menu is now:', navMenu.classList.contains('active') ? 'OPEN' : 'CLOSED');
         }
 
-        menuToggle.addEventListener('click', toggleMenu);
-        menuOverlay.addEventListener('click', toggleMenu);
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Menu toggle clicked!');
+                toggleMenu();
+            });
+            console.log('Menu toggle event listener attached');
+        } else {
+            console.error('Menu toggle button not found!');
+        }
+
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', toggleMenu);
+        }
 
         // Fermer le menu quand on clique sur un lien
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 1024) {
-                    toggleMenu();
-                }
+        if (navMenu) {
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) {
+                        setTimeout(toggleMenu, 100);
+                    }
+                });
             });
-        });
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3096,4 +3125,10 @@
         }, observerOptions);
 
         document.addEventListener('DOMContentLoaded', () => {
-            c
+            const fadeElements = document.querySelectorAll('.fade-element');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+
+    </script>
+</body>
+</html>
