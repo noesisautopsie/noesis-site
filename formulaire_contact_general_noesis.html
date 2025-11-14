@@ -3,321 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - NOÉSIS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Contact Général - NOÉSIS</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #F7F5EF;
-            color: #0A0A0A;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+            color: #F7F5EF;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 40px 20px;
         }
-
         .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #FFFFFF;
-            border: 1px solid rgba(199, 168, 109, 0.25);
-            border-radius: 12px;
-            padding: 50px 40px;
-            box-shadow: 0 2px 8px rgba(10, 10, 10, 0.08), 0 1px 2px rgba(10, 10, 10, 0.12);
-        }
-
-        .header {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(247, 245, 239, 0.05);
+            border: 1px solid rgba(199, 168, 109, 0.3);
+            border-radius: 16px;
+            padding: 60px 40px;
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
         }
-
-        h1 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 2rem;
-            color: #A89158;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: rgba(10, 10, 10, 0.65);
-            font-weight: 400;
-        }
-
-        .intro-text {
-            background: rgba(199, 168, 109, 0.08);
-            border-left: 3px solid #C7A86D;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #0A0A0A;
-        }
-
-        .form-group {
-            margin-bottom: 28px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #A89158;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .required {
-            color: #dc2626;
-            margin-left: 3px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: #F9F7F1;
-            border: 1px solid rgba(10, 10, 10, 0.12);
-            border-radius: 6px;
-            color: #0A0A0A;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #C7A86D;
-            background: #FFFFFF;
-            box-shadow: 0 0 0 3px rgba(199, 168, 109, 0.15);
-        }
-
-        textarea {
-            min-height: 160px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A89158' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 40px;
-        }
-
-        .help-text {
-            font-size: 0.85rem;
-            color: rgba(10, 10, 10, 0.5);
-            margin-top: 6px;
-            font-style: italic;
-        }
-
-        .checkbox-group {
-            margin-top: 30px;
-            padding: 20px;
-            background: #F9F7F1;
-            border-radius: 6px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        input[type="checkbox"] {
-            margin-right: 12px;
-            margin-top: 3px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #C7A86D;
-        }
-
-        .checkbox-item label {
-            margin-bottom: 0;
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: #0A0A0A;
-            cursor: pointer;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #C7A86D 0%, #A89158 100%);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 30px;
-            letter-spacing: 0.5px;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(199, 168, 109, 0.3);
-            background: linear-gradient(135deg, #D4B980 0%, #C7A86D 100%);
-        }
-
-        .submit-button:active {
-            transform: translateY(0);
-        }
-
-        .privacy-note {
-            margin-top: 25px;
-            padding: 15px;
-            background: #F9F7F1;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: rgba(10, 10, 10, 0.6);
-            line-height: 1.6;
-        }
-
-        .info-box {
-            background: #F9F7F1;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .info-box h3 {
-            font-family: 'Fraunces', Georgia, serif;
+        .logo { font-family: 'Fraunces', serif; font-size: 2.5rem; color: #C7A86D; margin-bottom: 20px; }
+        h1 { font-family: 'Fraunces', serif; font-size: 2rem; margin-bottom: 16px; }
+        .description { font-size: 1.1rem; color: rgba(247, 245, 239, 0.75); margin-bottom: 40px; }
+        .email-button {
+            display: inline-block;
             font-size: 1.1rem;
-            color: #A89158;
-            margin-bottom: 12px;
             font-weight: 600;
+            color: #0A0A0A;
+            background: linear-gradient(135deg, #C7A86D 0%, #D4B980 100%);
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-
-        .info-box p {
-            font-size: 0.9rem;
-            color: rgba(10, 10, 10, 0.75);
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 35px 25px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            body {
-                padding: 20px 15px;
-            }
-        }
+        .email-button:hover { transform: translateY(-2px); }
+        .email-address { font-size: 1rem; color: rgba(247, 245, 239, 0.6); margin-top: 20px; }
+        .email-address a { color: #C7A86D; text-decoration: none; }
+        .back-link { display: inline-block; margin-top: 30px; color: rgba(247, 245, 239, 0.6); text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Contact</h1>
-            <p class="subtitle">NOÉSIS</p>
-        </div>
-
-        <div class="intro-text">
-            Une question sur l'approche NOÉSIS ? Besoin d'informations complémentaires ? Vous pouvez me contacter via ce formulaire. Je réponds à tous les messages dans un délai raisonnable.
-        </div>
-
-        <div class="info-box">
-            <h3>Demandes spécifiques</h3>
-            <p><strong>Accompagnement individuel :</strong> Utilisez le formulaire dédié "Demande d'Accompagnement"</p>
-            <p><strong>Partenariats commerciaux :</strong> Utilisez le formulaire "Partenariats Commerciaux"</p>
-            <p><strong>Propositions de collaboration :</strong> Utilisez le formulaire "Propositions de Collaboration"</p>
-        </div>
-
-        <form action="https://formspree.io/f/noesisanalyse@gmail.com" method="POST">
-            
-            <!-- Identité -->
-            <div class="form-group">
-                <label for="nom">Votre nom <span class="required">*</span></label>
-                <input type="text" id="nom" name="nom" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Adresse e-mail <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <!-- Type de demande -->
-            <div class="form-group">
-                <label for="sujet">Sujet de votre message <span class="required">*</span></label>
-                <select id="sujet" name="sujet" required>
-                    <option value="">-- Sélectionnez --</option>
-                    <option value="question_approche">Question sur l'approche NOÉSIS</option>
-                    <option value="question_contenu">Question sur un contenu spécifique</option>
-                    <option value="information_service">Informations sur un service</option>
-                    <option value="probleme_technique">Problème technique (site, accès contenu...)</option>
-                    <option value="media_presse">Demande média / Presse</option>
-                    <option value="temoignage">Témoignage / Retour d'expérience</option>
-                    <option value="suggestion">Suggestion / Idée de contenu</option>
-                    <option value="autre">Autre</option>
-                </select>
-            </div>
-
-            <!-- Message -->
-            <div class="form-group">
-                <label for="message">Votre message <span class="required">*</span></label>
-                <textarea id="message" name="message" required placeholder="Décrivez votre demande, question ou commentaire..."></textarea>
-            </div>
-
-            <!-- Contexte optionnel -->
-            <div class="form-group">
-                <label for="contexte">Contexte ou informations complémentaires (optionnel)</label>
-                <textarea id="contexte" name="contexte" placeholder="Si utile pour comprendre votre demande..."></textarea>
-            </div>
-
-            <!-- Consentement -->
-            <div class="checkbox-group">
-                <div class="checkbox-item">
-                    <input type="checkbox" id="confidentialite" name="confidentialite" required>
-                    <label for="confidentialite">J'accepte que mes informations soient utilisées uniquement pour répondre à ma demande et traitées de manière confidentielle. <span class="required">*</span></label>
-                </div>
-
-                <div class="checkbox-item">
-                    <input type="checkbox" id="delai" name="delai" required>
-                    <label for="delai">Je comprends que le délai de réponse peut varier selon la nature de ma demande et la charge de travail, et qu'il peut atteindre plusieurs jours. <span class="required">*</span></label>
-                </div>
-            </div>
-
-            <button type="submit" class="submit-button">Envoyer mon message</button>
-
-            <div class="privacy-note">
-                <strong>Confidentialité :</strong> Vos données personnelles ne seront jamais partagées, vendues ou utilisées à des fins commerciales. Elles servent uniquement à traiter votre demande de contact. Vous pouvez demander leur suppression à tout moment en m'écrivant.
-            </div>
-
-            <div class="privacy-note">
-                <strong>Important :</strong> Ce formulaire n'est pas adapté aux situations d'urgence. Si vous êtes en danger immédiat, contactez le 17 (police/gendarmerie), le 15 (SAMU) ou le 3919 (violences conjugales, gratuit et anonyme).
-            </div>
-
-        </form>
+        <div class="logo">NOÉSIS</div>
+        <h1>Contact Général</h1>
+        <p class="description">Pour toute question, contactez-moi directement par email.</p>
+        <a href="mailto:noesisanalyse@gmail.com?subject=Contact Général - NOÉSIS" class="email-button">📧 Me contacter</a>
+        <p class="email-address">Email : <a href="mailto:noesisanalyse@gmail.com">noesisanalyse@gmail.com</a></p>
+        <a href="./index.html" class="back-link">← Retour</a>
     </div>
 </body>
 </html>
