@@ -6,8 +6,8 @@
   
   <title>Cartographie Clinique des Violences Subies | NOÉSIS</title>
   <meta name="description" content="Outil de repérage quasi-psychométrique des violences par type et par sphère de vie. Analyse multidimensionnelle de l'exposition aux violences psychologiques, physiques, sexuelles, économiques et institutionnelles.">
-  <meta name="test-version" content="1.0.0">
-  <meta name="test-last-updated" content="2025-11-16">
+  <meta name="test-version" content="2.0.0">
+  <meta name="test-last-updated" content="2025-11-17">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +49,15 @@
       --sphere-p-color: #0891b2;
       --sphere-s-color: #2563eb;
       --sphere-a-color: #64748b;
+      --alert-critique: #991b1b;
+      --alert-critique-bg: rgba(153,27,27,0.12);
+      --alert-severe: #ea580c;
+      --alert-severe-bg: rgba(234,88,12,0.10);
+      --alert-moderate: #0891b2;
+      --alert-moderate-bg: rgba(8,145,178,0.08);
+      --alert-low: #16a34a;
+      --alert-low-bg: rgba(22,163,74,0.08);
+
       
       --fs-xs: 12px; --fs-sm: 14px; --fs-md: 18px;
       --fs-lg: 21px; --fs-xl: 24px; --fs-2xl: 32px;
@@ -931,10 +940,10 @@
   
   <header class="site-header">
     <div class="header-container">
-      <a href="../index.html" class="site-logo">
+      <a href="index.html" class="site-logo">
         NOÉSIS<span>.</span>
       </a>
-
+      
       <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -942,17 +951,17 @@
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
-
+      
       <nav class="site-nav" id="main-nav">
-        <a href="../index.html#accueil" class="nav-link">Accueil</a>
-        <a href="../index.html#methode" class="nav-link">La Méthode</a>
-        <a href="../index.html#decouvrir" class="nav-link">Découvrir</a>
-        <a href="../Articles/articles-index.html" class="nav-link">Articles</a>
-        <a href="./autotests.html" class="nav-link active">Auto-tests</a>
-        <a href="../Podcasts/podcast.html" class="nav-link">Podcasts</a>
-        <a href="../Livres/livres.html" class="nav-link">Livres</a>
-        <a href="../Accompagnement/accompagnement.html" class="nav-link">Accompagnement</a>
-        <a href="../index.html#engagement" class="nav-link">Engagement</a>
+        <a href="index.html#accueil" class="nav-link">Accueil</a>
+        <a href="methode.html" class="nav-link">La Méthode</a>
+        <a href="index.html#decouvrir" class="nav-link">Découvrir</a>
+        <a href="articles.html" class="nav-link">Articles</a>
+        <a href="autotests.html" class="nav-link active">Auto-tests</a>
+        <a href="podcast.html" class="nav-link">Podcasts</a>
+        <a href="livres.html" class="nav-link">Livres</a>
+        <a href="accompagnement.html" class="nav-link">Accompagnement</a>
+        <a href="index.html#engagement" class="nav-link">Engagement</a>
       </nav>
     </div>
   </header>
@@ -1177,32 +1186,32 @@
         <div class="footer-column">
           <h4 class="footer-heading">Navigation</h4>
           <ul class="footer-links">
-            <li><a href="../index.html#accueil">Accueil</a></li>
-            <li><a href="../index.html#methode">La Méthode</a></li>
-            <li><a href="../index.html#decouvrir">Découvrir</a></li>
-            <li><a href="../Articles/articles-index.html">Articles</a></li>
-            <li><a href="./autotests.html">Auto-tests</a></li>
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="methode.html">La Méthode</a></li>
+            <li><a href="index.html#decouvrir">Découvrir</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="autotests.html">Auto-tests</a></li>
           </ul>
         </div>
-
+        
         <div class="footer-column">
           <h4 class="footer-heading">Ressources</h4>
           <ul class="footer-links">
-            <li><a href="../Podcasts/podcast.html">Podcasts</a></li>
-            <li><a href="../Livres/livres.html">Livres</a></li>
-            <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
-            <li><a href="../index.html#engagement">Engagement</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="podcast.html">Podcasts</a></li>
+            <li><a href="livres.html">Livres</a></li>
+            <li><a href="accompagnement.html">Accompagnement</a></li>
+            <li><a href="index.html#engagement">Engagement</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </div>
-
+        
         <div class="footer-column">
           <h4 class="footer-heading">Légal</h4>
           <ul class="footer-links">
-            <li><a href="../plan-securite.html">Plan de Sécurité</a></li>
-            <li><a href="../conditions-generales.html">Conditions Générales</a></li>
-            <li><a href="../mentions-legales.html">Mentions Légales</a></li>
-            <li><a href="../confidentialite.html">Confidentialité</a></li>
+            <li><a href="index.html#plan-securite">Plan de Sécurité</a></li>
+            <li><a href="index.html#conditions-generales">Conditions Générales</a></li>
+            <li><a href="index.html#mentions-legales">Mentions Légales</a></li>
+            <li><a href="index.html#confidentialite">Confidentialité</a></li>
           </ul>
         </div>
       </div>
@@ -1238,46 +1247,51 @@
     ];
     
     const QUESTIONS = [
-      // DIMENSION 1 : Violences Psychologiques & Contrôle (6 items)
-      {i: "q1", t: "On minimise régulièrement vos émotions, vos réactions ou vos besoins en vous disant que vous « exagérez », que vous êtes « trop sensible » ou que « ce n'est pas si grave ».", a: "vio-psycho"},
-      {i: "q2", t: "Vous adaptez constamment votre comportement, vos propos ou vos activités par anticipation de la réaction de l'autre, par peur d'une crise ou d'une sanction (silence, reproches, menaces).", a: "vio-psycho"},
-      {i: "q3", t: "On utilise des menaces de rupture, d'abandon, de représailles ou de sanction comme moyen de vous faire céder ou obéir.", a: "vio-psycho"},
-      {i: "q4", t: "On remet en question votre perception de la réalité en niant des faits, en réécrivant l'histoire des événements ou en vous faisant douter de votre mémoire ou de votre jugement.", a: "vio-psycho"},
-      {i: "q5", t: "On vous isole progressivement de vos proches, de vos ami·es ou de vos activités en critiquant ces liens, en créant des conflits ou en rendant difficile leur maintien.", a: "vio-psycho"},
-      {i: "q6", t: "On exerce un contrôle sur vos déplacements, vos fréquentations, votre téléphone, vos réseaux sociaux ou votre emploi du temps de manière systématique et intrusive.", a: "vio-psycho"},
-      
-      // DIMENSION 2 : Violences Physiques (6 items)
-      {i: "q7", t: "On adopte des comportements physiquement intimidants : gestes brusques, destruction d'objets, coups portés à proximité, blocage de votre déplacement.", a: "vio-physique"},
-      {i: "q8", t: "Vous avez subi des violences physiques directes : bousculades, empoignades, gifles, coups, étranglements, séquestration.", a: "vio-physique"},
-      {i: "q9", t: "On utilise la menace de violence physique comme moyen de contrôle même sans passage à l'acte systématique.", a: "vio-physique"},
-      {i: "q10", t: "Après des épisodes de violence physique, on minimise, justifie ou nie ce qui s'est passé, vous rendant responsable de la « provocation ».", a: "vio-physique"},
-      {i: "q11", t: "Vous avez dû dissimuler des traces de violence (bleus, blessures) ou mentir sur leur origine par peur, honte ou protection de l'agresseur.", a: "vio-physique"},
-      {i: "q12", t: "La violence physique est présentée comme « normale », « méritée » ou « éducative » dans votre environnement.", a: "vio-physique"},
-      
-      // DIMENSION 3 : Violences Sexuelles (6 items)
-      {i: "q13", t: "On vous impose ou vous presse d'avoir des pratiques sexuelles qui vous mettent mal à l'aise, que vous ne souhaitez pas ou auxquelles vous n'avez pas consenti clairement.", a: "vio-sexuelle"},
-      {i: "q14", t: "Votre refus de relations ou d'actes sexuels déclenche reproches, menaces, culpabilisation, punitions affectives ou représailles.", a: "vio-sexuelle"},
-      {i: "q15", t: "On vous instrumentalise sexuellement comme « preuve d'amour », monnaie d'échange, obligation relationnelle ou moyen de réconciliation après conflit.", a: "vio-sexuelle"},
-      {i: "q16", t: "Vous avez subi des actes sexuels alors que vous étiez dans l'incapacité de consentir (sommeil, alcool, sidération, contrainte).", a: "vio-sexuelle"},
-      {i: "q17", t: "On diffuse, menace de diffuser ou utilise contre vous des images, vidéos ou informations à caractère sexuel ou intime sans votre accord.", a: "vio-sexuelle"},
-      {i: "q18", t: "Vous ressentez une obligation d'accepter des relations sexuelles pour « éviter pire » (conflit, violence, rupture, représailles).", a: "vio-sexuelle"},
-      
-      // DIMENSION 4 : Violences Économiques & Matérielles (6 items)
-      {i: "q19", t: "On contrôle vos ressources financières : accès aux comptes, décisions d'achat, justification des dépenses, confiscation de revenus.", a: "vio-eco"},
-      {i: "q20", t: "On sabote activement votre autonomie financière ou professionnelle (empêcher de travailler, créer obstacles à formation/emploi, décrédibiliser professionnellement).", a: "vio-eco"},
-      {i: "q21", t: "On vous impose des dettes, des dépenses non voulues ou on vous rend responsable de difficultés financières créées par l'autre.", a: "vio-eco"},
-      {i: "q22", t: "Vous êtes maintenu·e dans une dépendance matérielle organisée rendant difficile ou impossible un départ (logement, ressources, administratif).", a: "vio-eco"},
-      {i: "q23", t: "On utilise l'argent, les biens matériels ou le logement comme levier de domination, de chantage ou de rétention.", a: "vio-eco"},
-      {i: "q24", t: "Vous subissez une précarisation économique directement liée aux violences subies (perte emploi, dettes, dégradation situation matérielle).", a: "vio-eco"},
-      
-      // DIMENSION 5 : Violences Institutionnelles (6 items)
-      {i: "q25", t: "Des professionnel·les (santé, justice, police, social, éducation) ont minimisé, banalisé ou disqualifié votre parole lorsque vous avez évoqué les violences.", a: "vio-instit"},
-      {i: "q26", t: "Vous avez renoncé à demander de l'aide ou à engager des démarches par anticipation du traitement que vous recevriez (être mal reçu·e, non cru·e, jugé·e, revictimisé·e).", a: "vio-instit"},
-      {i: "q27", t: "Des institutions ou professionnel·les vous ont retourné la responsabilité de la violence subie (« qu'avez-vous fait pour provoquer ça ? », « pourquoi vous restez ? »).", a: "vio-instit"},
-      {i: "q28", t: "Vous avez subi des procédures judiciaires, administratives ou médicales qui vous ont exposé·e à davantage de violence, d'humiliation ou d'injustice.", a: "vio-instit"},
-      {i: "q29", t: "On a utilisé contre vous le système institutionnel (menaces de plainte, instrumentalisation de la justice, pressions via services sociaux, allégations parentales mensongères).", a: "vio-instit"},
-      {i: "q30", t: "Vous considérez que les institutions censées protéger sont devenues des lieux de danger, d'impuissance ou d'injustice dans votre trajectoire.", a: "vio-instit"}
-    ];
+  // VIOLENCES PSYCHOLOGIQUES (weight 1-3)
+  { id: 1, axis: "V", text: "Dévalorisation systématique, insultes, humiliations répétées", weight: 2, legal: true, infraction: "Harcèlement moral (art. 222-33-2)" },
+  { id: 2, axis: "V", text: "Contrôle des déplacements, horaires, fréquentations, communications", weight: 2.5, legal: true, infraction: "Harcèlement / Atteinte liberté" },
+  { id: 3, axis: "V", text: "Gaslighting : distorsion de la réalité, négation de vos perceptions", weight: 2.5, legal: false },
+  { id: 4, axis: "V", text: "Menaces (directes ou indirectes) contre vous, vos proches ou vos biens", weight: 3, critical: false, legal: true, infraction: "Menaces (art. 222-17 à 222-18-3)" },
+  { id: 5, axis: "V", text: "Isolement imposé de votre réseau social, familial ou professionnel", weight: 2.5, legal: true, infraction: "Harcèlement / Violence psychologique" },
+  { id: 6, axis: "V", text: "Surveillance constante (téléphone, emails, réseaux sociaux, déplacements)", weight: 2, legal: true, infraction: "Atteinte vie privée (art. 226-1)" },
+  { id: 7, axis: "V", text: "Critiques permanentes de votre apparence, capacités, valeur personnelle", weight: 1.5, legal: false },
+  { id: 8, axis: "V", text: "Cycles de violence alternant agressivité et « lune de miel » (intermittence)", weight: 2, legal: false },
+  
+  // VIOLENCES PHYSIQUES (weight 3-5)
+  { id: 9, axis: "P", text: "Gifles, coups de poing, coups de pied", weight: 4, critical: false, legal: true, infraction: "Violences volontaires (art. 222-7 à 222-14)" },
+  { id: 10, axis: "P", text: "Poussées violentes, empoignades, secouages", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
+  { id: 11, axis: "P", text: "Projection d'objets sur vous", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
+  { id: 12, axis: "P", text: "Tentative de strangulation ou étouffement", weight: 6, critical: true, legal: true, infraction: "Violences aggravées / Tentative meurtre" },
+  { id: 13, axis: "P", text: "Brûlures, morsures, griffures intentionnelles", weight: 4, critical: false, legal: true, infraction: "Violences avec lésions" },
+  { id: 14, axis: "P", text: "Violences avec arme (menace ou usage)", weight: 6, critical: true, legal: true, infraction: "Violences avec arme (art. 222-12)" },
+  { id: 15, axis: "P", text: "Séquestration, enfermement, entrave à la liberté de mouvement", weight: 5, critical: true, legal: true, infraction: "Séquestration (art. 224-1)" },
+  { id: 16, axis: "P", text: "Privation de soins médicaux nécessaires", weight: 4, critical: false, legal: true, infraction: "Non-assistance / Violences" },
+  
+  // VIOLENCES SEXUELLES (weight 4-6)
+  { id: 17, axis: "S", text: "Actes sexuels imposés sans consentement (viol)", weight: 6, critical: true, legal: true, infraction: "Viol (art. 222-23)" },
+  { id: 18, axis: "S", text: "Attouchements non consentis", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle (art. 222-22)" },
+  { id: 19, axis: "S", text: "Harcèlement sexuel (propos, gestes, sollicitations)", weight: 3, critical: false, legal: true, infraction: "Harcèlement sexuel (art. 222-33)" },
+  { id: 20, axis: "S", text: "Contrainte à des pratiques sexuelles non désirées", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle / Viol" },
+  { id: 21, axis: "S", text: "Sabotage de contraception, contrôle reproductif imposé", weight: 4, critical: false, legal: true, infraction: "Violences / Atteinte intégrité" },
+  { id: 22, axis: "S", text: "Exposition forcée à de la pornographie ou actes sexuels", weight: 4, critical: false, legal: true, infraction: "Exhibition / Harcèlement" },
+  { id: 23, axis: "S", text: "Diffusion non consensuelle d'images intimes", weight: 5, critical: false, legal: true, infraction: "Atteinte vie privée (art. 226-1 & 226-2-1)" },
+  
+  // VIOLENCES ÉCONOMIQUES (weight 1-3)
+  { id: 24, axis: "E", text: "Contrôle total de vos finances, interdiction de travailler", weight: 2.5, legal: true, infraction: "Violence économique" },
+  { id: 25, axis: "E", text: "Privation de ressources financières essentielles (nourriture, logement, soins)", weight: 3, critical: false, legal: true, infraction: "Non-assistance / Violences" },
+  { id: 26, axis: "E", text: "Appropriation de vos revenus, vol d'argent ou de biens", weight: 2.5, legal: true, infraction: "Vol / Abus confiance (art. 311-1 & 314-1)" },
+  { id: 27, axis: "E", text: "Sabotage de votre emploi ou de vos études", weight: 2, legal: true, infraction: "Harcèlement" },
+  { id: 28, axis: "E", text: "Endettement forcé, utilisation de votre identité pour contracter des dettes", weight: 3, critical: false, legal: true, infraction: "Escroquerie / Usurpation (art. 313-1 & 434-23)" },
+  { id: 29, axis: "E", text: "Extorsion, chantage financier", weight: 2.5, legal: true, infraction: "Extorsion (art. 312-1)" },
+  
+  // VIOLENCES INSTITUTIONNELLES (weight 1-3)
+  { id: 30, axis: "T", text: "Maltraitance institutionnelle (mépris, infantilisation, négligence)", weight: 2, legal: true, infraction: "Discrimination / Atteinte dignité" },
+  { id: 31, axis: "T", text: "Refus de soins, retard dans la prise en charge médicale", weight: 2.5, legal: true, infraction: "Non-assistance / Refus soins" },
+  { id: 32, axis: "T", text: "Violences gynécologiques/obstétricales (actes non consentis, paroles dégradantes)", weight: 2.5, legal: true, infraction: "Violences / Atteinte intégrité" },
+  { id: 33, axis: "T", text: "Non-respect de vos droits en contexte administratif, judiciaire, médical", weight: 2, legal: true, infraction: "Discrimination / Abus pouvoir" },
+  { id: 34, axis: "T", text: "Discrimination systémique dans l'accès aux services publics", weight: 2, legal: true, infraction: "Discrimination (art. 225-1 à 225-4)" },
+  { id: 35, axis: "T", text: "Minimisation ou déni de vos plaintes par les autorités", weight: 2, legal: false }
+];
     
     let state = {
       currentScreen: 'intro',
