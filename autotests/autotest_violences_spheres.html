@@ -6,8 +6,8 @@
   
   <title>Cartographie Clinique des Violences Subies | NOÉSIS</title>
   <meta name="description" content="Outil de repérage quasi-psychométrique des violences par type et par sphère de vie. Analyse multidimensionnelle de l'exposition aux violences psychologiques, physiques, sexuelles, économiques et institutionnelles.">
-  <meta name="test-version" content="2.0.0">
-  <meta name="test-last-updated" content="2025-11-17">
+  <meta name="test-version" content="1.0.0">
+  <meta name="test-last-updated" content="2025-11-16">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,15 +49,6 @@
       --sphere-p-color: #0891b2;
       --sphere-s-color: #2563eb;
       --sphere-a-color: #64748b;
-      --alert-critique: #991b1b;
-      --alert-critique-bg: rgba(153,27,27,0.12);
-      --alert-severe: #ea580c;
-      --alert-severe-bg: rgba(234,88,12,0.10);
-      --alert-moderate: #0891b2;
-      --alert-moderate-bg: rgba(8,145,178,0.08);
-      --alert-low: #16a34a;
-      --alert-low-bg: rgba(22,163,74,0.08);
-
       
       --fs-xs: 12px; --fs-sm: 14px; --fs-md: 18px;
       --fs-lg: 21px; --fs-xl: 24px; --fs-2xl: 32px;
@@ -1247,51 +1238,46 @@
     ];
     
     const QUESTIONS = [
-  // VIOLENCES PSYCHOLOGIQUES (weight 1-3)
-  { i: "q1", a: "vio-psycho", t: "Dévalorisation systématique, insultes, humiliations répétées", w: 2, c: false, legal: true, infraction: "Harcèlement moral (art. 222-33-2)" },
-  { i: "q2", a: "vio-psycho", t: "Contrôle des déplacements, horaires, fréquentations, communications", w: 2.5, c: false, legal: true, infraction: "Harcèlement / Atteinte liberté" },
-  { i: "q3", a: "vio-psycho", t: "Gaslighting : distorsion de la réalité, négation de vos perceptions", w: 2.5, c: false, legal: false },
-  { i: "q4", a: "vio-psycho", t: "Menaces (directes ou indirectes) contre vous, vos proches ou vos biens", w: 3, c: false, legal: true, infraction: "Menaces (art. 222-17 à 222-18-3)" },
-  { i: "q5", a: "vio-psycho", t: "Isolement imposé de votre réseau social, familial ou professionnel", w: 2.5, c: false, legal: true, infraction: "Harcèlement / Violence psychologique" },
-  { i: "q6", a: "vio-psycho", t: "Surveillance constante (téléphone, emails, réseaux sociaux, déplacements)", w: 2, c: false, legal: true, infraction: "Atteinte vie privée (art. 226-1)" },
-  { i: "q7", a: "vio-psycho", t: "Critiques permanentes de votre apparence, capacités, valeur personnelle", w: 1.5, c: false, legal: false },
-  { i: "q8", a: "vio-psycho", t: "Cycles de violence alternant agressivité et « lune de miel » (intermittence)", w: 2, c: false, legal: false },
-  
-  // VIOLENCES PHYSIQUES (weight 3-5)
-  { i: "q9", a: "vio-physique", t: "Gifles, coups de poing, coups de pied", w: 4, c: false, legal: true, infraction: "Violences volontaires (art. 222-7 à 222-14)" },
-  { i: "q10", a: "vio-physique", t: "Poussées violentes, empoignades, secouages", w: 3, c: false, legal: true, infraction: "Violences volontaires" },
-  { i: "q11", a: "vio-physique", t: "Projection d'objets sur vous", w: 3, c: false, legal: true, infraction: "Violences volontaires" },
-  { i: "q12", a: "vio-physique", t: "Tentative de strangulation ou étouffement", w: 6, c: true, legal: true, infraction: "Violences aggravées / Tentative meurtre" },
-  { i: "q13", a: "vio-physique", t: "Brûlures, morsures, griffures intentionnelles", w: 4, c: false, legal: true, infraction: "Violences avec lésions" },
-  { i: "q14", a: "vio-physique", t: "Violences avec arme (menace ou usage)", w: 6, c: true, legal: true, infraction: "Violences avec arme (art. 222-12)" },
-  { i: "q15", a: "vio-physique", t: "Séquestration, enfermement, entrave à la liberté de mouvement", w: 5, c: true, legal: true, infraction: "Séquestration (art. 224-1)" },
-  { i: "q16", a: "vio-physique", t: "Privation de soins médicaux nécessaires", w: 4, c: false, legal: true, infraction: "Non-assistance / Violences" },
-  
-  // VIOLENCES SEXUELLES (weight 4-6)
-  { i: "q17", a: "vio-sexuelle", t: "Actes sexuels imposés sans consentement (viol)", w: 6, c: true, legal: true, infraction: "Viol (art. 222-23)" },
-  { i: "q18", a: "vio-sexuelle", t: "Attouchements non consentis", w: 5, c: false, legal: true, infraction: "Agression sexuelle (art. 222-22)" },
-  { i: "q19", a: "vio-sexuelle", t: "Harcèlement sexuel (propos, gestes, sollicitations)", w: 3, c: false, legal: true, infraction: "Harcèlement sexuel (art. 222-33)" },
-  { i: "q20", a: "vio-sexuelle", t: "Contrainte à des pratiques sexuelles non désirées", w: 5, c: false, legal: true, infraction: "Agression sexuelle / Viol" },
-  { i: "q21", a: "vio-sexuelle", t: "Sabotage de contraception, contrôle reproductif imposé", w: 4, c: false, legal: true, infraction: "Violences / Atteinte intégrité" },
-  { i: "q22", a: "vio-sexuelle", t: "Exposition forcée à de la pornographie ou actes sexuels", w: 4, c: false, legal: true, infraction: "Exhibition / Harcèlement" },
-  { i: "q23", a: "vio-sexuelle", t: "Diffusion non consensuelle d'images intimes", w: 5, c: false, legal: true, infraction: "Atteinte vie privée (art. 226-1 & 226-2-1)" },
-  
-  // VIOLENCES ÉCONOMIQUES (weight 1-3)
-  { i: "q24", a: "vio-eco", t: "Contrôle total de vos finances, interdiction de travailler", w: 2.5, c: false, legal: true, infraction: "Violence économique" },
-  { i: "q25", a: "vio-eco", t: "Privation de ressources financières essentielles (nourriture, logement, soins)", w: 3, c: false, legal: true, infraction: "Non-assistance / Violences" },
-  { i: "q26", a: "vio-eco", t: "Appropriation de vos revenus, vol d'argent ou de biens", w: 2.5, c: false, legal: true, infraction: "Vol / Abus confiance (art. 311-1 & 314-1)" },
-  { i: "q27", a: "vio-eco", t: "Sabotage de votre emploi ou de vos études", w: 2, c: false, legal: true, infraction: "Harcèlement" },
-  { i: "q28", a: "vio-eco", t: "Endettement forcé, utilisation de votre identité pour contracter des dettes", w: 3, c: false, legal: true, infraction: "Escroquerie / Usurpation (art. 313-1 & 434-23)" },
-  { i: "q29", a: "vio-eco", t: "Extorsion, chantage financier", w: 2.5, c: false, legal: true, infraction: "Extorsion (art. 312-1)" },
-  
-  // VIOLENCES INSTITUTIONNELLES (weight 1-3)
-  { i: "q30", a: "vio-instit", t: "Maltraitance institutionnelle (mépris, infantilisation, négligence)", w: 2, c: false, legal: true, infraction: "Discrimination / Atteinte dignité" },
-  { i: "q31", a: "vio-instit", t: "Refus de soins, retard dans la prise en charge médicale", w: 2.5, c: false, legal: true, infraction: "Non-assistance / Refus soins" },
-  { i: "q32", a: "vio-instit", t: "Violences gynécologiques/obstétricales (actes non consentis, paroles dégradantes)", w: 2.5, c: false, legal: true, infraction: "Violences / Atteinte intégrité" },
-  { i: "q33", a: "vio-instit", t: "Non-respect de vos droits en contexte administratif, judiciaire, médical", w: 2, c: false, legal: true, infraction: "Discrimination / Abus pouvoir" },
-  { i: "q34", a: "vio-instit", t: "Discrimination systémique dans l'accès aux services publics", w: 2, c: false, legal: true, infraction: "Discrimination (art. 225-1 à 225-4)" },
-  { i: "q35", a: "vio-instit", t: "Minimisation ou déni de vos plaintes par les autorités", w: 2, c: false, legal: false }
-];
+      // DIMENSION 1 : Violences Psychologiques & Contrôle (6 items)
+      {i: "q1", t: "On minimise régulièrement vos émotions, vos réactions ou vos besoins en vous disant que vous « exagérez », que vous êtes « trop sensible » ou que « ce n'est pas si grave ».", a: "vio-psycho"},
+      {i: "q2", t: "Vous adaptez constamment votre comportement, vos propos ou vos activités par anticipation de la réaction de l'autre, par peur d'une crise ou d'une sanction (silence, reproches, menaces).", a: "vio-psycho"},
+      {i: "q3", t: "On utilise des menaces de rupture, d'abandon, de représailles ou de sanction comme moyen de vous faire céder ou obéir.", a: "vio-psycho"},
+      {i: "q4", t: "On remet en question votre perception de la réalité en niant des faits, en réécrivant l'histoire des événements ou en vous faisant douter de votre mémoire ou de votre jugement.", a: "vio-psycho"},
+      {i: "q5", t: "On vous isole progressivement de vos proches, de vos ami·es ou de vos activités en critiquant ces liens, en créant des conflits ou en rendant difficile leur maintien.", a: "vio-psycho"},
+      {i: "q6", t: "On exerce un contrôle sur vos déplacements, vos fréquentations, votre téléphone, vos réseaux sociaux ou votre emploi du temps de manière systématique et intrusive.", a: "vio-psycho"},
+      
+      // DIMENSION 2 : Violences Physiques (6 items)
+      {i: "q7", t: "On adopte des comportements physiquement intimidants : gestes brusques, destruction d'objets, coups portés à proximité, blocage de votre déplacement.", a: "vio-physique"},
+      {i: "q8", t: "Vous avez subi des violences physiques directes : bousculades, empoignades, gifles, coups, étranglements, séquestration.", a: "vio-physique"},
+      {i: "q9", t: "On utilise la menace de violence physique comme moyen de contrôle même sans passage à l'acte systématique.", a: "vio-physique"},
+      {i: "q10", t: "Après des épisodes de violence physique, on minimise, justifie ou nie ce qui s'est passé, vous rendant responsable de la « provocation ».", a: "vio-physique"},
+      {i: "q11", t: "Vous avez dû dissimuler des traces de violence (bleus, blessures) ou mentir sur leur origine par peur, honte ou protection de l'agresseur.", a: "vio-physique"},
+      {i: "q12", t: "La violence physique est présentée comme « normale », « méritée » ou « éducative » dans votre environnement.", a: "vio-physique"},
+      
+      // DIMENSION 3 : Violences Sexuelles (6 items)
+      {i: "q13", t: "On vous impose ou vous presse d'avoir des pratiques sexuelles qui vous mettent mal à l'aise, que vous ne souhaitez pas ou auxquelles vous n'avez pas consenti clairement.", a: "vio-sexuelle"},
+      {i: "q14", t: "Votre refus de relations ou d'actes sexuels déclenche reproches, menaces, culpabilisation, punitions affectives ou représailles.", a: "vio-sexuelle"},
+      {i: "q15", t: "On vous instrumentalise sexuellement comme « preuve d'amour », monnaie d'échange, obligation relationnelle ou moyen de réconciliation après conflit.", a: "vio-sexuelle"},
+      {i: "q16", t: "Vous avez subi des actes sexuels alors que vous étiez dans l'incapacité de consentir (sommeil, alcool, sidération, contrainte).", a: "vio-sexuelle"},
+      {i: "q17", t: "On diffuse, menace de diffuser ou utilise contre vous des images, vidéos ou informations à caractère sexuel ou intime sans votre accord.", a: "vio-sexuelle"},
+      {i: "q18", t: "Vous ressentez une obligation d'accepter des relations sexuelles pour « éviter pire » (conflit, violence, rupture, représailles).", a: "vio-sexuelle"},
+      
+      // DIMENSION 4 : Violences Économiques & Matérielles (6 items)
+      {i: "q19", t: "On contrôle vos ressources financières : accès aux comptes, décisions d'achat, justification des dépenses, confiscation de revenus.", a: "vio-eco"},
+      {i: "q20", t: "On sabote activement votre autonomie financière ou professionnelle (empêcher de travailler, créer obstacles à formation/emploi, décrédibiliser professionnellement).", a: "vio-eco"},
+      {i: "q21", t: "On vous impose des dettes, des dépenses non voulues ou on vous rend responsable de difficultés financières créées par l'autre.", a: "vio-eco"},
+      {i: "q22", t: "Vous êtes maintenu·e dans une dépendance matérielle organisée rendant difficile ou impossible un départ (logement, ressources, administratif).", a: "vio-eco"},
+      {i: "q23", t: "On utilise l'argent, les biens matériels ou le logement comme levier de domination, de chantage ou de rétention.", a: "vio-eco"},
+      {i: "q24", t: "Vous subissez une précarisation économique directement liée aux violences subies (perte emploi, dettes, dégradation situation matérielle).", a: "vio-eco"},
+      
+      // DIMENSION 5 : Violences Institutionnelles (6 items)
+      {i: "q25", t: "Des professionnel·les (santé, justice, police, social, éducation) ont minimisé, banalisé ou disqualifié votre parole lorsque vous avez évoqué les violences.", a: "vio-instit"},
+      {i: "q26", t: "Vous avez renoncé à demander de l'aide ou à engager des démarches par anticipation du traitement que vous recevriez (être mal reçu·e, non cru·e, jugé·e, revictimisé·e).", a: "vio-instit"},
+      {i: "q27", t: "Des institutions ou professionnel·les vous ont retourné la responsabilité de la violence subie (« qu'avez-vous fait pour provoquer ça ? », « pourquoi vous restez ? »).", a: "vio-instit"},
+      {i: "q28", t: "Vous avez subi des procédures judiciaires, administratives ou médicales qui vous ont exposé·e à davantage de violence, d'humiliation ou d'injustice.", a: "vio-instit"},
+      {i: "q29", t: "On a utilisé contre vous le système institutionnel (menaces de plainte, instrumentalisation de la justice, pressions via services sociaux, allégations parentales mensongères).", a: "vio-instit"},
+      {i: "q30", t: "Vous considérez que les institutions censées protéger sont devenues des lieux de danger, d'impuissance ou d'injustice dans votre trajectoire.", a: "vio-instit"}
+    ];
     
     let state = {
       currentScreen: 'intro',
@@ -1867,3 +1853,4 @@ NOÉSIS — Intelligence transdisciplinaire
   </script>
 </body>
 </html>
+
