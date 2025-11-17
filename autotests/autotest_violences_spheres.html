@@ -1248,49 +1248,49 @@
     
     const QUESTIONS = [
   // VIOLENCES PSYCHOLOGIQUES (weight 1-3)
-  { i: 1, a: "vio-psycho", t: "Dévalorisation systématique, insultes, humiliations répétées", weight: 2, legal: true, infraction: "Harcèlement moral (art. 222-33-2)" },
-  { i: 2, a: "vio-psycho", t: "Contrôle des déplacements, horaires, fréquentations, communications", weight: 2.5, legal: true, infraction: "Harcèlement / Atteinte liberté" },
-  { i: 3, a: "vio-psycho", t: "Gaslighting : distorsion de la réalité, négation de vos perceptions", weight: 2.5, legal: false },
-  { i: 4, a: "vio-psycho", t: "Menaces (directes ou indirectes) contre vous, vos proches ou vos biens", weight: 3, critical: false, legal: true, infraction: "Menaces (art. 222-17 à 222-18-3)" },
-  { i: 5, a: "vio-psycho", t: "Isolement imposé de votre réseau social, familial ou professionnel", weight: 2.5, legal: true, infraction: "Harcèlement / Violence psychologique" },
-  { i: 6, a: "vio-psycho", t: "Surveillance constante (téléphone, emails, réseaux sociaux, déplacements)", weight: 2, legal: true, infraction: "Atteinte vie privée (art. 226-1)" },
-  { i: 7, a: "vio-psycho", t: "Critiques permanentes de votre apparence, capacités, valeur personnelle", weight: 1.5, legal: false },
-  { i: 8, a: "vio-psycho", t: "Cycles de violence alternant agressivité et « lune de miel » (intermittence)", weight: 2, legal: false },
-
+  { id: 1, axis: "V", text: "Dévalorisation systématique, insultes, humiliations répétées", weight: 2, legal: true, infraction: "Harcèlement moral (art. 222-33-2)" },
+  { id: 2, axis: "V", text: "Contrôle des déplacements, horaires, fréquentations, communications", weight: 2.5, legal: true, infraction: "Harcèlement / Atteinte liberté" },
+  { id: 3, axis: "V", text: "Gaslighting : distorsion de la réalité, négation de vos perceptions", weight: 2.5, legal: false },
+  { id: 4, axis: "V", text: "Menaces (directes ou indirectes) contre vous, vos proches ou vos biens", weight: 3, critical: false, legal: true, infraction: "Menaces (art. 222-17 à 222-18-3)" },
+  { id: 5, axis: "V", text: "Isolement imposé de votre réseau social, familial ou professionnel", weight: 2.5, legal: true, infraction: "Harcèlement / Violence psychologique" },
+  { id: 6, axis: "V", text: "Surveillance constante (téléphone, emails, réseaux sociaux, déplacements)", weight: 2, legal: true, infraction: "Atteinte vie privée (art. 226-1)" },
+  { id: 7, axis: "V", text: "Critiques permanentes de votre apparence, capacités, valeur personnelle", weight: 1.5, legal: false },
+  { id: 8, axis: "V", text: "Cycles de violence alternant agressivité et « lune de miel » (intermittence)", weight: 2, legal: false },
+  
   // VIOLENCES PHYSIQUES (weight 3-5)
-  { i: 9, a: "vio-physique", t: "Gifles, coups de poing, coups de pied", weight: 4, critical: false, legal: true, infraction: "Violences volontaires (art. 222-7 à 222-14)" },
-  { i: 10, a: "vio-physique", t: "Poussées violentes, empoignades, secouages", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
-  { i: 11, a: "vio-physique", t: "Projection d'objets sur vous", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
-  { i: 12, a: "vio-physique", t: "Tentative de strangulation ou étouffement", weight: 6, critical: true, legal: true, infraction: "Violences aggravées / Tentative meurtre" },
-  { i: 13, a: "vio-physique", t: "Brûlures, morsures, griffures intentionnelles", weight: 4, critical: false, legal: true, infraction: "Violences avec lésions" },
-  { i: 14, a: "vio-physique", t: "Violences avec arme (menace ou usage)", weight: 6, critical: true, legal: true, infraction: "Violences avec arme (art. 222-12)" },
-  { i: 15, a: "vio-physique", t: "Séquestration, enfermement, entrave à la liberté de mouvement", weight: 5, critical: true, legal: true, infraction: "Séquestration (art. 224-1)" },
-  { i: 16, a: "vio-physique", t: "Privation de soins médicaux nécessaires", weight: 4, critical: false, legal: true, infraction: "Non-assistance / Violences" },
-
+  { id: 9, axis: "P", text: "Gifles, coups de poing, coups de pied", weight: 4, critical: false, legal: true, infraction: "Violences volontaires (art. 222-7 à 222-14)" },
+  { id: 10, axis: "P", text: "Poussées violentes, empoignades, secouages", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
+  { id: 11, axis: "P", text: "Projection d'objets sur vous", weight: 3, critical: false, legal: true, infraction: "Violences volontaires" },
+  { id: 12, axis: "P", text: "Tentative de strangulation ou étouffement", weight: 6, critical: true, legal: true, infraction: "Violences aggravées / Tentative meurtre" },
+  { id: 13, axis: "P", text: "Brûlures, morsures, griffures intentionnelles", weight: 4, critical: false, legal: true, infraction: "Violences avec lésions" },
+  { id: 14, axis: "P", text: "Violences avec arme (menace ou usage)", weight: 6, critical: true, legal: true, infraction: "Violences avec arme (art. 222-12)" },
+  { id: 15, axis: "P", text: "Séquestration, enfermement, entrave à la liberté de mouvement", weight: 5, critical: true, legal: true, infraction: "Séquestration (art. 224-1)" },
+  { id: 16, axis: "P", text: "Privation de soins médicaux nécessaires", weight: 4, critical: false, legal: true, infraction: "Non-assistance / Violences" },
+  
   // VIOLENCES SEXUELLES (weight 4-6)
-  { i: 17, a: "vio-sexuelle", t: "Actes sexuels imposés sans consentement (viol)", weight: 6, critical: true, legal: true, infraction: "Viol (art. 222-23)" },
-  { i: 18, a: "vio-sexuelle", t: "Attouchements non consentis", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle (art. 222-22)" },
-  { i: 19, a: "vio-sexuelle", t: "Harcèlement sexuel (propos, gestes, sollicitations)", weight: 3, critical: false, legal: true, infraction: "Harcèlement sexuel (art. 222-33)" },
-  { i: 20, a: "vio-sexuelle", t: "Contrainte à des pratiques sexuelles non désirées", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle / Viol" },
-  { i: 21, a: "vio-sexuelle", t: "Sabotage de contraception, contrôle reproductif imposé", weight: 4, critical: false, legal: true, infraction: "Violences / Atteinte intégrité" },
-  { i: 22, a: "vio-sexuelle", t: "Exposition forcée à de la pornographie ou actes sexuels", weight: 4, critical: false, legal: true, infraction: "Exhibition / Harcèlement" },
-  { i: 23, a: "vio-sexuelle", t: "Diffusion non consensuelle d'images intimes", weight: 5, critical: false, legal: true, infraction: "Atteinte vie privée (art. 226-1 & 226-2-1)" },
-
+  { id: 17, axis: "S", text: "Actes sexuels imposés sans consentement (viol)", weight: 6, critical: true, legal: true, infraction: "Viol (art. 222-23)" },
+  { id: 18, axis: "S", text: "Attouchements non consentis", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle (art. 222-22)" },
+  { id: 19, axis: "S", text: "Harcèlement sexuel (propos, gestes, sollicitations)", weight: 3, critical: false, legal: true, infraction: "Harcèlement sexuel (art. 222-33)" },
+  { id: 20, axis: "S", text: "Contrainte à des pratiques sexuelles non désirées", weight: 5, critical: false, legal: true, infraction: "Agression sexuelle / Viol" },
+  { id: 21, axis: "S", text: "Sabotage de contraception, contrôle reproductif imposé", weight: 4, critical: false, legal: true, infraction: "Violences / Atteinte intégrité" },
+  { id: 22, axis: "S", text: "Exposition forcée à de la pornographie ou actes sexuels", weight: 4, critical: false, legal: true, infraction: "Exhibition / Harcèlement" },
+  { id: 23, axis: "S", text: "Diffusion non consensuelle d'images intimes", weight: 5, critical: false, legal: true, infraction: "Atteinte vie privée (art. 226-1 & 226-2-1)" },
+  
   // VIOLENCES ÉCONOMIQUES (weight 1-3)
-  { i: 24, a: "vio-eco", t: "Contrôle total de vos finances, interdiction de travailler", weight: 2.5, legal: true, infraction: "Violence économique" },
-  { i: 25, a: "vio-eco", t: "Privation de ressources financières essentielles (nourriture, logement, soins)", weight: 3, critical: false, legal: true, infraction: "Non-assistance / Violences" },
-  { i: 26, a: "vio-eco", t: "Appropriation de vos revenus, vol d'argent ou de biens", weight: 2.5, legal: true, infraction: "Vol / Abus confiance (art. 311-1 & 314-1)" },
-  { i: 27, a: "vio-eco", t: "Sabotage de votre emploi ou de vos études", weight: 2, legal: true, infraction: "Harcèlement" },
-  { i: 28, a: "vio-eco", t: "Endettement forcé, utilisation de votre identité pour contracter des dettes", weight: 3, critical: false, legal: true, infraction: "Escroquerie / Usurpation (art. 313-1 & 434-23)" },
-  { i: 29, a: "vio-eco", t: "Extorsion, chantage financier", weight: 2.5, legal: true, infraction: "Extorsion (art. 312-1)" },
-
+  { id: 24, axis: "E", text: "Contrôle total de vos finances, interdiction de travailler", weight: 2.5, legal: true, infraction: "Violence économique" },
+  { id: 25, axis: "E", text: "Privation de ressources financières essentielles (nourriture, logement, soins)", weight: 3, critical: false, legal: true, infraction: "Non-assistance / Violences" },
+  { id: 26, axis: "E", text: "Appropriation de vos revenus, vol d'argent ou de biens", weight: 2.5, legal: true, infraction: "Vol / Abus confiance (art. 311-1 & 314-1)" },
+  { id: 27, axis: "E", text: "Sabotage de votre emploi ou de vos études", weight: 2, legal: true, infraction: "Harcèlement" },
+  { id: 28, axis: "E", text: "Endettement forcé, utilisation de votre identité pour contracter des dettes", weight: 3, critical: false, legal: true, infraction: "Escroquerie / Usurpation (art. 313-1 & 434-23)" },
+  { id: 29, axis: "E", text: "Extorsion, chantage financier", weight: 2.5, legal: true, infraction: "Extorsion (art. 312-1)" },
+  
   // VIOLENCES INSTITUTIONNELLES (weight 1-3)
-  { i: 30, a: "vio-instit", t: "Maltraitance institutionnelle (mépris, infantilisation, négligence)", weight: 2, legal: true, infraction: "Discrimination / Atteinte dignité" },
-  { i: 31, a: "vio-instit", t: "Refus de soins, retard dans la prise en charge médicale", weight: 2.5, legal: true, infraction: "Non-assistance / Refus soins" },
-  { i: 32, a: "vio-instit", t: "Violences gynécologiques/obstétricales (actes non consentis, paroles dégradantes)", weight: 2.5, legal: true, infraction: "Violences / Atteinte intégrité" },
-  { i: 33, a: "vio-instit", t: "Non-respect de vos droits en contexte administratif, judiciaire, médical", weight: 2, legal: true, infraction: "Discrimination / Abus pouvoir" },
-  { i: 34, a: "vio-instit", t: "Discrimination systémique dans l'accès aux services publics", weight: 2, legal: true, infraction: "Discrimination (art. 225-1 à 225-4)" },
-  { i: 35, a: "vio-instit", t: "Minimisation ou déni de vos plaintes par les autorités", weight: 2, legal: false }
+  { id: 30, axis: "T", text: "Maltraitance institutionnelle (mépris, infantilisation, négligence)", weight: 2, legal: true, infraction: "Discrimination / Atteinte dignité" },
+  { id: 31, axis: "T", text: "Refus de soins, retard dans la prise en charge médicale", weight: 2.5, legal: true, infraction: "Non-assistance / Refus soins" },
+  { id: 32, axis: "T", text: "Violences gynécologiques/obstétricales (actes non consentis, paroles dégradantes)", weight: 2.5, legal: true, infraction: "Violences / Atteinte intégrité" },
+  { id: 33, axis: "T", text: "Non-respect de vos droits en contexte administratif, judiciaire, médical", weight: 2, legal: true, infraction: "Discrimination / Abus pouvoir" },
+  { id: 34, axis: "T", text: "Discrimination systémique dans l'accès aux services publics", weight: 2, legal: true, infraction: "Discrimination (art. 225-1 à 225-4)" },
+  { id: 35, axis: "T", text: "Minimisation ou déni de vos plaintes par les autorités", weight: 2, legal: false }
 ];
     
     let state = {
