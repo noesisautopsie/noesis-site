@@ -50,12 +50,72 @@
             color: white;
         }
 
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--blanc-surface);
+            box-shadow: 0 1px 4px rgba(10,10,10,0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-        /* PRÉSENTATION ACCOMPAGNEMENT — FOND CLAIR */
+        .navbar.scrolled {
+            box-shadow: 0 2px 12px rgba(10,10,10,0.12);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--noir-absolu);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 15px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--or-sombre);
+        }
+
+        .nav-container > div:last-of-type a:hover svg {
+            stroke: var(--or-sombre);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* PRÉSENTATION ACCOMPAGNEMENT */
         .presentation-accompagnement {
             background: linear-gradient(135deg, var(--creme-principal), var(--creme-chaud));
             color: var(--text-primary);
-            padding: 100px 40px;
+            padding: 140px 40px 100px 40px;
             position: relative;
             overflow: hidden;
         }
@@ -136,18 +196,18 @@
             color: var(--or-sombre);
         }
 
-        /* POURQUOI NOÉSIS EST ACCESSIBLE */
-        .pourquoi-accessible {
+        /* SERVICES GRID */
+        .services-section {
             background: var(--blanc-surface);
             padding: 100px 40px;
         }
 
-        .accessible-container {
-            max-width: 1100px;
+        .services-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .accessible-container h2 {
+        .services-container h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 48px;
             font-weight: 700;
@@ -156,7 +216,7 @@
             margin-bottom: 24px;
         }
 
-        .accessible-intro {
+        .services-intro {
             font-size: 19px;
             line-height: 1.7;
             text-align: center;
@@ -167,388 +227,19 @@
             margin-right: auto;
         }
 
-        .accessible-table {
-            background: var(--creme-principal);
-            border: 1px solid rgba(10,10,10,0.08);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 16px rgba(10,10,10,0.06);
-        }
-
-        .table-header {
-            display: grid;
-            grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
-            background: var(--noir-absolu);
-            color: var(--text-on-dark);
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 20px;
-            gap: 16px;
-        }
-
-        .table-row {
-            display: grid;
-            grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
-            padding: 24px 20px;
-            gap: 16px;
-            border-bottom: 1px solid rgba(10,10,10,0.08);
-            transition: background 0.3s ease;
-        }
-
-        .table-row:last-child {
-            border-bottom: none;
-        }
-
-        .table-row:hover {
-            background: rgba(199,168,109,0.05);
-        }
-
-        .table-row.highlight {
-            background: linear-gradient(135deg, rgba(199,168,109,0.12), rgba(199,168,109,0.08));
-            border-left: 4px solid var(--or-signature);
-        }
-
-        .table-row.highlight:hover {
-            background: linear-gradient(135deg, rgba(199,168,109,0.18), rgba(199,168,109,0.12));
-        }
-
-        .table-cell {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-primary);
-        }
-
-        .table-row.highlight .table-cell {
-            font-weight: 600;
-            color: var(--noir-absolu);
-        }
-
-        /* TRANSPARENCE ET LIMITES */
-        .transparence-limites {
-            background: var(--blanc-surface);
-            border: 1px solid rgba(10,10,10,0.12);
-            border-radius: 16px;
-            padding: 60px 48px;
-            margin: 100px auto;
-            max-width: 1000px;
-            box-shadow: 0 4px 24px rgba(10,10,10,0.08);
-        }
-
-        .transparence-container h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--noir-absolu);
-            margin-bottom: 32px;
-        }
-
-        .transparence-intro {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--noir-absolu);
-            margin-bottom: 24px;
-        }
-
-        .transparence-container p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text-primary);
-            margin-bottom: 24px;
-        }
-
-        .transparence-list {
-            list-style: none;
-            margin: 32px 0;
-            padding: 0;
-        }
-
-        .transparence-list li {
-            padding: 16px 0 16px 32px;
-            position: relative;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            border-bottom: 1px solid rgba(10,10,10,0.06);
-        }
-
-        .transparence-list li:last-child {
-            border-bottom: none;
-        }
-
-        .transparence-list li::before {
-            content: '×';
-            position: absolute;
-            left: 0;
-            color: var(--or-sombre);
-            font-size: 28px;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .transparence-footer {
-            font-size: 17px;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(10,10,10,0.08);
-        }
-
-        /* NAVIGATION PREMIUM LUXUEUSE — FOND NOIR */
-        nav {
-            position: sticky;
-            top: 0;
-            background: linear-gradient(180deg, 
-                var(--noir-absolu) 0%, 
-                rgba(10, 10, 10, 0.98) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(199, 168, 109, 0.15);
-            padding: 20px 0;
-            z-index: 2000;
-            box-shadow: 
-                0 2px 8px rgba(0, 0, 0, 0.6),
-                0 4px 16px rgba(0, 0, 0, 0.4),
-                0 8px 32px rgba(199, 168, 109, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            padding: 14px 0;
-            background: var(--noir-absolu);
-            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
-            box-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.8),
-                0 8px 24px rgba(0, 0, 0, 0.5),
-                0 16px 48px rgba(199, 168, 109, 0.12);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            max-width: 1300px;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--creme-principal);
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-variant: small-caps;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        nav.scrolled .logo {
-            font-size: 24px;
-        }
-
-        .logo-text {
-            position: relative;
-        }
-
-        .logo-text::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--or-signature) 50%, 
-                transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .logo:hover {
-            color: var(--or-riche);
-            letter-spacing: 0.28em;
-        }
-
-        .logo:hover .logo-text::before {
-            opacity: 1;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2px;
-            list-style: none;
-            align-items: center;
-            background-color: rgba(26, 26, 26, 0.6);
-            border: 1px solid rgba(199, 168, 109, 0.15);
-            border-radius: 50px;
-            padding: 6px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        nav li {
-            position: relative;
-        }
-
-        nav a:not(.logo) {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(247, 245, 239, 0.75);
-            text-decoration: none;
-            position: relative;
-            padding: 10px 18px;
-            border-radius: 40px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-        }
-
-        nav a:not(.logo)::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 40px;
-            background: linear-gradient(135deg, 
-                var(--or-signature) 0%, 
-                var(--or-riche) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        nav a:not(.logo):hover {
-            color: var(--noir-absolu);
-            transform: translateY(-1px);
-            box-shadow: 
-                0 4px 12px rgba(199, 168, 109, 0.3),
-                0 2px 4px rgba(199, 168, 109, 0.2);
-        }
-
-        nav a:not(.logo):hover::before {
-            opacity: 1;
-        }
-
-        nav a:not(.logo):active {
-            transform: translateY(0);
-        }
-
-        .nav-social {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: 16px;
-            padding-left: 16px;
-            border-left: 1px solid rgba(199, 168, 109, 0.2);
-        }
-
-        .nav-social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: transparent;
-            color: rgba(247, 245, 239, 0.75);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            position: relative;
-        }
-
-        .nav-social-link svg {
-            width: 16px;
-            height: 16px;
-            stroke-width: 1.5;
-        }
-
-        .nav-social-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: linear-gradient(135deg, 
-                var(--or-signature) 0%, 
-                var(--or-riche) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .nav-social-link:hover {
-            color: var(--noir-absolu);
-            transform: translateY(-1px);
-            box-shadow: 
-                0 4px 12px rgba(199, 168, 109, 0.3),
-                0 2px 4px rgba(199, 168, 109, 0.2);
-        }
-
-        .nav-social-link:hover::before {
-            opacity: 1;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 2002;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle span {
-            width: 28px;
-            height: 2px;
-            background: var(--or-signature);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 40px;
-        }
-
-        /* SERVICES GRID */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 48px;
-            margin-bottom: 100px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
         }
 
         .service-card {
-            background: var(--blanc-surface);
+            background: var(--creme-principal);
             border: 1px solid rgba(10,10,10,0.08);
             border-radius: 12px;
-            padding: 48px 40px;
-            box-shadow: 0 2px 16px rgba(10,10,10,0.04);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 36px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -558,274 +249,129 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(180deg, var(--or-signature), var(--or-sombre));
-            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 48px rgba(10,10,10,0.12);
-            border-color: rgba(199,168,109,0.2);
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--or-signature), var(--or-riche));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover::before {
-            height: 100%;
+            transform: scaleX(1);
         }
 
-        .service-badge {
-            display: inline-block;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--or-sombre);
-            background: rgba(199,168,109,0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin-bottom: 24px;
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(10,10,10,0.12);
         }
 
-        .service-card h3 {
+        .service-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--noir-absolu);
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .service-tagline {
-            font-size: 18px;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .service-description {
-            margin-bottom: 32px;
-            line-height: 1.8;
+            margin-bottom: 12px;
         }
 
         .service-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
+            font-size: 38px;
             font-weight: 700;
-            color: var(--or-signature);
-            margin: 32px 0 24px;
-        }
-
-        .service-price span {
-            font-size: 20px;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .service-card ul {
-            list-style: none;
-            margin: 28px 0;
-        }
-
-        .service-card li {
-            padding: 12px 0 12px 32px;
-            position: relative;
-            line-height: 1.7;
-        }
-
-        .service-card li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--or-signature);
-            font-weight: 600;
-        }
-
-        /* CTA BUTTONS */
-        .cta-button {
-            display: inline-block;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-align: center;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-primary {
-            background: var(--or-signature);
-            color: var(--noir-absolu);
-            box-shadow: 0 4px 16px rgba(199,168,109,0.25);
-        }
-
-        .cta-primary:hover {
-            background: var(--or-riche);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(199,168,109,0.35);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: var(--noir-absolu);
-            border: 2px solid var(--noir-absolu);
-            padding: 14px 38px;
-        }
-
-        .cta-secondary:hover {
-            background: var(--noir-absolu);
-            color: var(--creme-principal);
-        }
-
-        /* TARIFS SECTION */
-        .tarifs-section {
-            background: linear-gradient(135deg, var(--noir-absolu), var(--noir-surface));
-            color: var(--text-on-dark);
-            padding: 100px 40px;
-            border-radius: 16px;
-            margin: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tarifs-section::before {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(199,168,109,0.12) 0%, transparent 70%);
-        }
-
-        .tarifs-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tarifs-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .tarifs-subtitle {
-            text-align: center;
-            font-size: 20px;
-            color: var(--text-on-dark-muted);
-            margin-bottom: 60px;
-            line-height: 1.7;
-        }
-
-        .tarifs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-
-        .tarif-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(199,168,109,0.2);
-            border-radius: 12px;
-            padding: 40px 32px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .tarif-card:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: var(--or-signature);
-            transform: translateY(-4px);
-        }
-
-        .tarif-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--or-signature);
-        }
-
-        .tarif-prix {
-            font-size: 40px;
-            font-weight: 700;
-            font-family: 'Cormorant Garamond', serif;
+            color: var(--or-sombre);
             margin-bottom: 8px;
         }
 
-        .tarif-unite {
+        .service-duration {
             font-size: 16px;
-            color: var(--text-on-dark-muted);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .service-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-primary);
             margin-bottom: 24px;
         }
 
-        .tarif-description {
-            line-height: 1.7;
-            color: var(--text-on-dark-muted);
+        .service-details {
+            border-top: 1px solid rgba(10,10,10,0.08);
+            padding-top: 20px;
+        }
+
+        .service-detail-item {
+            margin-bottom: 12px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .service-detail-item strong {
+            color: var(--or-sombre);
+            font-weight: 600;
         }
 
         /* METHODOLOGIE */
         .methodologie-section {
-            max-width: 1000px;
-            margin: 100px auto;
+            background: var(--noir-absolu);
+            color: var(--text-on-dark);
+            padding: 100px 40px;
         }
 
         .methodologie-section h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 48px;
             font-weight: 700;
-            color: var(--noir-absolu);
             text-align: center;
             margin-bottom: 60px;
+            color: var(--creme-principal);
         }
 
         .methodo-grid {
+            max-width: 1100px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
 
         .methodo-item {
             text-align: center;
-            padding: 32px 24px;
+            padding: 32px;
         }
 
         .methodo-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
+            width: 60px;
+            height: 60px;
+            background: var(--or-signature);
+            color: var(--noir-absolu);
+            font-size: 28px;
             font-weight: 700;
-            color: var(--or-signature);
-            margin-bottom: 16px;
-            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 24px auto;
         }
 
         .methodo-item h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--noir-absolu);
             margin-bottom: 16px;
+            color: var(--or-riche);
         }
 
         .methodo-item p {
+            font-size: 18px;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: var(--text-on-dark-muted);
         }
 
-        /* FAQ SECTION */
+        /* FAQ */
         .faq-section {
-            max-width: 900px;
-            margin: 100px auto;
+            background: var(--creme-principal);
+            padding: 100px 40px;
         }
 
         .faq-section h2 {
@@ -837,13 +383,22 @@
             margin-bottom: 60px;
         }
 
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         .faq-item {
             background: var(--blanc-surface);
             border: 1px solid rgba(10,10,10,0.08);
             border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(10,10,10,0.04);
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(10,10,10,0.08);
         }
 
         .faq-question {
@@ -855,51 +410,66 @@
         }
 
         .faq-answer {
-            line-height: 1.8;
+            font-size: 18px;
+            line-height: 1.7;
             color: var(--text-primary);
+        }
+
+        .faq-answer strong {
+            color: var(--or-sombre);
         }
 
         /* CTA FINAL */
         .cta-final {
-            background: linear-gradient(135deg, var(--or-signature), var(--or-riche));
+            background: linear-gradient(135deg, var(--noir-absolu), var(--noir-doux));
+            color: var(--text-on-dark);
             padding: 80px 40px;
-            border-radius: 16px;
             text-align: center;
-            margin: 100px 0;
         }
 
         .cta-final h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 48px;
             font-weight: 700;
-            color: var(--noir-absolu);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            color: var(--creme-principal);
         }
 
         .cta-final p {
             font-size: 20px;
-            color: rgba(10,10,10,0.85);
+            line-height: 1.6;
+            color: var(--text-on-dark-muted);
             margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-final .cta-button {
-            background: var(--noir-absolu);
-            color: var(--creme-principal);
+        .cta-button {
+            display: inline-block;
+            background: var(--or-signature);
+            color: var(--noir-absolu);
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            padding: 18px 48px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
         }
 
-        .cta-final .cta-button:hover {
-            background: var(--noir-surface);
+        .cta-button:hover {
+            background: var(--or-riche);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199,168,109,0.4);
         }
 
         /* FOOTER */
         footer {
             background: var(--noir-absolu);
             color: var(--text-on-dark);
-            padding: 80px 40px 40px;
+            padding: 60px 40px 32px 40px;
         }
 
         .footer-content {
@@ -907,573 +477,303 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-section h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             color: var(--or-signature);
+        }
+
+        .footer-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-on-dark-muted);
         }
 
         .footer-section ul {
             list-style: none;
         }
 
-        .footer-section li {
+        .footer-section ul li {
             margin-bottom: 12px;
         }
 
-        .footer-section a {
+        .footer-section ul li a {
             color: var(--text-on-dark-muted);
             text-decoration: none;
-            transition: color 0.3s ease;
             font-size: 16px;
+            transition: color 0.3s;
         }
 
-        .footer-section a:hover {
+        .footer-section ul li a:hover {
             color: var(--or-signature);
         }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 40px;
-            border-top: 1px solid rgba(199,168,109,0.2);
             text-align: center;
-            color: var(--text-on-dark-muted);
-            font-size: 14px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(247,245,239,0.1);
         }
 
-        /* Responsive Navigation */
-        @media (max-width: 1024px) {
-            nav .container {
-                padding: 0 24px;
-                position: relative;
-            }
-
-            .menu-toggle {
-                display: flex;
-                position: relative;
-                z-index: 2002;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 320px;
-                max-width: 85vw;
-                flex-direction: column;
-                background: linear-gradient(180deg,
-                    var(--noir-absolu) 0%,
-                    var(--noir-surface) 100%);
-                padding: 100px 32px 40px;
-                gap: 0;
-                border-radius: 0;
-                border: none;
-                border-left: 1px solid rgba(199, 168, 109, 0.2);
-                box-shadow:
-                    -4px 0 24px rgba(0, 0, 0, 0.8),
-                    -8px 0 48px rgba(0, 0, 0, 0.5);
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                overflow-y: auto;
-            }
-
-            nav ul.active {
-                right: 0;
-            }
-
-            nav li {
-                width: 100%;
-                margin-bottom: 12px;
-            }
-
-            nav a:not(.logo) {
-                display: block;
-                width: 100%;
-                padding: 16px 20px;
-                font-size: 15px;
-                text-align: left;
-                touch-action: manipulation;
-                border-radius: 8px;
-            }
-
-            .nav-social {
-                margin-left: 0;
-                padding-left: 0;
-                padding-top: 24px;
-                margin-top: 24px;
-                border-left: none;
-                border-top: 1px solid rgba(199, 168, 109, 0.2);
-                justify-content: flex-start;
-                gap: 12px;
-            }
-
-            .nav-social-link {
-                width: 42px;
-                height: 42px;
-            }
-
-            .nav-social-link svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            /* Overlay pour fermer le menu */
-            .menu-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: rgba(10, 10, 10, 0.8);
-                backdrop-filter: blur(4px);
-                z-index: 1999;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .menu-overlay.active {
-                display: block;
-                opacity: 1;
-            }
+        .footer-bottom p {
+            font-size: 15px;
+            color: var(--text-on-dark-muted);
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            nav {
-                padding: 16px 0;
-            }
-
-            nav ul {
-                gap: 1px;
-                padding: 4px;
-                flex-wrap: wrap;
-            }
-
-            nav a:not(.logo) {
-                font-size: 11px;
-                padding: 8px 12px;
-            }
-
-            .logo {
-                font-size: 22px;
-            }
-
-            .nav-social {
-                margin-left: 8px;
-                padding-left: 8px;
-                gap: 2px;
-            }
-
-            .nav-social-link {
-                width: 32px;
-                height: 32px;
-            }
-
-            .nav-social-link svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .presentation-accompagnement {
-                padding: 80px 24px;
-            }
-
-            .presentation-container h1 {
-                font-size: 40px;
-            }
-
-            .presentation-lead {
-                font-size: 19px;
-            }
-
-            .presentation-content h2 {
-                font-size: 32px;
-            }
-
-            .presentation-content p {
-                font-size: 17px;
-            }
-
-            .pourquoi-accessible {
-                padding: 80px 24px;
-            }
-
-            .accessible-container h2 {
-                font-size: 36px;
-            }
-
-            .accessible-intro {
-                font-size: 17px;
-            }
-
-            .table-header {
+        @media (max-width: 1024px) {
+            .nav-links {
                 display: none;
             }
 
-            .table-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                padding: 20px 16px;
+            .nav-container > div:last-of-type {
+                display: none;
             }
 
-            .table-cell {
-                position: relative;
-                padding-left: 0;
-            }
-
-            .table-cell::before {
-                content: attr(data-label);
-                font-family: 'Source Sans Pro', sans-serif;
-                font-size: 11px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: var(--or-sombre);
+            .menu-toggle {
                 display: block;
-                margin-bottom: 4px;
             }
 
-            .transparence-limites {
-                padding: 40px 24px;
-                margin: 80px 24px;
+            .presentation-container h1 {
+                font-size: 42px;
             }
 
-            .transparence-container h2 {
-                font-size: 32px;
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container h1 {
+                font-size: 36px;
             }
 
-            .transparence-intro {
-                font-size: 18px;
-            }
-
-            .transparence-container p {
-                font-size: 16px;
-            }
-
-            .transparence-list li {
-                font-size: 16px;
-                padding-left: 28px;
-            }
-
-            .container {
-                padding: 80px 24px;
-            }
-
-            .tarifs-section h2,
+            .services-container h2,
             .methodologie-section h2,
             .faq-section h2,
             .cta-final h2 {
                 font-size: 36px;
             }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
         }
     </style>
 </head>
 <body>
-    
-    <!-- NAVIGATION -->
-    <nav id="navbar">
-        <div class="container">
-            <a href="../index.html#accueil" class="logo">
-                <span class="logo-text">NOÉSIS</span>
-            </a>
-
-            <!-- Bouton hamburger mobile -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul id="navMenu">
-                <li><a href="../index.html#accueil">Accueil</a></li>
-                <li><a href="../index.html#methode">La Méthode</a></li>
-                <li><a href="../index.html#decouvrir">Découvrir</a></li>
-                <li><a href="../Articles/articles-index.html">Articles</a></li>
-                <li><a href="../autotests/autotests.html">Auto-tests</a></li>
-                <li><a href="../Podcasts/podcast.html">Podcasts</a></li>
-                <li><a href="../Livres/livres.html">Livres</a></li>
-                <li><a href="./accompagnement.html">Accompagnement</a></li>
-                <li><a href="../index.html#engagement">Engagement</a></li>
-                <li class="nav-social">
-                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@noesisexplique" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="TikTok NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:noesisanalyse@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">NOÉSIS</a>
+            <div class="nav-links" id="navMenu">
+                <a href="../index.html">Accueil</a>
+                <a href="../methode.html">La Méthode</a>
+                <a href="../index.html#decouvrir">Découvrir</a>
+                <a href="../index.html#articles">Articles</a>
+                <a href="../index.html#auto-tests">Auto-tests</a>
+                <a href="../podcasts.html">Podcasts</a>
+                <a href="../index.html#livres">Livres</a>
+                <a href="./accompagnement.html">Accompagnement</a>
+                <a href="../engagement.html">Engagement</a>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+                <a href="https://instagram.com/noesis.analyse" target="_blank" style="color: var(--text-primary); text-decoration: none; font-size: 20px; transition: color 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/noesis-analyse" target="_blank" style="color: var(--text-primary); text-decoration: none; font-size: 20px; transition: color 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:contact@noesisanalyse.com" style="color: var(--text-primary); text-decoration: none; font-size: 20px; transition: color 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
         </div>
     </nav>
 
-    <!-- Overlay menu mobile -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- PRÉSENTATION ACCOMPAGNEMENT -->
+    <!-- PRÉSENTATION -->
     <section class="presentation-accompagnement">
         <div class="presentation-container">
-            <h1>Accompagnement Personnalisé</h1>
-            <p class="presentation-lead">Cartographie de votre situation. Construction de dossiers structurés pour démarches juridiques, professionnelles ou thérapeutiques.</p>
+            <h1>L'Étape Zéro</h1>
+            <p class="presentation-lead">Cartographier votre situation avant de consulter</p>
             
             <div class="presentation-content">
-                <h2>Sortir de la Confusion par la Clarté</h2>
-                <p>Vous vous sentez perdu dans une situation complexe — emprise personnelle, violence professionnelle, dynamique familiale toxique. Vous avez besoin de clarté avant de consulter un avocat, un psychologue, ou avant de prendre une décision importante.</p>
+                <h2>Pourquoi "L'Étape Zéro" ?</h2>
                 
-                <p>Les services d'accompagnement NOÉSIS vous offrent une <strong>cartographie transdisciplinaire de votre situation</strong> par application de la méthode NOÉSIS (neuropsychologie, psychologie cognitive, criminologie, anthropologie, sciences sociales).</p>
+                <p>Nous vivons dans un flux constant d'informations, de témoignages, de symptômes listés en ligne. Il est facile de se reconnaître dans des patterns sans savoir si nous correspondons vraiment à toutes les cases. Suis-je réellement sous emprise, ou est-ce autre chose ? Ai-je un TDAH, ou est-ce une réaction normale à un contexte anormal ? Comment mettre des mots justes sur ce que je vis ?</p>
+                
+                <p>NOÉSIS propose un espace de clarification avant la consultation professionnelle. Une cartographie transdisciplinaire selon cinq axes (neuropsychologique, stratégique-tactique, social-systémique, culturel-narratif, juridico-institutionnel) qui vous aide à structurer votre vécu, identifier les patterns, et formuler votre situation avec des mots précis.</p>
+                
+                <p>L'objectif ? Arriver chez le psychologue, l'avocat ou le médecin avec une synthèse déjà construite, un parcours formulé, des questions précises. Non pas pour remplacer leur expertise, mais pour optimiser le temps passé avec eux et leur permettre d'intervenir efficacement dès le premier entretien.</p>
+                
+                <p>L'accompagnement NOÉSIS ne remplace pas une thérapie, un diagnostic médical ou un conseil juridique. Il vous aide à comprendre, nommer et organiser votre expérience pour mieux utiliser le temps précieux avec les professionnels qui vous accompagneront.</p>
                 
                 <div class="presentation-disclaimer">
-                    <p><strong>Avertissement Important :</strong> Ces prestations constituent un outil de clarification destiné à préparer vos démarches auprès de professionnels compétents. Elles ne remplacent en aucun cas un diagnostic médical, un conseil juridique ou une psychothérapie.</p>
+                    <p><strong>Disclaimer fondamental :</strong> Je ne suis ni psychologue, ni thérapeute, ni avocat. Mon rôle est de vous aider à comprendre et structurer votre expérience avant de consulter les professionnels compétents. En cas de danger immédiat, appelez le 17 (police), le 3919 (violences femmes info) ou le 114 (SMS urgence).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- POURQUOI NOÉSIS EST ACCESSIBLE -->
-    <section class="pourquoi-accessible">
-        <div class="accessible-container">
-            <h2>Pourquoi NOÉSIS est Accessible</h2>
-            <p class="accessible-intro">Les services NOÉSIS ne remplacent pas les professionnels reconnus. Ils constituent une première étape de clarification accessible, avant ou en complément de vos démarches.</p>
+    <!-- SERVICES -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2>Services d'Accompagnement</h2>
+            <p class="services-intro">Cinq formules adaptées à vos besoins, de l'analyse rapide à l'accompagnement stratégique complet.</p>
             
-            <div class="accessible-table">
-                <div class="table-header">
-                    <div class="table-col">Besoin</div>
-                    <div class="table-col">Professionnel Compétent</div>
-                    <div class="table-col">Tarif Indicatif</div>
-                    <div class="table-col">Quand ?</div>
+            <div class="services-grid">
+                <!-- Consultation Express -->
+                <div class="service-card">
+                    <div style="width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 100%; height: 100%; stroke: var(--or-signature); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Consultation Express</h3>
+                    <div class="service-price">35€</div>
+                    <div class="service-duration">Réponse écrite 2-3 pages</div>
+                    <p class="service-description">Analyse rapide d'une situation précise avec orientation immédiate. Idéal pour une première question ciblée ou une validation de perception.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item"><strong>Délai :</strong> 48-72h</div>
+                        <div class="service-detail-item"><strong>Format :</strong> Document structuré</div>
+                        <div class="service-detail-item"><strong>Contenu :</strong> Analyse ciblée + orientation professionnelle</div>
+                    </div>
                 </div>
-                
-                <div class="table-row">
-                    <div class="table-cell" data-label="Besoin">Diagnostic psychologique</div>
-                    <div class="table-cell" data-label="Professionnel">Psychologue clinicien</div>
-                    <div class="table-cell" data-label="Tarif">300-500 €</div>
-                    <div class="table-cell" data-label="Quand">Symptômes trauma/anxiété</div>
+
+                <!-- Analyse Flash -->
+                <div class="service-card">
+                    <div style="width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 100%; height: 100%; stroke: var(--or-signature); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 2v6h6"/>
+                            <path d="M8 13h8M8 17h8"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Analyse Flash</h3>
+                    <div class="service-price">60€</div>
+                    <div class="service-duration">Document 5-8 pages</div>
+                    <p class="service-description">Synthèse structurée de votre situation avec identification des patterns principaux et orientation professionnelle adaptée.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item"><strong>Délai :</strong> 5-7 jours ouvrés</div>
+                        <div class="service-detail-item"><strong>Format :</strong> Analyse écrite détaillée</div>
+                        <div class="service-detail-item"><strong>Contenu :</strong> Patterns identifiés + ressources + prochaines étapes</div>
+                    </div>
                 </div>
-                
-                <div class="table-row">
-                    <div class="table-cell" data-label="Besoin">Conseil juridique</div>
-                    <div class="table-cell" data-label="Professionnel">Avocat spécialisé</div>
-                    <div class="table-cell" data-label="Tarif">150-200 €/h</div>
-                    <div class="table-cell" data-label="Quand">Avant toute procédure</div>
+
+                <!-- Cartographie Multidisciplinaire -->
+                <div class="service-card">
+                    <div style="width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 100%; height: 100%; stroke: var(--or-signature); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Cartographie Complète</h3>
+                    <div class="service-price">180€</div>
+                    <div class="service-duration">Analyse 20-35 pages</div>
+                    <p class="service-description">Analyse transdisciplinaire exhaustive selon les 5 axes NOÉSIS avec fiche de préparation pour vos consultations professionnelles.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item"><strong>Délai :</strong> 10-14 jours ouvrés</div>
+                        <div class="service-detail-item"><strong>Format :</strong> Dossier complet structuré</div>
+                        <div class="service-detail-item"><strong>Contenu :</strong> 5 axes + fiche prep consultation + ressources</div>
+                    </div>
                 </div>
-                
-                <div class="table-row">
-                    <div class="table-cell" data-label="Besoin">Expertise judiciaire</div>
-                    <div class="table-cell" data-label="Professionnel">Expert agréé</div>
-                    <div class="table-cell" data-label="Tarif">1500-3000 €</div>
-                    <div class="table-cell" data-label="Quand">Demande par tribunal</div>
+
+                <!-- Organisation Documentaire -->
+                <div class="service-card">
+                    <div style="width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 100%; height: 100%; stroke: var(--or-signature); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Organisation Documentaire</h3>
+                    <div class="service-price">250-450€</div>
+                    <div class="service-duration">Dossier professionnel complet</div>
+                    <p class="service-description">Compilation et structuration de vos preuves, chronologie détaillée et synthèse juridique pour avocat ou expert.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item"><strong>Délai :</strong> 14-21 jours selon volume</div>
+                        <div class="service-detail-item"><strong>Format :</strong> Dossier juridique professionnel</div>
+                        <div class="service-detail-item"><strong>Contenu :</strong> Preuves + chronologie + synthèse juridique</div>
+                    </div>
                 </div>
+
+                <!-- Suivi Stratégique -->
+                <div class="service-card">
+                    <div style="width: 56px; height: 56px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 100%; height: 100%; stroke: var(--or-signature); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Suivi Stratégique</h3>
+                    <div class="service-price">50€/heure</div>
+                    <div class="service-duration">Séances 1-2h par téléphone ou email</div>
+                    <p class="service-description">Séances régulières pour affiner votre stratégie de sortie, préparer vos consultations ou ajuster votre plan d'action.</p>
+                    <div class="service-details">
+                        <div class="service-detail-item"><strong>Format :</strong> Téléphone ou email selon votre préférence</div>
+                        <div class="service-detail-item"><strong>Contenu :</strong> Stratégie + ajustements + compte-rendu écrit</div>
+                        <div class="service-detail-item"><strong>Modalités :</strong> À la séance ou forfait prépayé</div>
+                    </div>
+                </div>
+
+            <!-- TARIF SOLIDAIRE -->
+            <div style="max-width: 900px; margin: 60px auto 0 auto; background: linear-gradient(135deg, var(--noir-absolu), var(--noir-doux)); border-radius: 12px; padding: 48px 40px; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(199,168,109,0.15) 0%, transparent 70%); pointer-events: none;"></div>
                 
-                <div class="table-row highlight">
-                    <div class="table-cell" data-label="Besoin"><strong>Clarification</strong></div>
-                    <div class="table-cell" data-label="Professionnel"><strong>NOÉSIS</strong></div>
-                    <div class="table-cell" data-label="Tarif"><strong>60-180 €</strong></div>
-                    <div class="table-cell" data-label="Quand"><strong>Avant de consulter</strong></div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--or-signature); margin-bottom: 20px; position: relative; z-index: 2;">Accès Solidaire</h3>
+                
+                <p style="font-size: 19px; line-height: 1.7; color: var(--text-on-dark-muted); margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; position: relative; z-index: 2;">L'argent ne doit jamais être un obstacle à l'aide dont vous avez besoin. Si vous êtes en difficulté financière, tous les services NOÉSIS sont accessibles avec une réduction solidaire.</p>
+                
+                <div style="background: rgba(199,168,109,0.1); border: 1px solid rgba(199,168,109,0.3); border-radius: 8px; padding: 24px; margin-bottom: 32px; position: relative; z-index: 2;">
+                    <p style="font-size: 17px; line-height: 1.6; color: var(--text-on-dark); margin: 0;"><strong style="color: var(--or-signature);">Comment y accéder ?</strong> Contactez-moi. On trouvera une solution. <strong style="color: var(--or-signature);">Aucun justificatif exigé, aucun jugement.</strong> Le tarif solidaire s'applique à tous les services, y compris l'Organisation Documentaire et le Suivi Stratégique.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TRANSPARENCE ET LIMITES -->
-    <section class="transparence-limites">
-        <div class="transparence-container">
-            <h2>Transparence et Limites</h2>
+    <!-- MÉTHODOLOGIE -->
+    <section class="methodologie-section">
+        <h2>Comment se Déroule l'Accompagnement ?</h2>
+        
+        <div class="methodo-grid">
+            <div class="methodo-item">
+                <div class="methodo-number">1</div>
+                <h3>Premier Contact</h3>
+                <p>Échange préliminaire gratuit (20-30 min) par email ou téléphone pour évaluer l'adéquation entre votre demande et mon offre. Si nécessaire, je vous oriente vers d'autres ressources.</p>
+            </div>
             
-            <p class="transparence-intro">NOÉSIS n'est ni un cabinet juridique, ni un cabinet médical, ni un cabinet de psychologie.</p>
+            <div class="methodo-item">
+                <div class="methodo-number">2</div>
+                <h3>Analyse Transdisciplinaire</h3>
+                <p>Application de la méthode NOÉSIS à votre situation : neurobiologie, psychologie, criminologie, culture, système social. Vous recevez une cartographie claire et structurée.</p>
+            </div>
             
-            <p>Les prestations d'accompagnement NOÉSIS constituent une aide à la clarification et à l'organisation documentaire. Elles s'appuient sur une méthode transdisciplinaire rigoureuse mobilisant les sciences humaines et sociales.</p>
-            
-            <p><strong>Ces services ne remplacent en aucun cas :</strong></p>
-            
-            <ul class="transparence-list">
-                <li>Un diagnostic médical ou psychologique (consultez un psychologue clinicien ou psychiatre)</li>
-                <li>Un conseil juridique (consultez un avocat inscrit au barreau)</li>
-                <li>Une psychothérapie (consultez un psychothérapeute agréé)</li>
-                <li>Une expertise officielle opposable devant les tribunaux</li>
-            </ul>
-            
-            <p class="transparence-footer">Pour toute démarche thérapeutique, judiciaire ou professionnelle, vous devez impérativement consulter les professionnels compétents et diplômés dans ces domaines.</p>
+            <div class="methodo-item">
+                <div class="methodo-number">3</div>
+                <h3>Synthèse & Orientation</h3>
+                <p>Document de synthèse personnalisé détaillant votre situation et vous orientant vers thérapeutes, juristes ou associations selon vos besoins. Mon rôle : éclairer, pas soigner ni défendre.</p>
+            </div>
         </div>
     </section>
 
-    <!-- INTRO -->
-    <div class="container">
-
-        <!-- SERVICES -->
-        <section class="services-grid">
-            
-            <!-- Analyse Flash -->
-            <div class="service-card">
-                <span class="service-badge">Point d'Entrée</span>
-                <h3>Analyse Flash</h3>
-                <p class="service-tagline">Première clarification rapide</p>
-                <p class="service-description">Entretien structuré d'1h pour poser un premier diagnostic de votre situation. Vous repartez avec un document synthétique, une chronologie factuelle, l'identification des patterns principaux et une orientation vers les ressources adaptées.</p>
-                
-                <div class="service-price">60€<span> / séance</span></div>
-                
-                <ul>
-                    <li>Entretien structuré (1h, visio)</li>
-                    <li>Document synthétique (8-10 pages)</li>
-                    <li>Chronologie factuelle</li>
-                    <li>Identification des patterns principaux</li>
-                    <li>Orientation vers ressources</li>
-                </ul>
-                
-                <a href="mailto:noesisanalyse@gmail.com?subject=Demande%20Analyse%20Flash" class="cta-button cta-primary">Prendre rendez-vous</a>
-            </div>
-
-            <!-- Cartographie Complète -->
-            <div class="service-card">
-                <span class="service-badge">Analyse Approfondie</span>
-                <h3>Cartographie Complète</h3>
-                <p class="service-tagline">Compréhension par les 5 axes NOÉSIS</p>
-                <p class="service-description">Analyse multidimensionnelle rigoureuse pour comprendre tous les mécanismes en jeu. Entretien exploratoire 2h30 + document NOÉSIS 20-35 pages + analyse transdisciplinaire (5 axes) + cartographie visuelle + bibliographie contextuelle + 1 échange de suivi (15 jours).</p>
-                
-                <div class="service-price">180€</div>
-                
-                <ul>
-                    <li>Entretien exploratoire (2h30, visio)</li>
-                    <li>Document NOÉSIS (20-35 pages)</li>
-                    <li>Analyse transdisciplinaire (5 axes)</li>
-                    <li>Cartographie visuelle</li>
-                    <li>Bibliographie contextualisée</li>
-                    <li>1 échange de suivi (15 jours)</li>
-                </ul>
-                
-                <a href="mailto:noesisanalyse@gmail.com?subject=Demande%20Cartographie%20Complète" class="cta-button cta-primary">Prendre rendez-vous</a>
-            </div>
-
-            <!-- Suivi Stratégique -->
-            <div class="service-card">
-                <span class="service-badge">Accompagnement Continu</span>
-                <h3>Suivi Stratégique</h3>
-                <p class="service-tagline">Ajustement tactique</p>
-                <p class="service-description">Pour les personnes en procédure longue (judiciaire, RH) nécessitant un accompagnement régulier pour ajuster leur stratégie. Séances individuelles (1h, visio) + compte-rendu après chaque séance + forfait flexible.</p>
-                
-                <div class="service-price">50€<span> / heure</span></div>
-                
-                <ul>
-                    <li>Séances individuelles (1h, visio)</li>
-                    <li>Compte-rendu après chaque séance</li>
-                    <li>Forfait 4 séances : 180€ (-10%)</li>
-                    <li>Forfait 8 séances : 340€ (-15%)</li>
-                </ul>
-                
-                <a href="mailto:noesisanalyse@gmail.com?subject=Demande%20Suivi%20Stratégique" class="cta-button cta-primary">Prendre rendez-vous</a>
-            </div>
-
-            <!-- Organisation Documentaire -->
-            <div class="service-card">
-                <span class="service-badge">Construction Dossier</span>
-                <h3>Organisation Documentaire</h3>
-                <p class="service-tagline">Structuration de preuves</p>
-                <p class="service-description">Pour personnes engagées dans des démarches (juridiques, RH, thérapeutiques) nécessitant une compilation rigoureuse de leurs documents. Compilation et indexation de pièces + chronologie détaillée + structuration thématique + note contextuelle scientifique + dossier exploitable (40-80 pages).</p>
-                
-                <div class="service-price">250-450€</div>
-                
-                <ul>
-                    <li>Compilation et indexation de pièces</li>
-                    <li>Chronologie détaillée</li>
-                    <li>Structuration thématique</li>
-                    <li>Note contextuelle scientifique</li>
-                    <li>Dossier exploitable (40-80 pages)</li>
-                    <li>Tarif selon volume documentaire</li>
-                </ul>
-                
-                <a href="mailto:noesisanalyse@gmail.com?subject=Demande%20Organisation%20Documentaire" class="cta-button cta-secondary">Demander un devis</a>
-            </div>
-            
-        </section>
-
-        <!-- TARIFS SECTION -->
-        <section class="tarifs-section">
-            <div class="tarifs-content">
-                <h2>Tarification Accessible & Solidaire</h2>
-                <p class="tarifs-subtitle">L'accompagnement NOÉSIS doit être accessible. Des tarifs solidaires sont systématiquement proposés sur simple demande, sans justificatif ni jugement.</p>
-                
-                <div class="tarifs-grid">
-                    <div class="tarif-card">
-                        <h3>Point d'Entrée</h3>
-                        <div class="tarif-prix">60€</div>
-                        <div class="tarif-unite">Analyse Flash</div>
-                        <p class="tarif-description">Premier accompagnement accessible pour poser un diagnostic initial. Parfait pour tester la méthode NOÉSIS avant d'aller plus loin.</p>
-                    </div>
-                    
-                    <div class="tarif-card">
-                        <h3>Tarif Horaire</h3>
-                        <div class="tarif-prix">50€</div>
-                        <div class="tarif-unite">par heure</div>
-                        <p class="tarif-description">Suivi stratégique flexible. Forfaits dégressifs : 4 séances à 180€ (-10%) ou 8 séances à 340€ (-15%). Résiliable à tout moment.</p>
-                    </div>
-                    
-                    <div class="tarif-card">
-                        <h3>Tarif Solidaire</h3>
-                        <div class="tarif-prix">30€</div>
-                        <div class="tarif-unite">par heure</div>
-                        <p class="tarif-description">Sur simple demande, sans justificatif. Aucun jugement, juste de la solidarité. L'argent ne doit jamais être un obstacle à la compréhension.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- METHODOLOGIE -->
-        <section class="methodologie-section">
-            <h2>Comment se Déroule l'Accompagnement ?</h2>
-            
-            <div class="methodo-grid">
-                <div class="methodo-item">
-                    <div class="methodo-number">1</div>
-                    <h3>Premier Contact</h3>
-                    <p>Entretien préliminaire gratuit (20-30 min) par email ou visio pour évaluer l'adéquation entre votre demande et mon offre. Si nécessaire, je vous oriente vers d'autres ressources.</p>
-                </div>
-                
-                <div class="methodo-item">
-                    <div class="methodo-number">2</div>
-                    <h3>Analyse Transdisciplinaire</h3>
-                    <p>Séances en visio sécurisée. J'applique la méthode NOÉSIS à votre situation : neurobiologie, psychologie, criminologie, culture, système social. Vous repartez avec une cartographie claire.</p>
-                </div>
-                
-                <div class="methodo-item">
-                    <div class="methodo-number">3</div>
-                    <h3>Synthèse & Orientation</h3>
-                    <p>Document de synthèse personnalisé après chaque séance. Orientation vers thérapeutes, juristes, associations selon vos besoins. Mon rôle : éclairer, pas soigner ni défendre.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section class="faq-section">
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-container">
             <h2>Questions Fréquentes</h2>
             
             <div class="faq-item">
@@ -1482,13 +782,13 @@
             </div>
             
             <div class="faq-item">
-                <div class="faq-question">L'accompagnement NOÉSIS remplace-t-il une thérapie ?</div>
-                <div class="faq-answer">Non. Je ne suis pas thérapeute. Mon accompagnement vise à <strong>comprendre et analyser</strong> votre situation, pas à vous soigner. Si vous avez besoin d'un suivi thérapeutique (trauma, anxiété, dépression), je vous oriente vers des professionnel·le·s compétent·e·s. Mon rôle est complémentaire à la thérapie, pas concurrent.</div>
+                <div class="faq-question">Comment accéder au tarif solidaire ?</div>
+                <div class="faq-answer">Contactez-moi. On trouvera une solution. <strong>Aucun justificatif exigé, aucun jugement.</strong> Le tarif solidaire s'applique à tous les services avec une réduction adaptée à votre situation. L'argent ne doit jamais être un obstacle à l'aide dont vous avez besoin.</div>
             </div>
             
             <div class="faq-item">
-                <div class="faq-question">Comment accéder au tarif solidaire ?</div>
-                <div class="faq-answer">Il suffit de le demander dans votre email de contact. <strong>Aucun justificatif exigé, aucun jugement.</strong> Le tarif solidaire (30€/h au lieu de 50€/h) s'applique à toutes les prestations horaires. L'Analyse Flash passe à 35€, la Cartographie Complète à 110€. L'argent ne doit jamais être un obstacle à la compréhension.</div>
+                <div class="faq-question">L'accompagnement NOÉSIS remplace-t-il une thérapie ?</div>
+                <div class="faq-answer">Non. Je ne suis pas thérapeute. Mon accompagnement vise à <strong>comprendre et analyser</strong> votre situation, pas à vous soigner. Si vous avez besoin d'un suivi thérapeutique (trauma, anxiété, dépression), je vous oriente vers des professionnel·le·s compétent·e·s. Mon rôle est complémentaire à la thérapie, pas concurrent.</div>
             </div>
             
             <div class="faq-item">
@@ -1515,15 +815,15 @@
                 <div class="faq-question">Comment se passe le paiement ?</div>
                 <div class="faq-answer">Paiement par virement bancaire ou carte bancaire. Pour l'Analyse Flash et la Cartographie Complète : <strong>acompte de 30%</strong> à la réservation, solde après prestation. Pour le Suivi Stratégique : paiement après chaque séance ou forfait prépayé. Organisation Documentaire : 50% à la commande, 50% à livraison.</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CTA FINAL -->
-        <section class="cta-final">
-            <h2>Prêt·e à Faire le Point ?</h2>
-            <p>Prenez rendez-vous pour un premier échange gratuit. Ensemble, nous verrons si l'accompagnement NOÉSIS est adapté à votre situation.</p>
-            <a href="mailto:noesisanalyse@gmail.com?subject=Demande%20Accompagnement%20NOÉSIS" class="cta-button">Prendre contact</a>
-        </section>
-    </div>
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <h2>Prêt·e à Faire le Point ?</h2>
+        <p>Prenez contact pour un premier échange gratuit. Ensemble, nous verrons si l'accompagnement NOÉSIS est adapté à votre situation.</p>
+        <a href="/cdn-cgi/l/email-protection#b5d6dadbc1d4d6c1f5dbdad0c6dcc6d4dbd4d9ccc6d09bd6dad8" class="cta-button">Prendre contact</a>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -1547,7 +847,7 @@
                 <ul>
                     <li><a href="./accompagnement.html">Services</a></li>
                     <li><a href="../conditions-generales.html">Conditions Générales</a></li>
-                    <li><a href="mailto:noesisanalyse@gmail.com">Contact</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#c8aba7a6bca9abbc88a6a7adbba1bba9a6a9a4b1bbade6aba7a5">Contact</a></li>
                 </ul>
             </div>
 
@@ -1566,7 +866,7 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1580,39 +880,10 @@
         // Menu hamburger mobile
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const body = document.body;
-
-        function toggleMenu() {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            if (menuOverlay) {
-                menuOverlay.classList.toggle('active');
-            }
-            body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
 
         if (menuToggle) {
-            menuToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMenu();
-            });
-        }
-
-        if (menuOverlay) {
-            menuOverlay.addEventListener('click', toggleMenu);
-        }
-
-        // Fermer le menu quand on clique sur un lien
-        if (navMenu) {
-            const navLinks = navMenu.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 1024) {
-                        setTimeout(toggleMenu, 100);
-                    }
-                });
+            menuToggle.addEventListener('click', function() {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
             });
         }
 
@@ -1622,16 +893,4 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 100;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+                    ta
