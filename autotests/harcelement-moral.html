@@ -822,10 +822,415 @@
         padding: var(--s-6);
       }
     }
+
+    /* ========================================
+       NAVIGATION NOESIS
+       ======================================== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: var(--creme-principal);
+        backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+        padding: 20px 0;
+        z-index: 2000;
+        box-shadow: 0 1px 4px rgba(10, 10, 10, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled {
+        padding: 14px 0;
+        background: var(--creme-principal);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+        box-shadow: 0 2px 12px rgba(10, 10, 10, 0.12);
+    }
+
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--noir-absolu);
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-variant: small-caps;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    nav.scrolled .logo {
+        font-size: 24px;
+    }
+
+    .logo-text {
+        position: relative;
+    }
+
+    .logo-text::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background: linear-gradient(90deg,
+            transparent 0%,
+            var(--or-signature) 50%,
+            transparent 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .logo:hover {
+        color: var(--or-riche);
+        letter-spacing: 0.28em;
+    }
+
+    .logo:hover .logo-text::before {
+        opacity: 1;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 2px;
+        list-style: none;
+        align-items: center;
+        background-color: var(--blanc-surface);
+        border: 1px solid rgba(10, 10, 10, 0.12);
+        border-radius: 50px;
+        padding: 6px;
+        box-shadow: 0 1px 3px rgba(10, 10, 10, 0.08);
+    }
+
+    nav li {
+        position: relative;
+    }
+
+    nav a:not(.logo) {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+        text-decoration: none;
+        position: relative;
+        padding: 10px 18px;
+        border-radius: 40px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    nav a:not(.logo)::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 40px;
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    nav a:not(.logo):hover {
+        color: var(--noir-absolu);
+        transform: translateY(-1px);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.3),
+            0 2px 4px rgba(199, 168, 109, 0.2);
+    }
+
+    nav a:not(.logo):hover::before {
+        opacity: 1;
+    }
+
+    nav a:not(.logo).active {
+        color: var(--noir-absolu);
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.35),
+            0 2px 4px rgba(199, 168, 109, 0.25);
+    }
+
+    /* Boutons sociaux dans nav */
+    .nav-social {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: 16px;
+        padding-left: 16px;
+        border-left: 1px solid rgba(10, 10, 10, 0.12);
+    }
+
+    .nav-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text-primary);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        position: relative;
+    }
+
+    .nav-social-link svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 1.5;
+    }
+
+    .nav-social-link::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .nav-social-link:hover {
+        color: var(--noir-absolu);
+        transform: translateY(-1px);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.3),
+            0 2px 4px rgba(199, 168, 109, 0.2);
+    }
+
+    .nav-social-link:hover::before {
+        opacity: 1;
+    }
+
+    /* ============================================
+       MENU HAMBURGER MOBILE
+       ============================================ */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 2002;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle span {
+        width: 28px;
+        height: 2px;
+        background: var(--or-signature);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 2px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Responsive Navigation */
+    @media (max-width: 1024px) {
+        nav .container {
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .menu-toggle {
+            display: flex;
+            position: relative;
+            z-index: 2002;
+        }
+
+        nav ul {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 320px;
+            max-width: 85vw;
+            flex-direction: column;
+            background: linear-gradient(180deg,
+                var(--noir-absolu) 0%,
+                var(--noir-surface) 100%);
+            padding: 100px 32px 40px;
+            gap: 0;
+            border-radius: 0;
+            border: none;
+            border-left: 1px solid rgba(199, 168, 109, 0.2);
+            box-shadow:
+                -4px 0 24px rgba(0, 0, 0, 0.8),
+                -8px 0 48px rgba(0, 0, 0, 0.5);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        nav ul.active {
+            right: 0;
+        }
+
+        nav li {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        nav a:not(.logo) {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 15px;
+            text-align: left;
+            touch-action: manipulation;
+            border-radius: 8px;
+        }
+
+        .nav-social {
+            margin-left: 0;
+            padding-left: 0;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-left: none;
+            border-top: 1px solid rgba(199, 168, 109, 0.2);
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        .nav-social-link {
+            width: 42px;
+            height: 42px;
+        }
+
+        .nav-social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Overlay pour fermer le menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 16px 0;
+        }
+
+        nav.scrolled {
+            padding: 12px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+        }
+
+        nav.scrolled .logo {
+            font-size: 20px;
+        }
+
+        nav ul {
+            width: 280px;
+            padding: 80px 24px 32px;
+        }
+    }
   </style>
 </head>
 <body>
-  <div class="app-container">
+  <nav id="navbar">
+    <div class="container">
+      <a href="../index.html#accueil" class="logo">
+        <span class="logo-text">NOESIS</span>
+      </a>
+
+      <!-- Bouton hamburger mobile -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="navMenu">
+        <li><a href="../index.html#accueil">Accueil</a></li>
+        <li><a href="../index.html#methode">La Méthode</a></li>
+        <li><a href="../index.html#decouvrir">Découvrir</a></li>
+        <li><a href="../Articles/articles-index.html">Articles</a></li>
+        <li><a href="../autotests/autotests.html" class="active">Auto-tests</a></li>
+        <li><a href="../Podcasts/podcast.html">Podcasts</a></li>
+        <li><a href="../Livres/livres.html">Livres</a></li>
+        <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
+        <li><a href="../index.html#engagement">Engagement</a></li>
+        <li class="nav-social">
+          <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="/cdn-cgi/l/email-protection#4c25232922342e2432293d233f0c2b212d2520622f2321" class="nav-social-link" aria-label="Email NOESIS">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Overlay menu mobile -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="app-container">
     
     <!-- ==================== ÉCRAN INTRO ==================== -->
     <div id="screen-intro" class="screen active">
@@ -1604,10 +2009,363 @@
               font-size: 9pt;
               color: rgba(10,10,10,0.5);
             }
-          </style>
+        
+    /* ========================================
+       NAVIGATION NOESIS
+       ======================================== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: var(--creme-principal);
+        backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+        padding: 20px 0;
+        z-index: 2000;
+        box-shadow: 0 1px 4px rgba(10, 10, 10, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled {
+        padding: 14px 0;
+        background: var(--creme-principal);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+        box-shadow: 0 2px 12px rgba(10, 10, 10, 0.12);
+    }
+
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--noir-absolu);
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-variant: small-caps;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    nav.scrolled .logo {
+        font-size: 24px;
+    }
+
+    .logo-text {
+        position: relative;
+    }
+
+    .logo-text::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background: linear-gradient(90deg,
+            transparent 0%,
+            var(--or-signature) 50%,
+            transparent 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .logo:hover {
+        color: var(--or-riche);
+        letter-spacing: 0.28em;
+    }
+
+    .logo:hover .logo-text::before {
+        opacity: 1;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 2px;
+        list-style: none;
+        align-items: center;
+        background-color: var(--blanc-surface);
+        border: 1px solid rgba(10, 10, 10, 0.12);
+        border-radius: 50px;
+        padding: 6px;
+        box-shadow: 0 1px 3px rgba(10, 10, 10, 0.08);
+    }
+
+    nav li {
+        position: relative;
+    }
+
+    nav a:not(.logo) {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+        text-decoration: none;
+        position: relative;
+        padding: 10px 18px;
+        border-radius: 40px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    nav a:not(.logo)::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 40px;
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    nav a:not(.logo):hover {
+        color: var(--noir-absolu);
+        transform: translateY(-1px);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.3),
+            0 2px 4px rgba(199, 168, 109, 0.2);
+    }
+
+    nav a:not(.logo):hover::before {
+        opacity: 1;
+    }
+
+    nav a:not(.logo).active {
+        color: var(--noir-absolu);
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.35),
+            0 2px 4px rgba(199, 168, 109, 0.25);
+    }
+
+    /* Boutons sociaux dans nav */
+    .nav-social {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: 16px;
+        padding-left: 16px;
+        border-left: 1px solid rgba(10, 10, 10, 0.12);
+    }
+
+    .nav-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text-primary);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        position: relative;
+    }
+
+    .nav-social-link svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 1.5;
+    }
+
+    .nav-social-link::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: linear-gradient(135deg,
+            var(--or-signature) 0%,
+            var(--or-riche) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .nav-social-link:hover {
+        color: var(--noir-absolu);
+        transform: translateY(-1px);
+        box-shadow:
+            0 4px 12px rgba(199, 168, 109, 0.3),
+            0 2px 4px rgba(199, 168, 109, 0.2);
+    }
+
+    .nav-social-link:hover::before {
+        opacity: 1;
+    }
+
+    /* ============================================
+       MENU HAMBURGER MOBILE
+       ============================================ */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 2002;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle span {
+        width: 28px;
+        height: 2px;
+        background: var(--or-signature);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 2px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Responsive Navigation */
+    @media (max-width: 1024px) {
+        nav .container {
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .menu-toggle {
+            display: flex;
+            position: relative;
+            z-index: 2002;
+        }
+
+        nav ul {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 320px;
+            max-width: 85vw;
+            flex-direction: column;
+            background: linear-gradient(180deg,
+                var(--noir-absolu) 0%,
+                var(--noir-surface) 100%);
+            padding: 100px 32px 40px;
+            gap: 0;
+            border-radius: 0;
+            border: none;
+            border-left: 1px solid rgba(199, 168, 109, 0.2);
+            box-shadow:
+                -4px 0 24px rgba(0, 0, 0, 0.8),
+                -8px 0 48px rgba(0, 0, 0, 0.5);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        nav ul.active {
+            right: 0;
+        }
+
+        nav li {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        nav a:not(.logo) {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 15px;
+            text-align: left;
+            touch-action: manipulation;
+            border-radius: 8px;
+        }
+
+        .nav-social {
+            margin-left: 0;
+            padding-left: 0;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-left: none;
+            border-top: 1px solid rgba(199, 168, 109, 0.2);
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        .nav-social-link {
+            width: 42px;
+            height: 42px;
+        }
+
+        .nav-social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Overlay pour fermer le menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 16px 0;
+        }
+
+        nav.scrolled {
+            padding: 12px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+        }
+
+        nav.scrolled .logo {
+            font-size: 20px;
+        }
+
+        nav ul {
+            width: 280px;
+            padding: 80px 24px 32px;
+        }
+    }
+  </style>
         </head>
         <body>
-          <div class="header">
+  <div class="header">
             <div class="logo">NOÉSIS</div>
             <div class="subtitle">Intelligence transdisciplinaire au service de la lucidité</div>
           </div>
@@ -1819,6 +2577,61 @@ NOÉSIS — Intelligence transdisciplinaire
         startBtn.disabled = !this.checked;
       });
     });
+
+    /* ========================================
+       MENU HAMBURGER MOBILE - NAVIGATION
+       ======================================== */
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (navbar && window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else if (navbar) {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Menu hamburger mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const body = document.body;
+
+    function toggleMenu() {
+      if (menuToggle && navMenu) {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        if (menuOverlay) {
+          menuOverlay.classList.toggle('active');
+        }
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      });
+    }
+
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', toggleMenu);
+    }
+
+    // Fermer le menu quand on clique sur un lien
+    if (navMenu) {
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 1024) {
+            setTimeout(toggleMenu, 100);
+          }
+        });
+      });
+    }
+
   </script>
 
 </body>
