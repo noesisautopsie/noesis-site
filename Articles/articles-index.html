@@ -146,13 +146,10 @@
       box-shadow: 0 2px 12px rgba(10,10,10,0.12);
     }
 
-    .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 var(--s-6);
+    .navbar .container {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       position: relative;
     }
 
@@ -175,12 +172,35 @@
       font-size: 24px;
     }
 
+    .logo-text {
+      position: relative;
+    }
+
+    .logo-text::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--or-signature) 50%,
+        transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
     .nav-logo:hover {
       color: var(--or-riche);
       letter-spacing: 0.28em;
     }
 
-    .nav-links {
+    .nav-logo:hover .logo-text::before {
+      opacity: 1;
+    }
+
+    .navbar ul {
       display: flex;
       gap: 2px;
       list-style: none;
@@ -192,11 +212,11 @@
       box-shadow: 0 1px 3px rgba(10,10,10,0.08);
     }
 
-    .nav-links li {
+    .navbar li {
       position: relative;
     }
 
-    .nav-links a {
+    .navbar a:not(.nav-logo) {
       font-family: var(--font-sans);
       font-size: 13px;
       font-weight: 600;
@@ -211,7 +231,7 @@
       white-space: nowrap;
     }
 
-    .nav-links a::before {
+    .navbar a:not(.nav-logo)::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -224,7 +244,7 @@
       z-index: -1;
     }
 
-    .nav-links a:hover {
+    .navbar a:not(.nav-logo):hover {
       color: var(--noir-absolu);
       transform: translateY(-1px);
       box-shadow:
@@ -232,11 +252,11 @@
         0 2px 4px rgba(199,168,109,0.2);
     }
 
-    .nav-links a:hover::before {
+    .navbar a:not(.nav-logo):hover::before {
       opacity: 1;
     }
 
-    .nav-links a.active {
+    .navbar a:not(.nav-logo).active {
       color: var(--noir-absolu);
       background: linear-gradient(135deg,
         var(--or-signature) 0%,
@@ -256,7 +276,7 @@
       border-left: 1px solid rgba(10,10,10,0.12);
     }
 
-    .nav-social a {
+    .nav-social-link {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,16 +288,15 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       position: relative;
-      padding: 0;
     }
 
-    .nav-social a svg {
+    .nav-social-link svg {
       width: 20px;
       height: 20px;
       stroke-width: 1.5;
     }
 
-    .nav-social a::before {
+    .nav-social-link::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -290,7 +309,7 @@
       z-index: -1;
     }
 
-    .nav-social a:hover {
+    .nav-social-link:hover {
       color: var(--noir-absolu);
       transform: translateY(-1px);
       box-shadow:
@@ -298,7 +317,59 @@
         0 2px 4px rgba(199,168,109,0.2);
     }
 
-    .nav-social a:hover::before {
+    .nav-social-link:hover::before {
+      opacity: 1;
+    }
+
+    /* Bouton hamburger mobile */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 2002;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 2px;
+      background: var(--or-signature);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10,10,10,0.7);
+      z-index: 1999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      display: block;
       opacity: 1;
     }
     
@@ -787,9 +858,18 @@
        NAVIGATION
        ═══════════════════════════════════════════════════════ -->
   <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="nav-logo">NOÉSIS</a>
-      <ul class="nav-links">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-text">NOÉSIS</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="navMenu">
         <li><a href="../index.html">Accueil</a></li>
         <li><a href="../index.html#methode">La Méthode</a></li>
         <li><a href="../index.html#decouvrir">Découvrir</a></li>
@@ -800,21 +880,21 @@
         <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
         <li><a href="../index.html#engagement">Engagement</a></li>
         <li class="nav-social">
-          <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" aria-label="Instagram NOESIS">
+          <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn NOESIS">
+          <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
               <rect x="2" y="9" width="4" height="12"/>
               <circle cx="4" cy="4" r="2"/>
             </svg>
           </a>
-          <a href="#" onclick="return false;" aria-label="Email NOESIS">
+          <a href="mailto:noesisanalyse@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
@@ -824,6 +904,9 @@
       </ul>
     </div>
   </nav>
+
+  <!-- Overlay menu mobile -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <!-- ═══════════════════════════════════════════════════════
        HERO SECTION
