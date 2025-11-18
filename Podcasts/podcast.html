@@ -523,48 +523,53 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <a href="../index.html" class="logo">NOÉSIS</a>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <span class="logo-text">NOESIS</span>
+            </a>
 
-        <!-- Bouton hamburger mobile -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+            <!-- Bouton hamburger mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <ul class="nav-center" id="navMenu">
-            <li><a href="../index.html#accueil">Accueil</a></li>
-            <li><a href="../index.html#methode">La Méthode</a></li>
-            <li><a href="../index.html#decouvrir">Découvrir</a></li>
-            <li><a href="../Articles/articles-index.html">Articles</a></li>
-            <li><a href="../autotests/autotests.html">Auto-tests</a></li>
-            <li><a href="./podcast.html" class="active">Podcasts</a></li>
-            <li><a href="../Livres/livres.html">Livres</a></li>
-            <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
-            <li><a href="../index.html#engagement">Engagement</a></li>
-        </ul>
-        <div class="nav-icons">
-            <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
-                </svg>
-            </a>
-            <a href="mailto:noesisanalyse@gmail.com" aria-label="Email NOESIS">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                </svg>
-            </a>
+            <ul id="navMenu">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#methode">La Méthode</a></li>
+                <li><a href="../index.html#decouvrir">Découvrir</a></li>
+                <li><a href="../Articles/articles-index.html">Articles</a></li>
+                <li><a href="../autotests/autotests.html">Auto-tests</a></li>
+                <li><a href="./podcast.html">Podcasts</a></li>
+                <li><a href="../Livres/livres.html">Livres</a></li>
+                <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
+                <li><a href="../index.html#engagement">Engagement</a></li>
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="/cdn-cgi/l/email-protection#4426252d3b213b292621262d372b3d04232921282d6a272b29" class="nav-social-link" aria-label="Email NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
