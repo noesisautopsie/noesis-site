@@ -210,28 +210,20 @@
         nav {
             position: sticky;
             top: 0;
-            background: linear-gradient(180deg, 
-                var(--noir-absolu) 0%, 
-                rgba(10, 10, 10, 0.98) 100%);
+            background: var(--creme-principal);
             backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(199, 168, 109, 0.15);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.08);
             padding: 20px 0;
             z-index: 2000;
-            box-shadow: 
-                0 2px 8px rgba(0, 0, 0, 0.6),
-                0 4px 16px rgba(0, 0, 0, 0.4),
-                0 8px 32px rgba(199, 168, 109, 0.08);
+            box-shadow: 0 1px 4px rgba(10, 10, 10, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
             padding: 14px 0;
-            background: var(--noir-absolu);
-            border-bottom: 1px solid rgba(199, 168, 109, 0.25);
-            box-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.8),
-                0 8px 24px rgba(0, 0, 0, 0.5),
-                0 16px 48px rgba(199, 168, 109, 0.12);
+            background: var(--creme-principal);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+            box-shadow: 0 2px 12px rgba(10, 10, 10, 0.12);
         }
 
         nav .container {
@@ -247,7 +239,7 @@
             font-weight: 700;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--creme-principal);
+            color: var(--noir-absolu);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-variant: small-caps;
@@ -293,11 +285,11 @@
             gap: 2px;
             list-style: none;
             align-items: center;
-            background-color: rgba(26, 26, 26, 0.6);
-            border: 1px solid rgba(199, 168, 109, 0.15);
+            background-color: var(--blanc-surface);
+            border: 1px solid rgba(10, 10, 10, 0.12);
             border-radius: 50px;
             padding: 6px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 3px rgba(10, 10, 10, 0.08);
         }
 
         nav li {
@@ -308,7 +300,7 @@
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 13px;
             font-weight: 600;
-            color: rgba(247, 245, 239, 0.75);
+            color: var(--text-primary);
             text-decoration: none;
             position: relative;
             padding: 10px 18px;
@@ -361,7 +353,7 @@
             gap: 4px;
             margin-left: 16px;
             padding-left: 16px;
-            border-left: 1px solid rgba(199, 168, 109, 0.2);
+            border-left: 1px solid rgba(10, 10, 10, 0.12);
         }
 
         .nav-social-link {
@@ -372,7 +364,7 @@
             height: 44px;
             border-radius: 50%;
             background: transparent;
-            color: rgba(247, 245, 239, 0.75);
+            color: var(--text-primary);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             position: relative;
@@ -569,13 +561,16 @@
            HERO SECTION CINÉMATIQUE BLACK & GOLD
            ============================================ */
         .hero {
-            background: linear-gradient(135deg, var(--noir-absolu) 0%, var(--noir-surface) 100%);
+            background: var(--creme-principal);
+            border: 2px solid var(--or-signature);
+            border-radius: 12px;
             min-height: 50vh;
             display: flex;
             align-items: center;
             padding: 80px 40px 60px;
             position: relative;
             overflow: hidden;
+            margin: 20px;
         }
 
         /* Halo or animé (SANS ligne verticale) */
@@ -587,7 +582,7 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(199,168,109,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(199,168,109,0.12) 0%, transparent 70%);
             pointer-events: none;
             animation: pulseGold 8s ease-in-out infinite;
         }
@@ -630,13 +625,13 @@
             font-weight: 700;
             line-height: 1.15;
             margin-bottom: 32px;
-            color: var(--text-on-dark);
+            color: var(--noir-absolu);
         }
 
         .hero-subtitle {
             font-size: 24px;
             line-height: 1.6;
-            color: var(--text-on-dark-muted);
+            color: var(--text-secondary);
             margin-bottom: 48px;
             margin-left: auto;
             margin-right: auto;
@@ -2313,7 +2308,7 @@
                             <circle cx="4" cy="4" r="2"/>
                         </svg>
                     </a>
-                    <a href="mailto:noesisanalyse@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
+                    <a href="/cdn-cgi/l/email-protection#d8b6b7bdabb1abb9b6b9b4a1abbd98bfb5b9b1b4f6bbb7b5" class="nav-social-link" aria-label="Email NOESIS">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
@@ -2330,7 +2325,7 @@
     <!-- HERO SECTION -->
     <section id="accueil" class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Analyse Transdisciplinaire Premium</div>
+            <div class="hero-badge">Analyste des dynamiques psychologiques de domination</div>
             <h1>Transformer la confusion en lucidité actionnable</h1>
             <p class="hero-subtitle">
                 Notre mission est de démocratiser la compréhension des mécanismes de l'emprise, du trauma et des violences personnelles et professionnelles par une analyse transdisciplinaire rigoureuse et accessible.
@@ -2381,39 +2376,39 @@
     <!-- QUI SUIS-JE -->
     <section class="about-section">
         <div class="about-content">
-            <h2 class="section-title">Qui suis-je — L'étape zéro de la clarté</h2>
+            <h2 class="section-title">L'Étape Zéro — Cartographier avant de consulter</h2>
             <p class="about-text">
-                NOÉSIS comble le vide entre la confusion du vécu et la rigueur du diagnostic professionnel. Cet espace, l'étape zéro, est précisément là où commence la reprise de pouvoir cognitif.
+                Nous vivons dans un flux constant d'informations, de témoignages, de symptômes listés en ligne. Il est facile de se reconnaître dans des patterns sans savoir si nous correspondons vraiment à toutes les cases. Suis-je réellement sous emprise, ou est-ce autre chose ? Ai-je un TDAH, ou est-ce une réaction normale à un contexte anormal ? Comment mettre des mots justes sur ce que je vis ?
             </p>
             <p class="about-text about-manifesto">
-                NOÉSIS cartographie les mécanismes de l'emprise, nomme ce qui reste invisible, structure ce qui semble chaotique.
+                NOÉSIS propose un espace de clarification avant la consultation professionnelle.
             </p>
             
             <h3 class="about-subtitle">Ce que NOÉSIS accomplit</h3>
             
             <p class="about-text">
-                <span class="about-action-title">Mettre des mots précis sur ce que vous vivez :</span> gaslighting, lovebombing, trauma bonding, dissociation. Nommer, c'est déjà comprendre et reprendre le contrôle de votre propre récit.
+                <span class="about-action-title">Structurer votre vécu :</span> Une cartographie transdisciplinaire selon cinq axes (neuropsychologique, stratégique-tactique, social-systémique, culturel-narratif, juridico-institutionnel) qui vous aide à identifier les patterns et formuler votre situation avec des mots précis.
             </p>
             <p class="about-text">
-                <span class="about-action-title">Identifier les mécanismes invisibles de l'emprise :</span> processus neuropsychologiques, stratégies cognitives, tactiques prédatrices, mythes culturels, défaillances institutionnelles. Chaque analyse articule ces cinq dimensions pour révéler les dynamiques cachées de la manipulation et du trauma.
+                <span class="about-action-title">Préparer vos consultations professionnelles :</span> Arriver chez le psychologue, l'avocat ou le médecin avec une synthèse déjà construite, un parcours formulé, des questions précises. Non pas pour remplacer leur expertise, mais pour optimiser le temps passé avec eux et leur permettre d'intervenir efficacement dès le premier entretien.
             </p>
             <p class="about-text">
-                <span class="about-action-title">Préparer l'intervention professionnelle :</span> structurer votre chronologie, repérer vos symptômes, identifier les patterns avant toute consultation. Résultat concret : moins d'errance, une prise en charge accélérée et véritablement adaptée.
+                <span class="about-action-title">Comprendre, nommer, organiser :</span> L'accompagnement NOÉSIS ne remplace pas une thérapie, un diagnostic médical ou un conseil juridique. Il vous aide à comprendre, nommer et organiser votre expérience pour mieux utiliser le temps précieux avec les professionnels qui vous accompagneront.
             </p>
             
             <h3 class="about-subtitle">Le vide que NOÉSIS comble</h3>
             
             <p class="about-text">
-                Le paysage francophone est fragmenté entre académisme hermétique et sensationnalisme médiatique. NOÉSIS refuse les deux. Ce que vous cherchez, ce n'est ni la théorie abstraite ni le spectacle émotionnel, c'est une compréhension rigoureuse applicable immédiatement à votre réalité.
+                Entre la confusion initiale et la consultation professionnelle, il existe un espace de flou où l'on se perd dans le doute et l'auto-diagnostic incertain. NOÉSIS occupe cet espace : une étape de clarification qui vous permet d'arriver préparé·e, structuré·e, avec des mots justes pour décrire votre réalité.
             </p>
             <p class="about-text">
-                <span class="about-action-title">La réponse NOÉSIS :</span> outils d'analyse personnalisée, lecture transdisciplinaire sans jargon, orientation précise vers les ressources professionnelles adaptées.
+                <span class="about-action-title">La réponse NOÉSIS :</span> outils d'analyse personnalisée, lecture transdisciplinaire accessible, orientation précise vers les ressources professionnelles adaptées.
             </p>
             <p class="about-text">
-                Pas de généralités rassurantes. Des critères précis, applicables à votre situation unique.
+                Pas de remplacement des professionnels. Une préparation bienveillante pour optimiser leur intervention.
             </p>
             <p class="about-text about-closing">
-                <strong>Parce que comprendre, c'est déjà se défendre.</strong>
+                <strong>Disclaimer fondamental :</strong> Je ne suis ni psychologue, ni thérapeute, ni avocat. Mon rôle est de vous aider à comprendre et structurer votre expérience avant de consulter les professionnels compétents. En cas de danger immédiat, appelez le 17 (police), le 3919 (violences femmes info) ou le 114 (SMS urgence).
             </p>
         </div>
     </section>
@@ -2975,7 +2970,7 @@
                             </svg>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="mailto:noesisanalyse@gmail.com" class="footer-social-link" aria-label="Email NOESIS">
+                        <a href="/cdn-cgi/l/email-protection#503e3f35233923313e313c29233510373d31393c7e333f3d" class="footer-social-link" aria-label="Email NOESIS">
                             <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
@@ -3034,7 +3029,7 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -3125,11 +3120,4 @@
             });
         }, observerOptions);
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const fadeElements = document.querySelectorAll('.fade-element');
-            fadeElements.forEach(el => observer.observe(el));
-        });
-
-    </script>
-</body>
-</html>
+        document.addEventListener('DOMConten
