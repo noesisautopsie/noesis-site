@@ -50,7 +50,39 @@
             color: white;
         }
 
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
         /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--creme-principal);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+            padding: 20px 0;
+            z-index: 2000;
+            box-shadow: 0 1px 4px rgba(10, 10, 10, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            padding: 14px 0;
+            background: var(--creme-principal);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+            box-shadow: 0 2px 12px rgba(10, 10, 10, 0.12);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
