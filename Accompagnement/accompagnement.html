@@ -50,68 +50,115 @@
             color: white;
         }
 
-        /* NAVBAR */
-        .navbar {
-            position: fixed;
+        /* ============================================
+           NAVBAR - DESIGN EXACT IMAGE RÉFÉRENCE
+           ============================================ */
+        nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             background: var(--blanc-surface);
-            box-shadow: 0 1px 4px rgba(10,10,10,0.08);
+            border-bottom: 1px solid rgba(10,10,10,0.08);
+            padding: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 2px 12px rgba(10,10,10,0.12);
+            box-shadow: 0 1px 3px rgba(10,10,10,0.04);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            gap: 40px;
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: 700;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
             color: var(--noir-absolu);
             text-decoration: none;
+            white-space: nowrap;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 32px;
-            align-items: center;
             list-style: none;
             margin: 0;
             padding: 0;
+            gap: 8px;
+            flex: 1;
+            justify-content: center;
         }
 
-        .nav-links a {
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 8px 16px;
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 15px;
-            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
             color: var(--text-primary);
-            transition: color 0.3s;
-            letter-spacing: 0.02em;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover {
-            color: var(--or-sombre);
+        .nav-menu a:hover {
+            background: rgba(10,10,10,0.04);
+            color: var(--noir-absolu);
         }
 
-        .nav-container > div:last-of-type a:hover svg {
-            stroke: var(--or-sombre);
+        .nav-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
 
-        .menu-toggle {
-            display: none;
+        .nav-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(10,10,10,0.12);
+            border-radius: 6px;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .nav-icons a:hover {
+            background: rgba(10,10,10,0.04);
+            border-color: rgba(10,10,10,0.2);
+        }
+
+        .nav-icons svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu {
+                gap: 4px;
+            }
+            
+            .nav-menu a {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
         }
 
         /* PRÉSENTATION ACCOMPAGNEMENT */
@@ -568,19 +615,10 @@
 <body>
     <!-- NAVBAR -->
     <nav id="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <span class="logo-text">NOESIS</span>
-            </a>
-
-            <!-- Bouton hamburger mobile -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul id="navMenu">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">NOÉSIS</a>
+            
+            <ul class="nav-menu">
                 <li><a href="../index.html">Accueil</a></li>
                 <li><a href="../index.html#methode">La Méthode</a></li>
                 <li><a href="../index.html#decouvrir">Découvrir</a></li>
@@ -590,29 +628,30 @@
                 <li><a href="../Livres/livres.html">Livres</a></li>
                 <li><a href="./accompagnement.html">Accompagnement</a></li>
                 <li><a href="../index.html#engagement">Engagement</a></li>
-                <li class="nav-social">
-                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                    <a href="/cdn-cgi/l/email-protection#67090803151f051709060901141e0827000a060e0b4904080a" class="nav-social-link" aria-label="Email NOESIS">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                </li>
             </ul>
+            
+            <div class="nav-icons">
+                <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="mailto:noesisanalyse@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </nav>
 
