@@ -165,10 +165,12 @@
             color: var(--text-primary);
             text-decoration: none;
             position: relative;
-            padding: 10px 18px;
+            padding: 12px 20px;
             border-radius: 40px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
             letter-spacing: 0.02em;
             white-space: nowrap;
         }
@@ -272,6 +274,10 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
             z-index: 3000;
             position: relative;
         }
@@ -746,6 +752,43 @@
             }
         }
 
+        /* Mobile optimizations (small phones) */
+        @media (max-width: 480px) {
+            /* Reduce spacing */
+            section {
+                padding: 40px 20px !important;
+            }
+
+            .hero-section, .article-main {
+                padding: 60px 20px 40px !important;
+            }
+
+            /* Optimize typography */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            h2 {
+                font-size: 1.5rem !important;
+            }
+
+            h3 {
+                font-size: 1.25rem !important;
+            }
+
+            p, li {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Improve button spacing */
+            .nav-links li {
+                margin: 0 !important;
+                width: 100% !important;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -759,8 +802,8 @@
                 gap: 1rem;
             }
 
-            .hero {
-                padding: 4rem 5% 3rem;
+            .hero, .article-main {
+                padding: 80px 24px 50px;
             }
 
             .books-container {

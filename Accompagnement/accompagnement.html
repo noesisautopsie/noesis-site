@@ -99,8 +99,10 @@
         }
 
         .nav-menu a {
-            display: block;
-            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            min-height: 44px;
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -598,7 +600,48 @@
             }
         }
 
+        /* Mobile optimizations (small phones) */
+        @media (max-width: 480px) {
+            /* Reduce spacing */
+            section {
+                padding: 40px 20px !important;
+            }
+
+            .hero-section, .article-main {
+                padding: 60px 20px 40px !important;
+            }
+
+            /* Optimize typography */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            h2 {
+                font-size: 1.5rem !important;
+            }
+
+            h3 {
+                font-size: 1.25rem !important;
+            }
+
+            p, li {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Improve button spacing */
+            .nav-links li {
+                margin: 0 !important;
+                width: 100% !important;
+            }
+        }
+
         @media (max-width: 768px) {
+            .presentation-accompagnement, .article-main {
+                padding: 80px 24px 50px;
+            }
+
             .presentation-container h1 {
                 font-size: 36px;
             }
