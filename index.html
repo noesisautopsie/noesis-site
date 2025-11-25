@@ -3120,4 +3120,11 @@
             });
         }, observerOptions);
 
-        document.addEventListener('DOMConten
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-trigger').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
