@@ -1089,3 +1089,13 @@
                     entry.target.classList.add('fade-in-up');
                 }
             });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.paradox-box, .enhanced-box, .icon-card, .article-content h2, .article-content h3');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
