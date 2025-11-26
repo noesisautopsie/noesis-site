@@ -484,7 +484,7 @@
                 margin-bottom: 12px;
             }
 
-            nav a:not(.logo) {
+            nav ul li a {
                 display: block;
                 width: 100%;
                 padding: 16px 20px;
@@ -494,17 +494,20 @@
                 border-radius: 8px;
                 color: #F7F5EF !important;
                 background: transparent !important;
+                box-shadow: none !important;
+                transform: none !important;
             }
 
-            nav a:not(.logo):hover {
+            nav ul li a:hover {
                 background: rgba(199, 168, 109, 0.15) !important;
                 color: #C7A86D !important;
-                transform: none;
-                box-shadow: none;
+                transform: none !important;
+                box-shadow: none !important;
             }
 
-            nav a:not(.logo)::before {
+            nav ul li a::before {
                 display: none !important;
+                opacity: 0 !important;
             }
 
             .nav-social {
