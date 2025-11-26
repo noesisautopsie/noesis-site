@@ -484,7 +484,7 @@
                 margin-bottom: 12px;
             }
 
-            nav a:not(.logo) {
+            #navMenu a {
                 display: block;
                 width: 100%;
                 padding: 16px 20px;
@@ -492,6 +492,22 @@
                 text-align: left;
                 touch-action: manipulation;
                 border-radius: 8px;
+                color: #F7F5EF !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+
+            #navMenu a:hover {
+                background: rgba(199, 168, 109, 0.15) !important;
+                color: #C7A86D !important;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            #navMenu a::before {
+                display: none !important;
+                opacity: 0 !important;
             }
 
             .nav-social {
@@ -508,6 +524,11 @@
             .nav-social-link {
                 width: 42px;
                 height: 42px;
+                color: #F7F5EF !important;
+            }
+
+            .nav-social-link:hover {
+                color: #C7A86D !important;
             }
 
             .nav-social-link svg {

@@ -867,13 +867,18 @@
         padding: 16px 20px;
         font-size: 15px;
         text-align: left;
-        color: var(--creme-principal, #F7F5EF);
+        color: #F7F5EF !important;
+        background: transparent !important;
         border-radius: 8px;
       }
 
       nav a:not(.logo):hover {
-        background: rgba(199, 168, 109, 0.15);
-        color: var(--or-signature, #C7A86D);
+        background: rgba(199, 168, 109, 0.15) !important;
+        color: #C7A86D !important;
+      }
+
+      nav a:not(.logo)::before {
+        display: none !important;
       }
     }
 
