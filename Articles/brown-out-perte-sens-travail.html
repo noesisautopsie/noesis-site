@@ -135,106 +135,43 @@
         }
 
         /* NAVIGATION */
-        .navbar {
-            position: fixed;
+        nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--noir-absolu);
-            border-bottom: 1px solid rgba(199,168,109,0.1);
-            padding: 20px 0;
-            transition: all 0.3s var(--ease-spring);
-        }
-        .navbar.scrolled {
-            background: var(--noir-absolu);
-            box-shadow: 0 4px 16px rgba(10,10,10,0.4);
-            padding: 16px 0;
-            border-bottom-color: rgba(199,168,109,0.15);
-        }
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: 28px;
-            color: var(--or-signature);
-            text-decoration: none;
-            letter-spacing: 0.02em;
-            transition: color 0.2s var(--ease-standard);
-        }
-        .nav-logo:hover {
-            color: var(--or-riche);
-        }
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-        .nav-links a {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--creme-principal);
-            text-decoration: none;
-            transition: color 0.2s var(--ease-standard);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--or-signature);
-            transition: width 0.25s var(--ease-spring);
-        }
-        .nav-links a:hover {
-            color: var(--or-signature);
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .nav-cta {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--noir-absolu);
-            background: var(--or-signature);
-            padding: 12px 28px;
-            border-radius: var(--radius-pill);
-            text-decoration: none;
-            transition: all 0.25s var(--ease-spring);
-            display: inline-block;
-        }
-        .nav-cta:hover {
-            background: var(--or-riche);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-gold-subtle);
-        }
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 8px;
-        }
-        .menu-toggle span {
-            display: block;
-            width: 28px;
-            height: 2px;
             background: var(--creme-principal);
-            transition: all 0.3s var(--ease-spring);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+            padding: 20px 0;
+            z-index: 2000;
+            box-shadow: 0 1px 4px rgba(10, 10, 10, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        nav.scrolled { padding: 14px 0; background: var(--creme-principal); border-bottom: 1px solid rgba(10, 10, 10, 0.12); box-shadow: 0 2px 12px rgba(10, 10, 10, 0.12); }
+        nav .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--noir-absolu); text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-variant: small-caps; position: relative; display: flex; align-items: center; }
+        nav.scrolled .logo { font-size: 24px; }
+        .logo-text { position: relative; }
+        .logo-text::before { content: ''; position: absolute; width: 100%; height: 1px; bottom: -4px; left: 0; background: linear-gradient(90deg, transparent 0%, var(--or-signature) 50%, transparent 100%); opacity: 0; transition: opacity 0.4s ease; }
+        .logo:hover { color: var(--or-riche); letter-spacing: 0.28em; }
+        .logo:hover .logo-text::before { opacity: 1; }
+        nav ul { display: flex; gap: 2px; list-style: none; align-items: center; background-color: var(--blanc-surface); border: 1px solid rgba(10, 10, 10, 0.12); border-radius: 50px; padding: 6px; box-shadow: 0 1px 3px rgba(10, 10, 10, 0.08); }
+        nav li { position: relative; }
+        nav a:not(.logo) { font-family: 'Source Sans Pro', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-primary); text-decoration: none; position: relative; padding: 10px 18px; border-radius: 40px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: inline-block; letter-spacing: 0.02em; white-space: nowrap; }
+        nav a:not(.logo)::before { content: ''; position: absolute; inset: 0; border-radius: 40px; background: linear-gradient(135deg, var(--or-signature) 0%, var(--or-riche) 100%); opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
+        nav a:not(.logo):hover { color: var(--noir-absolu); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(199, 168, 109, 0.3), 0 2px 4px rgba(199, 168, 109, 0.2); }
+        nav a:not(.logo):hover::before { opacity: 1; }
+        nav a:not(.logo).active { color: var(--noir-absolu); background: linear-gradient(135deg, var(--or-signature) 0%, var(--or-riche) 100%); box-shadow: 0 4px 12px rgba(199, 168, 109, 0.35), 0 2px 4px rgba(199, 168, 109, 0.25); }
+        .nav-social { display: flex; align-items: center; gap: 4px; margin-left: 16px; padding-left: 16px; border-left: 1px solid rgba(10, 10, 10, 0.12); }
+        .nav-social-link { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: transparent; color: var(--text-primary); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; position: relative; }
+        .nav-social-link svg { width: 20px; height: 20px; stroke-width: 1.5; }
+        .nav-social-link::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, var(--or-signature) 0%, var(--or-riche) 100%); opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
+        .nav-social-link:hover { color: var(--noir-absolu); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(199, 168, 109, 0.3), 0 2px 4px rgba(199, 168, 109, 0.2); }
+        .nav-social-link:hover::before { opacity: 1; }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 3000; position: relative; }
+        .menu-toggle span { display: block; width: 28px; height: 2px; background: var(--or-signature); border-radius: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         /* ARTICLE */
         .article-main {
@@ -610,6 +547,19 @@
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
+            .menu-toggle { display: flex; }
+            nav ul { position: fixed; top: 0; right: -100%; height: 100vh; width: 300px; max-width: 85vw; flex-direction: column; background: linear-gradient(180deg, var(--noir-absolu) 0%, var(--noir-surface) 100%); padding: 100px 32px 40px; gap: 0; border-radius: 0; border: none; border-left: 1px solid rgba(199, 168, 109, 0.2); box-shadow: -4px 0 24px rgba(0, 0, 0, 0.8); transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; z-index: 2001; }
+            nav ul.active { right: 0; }
+            nav li { width: 100%; margin-bottom: 12px; }
+            #navMenu a { display: block; width: 100%; padding: 16px 20px; font-size: 15px; text-align: left; touch-action: manipulation; border-radius: 8px; color: #F7F5EF !important; background: transparent !important; box-shadow: none !important; transform: none !important; }
+            #navMenu a:hover { background: rgba(199, 168, 109, 0.15) !important; color: #C7A86D !important; transform: none !important; box-shadow: none !important; }
+            #navMenu a::before { display: none !important; opacity: 0 !important; }
+            .nav-social { margin-left: 0; padding-left: 0; padding-top: 24px; margin-top: 24px; border-left: none; border-top: 1px solid rgba(199, 168, 109, 0.2); justify-content: flex-start; gap: 12px; }
+            .nav-social-link { width: 42px; height: 42px; color: #F7F5EF !important; }
+            .nav-social-link:hover { color: #C7A86D !important; }
+            .nav-social-link svg { width: 20px; height: 20px; }
+            .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(4px); z-index: 1999; opacity: 0; transition: opacity 0.3s ease; }
+            .menu-overlay.active { display: block; opacity: 1; }
             .container { padding: 0 32px; }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
@@ -617,34 +567,13 @@
             }
         }
         @media (max-width: 768px) {
+            nav { padding: 16px 0; }
+            nav.scrolled { padding: 12px 0; }
+            .logo { font-size: 22px; }
+            nav.scrolled .logo { font-size: 20px; }
+            nav ul { width: 280px; padding: 80px 24px 32px; }
             body { font-size: 17px; }
             .container { padding: 0 24px; }
-            .menu-toggle { display: flex; }
-            .nav-links {
-                position: fixed;
-                top: 72px;
-                left: 0;
-                right: 0;
-                background: var(--noir-absolu);
-                border-top: 1px solid rgba(199,168,109,0.15);
-                flex-direction: column;
-                padding: 32px;
-                gap: 20px;
-                box-shadow: 0 8px 24px rgba(10,10,10,0.6);
-                transform: translateX(-100%);
-                transition: transform 0.3s var(--ease-spring);
-            }
-            /* Styles des liens mobile */
-            .nav-links a {
-                color: #F7F5EF !important;
-                background: transparent !important;
-            }
-            .nav-links a:hover {
-                color: #C7A86D !important;
-                background: rgba(199, 168, 109, 0.1) !important;
-            }
-            .nav-links.active { transform: translateX(0); }
-            .nav-cta { display: none; }
             .article-main { padding: 100px 24px 60px; }
             .article-title { font-size: 40px; }
             .article-subtitle { font-size: 19px; }
@@ -667,27 +596,52 @@
 <body>
     
     <!-- NAVIGATION -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo">NOÉSIS</a>
-            
-            <button class="menu-toggle" aria-label="Menu" id="menuToggle">
+    <nav id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <span class="logo-text">NOESIS</span>
+            </a>
+
+            <!-- Bouton hamburger mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu de navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            
-            <ul class="nav-links" id="navLinks">
+
+            <ul id="navMenu">
                 <li><a href="../index.html">Accueil</a></li>
                 <li><a href="../index.html#methode">La Méthode</a></li>
+                <li><a href="../index.html#decouvrir">Découvrir</a></li>
                 <li><a href="./articles-index.html">Articles</a></li>
                 <li><a href="../autotests/autotests.html">Autotests</a></li>
-                <li><a href="../Livres/livres.html">Livres</a></li>
                 <li><a href="../Podcasts/podcast.html">Podcasts</a></li>
+                <li><a href="../Livres/livres.html">Livres</a></li>
                 <li><a href="../Accompagnement/accompagnement.html">Accompagnement</a></li>
+                <li><a href="../index.html#engagement">Engagement</a></li>
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/noesis_analyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/noesisanalyse" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="LinkedIn NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:noesisanalyse@gmail.com" class="nav-social-link" aria-label="Email NOESIS">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </li>
             </ul>
-            
-            <a href="../index.html#contact" class="nav-cta">Contact</a>
         </div>
     </nav>
 
