@@ -984,7 +984,7 @@
         </p>
         
         <p style="font-size: var(--fs-md); color: var(--noir-doux);">
-          Cette évaluation ne constitue pas un diagnostic mais un outil d'objectivation permettant de révéler l'architecture écologique de la violence — notamment les convergences traumatiques et saturations multi-sphériques souvent invisibles dans le récit linéaire.
+          Cette évaluation ne constitue pas un diagnostic mais un outil d'objectivation permettant de révéler l'architecture écologique de la violence,notamment les convergences traumatiques et saturations multi-sphériques souvent invisibles dans le récit linéaire.
         </p>
       </div>
       
@@ -1098,11 +1098,11 @@
             <line x1="12" y1="9" x2="12" y2="13"></line>
             <line x1="12" y1="17" x2="12.01" y2="17"></line>
           </svg>
-          Avertissement Essentiel — Étape Zéro
+          Avertissement Essentiel,Étape Zéro
         </h3>
         <p><strong>Cet outil est strictement informatif et éducatif.</strong> Il ne constitue en aucun cas un diagnostic clinique, un avis médical, ni un conseil juridique personnalisé. Il s'agit d'une <strong>étape zéro</strong> permettant l'objectivation préalable avant toute démarche formelle.</p>
         <p>Les résultats doivent être interprétés avec prudence et ne remplacent jamais une évaluation par un professionnel qualifié (psychologue spécialisé trauma, psychiatre, juriste en droit des victimes).</p>
-        <p><strong>Si vous êtes en situation de danger immédiat, contactez les services d'urgence (17 en France) ou les lignes d'écoute spécialisées (3919 — Violences Femmes Info).</strong></p>
+        <p><strong>Si vous êtes en situation de danger immédiat, contactez les services d'urgence (17 en France) ou les lignes d'écoute spécialisées (3919,Violences Femmes Info).</strong></p>
       </div>
       
       <div class="card">
@@ -1170,7 +1170,7 @@
       <div class="footer-brand">
         <div class="footer-logo">NOÉSIS<span>.</span></div>
         <p class="footer-tagline">Intelligence transdisciplinaire</p>
-        <p class="footer-copyright">© 2025 NOÉSIS — Tous droits réservés</p>
+        <p class="footer-copyright">© 2025 NOÉSIS,Tous droits réservés</p>
       </div>
       
       <div class="footer-nav">
@@ -1555,7 +1555,7 @@
                   <div class="dimension-bar-fill" style="width:${dim.pct}%;background:${ax.color}"></div>
                 </div>
                 <div class="dimension-level" style="color:${ax.color}">
-                  ${interp.level} — ${interp.text}
+                  ${interp.level},${interp.text}
                 </div>
               </div>
             `;
@@ -1680,7 +1680,7 @@
               const sphere = SPHERES.find(s => s.key === k);
               const recs = {
                 "I": [
-                  "Contactez le 3919 (Violences Femmes Info — 24/7, gratuit, anonyme) pour orientation et soutien spécialisé",
+                  "Contactez le 3919 (Violences Femmes Info,24/7, gratuit, anonyme) pour orientation et soutien spécialisé",
                   "Consultez un·e psychologue formé·e au trauma complexe relationnel et aux violences conjugales",
                   "Documentez les violences dans un lieu sûr (journal daté, captures, certificats médicaux)",
                   "Évaluez votre sécurité avec un·e professionnel·le et établissez un plan de protection si nécessaire",
@@ -1729,11 +1729,11 @@
             <h4 style="font-size:var(--fs-lg);font-weight:700;margin-bottom:var(--s-4)">Ressources d'Urgence</h4>
             <div class="emergency-item">
               <div class="emergency-number">3919</div>
-              <div class="emergency-desc"><strong>Violences Femmes Info</strong><br>Écoute, information, orientation — 24h/24, 7j/7, gratuit, anonyme</div>
+              <div class="emergency-desc"><strong>Violences Femmes Info</strong><br>Écoute, information, orientation,24h/24, 7j/7, gratuit, anonyme</div>
             </div>
             <div class="emergency-item">
               <div class="emergency-number">17</div>
-              <div class="emergency-desc"><strong>Police / Gendarmerie</strong><br>Danger immédiat — Intervention d'urgence</div>
+              <div class="emergency-desc"><strong>Police / Gendarmerie</strong><br>Danger immédiat,Intervention d'urgence</div>
             </div>
             <div class="emergency-item">
               <div class="emergency-number">114</div>
@@ -1777,7 +1777,7 @@
     
     function exportEmail() {
       const scores = calculateScores();
-      const body = `Rapport NOÉSIS — ${TEST_NAME}
+      const body = `Rapport NOÉSIS,${TEST_NAME}
 Participant·e : ${state.anamnesis.name}
 Généré le ${new Date().toLocaleDateString('fr-FR')}
 
@@ -1799,10 +1799,10 @@ INDICES ÉCOLOGIQUES :
 Ce rapport est généré par un outil informatif et éducatif.
 Il ne constitue pas un diagnostic clinique.
 
-NOÉSIS — Intelligence transdisciplinaire
+NOÉSIS,Intelligence transdisciplinaire
 © ${new Date().getFullYear()}`;
       
-      window.location.href = `mailto:?subject=${encodeURIComponent('Rapport Cartographie Violences — ' + state.anamnesis.name)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:?subject=${encodeURIComponent('Rapport Cartographie Violences,' + state.anamnesis.name)}&body=${encodeURIComponent(body)}`;
     }
     
     function exportJSON() {
@@ -1848,7 +1848,7 @@ NOÉSIS — Intelligence transdisciplinaire
     }
     
     window.addEventListener('DOMContentLoaded', () => {
-      console.log(`${TEST_NAME} v${TEST_VERSION} — NOÉSIS © ${new Date().getFullYear()}`);
+      console.log(`${TEST_NAME} v${TEST_VERSION},NOÉSIS © ${new Date().getFullYear()}`);
     });
   </script>
 </body>

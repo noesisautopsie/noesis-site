@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autotest Burnout Professionnel — Évaluation Multidimensionnelle | NOÉSIS</title>
+  <title>Autotest Burnout Professionnel,Évaluation Multidimensionnelle | NOÉSIS</title>
   <meta name="description" content="Outil d'auto-évaluation scientifiquement calibré pour le burnout professionnel. Analyse multidimensionnelle, profil contextualisé et exportation PDF premium.">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="Autotest Burnout Professionnel — NOÉSIS">
+  <meta property="og:title" content="Autotest Burnout Professionnel,NOÉSIS">
   <meta property="og:description" content="Évaluation rigoureuse du burnout avec adaptation au contexte professionnel, analyse approfondie et recommandations personnalisées.">
   <meta property="og:type" content="website">
   
@@ -816,7 +816,7 @@
           </svg>
         </div>
         <h1 class="intro-title">Burnout Professionnel</h1>
-        <p class="intro-subtitle">Évaluation multidimensionnelle — Approche clinique rigoureuse</p>
+        <p class="intro-subtitle">Évaluation multidimensionnelle,Approche clinique rigoureuse</p>
       </div>
       
       <!-- Objectif -->
@@ -1068,7 +1068,7 @@
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <h1 class="results-title">Burnout Professionnel — Analyse Personnalisée</h1>
+        <h1 class="results-title">Burnout Professionnel,Analyse Personnalisée</h1>
         <p class="results-date" id="results-date"></p>
       </div>
       
@@ -1921,7 +1921,7 @@
         <html lang="fr">
         <head>
           <meta charset="UTF-8">
-          <title>Rapport Burnout Professionnel — ${state.anamnesis.name} — NOÉSIS</title>
+          <title>Rapport Burnout Professionnel,${state.anamnesis.name},NOÉSIS</title>
           <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
           
           <style>
@@ -2404,9 +2404,9 @@
           <div class="footer">
             <div class="footer-logo">NOÉSIS</div>
             <p>Intelligence transdisciplinaire au service de la lucidité</p>
-            <p style="margin-top: 8pt;">© ${new Date().getFullYear()} NOÉSIS — Tous droits réservés</p>
+            <p style="margin-top: 8pt;">© ${new Date().getFullYear()} NOÉSIS,Tous droits réservés</p>
             <p style="margin-top: 6pt; font-size: 8pt;">
-              Outil de sensibilisation et pré-évaluation — Non validé psychométriquement<br>
+              Outil de sensibilisation et pré-évaluation,Non validé psychométriquement<br>
               Ne remplace pas une consultation avec un professionnel qualifié<br>
               Confidentialité : aucune donnée collectée sans action explicite
             </p>
@@ -2485,7 +2485,7 @@
       const resultBand = getResultBand(scores.total, scores.maxTotal);
       
       const emailBody = `
-Rapport NOÉSIS — Burnout Professionnel
+Rapport NOÉSIS,Burnout Professionnel
 Participant : ${state.anamnesis.name || 'Anonyme'}
 Généré le ${new Date().toLocaleDateString('fr-FR')}
 
@@ -2512,11 +2512,11 @@ Pour consulter le rapport complet avec analyses approfondies et recommandations 
 veuillez télécharger la version PDF depuis l'interface NOÉSIS.
 
 ---
-NOÉSIS — Intelligence transdisciplinaire
-© ${new Date().getFullYear()} — Tous droits réservés
+NOÉSIS,Intelligence transdisciplinaire
+© ${new Date().getFullYear()},Tous droits réservés
       `.trim();
       
-      const subject = `Rapport Burnout Professionnel — ${state.anamnesis.name || 'Anonyme'} — NOÉSIS`;
+      const subject = `Rapport Burnout Professionnel,${state.anamnesis.name || 'Anonyme'},NOÉSIS`;
       const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
       
       window.location.href = mailtoLink;

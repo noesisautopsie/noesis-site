@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO -->
-  <title>Red Flags : Grille d'Évaluation par Phase — Auto-test NOÉSIS</title>
+  <title>Red Flags : Grille d'Évaluation par Phase,Auto-test NOÉSIS</title>
   <meta name="description" content="Grille d'évaluation clinique (50 items) des signaux d'alerte relationnels phase par phase. Identification précoce des dynamiques toxiques et orientation adaptée.">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="Red Flags : Évaluation par Phase — NOÉSIS">
+  <meta property="og:title" content="Red Flags : Évaluation par Phase,NOÉSIS">
   <meta property="og:description" content="Test 50 questions pour identifier les signaux d'alerte relationnels par phase.">
   <meta property="og:type" content="website">
   
@@ -112,31 +112,31 @@
     const PHASES = [
       { 
         key: "p1", 
-        label: "Phase 1 — Idéalisation / Séduction", 
+        label: "Phase 1,Idéalisation / Séduction", 
         color: "amber",
         description: "Intensité excessive, promesses rapides, fusion émotionnelle"
       },
       { 
         key: "p2", 
-        label: "Phase 2 — Investissement émotionnel", 
+        label: "Phase 2,Investissement émotionnel", 
         color: "rose",
         description: "Dette affective, micro-critiques, réciprocité asymétrique"
       },
       { 
         key: "p3", 
-        label: "Phase 3 — Déstabilisation subtile", 
+        label: "Phase 3,Déstabilisation subtile", 
         color: "sky",
         description: "Micro-critiques, doute de soi, contrôle masqué"
       },
       { 
         key: "p4", 
-        label: "Phase 4 — Confusion & Contrôle", 
+        label: "Phase 4,Confusion & Contrôle", 
         color: "violet",
         description: "Isolement, gaslighting, chantage affectif"
       },
       { 
         key: "p5", 
-        label: "Phase 5 — Érosion ou Reconstruction", 
+        label: "Phase 5,Érosion ou Reconstruction", 
         color: "emerald",
         description: "Rupture/retour, trauma bonding, reconstruction"
       }
@@ -283,7 +283,7 @@
       const [answers, setAnswers] = useState({});
       const [email, setEmail] = useState("");
 
-      // SUPPRESSION TOTALE localStorage — Test toujours vierge
+      // SUPPRESSION TOTALE localStorage,Test toujours vierge
 
       const allAnswered = Object.keys(answers).length === QUESTIONS.length;
 
@@ -338,7 +338,7 @@
 
       const handleDownloadJSON = useCallback(() => {
         const data = {
-          test: "Red Flags — Évaluation par Phase",
+          test: "Red Flags,Évaluation par Phase",
           date: new Date().toISOString(),
           totalScore,
           phaseScores,
@@ -500,7 +500,7 @@
               </div>
 
               <div className="text-center text-xs text-slate-500 space-y-1">
-                <p className="font-semibold">NOÉSIS — Red Flags : Évaluation par Phase v1.0 • © 2025</p>
+                <p className="font-semibold">NOÉSIS,Red Flags : Évaluation par Phase v1.0 • © 2025</p>
                 <p>Confidentialité : aucune donnée collectée sans action explicite (RGPD)</p>
               </div>
             </div>
@@ -661,12 +661,12 @@
 
                   <div className="grid md:grid-cols-2 gap-4 mb-8">
                     <div className="bg-slate-50 p-4 rounded-xl text-center">
-                      <div className="text-xs text-slate-600 mb-1">CAI — Confusion Affective Indice</div>
+                      <div className="text-xs text-slate-600 mb-1">CAI,Confusion Affective Indice</div>
                       <div className="text-3xl font-bold text-slate-900">{indices.CAI}/60</div>
                       <div className="text-xs text-slate-600 mt-1">Phases 3 + 4 combinées</div>
                     </div>
                     <div className="bg-slate-50 p-4 rounded-xl text-center">
-                      <div className="text-xs text-slate-600 mb-1">RRI — Résilience Relationnelle Indice</div>
+                      <div className="text-xs text-slate-600 mb-1">RRI,Résilience Relationnelle Indice</div>
                       <div className="text-3xl font-bold text-slate-900">{indices.RRI}/30</div>
                       <div className="text-xs text-slate-600 mt-1">Capacité de reconstruction</div>
                     </div>
@@ -725,13 +725,13 @@
                       <h3 className="font-bold text-slate-900 mb-3">Ressources d'aide (France)</h3>
                       <ul className="space-y-2 text-sm text-slate-700">
                         <li>
-                          <span className="font-medium">3919</span> — Violences Femmes Info (24h/24)
+                          <span className="font-medium">3919</span>,Violences Femmes Info (24h/24)
                         </li>
                         <li>
-                          <span className="font-medium">116 006</span> — France Victimes (écoute)
+                          <span className="font-medium">116 006</span>,France Victimes (écoute)
                         </li>
                         <li>
-                          <span className="font-medium">3114</span> — Prévention suicide
+                          <span className="font-medium">3114</span>,Prévention suicide
                         </li>
                       </ul>
                     </div>
@@ -788,7 +788,7 @@
                 </div>
 
                 <div className="text-center text-xs text-slate-500 space-y-1">
-                  <p className="font-semibold">NOÉSIS — Red Flags : Évaluation par Phase v1.0 • © 2025</p>
+                  <p className="font-semibold">NOÉSIS,Red Flags : Évaluation par Phase v1.0 • © 2025</p>
                   <p>Outil de repérage relationnel. Ne remplace pas un avis professionnel.</p>
                   <p>Confidentialité : aucune donnée collectée sans action explicite (RGPD)</p>
                 </div>
@@ -797,7 +797,7 @@
               {/* SECTION IMPRIMABLE PDF (cachée à l'écran) */}
               <div className="print-only print-container">
                 <div className="print-section">
-                  <h1 className="print-header">Résultats — Red Flags : Évaluation par Phase</h1>
+                  <h1 className="print-header">Résultats,Red Flags : Évaluation par Phase</h1>
                   <p className="print-text">Date : {new Date().toLocaleDateString('fr-FR')}</p>
                   <p className="print-text">Score total : <strong>{totalScore}/150</strong></p>
                   <p className="print-text">Profil : <strong>{resultBand.level}</strong></p>
@@ -828,10 +828,10 @@
                 <div className="print-section">
                   <h2 className="print-subheader">Indices complémentaires</h2>
                   <p className="print-text">
-                    <strong>CAI (Confusion Affective Indice)</strong> : {indices.CAI}/60 — Combinaison phases 3 et 4, mesure la déstabilisation et le contrôle.
+                    <strong>CAI (Confusion Affective Indice)</strong> : {indices.CAI}/60,Combinaison phases 3 et 4, mesure la déstabilisation et le contrôle.
                   </p>
                   <p className="print-text">
-                    <strong>RRI (Résilience Relationnelle Indice)</strong> : {indices.RRI}/30 — Score inversé phase 5, capacité de reconstruction préservée.
+                    <strong>RRI (Résilience Relationnelle Indice)</strong> : {indices.RRI}/30,Score inversé phase 5, capacité de reconstruction préservée.
                   </p>
                 </div>
 
@@ -871,7 +871,7 @@
 
                 <div className="print-section" style={{marginTop: '20px', paddingTop: '12px', borderTop: '1px solid #e2e8f0'}}>
                   <p className="print-text" style={{fontSize: '10px', color: '#64748b'}}>
-                    NOÉSIS — Red Flags : Évaluation par Phase v1.0 • © 2025 • Outil de repérage relationnel, ne remplace pas un diagnostic professionnel
+                    NOÉSIS,Red Flags : Évaluation par Phase v1.0 • © 2025 • Outil de repérage relationnel, ne remplace pas un diagnostic professionnel
                   </p>
                   <p className="print-text" style={{fontSize: '10px', color: '#64748b'}}>
                     Références : Bowlby (attachement), Herman (trauma complexe), Hirigoyen (emprise), Carnes (trauma bonding), Bancroft (contrôle coercitif), Gottman (dynamiques relationnelles)
