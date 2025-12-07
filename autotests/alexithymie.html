@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Étape Zéro — Alexithymie | Auto-Test NOÉSIS</title>
+  <title>Étape Zéro,Alexithymie | Auto-Test NOÉSIS</title>
   <meta name="description" content="Évaluation informative des difficultés à identifier et verbaliser les émotions. Outil non diagnostique orienté vers l'exploration personnelle.">
   <meta name="test-version" content="1.0.0">
   <meta name="test-last-updated" content="2025-11-06">
@@ -141,7 +141,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — CARTES
+       COMPOSANTS,CARTES
        ======================================== */
     .card {
       background: var(--blanc-surface);
@@ -169,7 +169,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — WARNING BOX
+       COMPOSANTS,WARNING BOX
        ======================================== */
     .warning-box {
       background: #fffbeb;
@@ -208,7 +208,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — HEADER
+       COMPOSANTS,HEADER
        ======================================== */
     .header {
       text-align: center;
@@ -246,7 +246,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — BOUTONS
+       COMPOSANTS,BOUTONS
        ======================================== */
     .btn-primary, .btn-secondary, .btn-danger {
       font-family: 'Inter', sans-serif;
@@ -308,7 +308,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — INPUTS
+       COMPOSANTS,INPUTS
        ======================================== */
     .input-group {
       margin-bottom: var(--s-6);
@@ -349,7 +349,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — CHECKBOX CONSENTEMENT
+       COMPOSANTS,CHECKBOX CONSENTEMENT
        ======================================== */
     .consent-checkbox {
       display: flex;
@@ -375,7 +375,7 @@
     }
     
     /* ========================================
-       COMPOSANTS — COLLAPSIBLE
+       COMPOSANTS,COLLAPSIBLE
        ======================================== */
     .collapsible {
       margin-bottom: var(--s-8);
@@ -574,7 +574,7 @@
     }
     
     /* ========================================
-       ÉCRAN TEST — BARRE PROGRESSION
+       ÉCRAN TEST,BARRE PROGRESSION
        ======================================== */
     .progress-container {
       position: fixed;
@@ -609,7 +609,7 @@
     }
     
     /* ========================================
-       ÉCRAN TEST — CONTAINER QUESTION
+       ÉCRAN TEST,CONTAINER QUESTION
        ======================================== */
     #test-screen .app-container {
       padding-top: calc(var(--s-20) + var(--s-12));
@@ -672,7 +672,7 @@
     }
     
     /* ========================================
-       ÉCRAN TEST — OPTIONS RÉPONSE
+       ÉCRAN TEST,OPTIONS RÉPONSE
        ======================================== */
     .answer-options {
       display: flex;
@@ -751,7 +751,7 @@
     }
     
     /* ========================================
-       ÉCRAN TEST — NAVIGATION
+       ÉCRAN TEST,NAVIGATION
        ======================================== */
     .navigation-buttons {
       display: flex;
@@ -761,7 +761,7 @@
     }
     
     /* ========================================
-       ÉCRAN RÉSULTATS — SCORE GLOBAL
+       ÉCRAN RÉSULTATS,SCORE GLOBAL
        ======================================== */
     .score-card {
       text-align: center;
@@ -775,7 +775,7 @@
     }
     
     /* ========================================
-       ÉCRAN RÉSULTATS — ANALYSES DIMENSIONNELLES
+       ÉCRAN RÉSULTATS,ANALYSES DIMENSIONNELLES
        ======================================== */
     .dimension-analysis {
       margin-bottom: var(--s-8);
@@ -862,7 +862,7 @@
     }
     
     /* ========================================
-       ÉCRAN RÉSULTATS — RECOMMANDATIONS
+       ÉCRAN RÉSULTATS,RECOMMANDATIONS
        ======================================== */
     .recommendations-list {
       list-style: none;
@@ -899,7 +899,7 @@
     }
     
     /* ========================================
-       ÉCRAN RÉSULTATS — RESSOURCES
+       ÉCRAN RÉSULTATS,RESSOURCES
        ======================================== */
     .resources-list {
       list-style: none;
@@ -1052,7 +1052,7 @@
             <path d="M15 10h.01"></path>
           </svg>
         </div>
-        <h1>Étape Zéro — Alexithymie</h1>
+        <h1>Étape Zéro,Alexithymie</h1>
         <p class="subtitle">Exploration des difficultés à identifier et verbaliser les émotions</p>
       </div>
       
@@ -1219,7 +1219,7 @@
           <p style="font-size: var(--fs-sm); line-height: var(--lh-relaxed); margin: 0; color: rgba(10,10,10,0.8);">
             <strong>Cadre scientifique :</strong> Inspiré de la TAS-20 (Toronto Alexithymia Scale) et du BVAQ 
             (Bermond-Vorst Alexithymia Questionnaire). <strong>Outil de sensibilisation</strong> non validé 
-            psychométriquement — ne constitue pas un instrument diagnostique.
+            psychométriquement,ne constitue pas un instrument diagnostique.
           </p>
         </div>
         
@@ -1460,7 +1460,7 @@
     /* ========================================
        CONFIGURATION DU TEST
        ======================================== */
-    const TEST_NAME = "Étape Zéro — Alexithymie";
+    const TEST_NAME = "Étape Zéro,Alexithymie";
     
     const DIMENSIONS = {
       identifier: { 
@@ -1903,7 +1903,7 @@
               <div class="dimension-bar-fill ${dimensionInfo.key}" style="width: ${data.percentage}%"></div>
             </div>
             <div class="dimension-interpretation ${level.class}">
-              <strong>${level.level}</strong> — ${dimensionInfo.description}. 
+              <strong>${level.level}</strong>,${dimensionInfo.description}. 
               ${getDetailedDimensionInterpretation(key, data.percentage)}
             </div>
           </div>
@@ -2013,7 +2013,7 @@
         <html lang="fr">
         <head>
           <meta charset="UTF-8">
-          <title>Rapport ${TEST_NAME} — NOÉSIS</title>
+          <title>Rapport ${TEST_NAME},NOÉSIS</title>
           <style>
             @page { size: A4; margin: 2.5cm; }
             body {
@@ -2074,7 +2074,7 @@
           <!-- En-tête -->
           <div class="header">
             <h1>RAPPORT ${TEST_NAME}</h1>
-            <p>NOÉSIS — Intelligence transdisciplinaire</p>
+            <p>NOÉSIS,Intelligence transdisciplinaire</p>
             <p>Généré le ${dateStr}</p>
           </div>
           
@@ -2180,9 +2180,9 @@
           
           <!-- Pied de page -->
           <div class="footer">
-            <p><strong>NOÉSIS</strong> — Intelligence transdisciplinaire au service de la lucidité</p>
-            <p>© ${new Date().getFullYear()} NOÉSIS — Tous droits réservés</p>
-            <p>Outil de sensibilisation et pré-évaluation — Non validé psychométriquement<br>
+            <p><strong>NOÉSIS</strong>,Intelligence transdisciplinaire au service de la lucidité</p>
+            <p>© ${new Date().getFullYear()} NOÉSIS,Tous droits réservés</p>
+            <p>Outil de sensibilisation et pré-évaluation,Non validé psychométriquement<br>
             Ne remplace pas une consultation avec un professionnel qualifié<br>
             Confidentialité : aucune donnée collectée sans action explicite</p>
           </div>
@@ -2203,9 +2203,9 @@
       const resultBand = getResultBand(scores.total);
       const dateStr = new Date().toLocaleDateString('fr-FR');
       
-      const subject = encodeURIComponent(`Rapport ${TEST_NAME} — ${dateStr}`);
+      const subject = encodeURIComponent(`Rapport ${TEST_NAME},${dateStr}`);
       
-      let body = `RAPPORT NOÉSIS — ${TEST_NAME}\n`;
+      let body = `RAPPORT NOÉSIS,${TEST_NAME}\n`;
       body += `Généré le ${dateStr}\n\n`;
       body += `SCORE TOTAL : ${scores.total}/${scores.maxTotal} (${scores.percentage}%)\n`;
       body += `NIVEAU : ${resultBand.level}\n\n`;
@@ -2218,7 +2218,7 @@
       
       body += `\nSYNTHÈSE :\n${resultBand.interpretation}\n\n`;
       body += `Pour consulter le rapport complet avec analyses approfondies, recommandations personnalisées et détail des réponses, veuillez télécharger la version PDF depuis l'interface NOÉSIS.\n\n`;
-      body += `---\nNOÉSIS — Intelligence transdisciplinaire\n© ${new Date().getFullYear()} — Tous droits réservés`;
+      body += `---\nNOÉSIS,Intelligence transdisciplinaire\n© ${new Date().getFullYear()},Tous droits réservés`;
       
       const mailtoLink = `mailto:?subject=${subject}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;

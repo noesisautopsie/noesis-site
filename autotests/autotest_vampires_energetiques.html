@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Auto-Évaluation Relations Épuisantes — NOÉSIS</title>
+  <title>Auto-Évaluation Relations Épuisantes,NOÉSIS</title>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -70,7 +70,7 @@
       </div>
 
       <div class="danger-box">
-        <h2>🔒 Sécurité — Emprise Active</h2>
+        <h2>🔒 Sécurité,Emprise Active</h2>
         <p><strong>Si la personne surveille vos activités en ligne</strong>, n'utilisez PAS cet outil sur votre appareil.</p>
       </div>
 
@@ -165,9 +165,9 @@
       <div class="card" style="background:linear-gradient(135deg,#f0fdf4 0%,#ecfdf5 100%)">
         <h2>Ressources & Soutien</h2>
         <ul style="margin-left:20px">
-          <li><strong>3919</strong> — Violences Femmes Info (24/7)</li>
-          <li><strong>119</strong> — Allô Enfance en Danger</li>
-          <li><strong>3114</strong> — Prévention Suicide</li>
+          <li><strong>3919</strong>,Violences Femmes Info (24/7)</li>
+          <li><strong>119</strong>,Allô Enfance en Danger</li>
+          <li><strong>3114</strong>,Prévention Suicide</li>
         </ul>
       </div>
 
@@ -514,9 +514,9 @@
       const w = window.open('', '', 'width=800,height=600');
       if (!w) return alert('Impossible d’ouvrir la fenêtre d’impression (bloquée par le navigateur).');
       w.document.write(`
-        <!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport Relations Épuisantes — NOÉSIS</title>
+        <!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Rapport Relations Épuisantes,NOÉSIS</title>
         <style>@page{size:A4;margin:2.5cm}body{font-family:Inter,Arial,sans-serif;font-size:10pt;color:#0A0A0A}h1{text-align:center}</style></head><body>
-        <h1>NOÉSIS — Relations Épuisantes</h1>
+        <h1>NOÉSIS,Relations Épuisantes</h1>
         <p style="text-align:center">${state.anamnesis.name} • ${new Date().toLocaleDateString('fr-FR')}</p>
         <h2>Synthèse</h2><div style="font-size:36px;font-weight:700;color:#C7A86D;text-align:center">${sc.riskIdx}/100</div>
         <p style="text-align:center;color:${sc.band.color};font-weight:600">${sc.band.level}</p>
@@ -524,8 +524,8 @@
         <h2>Dimensions</h2><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:6px;background:#F7F5EF">Dimension</th><th style="text-align:left;padding:6px;background:#F7F5EF">Score</th></tr></thead><tbody>
         ${Object.entries(sc.dims).map(([k,d])=>{const dim = DIMENSIONS.find(x=>x.k===k)||{l:k};return `<tr><td style="padding:6px">${dim.l}</td><td style="padding:6px">${d.pct}%</td></tr>`}).join('')}
         </tbody></table>
-        <h2>Ressources</h2><ul><li>3919 — Violences Femmes Info</li><li>119 — Allô Enfance</li><li>3114 — Prévention Suicide</li></ul>
-        <p style="font-size:9pt;color:#666;text-align:center;margin-top:30px">© ${new Date().getFullYear()} NOÉSIS — Outil exploratoire non validé scientifiquement</p>
+        <h2>Ressources</h2><ul><li>3919,Violences Femmes Info</li><li>119,Allô Enfance</li><li>3114,Prévention Suicide</li></ul>
+        <p style="font-size:9pt;color:#666;text-align:center;margin-top:30px">© ${new Date().getFullYear()} NOÉSIS,Outil exploratoire non validé scientifiquement</p>
         </body></html>
       `);
       w.document.close();
@@ -535,8 +535,8 @@
     // envoi email
     function sendEmail(){
       const sc = calcScores();
-      const body = `Rapport NOÉSIS — Relations Épuisantes\n${state.anamnesis.name} • ${new Date().toLocaleDateString('fr-FR')}\n\nIndice: ${sc.riskIdx}/100\nNiveau: ${sc.band.level}\n\n${sc.band.text}\n\nRessources: 3919 (Violences) • 3114 (Suicide)`;
-      window.location.href = `mailto:?subject=${encodeURIComponent('Rapport Relations Épuisantes — NOÉSIS')}&body=${encodeURIComponent(body)}`;
+      const body = `Rapport NOÉSIS,Relations Épuisantes\n${state.anamnesis.name} • ${new Date().toLocaleDateString('fr-FR')}\n\nIndice: ${sc.riskIdx}/100\nNiveau: ${sc.band.level}\n\n${sc.band.text}\n\nRessources: 3919 (Violences) • 3114 (Suicide)`;
+      window.location.href = `mailto:?subject=${encodeURIComponent('Rapport Relations Épuisantes,NOÉSIS')}&body=${encodeURIComponent(body)}`;
     }
 
     // export JSON
